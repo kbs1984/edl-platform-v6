@@ -1,0 +1,3 @@
+archive/sessions/SESSION-00003-DECISIONS.md
+archive/sessions/SESSION-00003-LOG.md
+archive/sessions/SESSION-00003-FILES.txt

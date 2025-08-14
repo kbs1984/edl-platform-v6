@@ -82,13 +82,108 @@ Session #00003 successfully implemented the File System Reality Agent following 
 - MAX_FILES_PER_DIR = 1000
 - MAX_FILE_SIZE_FULL_READ = 1MB
 
-## For Session #00004: Next Steps
+## CRITICAL DISCOVERIES - MUST READ
 
-### Immediate Priorities
-1. **Level 4 Implementation** - Change tracking with semantic categorization
-2. **Incremental Snapshots** - Reduce storage for large projects
-3. **Parallel Processing** - If performance issues arise
-4. **Integration Testing** - With Supabase agent for unified reporting
+### Session Tracking Reality
+1. **Session tracker REQUIRES git** - Fails silently without repository
+2. **No automatic file tracking** - Must manually log everything
+3. **Git is now initialized** - We fixed this in Session #00003
+4. **Our File System Agent could replace tracker** - Use snapshots instead!
+
+### What Session #00004 MUST Know
+```bash
+# FIRST COMMAND - Constitutional requirement!
+make track-init SESSION=00004
+
+# Git is NOW initialized (we fixed this)
+git status  # Will work
+git log --oneline  # Shows Session #00003's commit
+```
+
+## For Session #00004: GitHub CLI Integration
+
+### Your Mission
+Implement GitHub CLI integration to enable:
+- Creating pull requests from sessions
+- Managing issues and projects
+- Automated session documentation
+- Remote backup of session work
+
+### WARNING: Authentication Required
+```bash
+# You'll need to handle GitHub authentication
+gh auth status  # Check if authenticated
+gh auth login   # Will need user interaction
+
+# This is DIFFERENT from local git!
+git != GitHub
+```
+
+### Implementation Path
+
+#### Phase 1: GitHub CLI Setup (30 mins)
+1. Check if `gh` is installed
+2. Handle authentication flow
+3. Test basic commands
+4. Document authentication approach
+
+#### Phase 2: Core Functions (1 hour)
+```python
+# Suggested structure
+class GitHubConnector:
+    def create_pr(self, title, body, branch):
+        """Create PR from current branch"""
+        
+    def create_issue(self, title, body, labels):
+        """Create issue for session work"""
+        
+    def push_session_branch(self, session_id):
+        """Push session work to remote"""
+```
+
+#### Phase 3: Integration (30 mins)
+- Update Makefile with `gh` commands
+- Enhance session tracker to use GitHub
+- Test with real PR creation
+
+### Key Challenges to Expect
+
+1. **Authentication Complexity**
+   - `gh auth login` requires user interaction
+   - Can't fully automate without token
+   - Need to handle auth failures gracefully
+
+2. **Remote Repository Setup**
+   - Need to create GitHub repo first
+   - Or connect to existing repo
+   - Handle missing remote gracefully
+
+3. **Rate Limiting**
+   - GitHub API has rate limits
+   - Need to handle 429 responses
+   - Cache when possible
+
+### Testing Approach
+```bash
+# Test without actually creating PRs
+gh pr create --dry-run
+gh issue create --dry-run
+
+# Use a test repository first
+gh repo create test-session-tracking --private
+```
+
+### Constitutional Compliance
+Remember Article VII requirements:
+- Track all decisions about GitHub integration
+- Log authentication approaches tried
+- Document any security considerations
+
+### Reality Domain Principles
+- Don't assume GitHub CLI is installed
+- Don't assume authentication will work
+- Test every command before using
+- Report actual state, not desired state
 
 ### Enhancement Opportunities (from Desktop)
 1. **Change Intelligence** - Semantic categorization of changes
