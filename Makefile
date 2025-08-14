@@ -133,6 +133,53 @@ test-automation:
 	@make check
 	@echo "All automation tests completed"
 
+# GitHub Integration Commands (Added Session 00004)
+gh-check:
+	@echo "🔍 Checking GitHub CLI setup..."
+	@cd reality/agent-reality-auditor/github-connector && python3 quickstart.py
+
+gh-discover:
+	@echo "🌍 Running GitHub Reality discovery..."
+	@cd reality/agent-reality-auditor/github-connector && python3 connector.py --level 5
+
+gh-pr-create:
+	@if [ -z "$(TITLE)" ]; then \
+		echo "Usage: make gh-pr-create TITLE='Session work' BODY='Description'"; \
+		exit 1; \
+	fi
+	@gh pr create --title "$(TITLE)" --body "$${BODY:-Auto-generated PR}" --draft
+
+gh-issue-create:
+	@if [ -z "$(TITLE)" ]; then \
+		echo "Usage: make gh-issue-create TITLE='Issue title' BODY='Description'"; \
+		exit 1; \
+	fi
+	@gh issue create --title "$(TITLE)" --body "$${BODY:-Auto-generated issue}"
+
+gh-session-pr:
+	@if [ -z "$(SESSION)" ]; then \
+		echo "Usage: make gh-session-pr SESSION=00004"; \
+		exit 1; \
+	fi
+	@echo "Creating session branch and PR..."
+	@git checkout -b session-$(SESSION) 2>/dev/null || git checkout session-$(SESSION)
+	@git add -A
+	@git commit -m "Session #$(SESSION) work" || true
+	@git push -u origin session-$(SESSION)
+	@gh pr create --title "Session #$(SESSION) Work" \
+		--body "Automated PR for Session $(SESSION) implementation work" \
+		--draft || echo "PR might already exist"
+
+gh-status:
+	@echo "📊 GitHub Status:"
+	@gh auth status || echo "Not authenticated"
+	@echo ""
+	@echo "🔀 Pull Requests:"
+	@gh pr list --limit 5 || echo "No PRs or not connected"
+	@echo ""
+	@echo "📝 Issues:"
+	@gh issue list --limit 5 || echo "No issues or not connected"
+
 # Documentation
 docs:
 	@echo "Generating documentation index..."
