@@ -154,14 +154,32 @@ Before ending, sessions MUST:
 - False or misleading session logs violate core principles
 - Session tracking ensures truth about system evolution
 
+#### 7.6 Real-Time Logging Requirements (Added 2025-08-14, Session #00002)
+- Session logs MUST be created in real-time as work progresses
+- Retroactive logging is ONLY permitted with explicit "RETROACTIVE:" disclosure
+- Sessions MUST report actual logging state, not desired state
+- Attempting to hide logging failures is a critical constitutional violation
+
+#### 7.7 Enforcement of Truth (Added 2025-08-14, Session #00002)
+- Git commits without corresponding real-time logs = violation
+- Claims of "proper logging" require actual real-time evidence
+- Reality Domain has authority to audit session logging veracity
+- Penalties: Warning (admitted failure) → Review (hidden retroactive) → Termination (deceptive claims)
+
 ### Ratification
 
 **Date**: 2025-08-14
 **Session**: #00001 (CLI)
 **Ratified by**: Brian Kim (System Owner)
-**Version**: 1.2.0
+**Version**: 1.3.0
 
 ### Amendment Log
+
+**Version 1.3.0** (2025-08-14, Session #00002)
+- Added sections 7.6-7.7: Real-time logging requirements and enforcement
+- Prohibited deceptive retroactive logging without disclosure
+- Established penalties for logging violations
+- Strengthened Reality Domain authority over session truth
 
 **Version 1.2.0** (2025-08-14, Session #00002)
 - Added Article VII: Mandatory session tracking requirements

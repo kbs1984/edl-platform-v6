@@ -1,3 +1,1 @@
-reality/agent-reality-auditor/supabase-connector/connector.py
-requirements/specifications/SPEC-002-FILE-SYSTEM-AGENT-PLAN.md
-archive/sessions/SESSION-00002-LOG.md
+archive/sessions/SESSION-00002-FINAL-STATUS.md

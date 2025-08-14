@@ -1,0 +1,6 @@
+archive/sessions/SESSION-00002-FILES.txt
+archive/sessions/SESSION-00002-LOG.md
+archive/sessions/SESSION-00002-FINAL-STATUS.md
+archive/sessions/SESSION-00003B-DECISIONS.md
+archive/sessions/SESSION-00003B-LOG.md
+archive/sessions/SESSION-00003B-VALIDATION-REPORT.md
