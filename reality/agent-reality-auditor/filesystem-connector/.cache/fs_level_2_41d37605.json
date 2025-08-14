@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:21:02.217401",
+    "agent": "filesystem-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "41d37605",
+    "confidence_score": 0.9,
+    "root_path": "/tmp/fs_test_debug",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/tmp/fs_test_debug",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127207424
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_directories": 0,
+      "total_files": 1,
+      "max_depth_reached": 0,
+      "directories_skipped": [],
+      "symlinks_found": 0,
+      "git_repository": false,
+      "git_root": null
+    },
+    "details": {
+      "tree": {
+        "file_count": 1,
+        "dir_count": 0,
+        "size_bytes": 8,
+        "subdirs": {}
+      }
+    }
+  },
+  "timestamp": "2025-08-14T20:21:02.217504"
+}

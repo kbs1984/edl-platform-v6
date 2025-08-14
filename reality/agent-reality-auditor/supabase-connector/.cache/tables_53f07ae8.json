@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T13:58:50.207260",
+    "agent": "supabase-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "53f07ae8",
+    "confidence_score": 0.5
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "anon",
+    "rate_limit_remaining": -1
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_tables": 0,
+      "total_rows": 0,
+      "accessible_tables": []
+    },
+    "details": {
+      "tables": []
+    }
+  },
+  "timestamp": "2025-08-14T13:58:50.993666"
+}

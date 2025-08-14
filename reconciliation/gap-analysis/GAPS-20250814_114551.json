@@ -1,0 +1,22 @@
+{
+  "session": "00001",
+  "timestamp": "2025-08-14T11:45:51.416653",
+  "gaps_found": [
+    {
+      "type": "process",
+      "category": "no_requirements",
+      "description": "No requirements or goals defined",
+      "impact": "System has no direction or target state",
+      "severity": "high",
+      "target_state": "At least one requirement or goal defined",
+      "current_state": "No requirements documented",
+      "suggested_action": "Define first requirement in requirements/goals/"
+    }
+  ],
+  "summary": {
+    "critical": 0,
+    "high": 1,
+    "medium": 0,
+    "low": 0
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:20:35.925433",
+    "agent": "filesystem-reality",
+    "check_type": "level_3_discovery",
+    "session_id": "de468619",
+    "confidence_score": 0.95,
+    "root_path": "/tmp/fs_agent_snapshot_test",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/tmp/fs_agent_snapshot_test",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127367168
+  },
+  "discoveries": {
+    "level": 3,
+    "summary": {
+      "total_size_bytes": 27,
+      "file_types": {
+        ".txt": 2
+      },
+      "largest_files": [
+        "file1.txt",
+        "file2.txt"
+      ],
+      "newest_files": [
+        "file1.txt",
+        "file2.txt"
+      ],
+      "files_analyzed": 2,
+      "files_hashed": 2,
+      "content_sampled": 2
+    },
+    "details": {
+      "files": {
+        "file1.txt": {
+          "size_bytes": 15,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:20:35.919315",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "916a3f0bc3a428e1a168f4408df82cd5bbb8b08c6d7ac55eff9dff29825134df",
+          "content_preview": "initial content"
+        },
+        "file2.txt": {
+          "size_bytes": 12,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:20:35.919315",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "2c2316737c9313956dfc0083da3a2a62ce259f66484f3e26440f0d1b02dd4128",
+          "content_preview": "more content"
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-14T20:20:35.925613"
+}

@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:20:35.910819",
+    "agent": "filesystem-reality",
+    "check_type": "level_1_discovery",
+    "session_id": "976c8d47",
+    "confidence_score": 1.0,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127420416
+  },
+  "discoveries": {
+    "level": 1,
+    "summary": {
+      "can_list_contents": true
+    }
+  },
+  "timestamp": "2025-08-14T20:20:35.910842"
+}

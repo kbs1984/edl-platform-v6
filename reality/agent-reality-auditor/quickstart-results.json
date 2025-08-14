@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T13:37:38.470719",
+    "agent": "supabase-reality-quickstart",
+    "check_type": "connection_test"
+  },
+  "tests": {
+    "cli_available": {
+      "status": "pass",
+      "version": "2.34.3"
+    },
+    "subprocess": {
+      "status": "pass"
+    },
+    "cache_directory": {
+      "status": "pass",
+      "path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/.cache"
+    },
+    "credentials": {
+      "status": "pass",
+      "found": {
+        "SUPABASE_URL": true,
+        "SUPABASE_ANON_KEY": true,
+        "SUPABASE_SERVICE_KEY": false
+      },
+      "usable": true
+    },
+    "connection": {
+      "status": "pass",
+      "http_code": "200",
+      "can_connect": true
+    }
+  },
+  "summary": {
+    "total_tests": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "can_proceed": true,
+    "ready_for_production": true
+  }
+}

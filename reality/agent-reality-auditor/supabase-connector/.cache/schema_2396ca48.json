@@ -1,0 +1,714 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T13:58:33.571150",
+    "agent": "supabase-reality",
+    "check_type": "level_3_discovery",
+    "session_id": "2396ca48",
+    "confidence_score": 0.6
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "anon",
+    "rate_limit_remaining": -1
+  },
+  "discoveries": {
+    "level": 3,
+    "summary": {
+      "total_tables": 0,
+      "total_columns": 455,
+      "total_constraints": 0,
+      "total_indexes": 0
+    },
+    "details": {
+      "schemas": {
+        "user_balances": {
+          "columns": [
+            "user_id",
+            "username",
+            "role",
+            "emcoin_balance",
+            "verification_status",
+            "linked_player_count"
+          ],
+          "column_count": 6,
+          "source": "openapi_definitions"
+        },
+        "tournaments": {
+          "columns": [
+            "id",
+            "name",
+            "description",
+            "type",
+            "status",
+            "max_participants",
+            "current_participants",
+            "start_date",
+            "end_date",
+            "rules",
+            "prizes",
+            "created_by",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 14,
+          "source": "openapi_definitions"
+        },
+        "system_health": {
+          "columns": [
+            "id",
+            "session_number",
+            "component",
+            "status",
+            "message",
+            "metadata",
+            "created_at"
+          ],
+          "column_count": 7,
+          "source": "openapi_definitions"
+        },
+        "observer_badges": {
+          "columns": [
+            "id",
+            "user_id",
+            "badge_type",
+            "earned_at",
+            "metadata",
+            "display_priority"
+          ],
+          "column_count": 6,
+          "source": "openapi_definitions"
+        },
+        "subscriptions": {
+          "columns": [
+            "id",
+            "supervisor_id",
+            "plan_type",
+            "status",
+            "monthly_emcoins",
+            "started_at",
+            "expires_at",
+            "last_payment_at",
+            "next_payment_at",
+            "auto_renew",
+            "payment_method",
+            "created_at"
+          ],
+          "column_count": 12,
+          "source": "openapi_definitions"
+        },
+        "linked_players": {
+          "columns": [
+            "id",
+            "supervisor_id",
+            "player_id",
+            "status",
+            "linked_at",
+            "approved_at",
+            "removed_at",
+            "removal_reason"
+          ],
+          "column_count": 8,
+          "source": "openapi_definitions"
+        },
+        "user_achievements": {
+          "columns": [
+            "id",
+            "user_id",
+            "achievement_id",
+            "earned_at",
+            "progress",
+            "unlocked_at"
+          ],
+          "column_count": 6,
+          "source": "openapi_definitions"
+        },
+        "emcoin_wallets": {
+          "columns": [
+            "id",
+            "user_id",
+            "balance",
+            "lifetime_earned",
+            "lifetime_spent",
+            "daily_earned_today",
+            "daily_limit_reset_at",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 9,
+          "source": "openapi_definitions"
+        },
+        "ballots": {
+          "columns": [
+            "id",
+            "activity_id",
+            "enabler_id",
+            "player_id",
+            "score_speaking",
+            "score_argument",
+            "score_evidence",
+            "total_score",
+            "feedback_text",
+            "strengths",
+            "improvements",
+            "created_at",
+            "is_complete"
+          ],
+          "column_count": 13,
+          "source": "openapi_definitions"
+        },
+        "debate_interactions": {
+          "columns": [
+            "id",
+            "chamber_id",
+            "user_id",
+            "interaction_type",
+            "target_type",
+            "target_id",
+            "intensity",
+            "created_at",
+            "round_number",
+            "is_verified"
+          ],
+          "column_count": 10,
+          "source": "openapi_definitions"
+        },
+        "victory_themes": {
+          "columns": [
+            "id",
+            "name",
+            "audio_url",
+            "visual_effect",
+            "price_emcoins",
+            "required_reputation",
+            "is_limited_edition",
+            "available_until",
+            "times_purchased",
+            "times_used",
+            "created_at"
+          ],
+          "column_count": 11,
+          "source": "openapi_definitions"
+        },
+        "profiles": {
+          "columns": [
+            "id",
+            "email",
+            "username",
+            "full_name",
+            "role",
+            "verification_status",
+            "grade_level",
+            "division",
+            "created_at",
+            "last_active_at",
+            "profile_views_today",
+            "profile_views_total",
+            "emcoin_balance",
+            "streak_days",
+            "last_login_date",
+            "call_sign",
+            "auth_user_id"
+          ],
+          "column_count": 17,
+          "source": "openapi_definitions"
+        },
+        "daily_engagement": {
+          "columns": [
+            "id",
+            "user_id",
+            "date",
+            "login_count",
+            "visitor_count",
+            "activities_participated",
+            "debates_won",
+            "debates_lost",
+            "emcoins_earned",
+            "emcoins_spent",
+            "gifts_sent",
+            "gifts_received",
+            "messages_sent",
+            "profile_updates",
+            "team_interactions",
+            "streak_maintained",
+            "daily_goal_completed"
+          ],
+          "column_count": 17,
+          "source": "openapi_definitions"
+        },
+        "profile_visitors": {
+          "columns": [
+            "id",
+            "profile_id",
+            "visitor_id",
+            "visited_at",
+            "visit_date",
+            "visitor_type"
+          ],
+          "column_count": 6,
+          "source": "openapi_definitions"
+        },
+        "achievements": {
+          "columns": [
+            "id",
+            "code",
+            "name",
+            "description",
+            "category",
+            "rarity",
+            "emcoin_reward",
+            "icon_url",
+            "sort_order"
+          ],
+          "column_count": 9,
+          "source": "openapi_definitions"
+        },
+        "session_events": {
+          "columns": [
+            "id",
+            "session_id",
+            "event_type",
+            "occurred_at",
+            "metadata",
+            "created_at"
+          ],
+          "column_count": 6,
+          "source": "openapi_definitions"
+        },
+        "analytics_events": {
+          "columns": [
+            "id",
+            "user_id",
+            "event_type",
+            "event_data",
+            "page_url",
+            "session_id",
+            "created_at"
+          ],
+          "column_count": 7,
+          "source": "openapi_definitions"
+        },
+        "teams": {
+          "columns": [
+            "id",
+            "team_name",
+            "team_code",
+            "founder_id",
+            "division",
+            "team_type",
+            "created_at",
+            "is_active",
+            "member_count",
+            "max_members",
+            "team_emcoins",
+            "victory_count",
+            "team_rank",
+            "team_motto",
+            "team_color"
+          ],
+          "column_count": 15,
+          "source": "openapi_definitions"
+        },
+        "clan_memberships": {
+          "columns": [
+            "id",
+            "clan_id",
+            "team_id",
+            "role",
+            "debates_contributed",
+            "victories_contributed",
+            "reputation_earned",
+            "joined_at",
+            "left_at",
+            "is_active"
+          ],
+          "column_count": 10,
+          "source": "openapi_definitions"
+        },
+        "chamber_visit_logs": {
+          "columns": [
+            "id",
+            "chamber_owner_id",
+            "visitor_id",
+            "visited_at",
+            "visit_date",
+            "is_unique_today",
+            "time_spent",
+            "interactions_made",
+            "is_friend",
+            "is_team_member",
+            "is_clan_member"
+          ],
+          "column_count": 11,
+          "source": "openapi_definitions"
+        },
+        "debate_chambers": {
+          "columns": [
+            "id",
+            "activity_id",
+            "team1_id",
+            "team2_id",
+            "chamber_theme",
+            "chamber_customization",
+            "featured_achievements",
+            "chamber_music",
+            "created_by",
+            "chamber_name",
+            "chamber_description",
+            "is_private",
+            "password_hash",
+            "viewer_count",
+            "clap_count",
+            "peak_viewers",
+            "is_featured",
+            "featured_until",
+            "viral_score",
+            "current_round",
+            "max_rounds",
+            "current_speaker",
+            "turn_order",
+            "round_end_time",
+            "debate_state",
+            "total_arguments",
+            "total_rebuttals",
+            "average_argument_quality",
+            "engagement_score",
+            "created_at",
+            "started_at",
+            "completed_at",
+            "last_activity",
+            "is_recorded",
+            "recording_url",
+            "highlight_moments",
+            "status",
+            "max_participants"
+          ],
+          "column_count": 38,
+          "source": "openapi_definitions"
+        },
+        "activity_registrations": {
+          "columns": [
+            "id",
+            "activity_id",
+            "player_id",
+            "supervisor_id",
+            "registration_status",
+            "payment_status",
+            "emcoin_amount",
+            "registered_at",
+            "approved_at",
+            "paid_at",
+            "confirmed_at",
+            "cancelled_at",
+            "cancellation_reason"
+          ],
+          "column_count": 13,
+          "source": "openapi_definitions"
+        },
+        "system_logs": {
+          "columns": [
+            "id",
+            "action",
+            "details",
+            "created_at"
+          ],
+          "column_count": 4,
+          "source": "openapi_definitions"
+        },
+        "achievement_definitions": {
+          "columns": [
+            "id",
+            "code",
+            "name",
+            "description",
+            "category",
+            "rarity",
+            "emcoin_reward",
+            "points",
+            "icon_url",
+            "created_at"
+          ],
+          "column_count": 10,
+          "source": "openapi_definitions"
+        },
+        "messages": {
+          "columns": [
+            "id",
+            "sender_id",
+            "recipient_id",
+            "debate_chamber_id",
+            "content",
+            "message_type",
+            "is_read",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 9,
+          "source": "openapi_definitions"
+        },
+        "daily_leaderboard": {
+          "columns": [
+            "id",
+            "username",
+            "call_sign",
+            "division",
+            "emcoins_earned",
+            "debates_won",
+            "streak_days",
+            "profile_views_today"
+          ],
+          "column_count": 8,
+          "source": "openapi_definitions"
+        },
+        "clans": {
+          "columns": [
+            "id",
+            "name",
+            "motto",
+            "emblem_url",
+            "theme_color",
+            "division",
+            "total_members",
+            "total_victories",
+            "total_debates",
+            "reputation_score",
+            "victory_theme_url",
+            "victory_theme_provider",
+            "chamber_theme",
+            "created_by",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 16,
+          "source": "openapi_definitions"
+        },
+        "debate_arguments": {
+          "columns": [
+            "id",
+            "chamber_id",
+            "speaker_id",
+            "team_id",
+            "content",
+            "argument_type",
+            "round_number",
+            "responds_to",
+            "word_count",
+            "evidence_links",
+            "quality_score",
+            "clap_count",
+            "reaction_summary",
+            "created_at",
+            "time_to_compose",
+            "is_flagged",
+            "moderation_notes"
+          ],
+          "column_count": 17,
+          "source": "openapi_definitions"
+        },
+        "emcoin_transactions": {
+          "columns": [
+            "id",
+            "wallet_id",
+            "amount",
+            "type",
+            "category",
+            "description",
+            "bonus_multiplier",
+            "is_surprise_bonus",
+            "related_entity_id",
+            "created_at"
+          ],
+          "column_count": 10,
+          "source": "openapi_definitions"
+        },
+        "wave_surf_paths": {
+          "columns": [
+            "id",
+            "surfer_id",
+            "path_chambers",
+            "current_chamber",
+            "hop_count",
+            "unique_discoveries",
+            "quality_discoveries",
+            "started_at",
+            "ended_at",
+            "total_duration"
+          ],
+          "column_count": 10,
+          "source": "openapi_definitions"
+        },
+        "users": {
+          "columns": [
+            "id",
+            "email",
+            "username",
+            "role",
+            "created_at"
+          ],
+          "column_count": 5,
+          "source": "openapi_definitions"
+        },
+        "user_sessions": {
+          "columns": [
+            "id",
+            "user_id",
+            "session_token",
+            "started_at",
+            "last_activity",
+            "expires_at",
+            "ip_address",
+            "user_agent",
+            "device_type",
+            "is_active",
+            "terminated_reason",
+            "transferred_from",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 14,
+          "source": "openapi_definitions"
+        },
+        "activities": {
+          "columns": [
+            "id",
+            "topic",
+            "description",
+            "activity_type",
+            "division",
+            "capacity",
+            "current_participants",
+            "consensus_required",
+            "consensus_date",
+            "emcoin_fee",
+            "activity_state",
+            "created_by",
+            "enabler_id",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 15,
+          "source": "openapi_definitions"
+        },
+        "active_teams": {
+          "columns": [
+            "id",
+            "team_name",
+            "team_code",
+            "founder_id",
+            "division",
+            "team_type",
+            "created_at",
+            "is_active",
+            "member_count",
+            "max_members",
+            "team_emcoins",
+            "victory_count",
+            "team_rank",
+            "team_motto",
+            "team_color",
+            "founder_name",
+            "active_members"
+          ],
+          "column_count": 17,
+          "source": "openapi_definitions"
+        },
+        "notifications": {
+          "columns": [
+            "id",
+            "user_id",
+            "type",
+            "title",
+            "message",
+            "data",
+            "is_read",
+            "created_at",
+            "read_at"
+          ],
+          "column_count": 9,
+          "source": "openapi_definitions"
+        },
+        "team_members": {
+          "columns": [
+            "id",
+            "team_id",
+            "player_id",
+            "role",
+            "joined_at",
+            "is_active",
+            "contributions"
+          ],
+          "column_count": 7,
+          "source": "openapi_definitions"
+        },
+        "chamber_viewers": {
+          "columns": [
+            "id",
+            "chamber_id",
+            "viewer_id",
+            "joined_at",
+            "left_at",
+            "is_active",
+            "total_watch_time",
+            "interaction_count",
+            "clap_count",
+            "reaction_count",
+            "message_count",
+            "is_following_debater",
+            "invited_by",
+            "shared_externally",
+            "viewer_role",
+            "created_at",
+            "updated_at"
+          ],
+          "column_count": 17,
+          "source": "openapi_definitions"
+        },
+        "debates": {
+          "columns": [
+            "id",
+            "activity_id",
+            "team1_id",
+            "team2_id",
+            "chamber_theme",
+            "chamber_customization",
+            "featured_achievements",
+            "chamber_music",
+            "created_by",
+            "chamber_name",
+            "chamber_description",
+            "is_private",
+            "password_hash",
+            "viewer_count",
+            "clap_count",
+            "peak_viewers",
+            "is_featured",
+            "featured_until",
+            "viral_score",
+            "current_round",
+            "max_rounds",
+            "current_speaker",
+            "turn_order",
+            "round_end_time",
+            "debate_state",
+            "total_arguments",
+            "total_rebuttals",
+            "average_argument_quality",
+            "engagement_score",
+            "created_at",
+            "started_at",
+            "completed_at",
+            "last_activity",
+            "is_recorded",
+            "recording_url",
+            "highlight_moments"
+          ],
+          "column_count": 36,
+          "source": "openapi_definitions"
+        }
+      },
+      "relationships": [],
+      "rls_policies": {}
+    }
+  },
+  "notes": "Schema derived from OpenAPI definitions",
+  "timestamp": "2025-08-14T13:58:34.437124"
+}

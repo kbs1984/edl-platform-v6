@@ -1,0 +1,643 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:08:29.388433",
+    "agent": "filesystem-reality",
+    "check_type": "level_3_discovery",
+    "session_id": "8c036677",
+    "confidence_score": 0.95,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127621120
+  },
+  "discoveries": {
+    "level": 3,
+    "summary": {
+      "total_size_bytes": 383160,
+      "file_types": {
+        "": 1,
+        ".identifier": 1,
+        ".md": 31,
+        ".py": 10,
+        ".sh": 1,
+        ".json": 19,
+        ".html": 1,
+        ".log": 1,
+        ".txt": 1
+      },
+      "largest_files": [
+        "reality/agent-reality-auditor/filesystem-connector/connector.py",
+        "reality/agent-reality-auditor/supabase-connector/connector.py",
+        "reality/agent-reality-auditor/supabase-connector/level4-second-run.json",
+        "reality/agent-reality-auditor/supabase-connector/level4-first-run.json",
+        "shared/tools/monitoring/gap-detector.py",
+        "dashboard.html",
+        "shared/tools/system-guardian.py",
+        "brian-three-current-system.md",
+        "requirements/specifications/SPEC-002-FILE-SYSTEM-AGENT-PLAN.md",
+        "reality/agent-reality-auditor/filesystem-connector/quickstart.py"
+      ],
+      "newest_files": [
+        "reality/agent-reality-auditor/filesystem-connector/connector.py",
+        "reality/agent-reality-auditor/filesystem-connector/quickstart.py",
+        "archive/sessions/SESSION-00002-LOG.md",
+        "archive/sessions/SESSION-00003-LOG.md",
+        "archive/sessions/SESSION-00003-DECISIONS.md",
+        "archive/sessions/SESSION-00002-HANDOFF.md",
+        "archive/sessions/SESSION-00002-DECISIONS.md",
+        "Makefile",
+        "DIRECTORY-MAP-CONSTITUTION.md",
+        "shared/tools/SESSION-TRACKING-GUIDE.md"
+      ],
+      "files_analyzed": 66,
+      "files_hashed": 66,
+      "content_sampled": 47
+    },
+    "details": {
+      "files": {
+        "Makefile": {
+          "size_bytes": 5853,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:38:46.683438",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "b6b4cb2cc31850a2d513801b6dd23cdd959cc611889c1b20080e676d2790b27d",
+          "content_preview": "# Personal Operating System - Automation Commands\n# Run 'make help' for available commands\n\n.PHONY: help check health audit gaps status autofix start-session end-session\n\n# Default target\nhelp:\n\t@echo \"Personal Operating System - Automation Commands\"\n\t@echo \"\"\n\t@echo \"System Health:\"\n\t@echo \"  make check      - Full system health check\"\n\t@echo \"  make health     - Reality domain health score\"\n\t@echo \"  make audit      - Constitution compliance audit\"\n\t@echo \"  make gaps       - Gap detection sca"
+        },
+        "brian-three-current-system.md:Zone.Identifier": {
+          "size_bytes": 0,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:36:08.348791",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "content_preview": ""
+        },
+        "brian-three-current-system.md": {
+          "size_bytes": 15914,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:35:41.578106",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "c2b83aee098df41fced8a3b53afafb568af2f4df1d372fb6226d2fd27eb9076e",
+          "content_preview": "# Implementation Patterns for the Clean Current System: A Comprehensive Guide\n\nThe Clean Current System with its 3-current simplified architecture represents an innovative approach to managing software development pipelines, though specific documentation for this exact system appears to be proprietary or emerging. This report synthesizes proven architectural patterns, monitoring strategies, and implementation approaches that align with the system's core principles of maintaining **Requirements**"
+        },
+        "shared/tools/session-tracker.py": {
+          "size_bytes": 6296,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T19:19:59.791402",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "93bd4796a3837cef152f92143e649a96ef20f7df40e142bd991e2643b57fe809",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nSession Tracker - Automatically track work done in each session\nMaintains a living log of all changes during a CLI session\n\"\"\"\n\nimport os\nimport sys\nimport json\nimport subprocess\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import List, Dict, Any\n\nclass SessionTracker:\n    \"\"\"Track all work done in a session\"\"\"\n    \n    def __init__(self, session_number: str = None):\n        self.root_path = Path.cwd()\n        self.session_number = session_number "
+        },
+        "shared/tools/auditing/reality-auditor.py": {
+          "size_bytes": 13453,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T11:39:32.395050",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "f642d0a0b8188cf92bfc974978d0bb36ce7c3508df12f0032384acf2f0a7950e",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nReality Domain Auditor\nAutomatically discovers and validates actual system state\n\"\"\"\n\nimport os\nimport sys\nimport json\nimport hashlib\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Dict, List, Any, Optional\nimport subprocess\n\nclass RealityAuditor:\n    \"\"\"Chief Truth Officer - automatically audits actual reality\"\"\"\n    \n    def __init__(self, root_path: str):\n        self.root_path = Path(root_path)\n        self.reality_path = self.root_path /"
+        },
+        "shared/tools/session-guardian.sh": {
+          "size_bytes": 7220,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T11:50:54.970970",
+          "type": "text/x-sh",
+          "git_status": "no_git",
+          "hash": "3d74adca78b33ab2d439d740dde0df4e596462d58605a31aff80cdf4ff0faab8",
+          "content_preview": "#!/bin/bash\n# Session Guardian\n# Pre-session checklist and session management automation\n\nset -e\n\nROOT_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")/../..\" && pwd)\"\ncd \"$ROOT_DIR\"\n\nSESSION_NUMBER=\"\"\nCOMMAND=\"\"\n\n# Colors for output\nRED='\\033[0;31m'\nGREEN='\\033[0;32m'\nYELLOW='\\033[1;33m'\nBLUE='\\033[0;34m'\nNC='\\033[0m' # No Color\n\n# Print colored output\nlog_info() { echo -e \"${BLUE}\u2139\ufe0f  $1${NC}\"; }\nlog_success() { echo -e \"${GREEN}\u2705 $1${NC}\"; }\nlog_warning() { echo -e \"${YELLOW}\u26a0\ufe0f  $1${NC}\"; }\nlog_error"
+        },
+        "shared/tools/monitoring/gap-detector.py": {
+          "size_bytes": 17553,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T11:43:18.378707",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "d8b90576fab59d6d18625585096fe40a086c72140679bc719ae644022b9b7579",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nGap Detector\nAutomatically identifies differences between Requirements and Reality\n\"\"\"\n\nimport os\nimport sys\nimport json\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Dict, List, Any, Tuple\nimport subprocess\n\nclass GapDetector:\n    \"\"\"Reconciliation engine - finds and prioritizes gaps\"\"\"\n    \n    def __init__(self, root_path: str):\n        self.root_path = Path(root_path)\n        self.requirements_path = self.root_path / \"requirements\"\n     "
+        },
+        "shared/tools/terminal-dashboard.py": {
+          "size_bytes": 12810,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T14:10:13.564343",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "b6b209ea023cb175c16f684e0a645025c905398472f8c2acf0c733dbd959d625",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nTerminal Dashboard for Deep System Analysis\nProvides detailed, text-based view of system state for thorough examination\n\"\"\"\n\nimport json\nimport os\nimport sys\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Dict, Any, List\nimport subprocess\nimport time\n\nclass TerminalDashboard:\n    \"\"\"Deep analysis terminal dashboard for POS\"\"\"\n    \n    def __init__(self, root_path: str = None):\n        self.root_path = Path(root_path) if root_path else Path.cw"
+        },
+        "shared/tools/SESSION-TRACKING-GUIDE.md": {
+          "size_bytes": 6821,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:30:25.907390",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "00306b3a8b6d0df944920c13bd76c34748a96ec15e87c86ef72cfb300d0bc8f9",
+          "content_preview": "# Session Tracking Guide\n**Purpose**: Mandatory tracking of all work performed during CLI sessions  \n**Tool**: `shared/tools/session-tracker.py`  \n**Constitutional Requirement**: YES (proposed)\n\n## Why Session Tracking is Mandatory\n\nPer Reality Domain principles:\n- **Truth Over Assumptions**: We must know what actually happened\n- **Accountability**: Every change must be traceable to a session\n- **Handoff Quality**: Next session needs complete context\n- **Learning**: We can only improve what we m"
+        },
+        "shared/tools/enforcement/constitution-enforcer.py": {
+          "size_bytes": 11240,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T11:38:25.563786",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "ce022fd6e908023c9a469858e9240c860be8d4a39954b8cf596f75f0868658e1",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nConstitution Enforcer\nPrevents violations of Directory Map Constitution\n\"\"\"\n\nimport os\nimport sys\nimport json\nimport hashlib\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Dict, List, Tuple, Optional\n\nclass ConstitutionEnforcer:\n    def __init__(self, root_path: str):\n        self.root_path = Path(root_path)\n        self.constitution_path = self.root_path / \"DIRECTORY-MAP-CONSTITUTION.md\"\n        self.violations_log = self.root_path / \"CONSTI"
+        },
+        "shared/tools/system-guardian.py": {
+          "size_bytes": 16350,
+          "permissions": "0o100755",
+          "modified": "2025-08-14T11:46:57.540071",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "d6f8a55272b89acbe67417158ed107380358e74c37de5c2c0cefed9e26dbe101",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nSystem Guardian\nMaster automation coordinator for the Personal Operating System\nOrchestrates constitution enforcement, reality auditing, and gap detection\n\"\"\"\n\nimport os\nimport sys\nimport json\nimport subprocess\nfrom datetime import datetime\nfrom pathlib import Path\nfrom typing import Dict, List, Any\n\nclass SystemGuardian:\n    \"\"\"Master controller for all automated systems\"\"\"\n    \n    def __init__(self, root_path: str):\n        self.root_path = Path(root_path)\n        s"
+        },
+        "shared/protocols/contracts/domain-interaction-contracts.md": {
+          "size_bytes": 2803,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:22:56.356004",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "a8c20661966b48e3a74eb1b4d1adc5079cf48bbaf5bbf84a60aecdd04fa42688",
+          "content_preview": "# Domain Interaction Contracts\n## Communication Standards Between Domains\n\n### Contract Protocol\n\nAll cross-domain communication must follow this structure:\n\n```\nshared/protocols/requests/YYYY-MM-DD-{from-domain}-to-{to-domain}-{request-type}.md\nshared/protocols/responses/YYYY-MM-DD-{to-domain}-to-{from-domain}-{response-type}.md\n```\n\n### Standard Contracts\n\n#### 1. Requirements \u2192 Reality: Feasibility Check\n**Request Format**:\n```markdown\n# Feasibility Check Request\n## From: Requirements Domain\n"
+        },
+        "shared/protocols/responses/2025-08-14-reality-to-requirements-feasibility-assessment.md": {
+          "size_bytes": 2630,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:42:57.491553",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "796b7d5a5ced31528885b6183fc1a8d46bd28a084f9d4ddbb930a1cdb6c94605",
+          "content_preview": "# Feasibility Assessment Response\n## From: Reality Domain\n## To: Requirements Domain\n## Date: 2025-08-14\n\n### Assessment: CONDITIONAL\n\n### Analysis\n\n#### Technical Feasibility: \u2705 HIGH\n- Current system architecture can handle project cataloguing\n- Directory structure supports project registry\n- Automation tools are operational\n- Constitutional governance prevents technical debt infiltration\n\n#### Resource Requirements:\n- **Time**: Estimated 2-3 sessions for complete integration\n- **Storage**: Min"
+        },
+        "shared/protocols/requests/2025-08-14-requirements-to-reality-feasibility-check.md": {
+          "size_bytes": 1503,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:42:17.110536",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "d16503e89cd8da319d1696099a698d32d8d8cb9da1eed1e2c3ee7bf4208611a9",
+          "content_preview": "# Feasibility Check Request\n## From: Requirements Domain\n## To: Reality Domain\n## Date: 2025-08-14\n\n### Requirement\nGOAL-001: Project Integration - Create comprehensive integration between the Personal Operating System and all existing projects in the edl-projects-with-claude directory.\n\n### Constraints\n- Must not modify existing projects directly\n- Must maintain constitutional governance \n- Must follow three-domain architecture\n- Must prevent technical debt accumulation in POS\n\n### Questions\n1."
+        },
+        "shared/PURPOSE.md": {
+          "size_bytes": 933,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:53:16.353304",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "676e6e89a02e939ecf58aab24714c9b540d02ca05d6f7efd2d3d6e08fd836c95",
+          "content_preview": "# Shared Resources Purpose\n\n## Mission\nTo provide common tools, templates, and protocols that enable consistent operation across all three domains.\n\n## Core Responsibilities\n1. **Template Management**: Maintain reusable document structures\n2. **Tool Provision**: Supply utilities needed by all domains\n3. **Protocol Definition**: Establish standard operating procedures\n4. **Cross-Domain Communication**: Enable information flow\n\n## Operating Principles\n- **DRY (Don't Repeat Yourself)**: One source "
+        },
+        "DIRECTORY-MAP-CONSTITUTION.md": {
+          "size_bytes": 6337,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:38:20.419410",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "47e77fc19ac34f90688e43f8ac8ce10027ca0d78b39db06ecb21eb8fe494e1f6",
+          "content_preview": "# Directory Map Constitution\n## The Sacred Source of Truth for System Architecture\n\n### Preamble\nThis Directory Map serves as the immutable backbone of our Personal Operating System. It defines the organizational principles, governance rules, and structural integrity of our three-domain architecture.\n\n### Article I: The Three Domains and Leadership Hierarchy\n\n#### 1.1 Reality Domain [LEADERSHIP DOMAIN]\n**Purpose**: Documents what exists, what works, and what constraints we face\n**Governor**: Rea"
+        },
+        "reality/inventory/CURRENT-STATE.md": {
+          "size_bytes": 3222,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:21:13.328897",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "667418345af68dd0c43de76f9b917fb7c3c58ca06309851b1004e678ea41e8bc",
+          "content_preview": "# Reality Inventory - Current State\n## Session #00001 | 2025-08-14\n\n### Assets (What We Own)\n\n#### Projects\n1. **edl-platform-v5** - Previous platform iteration with extensive session history\n2. **edl-claude-cod3-v4** - Claude desktop configuration and protocols\n3. **edl-programs-claude-code** - Program management tools\n4. **pos-manifest-vAug2025** - Personal OS manifest documentation\n5. **brian-three-current-system.md** - System documentation\n\n#### Infrastructure\n- WSL2 environment on Windows\n-"
+        },
+        "reality/inventory/AUDIT-20250814_124045.json": {
+          "size_bytes": 4823,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:40:45.057651",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "d23dd5431d47abb9927d836df0b8a084acc0eba15e37309e74b05e85dd2f7a51"
+        },
+        "reality/inventory/AUDIT-20250814_114956.json": {
+          "size_bytes": 4518,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:49:56.726899",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "63cbf58088cd32194326b3666a6de483c3424e0d6ac4780516e5a8ecea496251"
+        },
+        "reality/inventory/AUDIT-20250814_125815.json": {
+          "size_bytes": 4824,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:58:15.678826",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "9865679e934170021611d144489309e897126ff8f5be947364773e4717c7a9cc"
+        },
+        "reality/inventory/LAST-AUDIT.json": {
+          "size_bytes": 168,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:58:15.678826",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "1e902ac959f371626ab0a16febce4fae187aaa3c8aeba9579b8595fd9fd91a76"
+        },
+        "reality/agent-reality-auditor/supabase-connector/level4-second-run.json": {
+          "size_bytes": 23098,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:58:51.617693",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "9f8b558577de2adc28554153f8b821a830543e0b460acf96b5c92b96722344be"
+        },
+        "reality/agent-reality-auditor/supabase-connector/level4-first-run.json": {
+          "size_bytes": 23098,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:58:34.433026",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "d5436c60ef898b53554628ba1b50c68250e803edc6e11c9d59581d8482082dbc"
+        },
+        "reality/agent-reality-auditor/supabase-connector/quickstart.py": {
+          "size_bytes": 10977,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:33:25.614487",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "cc74b5ce00f7b751ad328804a81d95c6f46ad32acb7f33a90d0644008897b833",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nSupabase Reality Agent - Quickstart\nMinimal viable reality check to validate approach\n\"\"\"\n\nimport subprocess\nimport json\nimport os\nimport sys\nfrom datetime import datetime\nfrom pathlib import Path\n\nclass QuickRealityCheck:\n    \"\"\"Minimal Supabase reality checker\"\"\"\n    \n    def __init__(self):\n        self.project_root = Path(__file__).parent.parent.parent.parent\n        self.results = {\n            \"metadata\": {\n                \"timestamp\": datetime.now().isoformat(),"
+        },
+        "reality/agent-reality-auditor/supabase-connector/connector.py": {
+          "size_bytes": 28671,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:58:11.887196",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "8b176b07c86303c1b2ffc985e993e165af940687f13c42b4850e815023c94fbe",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nSupabase Reality Agent - Connector Module\nProgressive discovery of Supabase database reality with no assumptions\n\"\"\"\n\nimport subprocess\nimport json\nimport os\nimport sys\nfrom datetime import datetime, timedelta\nfrom pathlib import Path\nfrom typing import Optional, Dict, Any, List\nimport hashlib\nimport time\n\nclass SupabaseConnector:\n    \"\"\"Reality-based Supabase connector with progressive discovery\"\"\"\n    \n    # Cache TTL in seconds\n    CACHE_TTL = {\n        \"connection\""
+        },
+        "reality/agent-reality-auditor/PURPOSE.md": {
+          "size_bytes": 2645,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:28:35.455338",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "e19f3b81d629ab304f6e3c4b8a6b36839bfdb54c3a7bca0da27851e8d5c76794",
+          "content_preview": "# Reality Auditor Agent Brigade Purpose\n\n## Mission\nTo discover, verify, and report the actual state of all external systems that Reality Domain must track.\n\n## Core Principle\n**\"We report what IS, never what SHOULD BE or COULD BE.\"**\n\n## Agent Brigade Structure\n\n### Current Agents\n1. **Supabase Connector** - Database reality auditing\n   - Status: In Development\n   - Purpose: Truth about database state\n\n### Planned Agents\n2. **File System Auditor** - Local reality verification\n3. **Git Repositor"
+        },
+        "reality/agent-reality-auditor/filesystem-connector/quickstart.py": {
+          "size_bytes": 14279,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:05:15.651424",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "b43ed7500b0fae1549bf639b86b051cdaccc119fa3b82480812fa4bbb6272283",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nFile System Reality Agent - Quick Start Validation\nValidates environment and provides estimates before full discovery\n\"\"\"\n\nimport os\nimport sys\nimport time\nimport subprocess\nfrom pathlib import Path\nfrom typing import Dict, Any, List, Optional\n\nclass FileSystemQuickStart:\n    \"\"\"Quick validation and estimation for File System Agent\"\"\"\n    \n    def __init__(self, root_path: Optional[str] = None):\n        \"\"\"Initialize quickstart with optional root path\"\"\"\n        if roo"
+        },
+        "reality/agent-reality-auditor/filesystem-connector/connector.py": {
+          "size_bytes": 35804,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:07:30.599426",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "7e0ddac7964e007eec7e04bb09c859867be49f485cff4831b3b92de3dd85798c",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nFile System Reality Agent - Connector Module\nProgressive discovery of file system reality with no assumptions\nBased on proven patterns from Supabase Reality Agent\n\"\"\"\n\nimport json\nimport os\nimport sys\nimport hashlib\nimport time\nimport mimetypes\nimport subprocess\nfrom datetime import datetime, timedelta\nfrom pathlib import Path\nfrom typing import Optional, Dict, Any, List, Set\nimport platform\n\nclass FileSystemConnector:\n    \"\"\"Reality-based file system connector with pr"
+        },
+        "reality/agent-reality-auditor/quickstart-results.json": {
+          "size_bytes": 915,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:37:41.861200",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "c422c8cee3990c2401ba6283e0bf482e707235fc66bc46bdd5f2aecd5b73b735"
+        },
+        "reality/REALITY_INDEX.md": {
+          "size_bytes": 1904,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:57:29.215085",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "8cfda6efd34e57a2d42c2311b8bbee4511dc4657d1bb6282e1d6bd2ab5d8b925",
+          "content_preview": "# Reality Index\n## Master Registry of Actual System State\n\n**Last Updated**: 2025-08-14 | Session #00001  \n**Health Score**: Pending  \n**Last Audit**: In Progress  \n\n---\n\n## Current State Summary\n\n### Project Inventory Status\n- **Discovered Projects**: 5\n- **Catalogued Projects**: 0\n- **Integration Status**: Not Started\n\n### System Health\n- **Constitutional Compliance**: Violations Present\n- **Reality Documentation**: Minimal\n- **Audit Completeness**: In Progress\n\n---\n\n## Inventory Categories\n\n#"
+        },
+        "reality/PURPOSE.md": {
+          "size_bytes": 1686,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:52:33.274170",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "3578ebf86628234e296ea1f7e9495d9320542628fc84b4298420a0fa70d4f63c",
+          "content_preview": "# Reality Domain Purpose\n\n## Mission\nTo maintain an honest, comprehensive inventory of what exists, what works, and what constraints we face.\n\n## Core Responsibilities\n1. **Asset Inventory**: Catalog all existing projects, tools, and resources\n2. **Capability Assessment**: Document what we can actually do\n3. **Limitation Recognition**: Honestly acknowledge what we cannot do\n4. **State Monitoring**: Track current system state and health\n\n## Operating Principles\n- **Truth Over Comfort**: Document "
+        },
+        "SESSION-PROTOCOL.md": {
+          "size_bytes": 3329,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:02:16.118782",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "10c0efb836315a4675a1c7edf5ad82ece13c6a628646566dc440cd205716ccb9",
+          "content_preview": "# Session Protocol\n## Distinguishing CLI and Desktop Sessions\n\n### Core Distinction\n\n**CLI Sessions** (Claude Code CLI)\n- **Identifier**: Numbered sessions (e.g., #00001, #00002, #00003)\n- **Location**: This directory (`/edl-platform-v6/`)\n- **Assignment**: Brian explicitly starts with \"This is session #XXXXX\"\n- **Documentation**: All work logged locally in this repository\n- **Persistence**: Full file system access and modification\n\n**Desktop Sessions** (Claude Desktop App)\n- **Identifier**: Unn"
+        },
+        "requirements/goals/GOAL-001-PROJECT-INTEGRATION.md": {
+          "size_bytes": 2741,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:41:20.222318",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "b9a2ecb843c8007936754b6a83fe8bb8c751c6a203c4da3c492e89f5ae941795",
+          "content_preview": "# GOAL-001: Project Integration\n**Priority**: High  \n**Created**: 2025-08-14 | Session #00001  \n**Status**: Defined  \n\n## Objective\nCreate comprehensive integration between the Personal Operating System and all existing projects in the edl-projects-with-claude directory.\n\n## Success Criteria\n1. **Project Registry Populated**: All existing projects catalogued in reality/project-registry/\n2. **Integration Links Established**: Clear navigation paths from POS to legacy projects\n3. **Asset Extraction"
+        },
+        "requirements/goals/GOAL-002-SUPABASE-REALITY-AGENT.md": {
+          "size_bytes": 5401,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:27:58.585983",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "b83be1e16a0d72c7faa165fa29c68e8b8c9d16ba3032f378ae5687bdc2f4eb1d",
+          "content_preview": "# GOAL-002: Supabase Reality Agent\n**Priority**: High  \n**Created**: 2025-08-14 | Session #00001  \n**Status**: Defined  \n**Domain Owner**: Reality Domain  \n\n## Objective\nCreate a Reality Domain agent that provides truth about ANY Supabase database state, with no assumptions about existing projects or schemas.\n\n## Core Principle\n**\"This agent only observes and reports reality. It never modifies, assumes, or wishes.\"**\n\n## Success Criteria\n1. **Universal Connection**: Can connect to any Supabase i"
+        },
+        "requirements/specifications/SPEC-002-FILE-SYSTEM-AGENT-PLAN.md": {
+          "size_bytes": 15882,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:14:44.347382",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "0f331e3ca1814a0aa4d180e7dd3bd56e02d19ec66d2015cfab2ecae4225b18e2",
+          "content_preview": "# SPEC-002: File System Reality Agent Plan\n**Priority**: High  \n**Created**: 2025-08-14 | Session #00002  \n**Status**: Planning  \n**Domain Owner**: Reality Domain  \n**Based On**: SPEC-001-SUPABASE-AGENT-PLAN.md patterns\n\n## Executive Summary\nCreate a File System Reality Agent that monitors local project files and directories, following the proven progressive discovery pattern from the Supabase Reality Agent. This agent provides truth about file system state with no assumptions about project stru"
+        },
+        "requirements/specifications/SPEC-001-SUPABASE-AGENT-PLAN.md": {
+          "size_bytes": 5374,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:20:49.063579",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "3ae10d21932d4390d2a5322d678ccac082024b6fc860eb03ef40aafb63ca7163",
+          "content_preview": "# SPEC-001: Supabase CLI Agent Planning Document\n**Created**: 2025-08-14 | Session #00001  \n**Status**: Planning  \n**Domain**: Reality Domain (Primary)  \n\n## Validated Assumptions \u2705\n\n### 1. Supabase CLI Availability\n- **Tested**: \u2705 Supabase CLI v2.34.3 installed at `/usr/local/bin/supabase`\n- **Risk**: None - CLI is operational\n- **Decision**: Use CLI as primary interface\n\n### 2. Credentials Availability  \n- **Tested**: \u2705 Found production credentials in `edl-platform-v5/.env.production`\n- **Proj"
+        },
+        "requirements/PURPOSE.md": {
+          "size_bytes": 1505,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:52:04.899094",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "867490dbdadaac08b4052860bee2241b7bfabeeeb8c71ba8d96eaa7614470a7e",
+          "content_preview": "# Requirements Domain Purpose\n\n## Mission\nTo capture, organize, and maintain the authoritative record of what we need, want, and aspire to achieve.\n\n## Core Responsibilities\n1. **Goal Definition**: Articulate clear, measurable objectives\n2. **Specification Management**: Document detailed requirements for each initiative\n3. **Constraint Recognition**: Acknowledge boundaries and non-negotiables\n4. **Priority Maintenance**: Keep focus on what matters most\n\n## Operating Principles\n- **Clarity Before"
+        },
+        "requirements/REQUIREMENTS_INDEX.md": {
+          "size_bytes": 1974,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:33:54.287511",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "16134073e74dfa366002e483e757630da85f2ca93c0e60e41ed1af6484931a96",
+          "content_preview": "# Requirements Index\n## Master Registry of All Requirements and Goals\n\n**Last Updated**: 2025-08-14 | Session #00001  \n**Total Requirements**: 1  \n**Total Goals**: 1  \n\n---\n\n## Active Goals\n\n### GOAL-001: Project Integration\n- **File**: [GOAL-001-PROJECT-INTEGRATION.md](goals/GOAL-001-PROJECT-INTEGRATION.md)\n- **Priority**: High\n- **Status**: Defined\n- **Created**: Session #00001\n- **Objective**: Integrate POS with all existing projects\n- **Reality Review**: Conditional Approval\n- **Reconciliati"
+        },
+        ".claude/settings.local.json": {
+          "size_bytes": 857,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T14:10:33.773257",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "93d61a38c380249e184c251d0e215d337e081a585c439863f99989859d8b2d0c"
+        },
+        "dashboard.html": {
+          "size_bytes": 16364,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T14:08:52.186216",
+          "type": "text/html",
+          "git_status": "no_git",
+          "hash": "cc5ef3ec2ab0934503f6ba01203ab53ab1e8498ea7786d8cf5278d3b52939f49",
+          "content_preview": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>POS Reality Dashboard</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        \n        body {\n            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            color: #333;\n "
+        },
+        "CONSTITUTION-VIOLATIONS.log": {
+          "size_bytes": 2801,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:47:02.647280",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "00486a7b64e05ed05c480162bdc7b00749392f607b1a6b4269fccf4b510b4a93",
+          "content_preview": "2025-08-14T11:45:43.591932 | 00001 | UNAUTHORIZED_DIRECTORY: .claude\n2025-08-14T11:45:43.592007 | 00001 | MISSING_FILE: requirements/REQUIREMENTS_INDEX.md\n2025-08-14T11:45:43.592021 | 00001 | MISSING_FILE: reality/REALITY_INDEX.md\n2025-08-14T11:45:43.592028 | 00001 | MISSING_FILE: reconciliation/RECONCILIATION_INDEX.md\n2025-08-14T11:45:43.592034 | 00001 | INVALID_DOMAIN_NAME: .claude\n2025-08-14T11:49:56.105293 | 00001 | UNAUTHORIZED_DIRECTORY: .claude\n2025-08-14T11:49:56.105325 | 00001 | MISSING"
+        },
+        "archive/PURPOSE.md": {
+          "size_bytes": 956,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:53:29.685105",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "e7eca2d515a05a815e872ab3b8a176d607683dc7dad97822e0fc4e39ffa21083",
+          "content_preview": "# Archive Purpose\n\n## Mission\nTo preserve historical records and completed cycles while keeping active domains clean and focused.\n\n## Core Responsibilities\n1. **Session Preservation**: Store completed session logs\n2. **Version History**: Maintain previous iterations of important documents\n3. **Decision Records**: Keep rationale for major changes\n4. **Learning Repository**: Extract and store lessons learned\n\n## Operating Principles\n- **Write Once**: Archived items are immutable\n- **Indexed Access"
+        },
+        "archive/sessions/SESSION-00002-HANDOFF.md": {
+          "size_bytes": 6068,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:43:05.031436",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "5d3ced1582d7d8c000fab4353a27489d248aa5be7a97a065ea5229c743276f9a",
+          "content_preview": "# Session #00002 Handoff to Session #00003\n**Date**: 2025-08-14  \n**Session Type**: CLI  \n**Status**: READY FOR HANDOFF  \n\n## Summary\nSession #00002 successfully built the Supabase Reality Agent, created File System Agent planning, and made session tracking constitutionally mandatory. Session #00003 will implement the File System Reality Agent.\n\n## Key Accomplishments\n\n### 1. Supabase Reality Agent \u2705 COMPLETE\n- **Location**: `/reality/agent-reality-auditor/supabase-connector/connector.py`\n- All "
+        },
+        "archive/sessions/SESSION-00003-DECISIONS.md": {
+          "size_bytes": 67,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:53:47.451348",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "fcd01e839daa4dc82a28ad84325420ffbd6367524e4940c5b9c9d1aab3c5d603",
+          "content_preview": "# Session #00003 Decisions\n**Date**: 2025-08-14\n\n## Key Decisions\n\n"
+        },
+        "archive/sessions/SESSION-00003-LOG.md": {
+          "size_bytes": 132,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:53:47.451348",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "2dab4c602c89aabaea3b5f5a484152cfe8aacd0501adbd54341bd52918249fc8",
+          "content_preview": "# Session #00003 Log\n**Date**: 2025-08-14  \n**Type**: CLI Session  \n**Started**: 2025-08-14T19:53:47.458126  \n\n## Work in Progress\n\n"
+        },
+        "archive/sessions/SESSION-00001-HANDOFF.md": {
+          "size_bytes": 4470,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:39:31.232623",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "7bcc1ffaddec0e19ef143f2b65fc84caccac73b6aad0f2dd84213437205c225c",
+          "content_preview": "# Session #00001 Handoff to Session #00002\n**Date**: 2025-08-14  \n**Session Type**: CLI  \n**Status**: READY FOR HANDOFF  \n\n## Summary\nSession #00001 established the Personal Operating System foundation with constitutional governance, three-domain architecture, and automated enforcement. First real task defined: Supabase Reality Agent.\n\n## Key Accomplishments\n\n### 1. System Foundation \u2705\n- **Directory Map Constitution** (v1.1.0) - Governance framework ratified\n- **Three-Domain Architecture** - Req"
+        },
+        "archive/sessions/SESSION-00002-FILES.txt": {
+          "size_bytes": 162,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:26:43.347375",
+          "type": "text/plain",
+          "git_status": "no_git",
+          "hash": "48118351ae81984b242405bf5d33536c355a06cbb5a9612f982f0f3357e64c71",
+          "content_preview": "reality/agent-reality-auditor/supabase-connector/connector.py\nrequirements/specifications/SPEC-002-FILE-SYSTEM-AGENT-PLAN.md\narchive/sessions/SESSION-00002-LOG.md"
+        },
+        "archive/sessions/SESSION-00002-LOG.md": {
+          "size_bytes": 3752,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:58:13.039417",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "6edb99a6c9c5218cc2fb1ace2f6f9e072eed670a9b2379b5a85d85170d9f9196",
+          "content_preview": "# Session #00002 Log\n**Date**: 2025-08-14  \n**Type**: CLI Session (Building on #00001's foundation)  \n**Platform**: Claude Code CLI  \n\n## Session Declaration\nInherited from Session #00001's handoff to build Supabase Reality Agent\n\n## Work Completed\n\n### Supabase Reality Agent Implementation\n\n#### Level 1-2 Implementation\n- Created: `reality/agent-reality-auditor/supabase-connector/connector.py`\n- Implemented progressive discovery pattern\n- Connection testing and table discovery\n- Cache managemen"
+        },
+        "archive/sessions/SESSION-00002-DECISIONS.md": {
+          "size_bytes": 1865,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T19:38:59.475439",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "8bc1f4e0a361618aed5bc432809f4dbb69aebef36baab1d32b88e059aaf19f35",
+          "content_preview": "# Session #00002 Key Decisions\n**Date**: 2025-08-14  \n**Session Type**: CLI  \n\n## Decisions Made\n\n### 13:45 - Credential Management Strategy\n**Decision**: Use environment variables (SUPABASE_URL, SUPABASE_ANON_KEY)  \n**Rationale**: Simple, secure, already validated in quickstart. Future sessions can enhance if needed.\n\n### 13:46 - Cache TTL Configuration  \n**Decision**: 5 minutes for schema, 1 minute for connection status  \n**Rationale**: Balance between API load and data freshness. Schema chang"
+        },
+        "archive/sessions/SESSION-00001-LOG.md": {
+          "size_bytes": 3246,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:04:48.075819",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "28f8bf2698d7e6eb1a35e11b8ed7a3b3166cbf98069a8c62fce87e172c9a740b",
+          "content_preview": "# Session #00001 Log\n**Date**: 2025-08-14  \n**Type**: CLI Session  \n**Participant**: Brian Kim  \n**Platform**: Claude Code CLI  \n\n## Session Declaration\n\"Good morning. This is the very first session for this project and my name is Brian Kim. We'll call this session #00001.\"\n\n## Session Objectives\nCreate a Personal Operating System that:\n1. Links to all other past projects\n2. Starts fresh while extracting benefits from previous work\n3. Maintains stability without accumulating technical debt\n4. Im"
+        },
+        "reconciliation/action-plans/templates/quick-win-template.md": {
+          "size_bytes": 625,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:22:03.022000",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "aacb7a8227fac3d938f703799726a54c5c2fdcb17992ad79217e80d02c6a32df",
+          "content_preview": "# Quick Win Template\n## 1-Day Achievement Pattern\n\n### Metadata\n- **Timeline**: 1 day or less\n- **Complexity**: Low\n- **Dependencies**: Minimal\n- **Risk**: Low\n\n### Structure\n\n#### 1. Gap Identification\n**Current State** (from Reality):\n- \n\n**Target State** (from Requirements):\n- \n\n**Delta**:\n- \n\n#### 2. Action Steps\n1. [ ] Step 1 (15 min)\n2. [ ] Step 2 (30 min)\n3. [ ] Step 3 (30 min)\n4. [ ] Verification (15 min)\n\n#### 3. Success Criteria\n- [ ] Measurable outcome 1\n- [ ] Measurable outcome 2\n\n##"
+        },
+        "reconciliation/action-plans/templates/project-template.md": {
+          "size_bytes": 817,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:22:33.803542",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "eaac059f599c0d837dc54e22ec2959f841b6626d333d8a7db3cac26130186d21",
+          "content_preview": "# Project Template\n## 1-Week to 1-Month Endeavor\n\n### Metadata\n- **Timeline**: 1-4 weeks\n- **Complexity**: Medium\n- **Dependencies**: Some cross-domain\n- **Risk**: Medium\n\n### Structure\n\n#### 1. Project Charter\n**Objective**:\n\n**Rationale**:\n\n**Stakeholders**:\n- Requirements Domain: \n- Reality Domain: \n- Reconciliation Domain: \n\n#### 2. Gap Analysis\n**Current State**:\n\n**Target State**:\n\n**Major Deltas**:\n1. \n2. \n3. \n\n#### 3. Milestone Plan\n**Week 1**:\n- [ ] \n\n**Week 2**:\n- [ ] \n\n**Week 3**:\n- ["
+        },
+        "reconciliation/progress-tracking/SYSTEM-HEALTH-20250814_114956.json": {
+          "size_bytes": 1197,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:49:56.807871",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "8c78fba54f8bd7a69949cbcd943bf31f019a706b1bd3bb2196105cc8e1c8e9b8"
+        },
+        "reconciliation/progress-tracking/SYSTEM-HEALTH-20250814_124045.json": {
+          "size_bytes": 1191,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:40:45.138607",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "1230ebf344d8a29b73f65b0813bd8d158367d9e2dc9f9d38ccfd3de1d8bcbc44"
+        },
+        "reconciliation/progress-tracking/CURRENT-SYSTEM-HEALTH.json": {
+          "size_bytes": 1151,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:58:15.755581",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "3aa7898cbb9c56abb36bfbd63d9de2b58251c78f32a639602a3f799823545973"
+        },
+        "reconciliation/progress-tracking/SYSTEM-HEALTH-20250814_125815.json": {
+          "size_bytes": 1151,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:58:15.755581",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "3aa7898cbb9c56abb36bfbd63d9de2b58251c78f32a639602a3f799823545973"
+        },
+        "reconciliation/PURPOSE.md": {
+          "size_bytes": 2092,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:53:02.080962",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "ffdaec1375cb47584b0950feeeae333749e80347cfa4c83c97848eec465ce00d",
+          "content_preview": "# Reconciliation Domain Purpose\n\n## Mission\nTo bridge the gap between Requirements and Reality through pragmatic action plans and systematic progress tracking.\n\n## Core Responsibilities\n1. **Gap Analysis**: Identify and quantify the delta between current and target state\n2. **Action Planning**: Create achievable paths from Reality to Requirements\n3. **Progress Tracking**: Monitor and document movement toward goals\n4. **Obstacle Resolution**: Identify and address blockers\n\n## Operating Principles"
+        },
+        "reconciliation/gap-analysis/CURRENT-GAPS.json": {
+          "size_bytes": 611,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:47:07.426322",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "b43636a3a5ca99f01ed36a9d195e51bcf1748231b651b1b0d5abc0265a22752c"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_125815.json": {
+          "size_bytes": 611,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:58:15.751318",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "b1770e53a6790887b423d7598217c5c2d441e4b3426176ba97027465eacece2c"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_124045.json": {
+          "size_bytes": 585,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:40:45.134346",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "bc40bcd9675b3958e89d780b5dbe19a53399eb36e0a1a69d63840049e93bfb5a"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_114956.json": {
+          "size_bytes": 587,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:49:56.807871",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "b090807d1d949bec1a0b9eb5ab6ca53e29807b029d7da3de44b274af4b0e4b55"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_124147.json": {
+          "size_bytes": 611,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:41:47.276339",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "e56b289012ffebaa33cdabd566d5ab34db5f818240c7a48dc7938e7ab83cbeff"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_134707.json": {
+          "size_bytes": 611,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T13:47:07.426322",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "b43636a3a5ca99f01ed36a9d195e51bcf1748231b651b1b0d5abc0265a22752c"
+        },
+        "reconciliation/gap-analysis/GAPS-20250814_114551.json": {
+          "size_bytes": 587,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T11:45:51.423012",
+          "type": "application/json",
+          "git_status": "no_git",
+          "hash": "67ed3c380edd26764b0b808b40ed764bf926c513ab52312f202a621bc08ff89a"
+        },
+        "reconciliation/RECONCILIATION_INDEX.md": {
+          "size_bytes": 2147,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T12:57:49.400777",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "cfdde704bf701590aa6ba22e68b85037faa1b833ef5beb47cf647ffa8e2da08d",
+          "content_preview": "# Reconciliation Index\n## Master Registry of Gap Analysis and Action Plans\n\n**Last Updated**: 2025-08-14 | Session #00001  \n**Active Plans**: 0  \n**Completed Plans**: 0  \n\n---\n\n## Current Status\n\n### Gap Analysis Summary\n- **Last Scan**: Session #00001\n- **Critical Gaps**: 0\n- **High Priority Gaps**: 0  \n- **Medium Priority Gaps**: 1\n- **Low Priority Gaps**: 0\n\n### Active Reconciliation Work\n- **GOAL-001**: Awaiting action plan creation\n- **Cross-Domain Communication**: Active (Requirements \u2194 Re"
+        },
+        "SYSTEM-INDEX.md": {
+          "size_bytes": 3292,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T10:54:12.889371",
+          "type": "text/markdown",
+          "git_status": "no_git",
+          "hash": "8cf98a0fbdfd0ac6bd5ba24fa63def53f9c215b5f1edf184e743e6165665f521",
+          "content_preview": "# Personal Operating System - Master Index\n## Session #00001 | Brian Kim | 2025-08-14\n\n### System Status\n- **Constitution Version**: 1.0.0\n- **Active Domains**: 3/3 Operational\n- **System Health**: INITIALIZING\n\n---\n\n## Quick Navigation\n\n### \ud83d\udccb Requirements Domain\n*What we need*\n- [Domain Purpose](requirements/PURPOSE.md)\n- [Requirements Index](requirements/REQUIREMENTS_INDEX.md)\n- [Goals Registry](requirements/goals/)\n- [Specifications](requirements/specifications/)\n- [Constraints](requirements/"
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-14T20:08:29.401370"
+}

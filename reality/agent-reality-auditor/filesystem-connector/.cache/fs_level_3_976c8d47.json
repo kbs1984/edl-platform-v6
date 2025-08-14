@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:20:35.913132",
+    "agent": "filesystem-reality",
+    "check_type": "level_3_discovery",
+    "session_id": "976c8d47",
+    "confidence_score": 0.95,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127420416
+  },
+  "discoveries": {
+    "level": 3,
+    "summary": {
+      "total_size_bytes": 59281,
+      "file_types": {
+        ".py": 3
+      },
+      "largest_files": [
+        "connector.py",
+        "quickstart.py",
+        "test_connector.py"
+      ],
+      "newest_files": [
+        "test_connector.py",
+        "connector.py",
+        "quickstart.py"
+      ],
+      "files_analyzed": 3,
+      "files_hashed": 3,
+      "content_sampled": 3
+    },
+    "details": {
+      "files": {
+        "test_connector.py": {
+          "size_bytes": 9198,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:20:30.019182",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "7faa352a51568be084a780956801689753ecff242605738cf29ce205c6e180c0",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nFile System Reality Agent - Test Suite\nTests all levels of progressive discovery\n\"\"\"\n\nimport json\nimport sys\nimport time\nfrom pathlib import Path\nfrom connector import FileSystemConnector\n\ndef test_level_1():\n    \"\"\"Test basic file system access\"\"\"\n    print(\"\\n=== Testing Level 1: File System Access ===\")\n    \n    connector = FileSystemConnector()\n    result = connector.discover_level_1()\n    \n    assert result[\"connection\"][\"status\"] == \"connected\", \"Should connect t"
+        },
+        "quickstart.py": {
+          "size_bytes": 14279,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:05:15.651424",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "b43ed7500b0fae1549bf639b86b051cdaccc119fa3b82480812fa4bbb6272283",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nFile System Reality Agent - Quick Start Validation\nValidates environment and provides estimates before full discovery\n\"\"\"\n\nimport os\nimport sys\nimport time\nimport subprocess\nfrom pathlib import Path\nfrom typing import Dict, Any, List, Optional\n\nclass FileSystemQuickStart:\n    \"\"\"Quick validation and estimation for File System Agent\"\"\"\n    \n    def __init__(self, root_path: Optional[str] = None):\n        \"\"\"Initialize quickstart with optional root path\"\"\"\n        if roo"
+        },
+        "connector.py": {
+          "size_bytes": 35804,
+          "permissions": "0o100644",
+          "modified": "2025-08-14T20:07:30.599426",
+          "type": "text/x-python",
+          "git_status": "no_git",
+          "hash": "7e0ddac7964e007eec7e04bb09c859867be49f485cff4831b3b92de3dd85798c",
+          "content_preview": "#!/usr/bin/env python3\n\"\"\"\nFile System Reality Agent - Connector Module\nProgressive discovery of file system reality with no assumptions\nBased on proven patterns from Supabase Reality Agent\n\"\"\"\n\nimport json\nimport os\nimport sys\nimport hashlib\nimport time\nimport mimetypes\nimport subprocess\nfrom datetime import datetime, timedelta\nfrom pathlib import Path\nfrom typing import Optional, Dict, Any, List, Set\nimport platform\n\nclass FileSystemConnector:\n    \"\"\"Reality-based file system connector with pr"
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-14T20:20:35.918315"
+}

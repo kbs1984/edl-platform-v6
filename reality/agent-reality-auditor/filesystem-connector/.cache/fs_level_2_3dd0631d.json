@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-14T20:08:10.306699",
+    "agent": "filesystem-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "3dd0631d",
+    "confidence_score": 0.7,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020127670272
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_directories": 47,
+      "total_files": 66,
+      "max_depth_reached": 4,
+      "directories_skipped": [
+        "reality/agent-reality-auditor/.cache",
+        "reality/agent-reality-auditor/supabase-connector/.cache",
+        "reality/agent-reality-auditor/filesystem-connector/.cache"
+      ],
+      "symlinks_found": 0,
+      "git_repository": false,
+      "git_root": null
+    },
+    "details": {
+      "tree": {
+        "file_count": 8,
+        "dir_count": 6,
+        "size_bytes": 53890,
+        "subdirs": {
+          "shared": {
+            "file_count": 1,
+            "dir_count": 3,
+            "size_bytes": 933,
+            "subdirs": {
+              "tools": {
+                "file_count": 5,
+                "dir_count": 3,
+                "size_bytes": 49497,
+                "subdirs": {
+                  "auditing": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 13453,
+                    "subdirs": {}
+                  },
+                  "monitoring": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 17553,
+                    "subdirs": {}
+                  },
+                  "enforcement": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 11240,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "protocols": {
+                "file_count": 0,
+                "dir_count": 3,
+                "size_bytes": 0,
+                "subdirs": {
+                  "contracts": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 2803,
+                    "subdirs": {}
+                  },
+                  "responses": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 2630,
+                    "subdirs": {}
+                  },
+                  "requests": {
+                    "file_count": 1,
+                    "dir_count": 0,
+                    "size_bytes": 1503,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "templates": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              }
+            }
+          },
+          "reality": {
+            "file_count": 2,
+            "dir_count": 5,
+            "size_bytes": 3590,
+            "subdirs": {
+              "inventory": {
+                "file_count": 5,
+                "dir_count": 4,
+                "size_bytes": 17555,
+                "subdirs": {
+                  "relationships": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "skills": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "tools": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "assets": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "agent-reality-auditor": {
+                "file_count": 2,
+                "dir_count": 3,
+                "size_bytes": 3560,
+                "subdirs": {
+                  "supabase-connector": {
+                    "file_count": 4,
+                    "dir_count": 1,
+                    "size_bytes": 85844,
+                    "subdirs": {}
+                  },
+                  "filesystem-connector": {
+                    "file_count": 2,
+                    "dir_count": 1,
+                    "size_bytes": 50083,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "limitations": {
+                "file_count": 0,
+                "dir_count": 3,
+                "size_bytes": 0,
+                "subdirs": {
+                  "knowledge": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "time": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "resources": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "capabilities": {
+                "file_count": 0,
+                "dir_count": 3,
+                "size_bytes": 0,
+                "subdirs": {
+                  "technical": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "operational": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "creative": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "project-registry": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              }
+            }
+          },
+          "requirements": {
+            "file_count": 2,
+            "dir_count": 4,
+            "size_bytes": 3479,
+            "subdirs": {
+              "constraints": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              "goals": {
+                "file_count": 2,
+                "dir_count": 0,
+                "size_bytes": 8142,
+                "subdirs": {}
+              },
+              "specifications": {
+                "file_count": 2,
+                "dir_count": 0,
+                "size_bytes": 21256,
+                "subdirs": {}
+              },
+              "agent-requirements-manager": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              }
+            }
+          },
+          ".claude": {
+            "file_count": 1,
+            "dir_count": 2,
+            "size_bytes": 857,
+            "subdirs": {
+              "shared": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              "agents": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              }
+            }
+          },
+          "archive": {
+            "file_count": 1,
+            "dir_count": 1,
+            "size_bytes": 956,
+            "subdirs": {
+              "sessions": {
+                "file_count": 8,
+                "dir_count": 0,
+                "size_bytes": 19762,
+                "subdirs": {}
+              }
+            }
+          },
+          "reconciliation": {
+            "file_count": 2,
+            "dir_count": 4,
+            "size_bytes": 4239,
+            "subdirs": {
+              "action-plans": {
+                "file_count": 0,
+                "dir_count": 1,
+                "size_bytes": 0,
+                "subdirs": {
+                  "templates": {
+                    "file_count": 2,
+                    "dir_count": 0,
+                    "size_bytes": 1442,
+                    "subdirs": {}
+                  }
+                }
+              },
+              "progress-tracking": {
+                "file_count": 4,
+                "dir_count": 0,
+                "size_bytes": 4690,
+                "subdirs": {}
+              },
+              "agent-reconciliation-orchestrator": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              "gap-analysis": {
+                "file_count": 7,
+                "dir_count": 0,
+                "size_bytes": 4203,
+                "subdirs": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-14T20:08:10.308524"
+}
