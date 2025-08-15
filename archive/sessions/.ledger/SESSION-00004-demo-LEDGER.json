@@ -1,0 +1,45 @@
+{
+  "session_id": "00004-demo",
+  "interactions": [
+    {
+      "time": "2025-08-15T09:24:07.461238",
+      "action": "Started work",
+      "tool": "initialization",
+      "context_hash": "1389e8929f22",
+      "work_detected": {
+        "files_changed": 3,
+        "has_changes": true
+      }
+    },
+    {
+      "time": "2025-08-15T07:24:09.472469",
+      "action": "Built component",
+      "tool": "python",
+      "context_hash": "c9125b95c328",
+      "work_detected": {
+        "files_changed": 3,
+        "has_changes": true
+      }
+    },
+    {
+      "time": "2025-08-15T09:24:09.472479",
+      "action": "Resumed after break",
+      "tool": "python",
+      "context_hash": "f021eb18ce25",
+      "work_detected": {
+        "files_changed": 3,
+        "has_changes": true
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "after": "2025-08-15T07:24:09.472469",
+      "before": "2025-08-15T09:24:09.472479",
+      "duration": "2:00:00.000010",
+      "type": "life_pause",
+      "context_preserved": true
+    }
+  ],
+  "last_updated": "2025-08-15T09:24:09.476690"
+}
