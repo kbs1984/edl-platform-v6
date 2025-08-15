@@ -1,6 +1,4 @@
-archive/sessions/SESSION-00002-FILES.txt
-archive/sessions/SESSION-00002-LOG.md
-archive/sessions/SESSION-00002-FINAL-STATUS.md
-archive/sessions/SESSION-00003B-DECISIONS.md
 archive/sessions/SESSION-00003B-LOG.md
-archive/sessions/SESSION-00003B-VALIDATION-REPORT.md
+archive/sessions/SESSION-00003B-INTEGRATION-VERIFICATION.md
+archive/sessions/SESSION-00003B-VERIFICATION-OF-00004.md
+reality/agent-reality-auditor/filesystem-connector/.cache/fs_level_1_031b7960.json
