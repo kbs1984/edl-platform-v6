@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform - No Trigger Version</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: white; text-align: center; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .status { padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+        .status.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .status.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .status.warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        input, button { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 6px; font-size: 16px; }
+        input { border: 1px solid #ddd; }
+        button { background: #667eea; color: white; border: none; cursor: pointer; font-weight: 600; }
+        button:hover { background: #5a67d8; }
+        button:disabled { background: #cbd5e0; cursor: not-allowed; }
+        .hidden { display: none; }
+        .debug-info { background: #f7fafc; border: 1px solid #cbd5e0; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EDL Platform - No Trigger Version</h1>
+        <div class="status warning">
+            Testing without database triggers - Manual user record creation
+        </div>
+        
+        <div class="card">
+            <h2>System Status</h2>
+            <div id="connection-status" class="status info">Initializing...</div>
+            <div id="auth-status" class="status info">Checking authentication...</div>
+        </div>
+        
+        <div class="card" id="auth-section">
+            <h2>Authentication (No Trigger Version)</h2>
+            <div id="auth-form">
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="text" id="callsign" name="callsign" placeholder="Call Sign (display name)" maxlength="50">
+                <button onclick="signUp()">Sign Up (Manual Process)</button>
+                <button onclick="signIn()">Sign In</button>
+            </div>
+            <div id="user-info" class="hidden">
+                <div class="status success">
+                    Logged in as: <span id="user-email"></span>
+                    <br>Call Sign: <span id="user-callsign"></span>
+                </div>
+                <button onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Debug Information</h2>
+            <div id="debug-info" class="debug-info">Waiting...</div>
+        </div>
+    </div>
+    
+    <script>
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        
+        let supabase;
+        let currentUser = null;
+        let currentProfile = null;
+        
+        async function initSupabase() {
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                updateStatus('connection-status', 'Connected to Supabase', 'success');
+                updateDebug('Supabase client initialized');
+                
+                const { data: { user } } = await supabase.auth.getUser();
+                if (user) {
+                    currentUser = user;
+                    await loadProfile(user);
+                    showLoggedInState(user);
+                } else {
+                    updateStatus('auth-status', 'Not authenticated', 'info');
+                }
+            } catch (error) {
+                updateStatus('connection-status', 'Failed: ' + error.message, 'error');
+                updateDebug('Init error: ' + error.message);
+            }
+        }
+        
+        async function signUp() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const callSign = document.getElementById('callsign').value || email.split('@')[0];
+            
+            updateDebug(`Starting manual signup process for ${email}`);
+            
+            if (!email || !password) {
+                updateStatus('auth-status', 'Please enter email and password', 'error');
+                return;
+            }
+            
+            updateStatus('auth-status', 'Creating account (bypassing triggers)...', 'info');
+            
+            try {
+                // Step 1: Create auth user with trigger disabled
+                updateDebug('Step 1: Creating auth user...');
+                const { data: authData, error: authError } = await supabase.auth.signUp({ 
+                    email, 
+                    password 
+                });
+                
+                if (authError) {
+                    updateDebug('Auth signup error: ' + authError.message);
+                    throw authError;
+                }
+                
+                updateDebug('Auth user created successfully');
+                
+                if (authData.user) {
+                    currentUser = authData.user;
+                    
+                    // Step 2: Manually create users record (since trigger might be disabled)
+                    updateDebug('Step 2: Creating users record manually...');
+                    try {
+                        const { data: userData, error: userError } = await supabase
+                            .from('users')
+                            .insert({
+                                email: email,
+                                auth_id: authData.user.id,
+                                created_at: new Date().toISOString()
+                            })
+                            .select()
+                            .single();
+                        
+                        if (userError && !userError.message.includes('duplicate')) {
+                            updateDebug('Users creation error: ' + userError.message);
+                            // Continue anyway - might already exist
+                        } else {
+                            updateDebug('Users record created successfully');
+                        }
+                    } catch (userCreateError) {
+                        updateDebug('Users record creation failed, continuing...');
+                    }
+                    
+                    // Step 3: Create profile
+                    updateDebug('Step 3: Creating profile...');
+                    await createProfileManual(authData.user, callSign);
+                    
+                    if (authData.user.email_confirmed_at === null) {
+                        updateStatus('auth-status', 'Account created! Check email for confirmation.', 'warning');
+                    } else {
+                        showLoggedInState(authData.user);
+                        updateStatus('auth-status', 'Account created successfully!', 'success');
+                    }
+                    
+                    updateDebug('Signup process completed');
+                }
+                
+            } catch (error) {
+                updateStatus('auth-status', 'Signup failed: ' + error.message, 'error');
+                updateDebug('Signup error: ' + error.message);
+            }
+        }
+        
+        async function createProfileManual(user, callSign) {
+            try {
+                updateDebug(`Creating profile with call_sign: ${callSign}`);
+                
+                // Get users record ID
+                const { data: userData } = await supabase
+                    .from('users')
+                    .select('id')
+                    .eq('auth_id', user.id)
+                    .single();
+                
+                const { data: profile, error: profileError } = await supabase
+                    .from('profiles')
+                    .insert({
+                        user_id: user.id,
+                        proper_user_id: userData?.id || null,
+                        call_sign: callSign,
+                        role: 'player'
+                    })
+                    .select()
+                    .single();
+                
+                if (profileError) {
+                    if (profileError.message.includes('duplicate') && profileError.message.includes('call_sign')) {
+                        const randomSuffix = Math.floor(Math.random() * 1000);
+                        const { data: retryProfile, error: retryError } = await supabase
+                            .from('profiles')
+                            .insert({
+                                user_id: user.id,
+                                proper_user_id: userData?.id || null,
+                                call_sign: `${callSign}${randomSuffix}`,
+                                role: 'player'
+                            })
+                            .select()
+                            .single();
+                        
+                        if (retryError) throw retryError;
+                        currentProfile = retryProfile;
+                        updateDebug(`Profile created with call_sign: ${callSign}${randomSuffix}`);
+                    } else {
+                        throw profileError;
+                    }
+                } else {
+                    currentProfile = profile;
+                    updateDebug(`Profile created with call_sign: ${callSign}`);
+                }
+                
+            } catch (error) {
+                updateDebug('Profile creation error: ' + error.message);
+                throw error;
+            }
+        }
+        
+        async function signIn() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                updateStatus('auth-status', 'Please enter email and password', 'error');
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                if (error) throw error;
+                
+                currentUser = data.user;
+                await loadProfile(data.user);
+                showLoggedInState(data.user);
+                updateStatus('auth-status', 'Signed in successfully!', 'success');
+                
+            } catch (error) {
+                updateStatus('auth-status', 'Sign in failed: ' + error.message, 'error');
+                updateDebug('Sign in error: ' + error.message);
+            }
+        }
+        
+        async function loadProfile(user) {
+            try {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('user_id', user.id)
+                    .single();
+                
+                if (profile) {
+                    currentProfile = profile;
+                    updateDebug(`Profile loaded - Call Sign: ${profile.call_sign}`);
+                }
+            } catch (error) {
+                updateDebug('Profile load error: ' + error.message);
+            }
+        }
+        
+        async function signOut() {
+            try {
+                await supabase.auth.signOut();
+                currentUser = null;
+                currentProfile = null;
+                showLoggedOutState();
+                updateStatus('auth-status', 'Signed out', 'info');
+            } catch (error) {
+                updateStatus('auth-status', 'Sign out failed: ' + error.message, 'error');
+            }
+        }
+        
+        function showLoggedInState(user) {
+            document.getElementById('auth-form').classList.add('hidden');
+            document.getElementById('user-info').classList.remove('hidden');
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('user-callsign').textContent = currentProfile?.call_sign || 'Not set';
+        }
+        
+        function showLoggedOutState() {
+            document.getElementById('auth-form').classList.remove('hidden');
+            document.getElementById('user-info').classList.add('hidden');
+        }
+        
+        function updateStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = 'status ' + type;
+        }
+        
+        function updateDebug(message) {
+            const debugElement = document.getElementById('debug-info');
+            const timestamp = new Date().toLocaleTimeString();
+            debugElement.innerHTML = `[${timestamp}] ${message}<br>` + debugElement.innerHTML;
+            const lines = debugElement.innerHTML.split('<br>');
+            if (lines.length > 15) {
+                debugElement.innerHTML = lines.slice(0, 15).join('<br>');
+            }
+        }
+        
+        window.addEventListener('load', () => {
+            updateDebug('Page loaded - No trigger version');
+            initSupabase();
+        });
+    </script>
+</body>
+</html>
