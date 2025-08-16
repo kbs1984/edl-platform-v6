@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform - Team Formation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        input {
+            border: 1px solid #ddd;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #5a67d8;
+        }
+        
+        button:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+        
+        .team-list {
+            margin-top: 20px;
+        }
+        
+        .team-item {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .team-name {
+            font-weight: 600;
+        }
+        
+        .team-members {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EDL Platform v6 - Lightning Stack</h1>
+        
+        <!-- Connection Status -->
+        <div class="card">
+            <h2>System Status</h2>
+            <div id="connection-status" class="status info">
+                Initializing Supabase connection...
+            </div>
+            <div id="auth-status" class="status info">
+                Checking authentication...
+            </div>
+            <div id="db-status" class="status info">
+                Verifying database tables...
+            </div>
+        </div>
+        
+        <!-- Auth Section -->
+        <div class="card" id="auth-section">
+            <h2>Authentication</h2>
+            <div id="auth-form">
+                <input type="email" id="email" placeholder="Email address">
+                <input type="password" id="password" placeholder="Password">
+                <button onclick="signIn()">Sign In</button>
+                <button onclick="signUp()">Sign Up (Create Account)</button>
+            </div>
+            <div id="user-info" class="hidden">
+                <div class="status success">
+                    Logged in as: <span id="user-email"></span>
+                </div>
+                <button onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+        
+        <!-- Team Creation -->
+        <div class="card hidden" id="team-section">
+            <h2>Create a Team</h2>
+            <input type="text" id="team-name" placeholder="Team name" maxlength="50">
+            <button onclick="createTeam()">Create Team</button>
+            <div id="team-status"></div>
+            
+            <div class="team-list">
+                <h3>Available Teams</h3>
+                <div id="teams-container">
+                    Loading teams...
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        
+        let supabase;
+        let currentUser = null;
+        
+        // Initialize Supabase
+        async function initSupabase() {
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                updateStatus('connection-status', 'Connected to Supabase', 'success');
+                
+                // Check auth
+                const { data: { user } } = await supabase.auth.getUser();
+                if (user) {
+                    currentUser = user;
+                    showLoggedInState(user);
+                } else {
+                    updateStatus('auth-status', 'Not authenticated - please sign in', 'warning');
+                }
+                
+                // Verify tables exist
+                await verifyTables();
+                
+            } catch (error) {
+                updateStatus('connection-status', 'Failed to connect: ' + error.message, 'error');
+            }
+        }
+        
+        async function verifyTables() {
+            try {
+                const tables = ['profiles', 'teams', 'team_members', 'team_join_requests'];
+                let allExist = true;
+                
+                for (const table of tables) {
+                    try {
+                        const { error } = await supabase.from(table).select('*', { count: 'exact', head: true });
+                        if (error && error.message.includes('does not exist')) {
+                            allExist = false;
+                            break;
+                        }
+                    } catch (e) {
+                        // Table might be protected by RLS, that's ok
+                    }
+                }
+                
+                if (allExist) {
+                    updateStatus('db-status', 'All required tables verified', 'success');
+                } else {
+                    updateStatus('db-status', 'Some tables missing - run database migration', 'error');
+                }
+            } catch (error) {
+                updateStatus('db-status', 'Could not verify tables: ' + error.message, 'warning');
+            }
+        }
+        
+        async function signIn() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                updateStatus('auth-status', 'Please enter email and password', 'error');
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                if (error) throw error;
+                
+                currentUser = data.user;
+                showLoggedInState(data.user);
+                updateStatus('auth-status', 'Successfully signed in!', 'success');
+                
+            } catch (error) {
+                updateStatus('auth-status', 'Sign in failed: ' + error.message, 'error');
+            }
+        }
+        
+        async function signUp() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                updateStatus('auth-status', 'Please enter email and password', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                updateStatus('auth-status', 'Password must be at least 6 characters', 'error');
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase.auth.signUp({ email, password });
+                if (error) throw error;
+                
+                if (data.user) {
+                    currentUser = data.user;
+                    showLoggedInState(data.user);
+                    updateStatus('auth-status', 'Account created successfully!', 'success');
+                    
+                    // Create profile
+                    await createProfile(data.user);
+                }
+                
+            } catch (error) {
+                updateStatus('auth-status', 'Sign up failed: ' + error.message, 'error');
+            }
+        }
+        
+        async function createProfile(user) {
+            try {
+                const { error } = await supabase
+                    .from('profiles')
+                    .insert({
+                        id: user.id,
+                        email: user.email,
+                        role: 'player'
+                    });
+                
+                if (error && !error.message.includes('duplicate')) {
+                    console.error('Profile creation error:', error);
+                }
+            } catch (error) {
+                console.error('Profile creation failed:', error);
+            }
+        }
+        
+        async function signOut() {
+            try {
+                await supabase.auth.signOut();
+                currentUser = null;
+                showLoggedOutState();
+                updateStatus('auth-status', 'Signed out successfully', 'info');
+            } catch (error) {
+                updateStatus('auth-status', 'Sign out failed: ' + error.message, 'error');
+            }
+        }
+        
+        function showLoggedInState(user) {
+            document.getElementById('auth-form').classList.add('hidden');
+            document.getElementById('user-info').classList.remove('hidden');
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('team-section').classList.remove('hidden');
+            loadTeams();
+        }
+        
+        function showLoggedOutState() {
+            document.getElementById('auth-form').classList.remove('hidden');
+            document.getElementById('user-info').classList.add('hidden');
+            document.getElementById('team-section').classList.add('hidden');
+        }
+        
+        async function createTeam() {
+            const teamName = document.getElementById('team-name').value.trim();
+            
+            if (!teamName) {
+                updateStatus('team-status', 'Please enter a team name', 'error');
+                return;
+            }
+            
+            if (!currentUser) {
+                updateStatus('team-status', 'You must be logged in to create a team', 'error');
+                return;
+            }
+            
+            try {
+                // Create team
+                const { data: team, error: teamError } = await supabase
+                    .from('teams')
+                    .insert({
+                        name: teamName,
+                        founder_id: currentUser.id,
+                        max_members: 4
+                    })
+                    .select()
+                    .single();
+                
+                if (teamError) throw teamError;
+                
+                // Add founder as first member
+                const { error: memberError } = await supabase
+                    .from('team_members')
+                    .insert({
+                        team_id: team.id,
+                        user_id: currentUser.id,
+                        role: 'founder',
+                        joined_at: new Date().toISOString()
+                    });
+                
+                if (memberError) throw memberError;
+                
+                updateStatus('team-status', `Team "${teamName}" created successfully!`, 'success');
+                document.getElementById('team-name').value = '';
+                loadTeams();
+                
+            } catch (error) {
+                updateStatus('team-status', 'Failed to create team: ' + error.message, 'error');
+            }
+        }
+        
+        async function loadTeams() {
+            try {
+                const { data: teams, error } = await supabase
+                    .from('teams')
+                    .select('*, team_members(count)')
+                    .order('created_at', { ascending: false });
+                
+                if (error) throw error;
+                
+                const container = document.getElementById('teams-container');
+                
+                if (!teams || teams.length === 0) {
+                    container.innerHTML = '<div class="status info">No teams yet. Create the first one!</div>';
+                } else {
+                    container.innerHTML = teams.map(team => `
+                        <div class="team-item">
+                            <div>
+                                <div class="team-name">${team.name}</div>
+                                <div class="team-members">
+                                    ${team.team_members?.[0]?.count || 0} / ${team.max_members} members
+                                </div>
+                            </div>
+                            <button onclick="joinTeam('${team.id}')" style="width: auto; padding: 8px 16px;">
+                                Join Team
+                            </button>
+                        </div>
+                    `).join('');
+                }
+                
+            } catch (error) {
+                document.getElementById('teams-container').innerHTML = 
+                    '<div class="status error">Failed to load teams: ' + error.message + '</div>';
+            }
+        }
+        
+        async function joinTeam(teamId) {
+            if (!currentUser) {
+                alert('You must be logged in to join a team');
+                return;
+            }
+            
+            try {
+                // Check if already a member
+                const { data: existing } = await supabase
+                    .from('team_members')
+                    .select('*')
+                    .eq('team_id', teamId)
+                    .eq('user_id', currentUser.id)
+                    .single();
+                
+                if (existing) {
+                    alert('You are already a member of this team');
+                    return;
+                }
+                
+                // Create join request
+                const { error } = await supabase
+                    .from('team_join_requests')
+                    .insert({
+                        team_id: teamId,
+                        user_id: currentUser.id,
+                        status: 'pending'
+                    });
+                
+                if (error) throw error;
+                
+                alert('Join request sent!');
+                
+            } catch (error) {
+                alert('Failed to send join request: ' + error.message);
+            }
+        }
+        
+        function updateStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = 'status ' + type;
+        }
+        
+        // Initialize on page load
+        window.addEventListener('load', initSupabase);
+    </script>
+</body>
+</html>
