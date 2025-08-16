@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform - Debug Version</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .debug-panel {
+            background: white;
+            border: 2px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #666;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .output {
+            background: #333;
+            color: #0f0;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 EDL Debug Interface</h1>
+    
+    <div class="debug-panel">
+        <h2>Input Test Panel</h2>
+        <p>Type something and click each test button:</p>
+        
+        <input type="email" id="email" placeholder="Enter email address">
+        <input type="password" id="password" placeholder="Enter password">
+        
+        <div>
+            <button onclick="testDirectValue()">Test 1: Direct Value</button>
+            <button onclick="testQuerySelector()">Test 2: Query Selector</button>
+            <button onclick="testWithEvent()">Test 3: With Event</button>
+            <button onclick="testAllMethods()">Test 4: All Methods</button>
+        </div>
+        
+        <div class="output" id="output">Debug output will appear here...</div>
+    </div>
+    
+    <div class="debug-panel">
+        <h2>Supabase Test Panel</h2>
+        <button onclick="testSupabaseConnection()">Test Supabase Connection</button>
+        <button onclick="attemptSignUp()">Attempt Sign Up</button>
+        <div class="output" id="supabase-output">Supabase test results...</div>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        function log(message, isError = false) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = isError ? 'error' : '';
+            output.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+            console.log(message);
+        }
+        
+        function testDirectValue() {
+            log('=== Test 1: Direct getElementById ===');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            
+            log(`Email element found: ${emailInput ? 'YES' : 'NO'}`);
+            log(`Password element found: ${passwordInput ? 'YES' : 'NO'}`);
+            
+            if (emailInput) {
+                log(`Email value: "${emailInput.value}"`);
+                log(`Email type: ${emailInput.type}`);
+                log(`Email id: ${emailInput.id}`);
+            }
+            
+            if (passwordInput) {
+                log(`Password value: "${passwordInput.value}"`);
+            }
+        }
+        
+        function testQuerySelector() {
+            log('=== Test 2: querySelector ===');
+            const emailInput = document.querySelector('#email');
+            const emailByType = document.querySelector('input[type="email"]');
+            
+            log(`querySelector('#email'): ${emailInput ? 'FOUND' : 'NOT FOUND'}`);
+            log(`querySelector by type: ${emailByType ? 'FOUND' : 'NOT FOUND'}`);
+            
+            if (emailInput) {
+                log(`Value via querySelector: "${emailInput.value}"`);
+            }
+        }
+        
+        function testWithEvent() {
+            log('=== Test 3: Add Event Listener ===');
+            const emailInput = document.getElementById('email');
+            
+            if (emailInput) {
+                // Remove old listeners
+                emailInput.removeEventListener('input', null);
+                
+                // Add new listener
+                emailInput.addEventListener('input', function(e) {
+                    log(`Input event fired! Value: "${e.target.value}"`);
+                });
+                
+                log('Event listener attached. Type in the email field to test...');
+            }
+        }
+        
+        function testAllMethods() {
+            log('=== Test 4: Comprehensive Test ===');
+            
+            // Method 1: Direct
+            const email1 = document.getElementById('email').value;
+            log(`Method 1 (getElementById): "${email1}"`);
+            
+            // Method 2: Query
+            const email2 = document.querySelector('#email').value;
+            log(`Method 2 (querySelector): "${email2}"`);
+            
+            // Method 3: Form elements
+            const inputs = document.getElementsByTagName('input');
+            log(`Found ${inputs.length} input elements`);
+            for (let i = 0; i < inputs.length; i++) {
+                log(`  Input ${i}: type="${inputs[i].type}", value="${inputs[i].value}"`);
+            }
+            
+            // Method 4: Check if value is being blocked
+            const emailEl = document.getElementById('email');
+            emailEl.value = 'test@example.com';
+            log(`Programmatically set value to: "${emailEl.value}"`);
+            
+            // Clear it
+            setTimeout(() => {
+                emailEl.value = '';
+                log('Cleared programmatic value');
+            }, 2000);
+        }
+        
+        async function testSupabaseConnection() {
+            const output = document.getElementById('supabase-output');
+            output.textContent = 'Testing Supabase connection...\n';
+            
+            try {
+                // Test 1: Check tables
+                const { data: profiles, error: profilesError } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .limit(1);
+                    
+                output.textContent += `Profiles table: ${profilesError ? 'ERROR: ' + profilesError.message : 'Accessible'}\n`;
+                
+                // Test 2: Check auth settings
+                const { data: { user } } = await supabase.auth.getUser();
+                output.textContent += `Current user: ${user ? user.email : 'Not logged in'}\n`;
+                
+                // Test 3: Check if client is initialized
+                output.textContent += `Supabase client: ${supabase ? 'Initialized' : 'NOT initialized'}\n`;
+                output.textContent += `Supabase URL: ${SUPABASE_URL}\n`;
+                
+            } catch (err) {
+                output.textContent += `Error: ${err.message}\n`;
+            }
+        }
+        
+        async function attemptSignUp() {
+            const output = document.getElementById('supabase-output');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            output.textContent = `Attempting signup...\n`;
+            output.textContent += `Email from input: "${email}"\n`;
+            output.textContent += `Password length: ${password.length}\n`;
+            
+            if (!email || !password) {
+                output.textContent += `ERROR: Email or password is empty!\n`;
+                output.textContent += `Please enter both values and try again.\n`;
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password
+                });
+                
+                if (error) {
+                    output.textContent += `Signup ERROR: ${error.message}\n`;
+                    output.textContent += `Error code: ${error.code}\n`;
+                    output.textContent += `Error status: ${error.status}\n`;
+                } else {
+                    output.textContent += `SUCCESS! User created.\n`;
+                    output.textContent += `User ID: ${data.user?.id}\n`;
+                    output.textContent += `Email: ${data.user?.email}\n`;
+                    output.textContent += `Check your email for confirmation.\n`;
+                }
+            } catch (err) {
+                output.textContent += `Unexpected error: ${err.message}\n`;
+            }
+        }
+        
+        // On page load
+        window.addEventListener('DOMContentLoaded', () => {
+            log('Page loaded. Debug interface ready.');
+            log(`Found ${document.querySelectorAll('input').length} input fields`);
+        });
+    </script>
+</body>
+</html>
