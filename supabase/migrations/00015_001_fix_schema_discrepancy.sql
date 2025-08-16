@@ -32,12 +32,12 @@ CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 -- For any existing auth.users, create corresponding users records
 INSERT INTO users (email, auth_id, created_at)
 SELECT 
-    auth.users.email,
-    auth.users.id,
-    auth.users.created_at
-FROM auth.users
-LEFT JOIN users ON users.auth_id = auth.users.id
-WHERE users.id IS NULL;
+    au.email,
+    au.id,
+    au.created_at
+FROM auth.users au
+LEFT JOIN public.users u ON u.auth_id = au.id
+WHERE u.id IS NULL;
 
 -- ============================================================
 -- PART 3: Fix Profiles Table Structure
@@ -59,9 +59,9 @@ ADD COLUMN IF NOT EXISTS proper_user_id UUID REFERENCES users(id);
 
 -- Migrate existing profiles to reference the new users table
 UPDATE profiles 
-SET proper_user_id = users.id
-FROM users
-WHERE profiles.user_id = users.auth_id;
+SET proper_user_id = u.id
+FROM public.users u
+WHERE profiles.user_id = u.auth_id;
 
 -- ============================================================
 -- PART 4: Create Trigger for Auto User Creation
@@ -85,44 +85,50 @@ CREATE TRIGGER on_auth_user_created
     EXECUTE FUNCTION create_user_on_signup();
 
 -- ============================================================
--- PART 5: Fix RLS Policies
+-- PART 5: Fix RLS Policies (Following SUPABASE-SQL-PROTOCOL.md)
 -- ============================================================
 -- Users table policies
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can view own record" ON users
-    FOR SELECT TO authenticated
+    FOR SELECT
+    TO authenticated
     USING (auth_id = auth.uid());
 
 CREATE POLICY "Users can update own record" ON users
-    FOR UPDATE TO authenticated
+    FOR UPDATE
+    TO authenticated
     USING (auth_id = auth.uid())
     WITH CHECK (auth_id = auth.uid());
 
 -- Update profiles policies to work with proper structure
 DROP POLICY IF EXISTS "Public profiles are viewable by everyone" ON profiles;
 DROP POLICY IF EXISTS "Users can update own profile" ON profiles;
+DROP POLICY IF EXISTS "Users can insert own profile" ON profiles;
 
 CREATE POLICY "Profiles viewable by authenticated users" ON profiles
-    FOR SELECT TO authenticated
+    FOR SELECT
+    TO authenticated, anon
     USING (true);
 
 CREATE POLICY "Users can update own profile" ON profiles
-    FOR UPDATE TO authenticated
+    FOR UPDATE
+    TO authenticated
     USING (
         user_id = auth.uid() OR 
-        proper_user_id IN (SELECT id FROM users WHERE auth_id = auth.uid())
+        proper_user_id IN (SELECT id FROM public.users WHERE auth_id = auth.uid())
     )
     WITH CHECK (
         user_id = auth.uid() OR
-        proper_user_id IN (SELECT id FROM users WHERE auth_id = auth.uid())
+        proper_user_id IN (SELECT id FROM public.users WHERE auth_id = auth.uid())
     );
 
 CREATE POLICY "Users can insert own profile" ON profiles
-    FOR INSERT TO authenticated
+    FOR INSERT
+    TO authenticated
     WITH CHECK (
         user_id = auth.uid() OR
-        proper_user_id IN (SELECT id FROM users WHERE auth_id = auth.uid())
+        proper_user_id IN (SELECT id FROM public.users WHERE auth_id = auth.uid())
     );
 
 -- ============================================================
