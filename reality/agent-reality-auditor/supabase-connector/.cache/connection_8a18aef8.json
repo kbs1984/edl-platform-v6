@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-15T11:44:32.083974",
+    "agent": "supabase-reality",
+    "check_type": "level_1_discovery",
+    "session_id": "8a18aef8",
+    "confidence_score": 1.0
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "anon",
+    "rate_limit_remaining": -1
+  },
+  "discoveries": {
+    "level": 1,
+    "summary": {}
+  },
+  "timestamp": "2025-08-15T11:44:32.864949"
+}

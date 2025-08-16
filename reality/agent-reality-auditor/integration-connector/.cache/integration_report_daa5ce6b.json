@@ -1,0 +1,248 @@
+{
+  "timestamp": "2025-08-15T14:28:03.123306",
+  "session_id": "daa5ce6b",
+  "health_scores": {
+    "synchronization": 1.0,
+    "completeness": 1.0,
+    "consistency": 0.6666666666666666,
+    "transparency": 0.0,
+    "overall": 0.7,
+    "assumption_clarity": 1
+  },
+  "level_1": {
+    "level": 1,
+    "timestamp": "2025-08-15T14:28:03.123320",
+    "confidence": 1.0,
+    "agents": {
+      "fs_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "gh_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "db_agent": {
+        "status": "unavailable",
+        "error": "No Supabase credentials"
+      },
+      "partial_capability": true
+    },
+    "summary": {
+      "healthy_agents": 2,
+      "limited_agents": 0,
+      "failed_agents": 0,
+      "can_proceed": true
+    }
+  },
+  "level_2": {
+    "level": 2,
+    "timestamp": "2025-08-15T14:28:03.812058",
+    "confidence": 0.4,
+    "fs_git_sync": {
+      "total_sync_issues": 0,
+      "sync_score": 1.0
+    },
+    "uncommitted": [],
+    "untracked": [],
+    "unpushed": [],
+    "error": "Git command failed: cannot unpack non-iterable CompletedProcess object"
+  },
+  "session_gaps": {
+    "timestamp": "2025-08-15T14:28:03.818431",
+    "session_id": "daa5ce6b",
+    "claimed_work": [
+      {
+        "session": "00003",
+        "claim": "Created file: SESSION-00003B-VALIDATION-REPORT.md",
+        "file": "SESSION-00003B-LOG.md",
+        "type": "file_claim",
+        "claimed_file": "SESSION-00003B-VALIDATION-REPORT.md"
+      },
+      {
+        "session": "00003",
+        "claim": "14:00-16:00",
+        "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00004",
+        "claim": "{changes['files_added']}\")",
+        "file": "SESSION-00004-TRUTH-RECONCILIATION.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 03)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 04)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 02/06)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 05)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (tracking 1,247 files)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (8 recent commits)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (database connected)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (100% coordination)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Complete (4 agents)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      }
+    ],
+    "actual_changes": [],
+    "actual_commits": [],
+    "truth_score": 0.0,
+    "deception_instances": [
+      {
+        "type": "false_file_claim",
+        "session": "00003",
+        "claim": "Created file: SESSION-00003B-VALIDATION-REPORT.md",
+        "reason": "File does not exist: SESSION-00003B-VALIDATION-REPORT.md"
+      }
+    ]
+  },
+  "retroactive_logging": [
+    {
+      "file": "SESSION-00002-FINAL-STATUS.md",
+      "current_session": 2,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00002-FINAL-STATUS.md",
+      "current_session": 2,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-VERIFICATION-OF-00004.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00005-LOG.md",
+      "current_session": 5,
+      "references_session": 6,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    }
+  ]
+}

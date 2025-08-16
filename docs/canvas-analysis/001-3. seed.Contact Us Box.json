@@ -1,0 +1,605 @@
+Parsing Obsidian Canvas...
+{
+  "tasks": {
+    "aa9b86833b9cf497": {
+      "id": "aa9b86833b9cf497",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1680,
+        "y": -277,
+        "width": 673,
+        "height": 50
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "6360e9e1c927f706": {
+      "id": "6360e9e1c927f706",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1680,
+        "y": -230,
+        "width": 50,
+        "height": 405
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "a24fdc5a45e71f59": {
+      "id": "a24fdc5a45e71f59",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1680,
+        "y": 178,
+        "width": 673,
+        "height": 50
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "9967adf6fe691445": {
+      "id": "9967adf6fe691445",
+      "text": "### Contact Us",
+      "description": "### Contact Us",
+      "type": "text",
+      "position": {
+        "x": -1445,
+        "y": -118,
+        "width": 204,
+        "height": 50
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "52e1dfccf54c4c59": {
+      "id": "52e1dfccf54c4c59",
+      "text": "| Need help? \n| Suggest changes? ",
+      "description": "| Need help? | Suggest changes?",
+      "type": "text",
+      "position": {
+        "x": -1437,
+        "y": -55,
+        "width": 192,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "a367385b1e9a4528": {
+      "id": "a367385b1e9a4528",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1057,
+        "y": -227,
+        "width": 50,
+        "height": 405
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "624c2c364b24484d": {
+      "id": "624c2c364b24484d",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -790,
+        "y": -480,
+        "width": 1480,
+        "height": 50
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "778862c42e407424": {
+      "id": "778862c42e407424",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -790,
+        "y": -431,
+        "width": 50,
+        "height": 860
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "14421ad597c41455": {
+      "id": "14421ad597c41455",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -790,
+        "y": 430,
+        "width": 1480,
+        "height": 50
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "02157a8196902fa4": {
+      "id": "02157a8196902fa4",
+      "text": "## How can we help you?",
+      "description": "## How can we help you?",
+      "type": "text",
+      "position": {
+        "x": -550,
+        "y": -280,
+        "width": 500,
+        "height": 50
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "e31552ad4e02854d": {
+      "id": "e31552ad4e02854d",
+      "text": "# Area 04",
+      "description": "# Area 04",
+      "type": "text",
+      "position": {
+        "x": -290,
+        "y": -49,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "6be182dd22640734": {
+      "id": "6be182dd22640734",
+      "text": "# Area 06",
+      "description": "# Area 06",
+      "type": "text",
+      "position": {
+        "x": -290,
+        "y": 107,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "5150237f3de141bf": {
+      "id": "5150237f3de141bf",
+      "text": "# Activities (Event or Exercise)",
+      "description": "# Activities (Event or Exercise)",
+      "type": "text",
+      "position": {
+        "x": -23,
+        "y": -200,
+        "width": 447,
+        "height": 91
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "41bfadada54f649a": {
+      "id": "41bfadada54f649a",
+      "text": "# Analytics",
+      "description": "# Analytics",
+      "type": "text",
+      "position": {
+        "x": -23,
+        "y": -88,
+        "width": 447,
+        "height": 91
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "51741b40a8df701a": {
+      "id": "51741b40a8df701a",
+      "text": "# Badges & Ballots",
+      "description": "# Badges & Ballots",
+      "type": "text",
+      "position": {
+        "x": -23,
+        "y": 29,
+        "width": 447,
+        "height": 91
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "e60a54d536824a16": {
+      "id": "e60a54d536824a16",
+      "text": "# New Features Request",
+      "description": "# New Features Request",
+      "type": "text",
+      "position": {
+        "x": -23,
+        "y": 151,
+        "width": 447,
+        "height": 91
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "3a0e5dcd2ac29202": {
+      "id": "3a0e5dcd2ac29202",
+      "text": "## Left\n# Per each Area, use AI chatbot to collect related information and respond within no later than 24 hours\n\n## Right\n# Ask chatbot to revise the comments for clarity and legibility \n",
+      "description": "## Left # Per each Area, use AI chatbot to collect related information and respond within no later than 24 hours ## Right # Ask chatbot to revise the comments for clarity and legibility",
+      "type": "text",
+      "position": {
+        "x": 970,
+        "y": -281,
+        "width": 640,
+        "height": 499
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "7d5b21027d191f2b": {
+      "id": "7d5b21027d191f2b",
+      "text": "# Area 01",
+      "description": "# Area 01",
+      "type": "text",
+      "position": {
+        "x": -530,
+        "y": -205,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "40d376a1d4b3c62a": {
+      "id": "40d376a1d4b3c62a",
+      "text": "# Area 03",
+      "description": "# Area 03",
+      "type": "text",
+      "position": {
+        "x": -530,
+        "y": -49,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "b3622aa91bdc0006": {
+      "id": "b3622aa91bdc0006",
+      "text": "# Area 05",
+      "description": "# Area 05",
+      "type": "text",
+      "position": {
+        "x": -530,
+        "y": 107,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "2010a464955d7fb4": {
+      "id": "2010a464955d7fb4",
+      "text": "# Area 02",
+      "description": "# Area 02",
+      "type": "text",
+      "position": {
+        "x": -290,
+        "y": -205,
+        "width": 220,
+        "height": 143
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "8e9b115fe676567f": {
+      "id": "8e9b115fe676567f",
+      "text": "## What should we improve upon?",
+      "description": "## What should we improve upon?",
+      "type": "text",
+      "position": {
+        "x": -50,
+        "y": -280,
+        "width": 500,
+        "height": 50
+      },
+      "color": "#ffffff",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "e8bfe0dd9667c8b7": {
+      "id": "e8bfe0dd9667c8b7",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": 640,
+        "y": -431,
+        "width": 50,
+        "height": 860
+      },
+      "color": "2",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    }
+  },
+  "edges": [],
+  "stats": {
+    "total_tasks": 23,
+    "total_dependencies": 0,
+    "independent_tasks": 23,
+    "max_dependency_depth": 1,
+    "total_estimated_hours": 92.0,
+    "average_hours_per_task": 4.0,
+    "priority_distribution": {
+      "P2": 23
+    },
+    "tag_distribution": {},
+    "complexity_distribution": {
+      "easy": 0,
+      "medium": 23,
+      "hard": 0,
+      "complex": 0
+    }
+  },
+  "issues": [
+    {
+      "type": "orphaned_tasks",
+      "severity": "warning",
+      "message": "23 tasks have no dependencies or dependents",
+      "tasks": [
+        "aa9b86833b9cf497",
+        "6360e9e1c927f706",
+        "a24fdc5a45e71f59",
+        "9967adf6fe691445",
+        "52e1dfccf54c4c59",
+        "a367385b1e9a4528",
+        "624c2c364b24484d",
+        "778862c42e407424",
+        "14421ad597c41455",
+        "02157a8196902fa4",
+        "e31552ad4e02854d",
+        "6be182dd22640734",
+        "5150237f3de141bf",
+        "41bfadada54f649a",
+        "51741b40a8df701a",
+        "e60a54d536824a16",
+        "3a0e5dcd2ac29202",
+        "7d5b21027d191f2b",
+        "40d376a1d4b3c62a",
+        "b3622aa91bdc0006",
+        "2010a464955d7fb4",
+        "8e9b115fe676567f",
+        "e8bfe0dd9667c8b7"
+      ]
+    },
+    {
+      "type": "missing_estimates",
+      "severity": "info",
+      "message": "23 tasks using default time estimates",
+      "tasks": [
+        "aa9b86833b9cf497",
+        "6360e9e1c927f706",
+        "a24fdc5a45e71f59",
+        "9967adf6fe691445",
+        "52e1dfccf54c4c59",
+        "a367385b1e9a4528",
+        "624c2c364b24484d",
+        "778862c42e407424",
+        "14421ad597c41455",
+        "02157a8196902fa4",
+        "e31552ad4e02854d",
+        "6be182dd22640734",
+        "5150237f3de141bf",
+        "41bfadada54f649a",
+        "51741b40a8df701a",
+        "e60a54d536824a16",
+        "3a0e5dcd2ac29202",
+        "7d5b21027d191f2b",
+        "40d376a1d4b3c62a",
+        "b3622aa91bdc0006",
+        "2010a464955d7fb4",
+        "8e9b115fe676567f",
+        "e8bfe0dd9667c8b7"
+      ]
+    },
+    {
+      "type": "missing_criteria",
+      "severity": "warning",
+      "message": "23 tasks without acceptance criteria",
+      "tasks": [
+        "aa9b86833b9cf497",
+        "6360e9e1c927f706",
+        "a24fdc5a45e71f59",
+        "9967adf6fe691445",
+        "52e1dfccf54c4c59",
+        "a367385b1e9a4528",
+        "624c2c364b24484d",
+        "778862c42e407424",
+        "14421ad597c41455",
+        "02157a8196902fa4",
+        "e31552ad4e02854d",
+        "6be182dd22640734",
+        "5150237f3de141bf",
+        "41bfadada54f649a",
+        "51741b40a8df701a",
+        "e60a54d536824a16",
+        "3a0e5dcd2ac29202",
+        "7d5b21027d191f2b",
+        "40d376a1d4b3c62a",
+        "b3622aa91bdc0006",
+        "2010a464955d7fb4",
+        "8e9b115fe676567f",
+        "e8bfe0dd9667c8b7"
+      ]
+    }
+  ],
+  "metadata": {
+    "parser": "Obsidian Canvas Parser",
+    "version": "1.0.0",
+    "parsed_at": "2025-08-16T02:55:45.782036",
+    "canvas_version": "unknown"
+  }
+}

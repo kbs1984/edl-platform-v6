@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL - Educational Cyworld</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        /* Cyworld-inspired aesthetic */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .auth-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .teams-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        
+        /* Team Creator Styles */
+        team-creator {
+            display: block;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        team-creator h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        team-creator input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        team-creator button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        team-creator button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Team List Styles */
+        team-list {
+            display: block;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        team-list h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .team-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        /* Team Card Styles */
+        team-card {
+            display: block;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+        
+        team-card:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .team-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .member-count {
+            background: #667eea;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+        }
+        
+        .join-button {
+            width: 100%;
+            padding: 8px;
+            background: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .join-button:hover {
+            background: #5a3785;
+        }
+        
+        .join-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .status-message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .status-success {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .status-error {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 EDL - Teams First 🌟</h1>
+        
+        <div class="auth-section" id="auth-section">
+            <h2>Quick Start (Test Mode)</h2>
+            <p>Select a test user to begin:</p>
+            <button onclick="loginAs('founder@test.com')">Login as TeamBuilder (Founder)</button>
+            <button onclick="loginAs('player1@test.com')">Login as Joiner1 (Player)</button>
+            <button onclick="loginAs('player2@test.com')">Login as Joiner2 (Player)</button>
+            <div id="current-user"></div>
+        </div>
+        
+        <div class="teams-section">
+            <team-creator></team-creator>
+            <team-list></team-list>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Supabase (using Session 08 credentials for now)
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Global state (minimal)
+        let currentUser = null;
+        let currentProfile = null;
+        
+        // Test login function
+        async function loginAs(email) {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: 'test123456'  // Default test password
+            });
+            
+            if (error) {
+                console.error('Login error:', error);
+                // Try to create user if doesn't exist
+                const { data: signupData, error: signupError } = await supabase.auth.signUp({
+                    email: email,
+                    password: 'test123456'
+                });
+                if (signupError) {
+                    alert('Login failed: ' + signupError.message);
+                    return;
+                }
+            }
+            
+            // Get profile
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('user_id', data?.user?.id || signupData?.user?.id)
+                .single();
+                
+            currentUser = data?.user || signupData?.user;
+            currentProfile = profile;
+            
+            document.getElementById('current-user').innerHTML = 
+                `<div class="status-success">Logged in as: ${currentProfile?.call_sign || email}</div>`;
+            
+            // Refresh team list
+            document.querySelector('team-list').loadTeams();
+        }
+        
+        // Team Creator Web Component
+        class TeamCreator extends HTMLElement {
+            connectedCallback() {
+                this.render();
+            }
+            
+            render() {
+                this.innerHTML = `
+                    <h2>Create Your Team</h2>
+                    <input type="text" id="team-name" placeholder="Enter team name..." maxlength="100">
+                    <button onclick="this.getRootNode().host.createTeam()">Create Team</button>
+                    <div id="create-status"></div>
+                `;
+            }
+            
+            async createTeam() {
+                if (!currentProfile) {
+                    alert('Please login first!');
+                    return;
+                }
+                
+                const teamName = this.querySelector('#team-name').value.trim();
+                if (!teamName) {
+                    alert('Please enter a team name!');
+                    return;
+                }
+                
+                const statusDiv = this.querySelector('#create-status');
+                statusDiv.innerHTML = '<div class="status-message">Creating team...</div>';
+                
+                // Create team
+                const { data: team, error } = await supabase
+                    .from('teams')
+                    .insert({
+                        name: teamName,
+                        founder_id: currentProfile.id
+                    })
+                    .select()
+                    .single();
+                
+                if (error) {
+                    statusDiv.innerHTML = `<div class="status-message status-error">Error: ${error.message}</div>`;
+                    return;
+                }
+                
+                // Add founder as first member
+                const { error: memberError } = await supabase
+                    .from('team_members')
+                    .insert({
+                        team_id: team.id,
+                        player_id: currentProfile.id,
+                        role: 'founder'
+                    });
+                
+                if (memberError) {
+                    statusDiv.innerHTML = `<div class="status-message status-error">Error: ${memberError.message}</div>`;
+                    return;
+                }
+                
+                statusDiv.innerHTML = `<div class="status-message status-success">Team "${teamName}" created!</div>`;
+                this.querySelector('#team-name').value = '';
+                
+                // Refresh team list
+                document.querySelector('team-list').loadTeams();
+            }
+        }
+        
+        // Team List Web Component
+        class TeamList extends HTMLElement {
+            connectedCallback() {
+                this.render();
+                this.loadTeams();
+                this.subscribeToUpdates();
+            }
+            
+            render() {
+                this.innerHTML = `
+                    <h2>Available Teams</h2>
+                    <div class="team-grid" id="team-grid">
+                        <div>Loading teams...</div>
+                    </div>
+                `;
+            }
+            
+            async loadTeams() {
+                const { data: teams, error } = await supabase
+                    .from('teams')
+                    .select(`
+                        *,
+                        team_members (
+                            id,
+                            player_id,
+                            role
+                        ),
+                        profiles!teams_founder_id_fkey (
+                            call_sign
+                        )
+                    `)
+                    .order('created_at', { ascending: false });
+                
+                if (error) {
+                    console.error('Error loading teams:', error);
+                    return;
+                }
+                
+                const grid = this.querySelector('#team-grid');
+                
+                if (teams.length === 0) {
+                    grid.innerHTML = '<div>No teams yet. Create the first one!</div>';
+                    return;
+                }
+                
+                grid.innerHTML = teams.map(team => `
+                    <team-card 
+                        team-id="${team.id}"
+                        team-name="${team.name}"
+                        founder="${team.profiles?.call_sign || 'Unknown'}"
+                        member-count="${team.team_members?.length || 0}"
+                        max-members="${team.max_members}"
+                    ></team-card>
+                `).join('');
+            }
+            
+            subscribeToUpdates() {
+                // Subscribe to team changes
+                supabase.channel('teams-channel')
+                    .on('postgres_changes', 
+                        { event: '*', schema: 'public', table: 'teams' },
+                        () => this.loadTeams()
+                    )
+                    .on('postgres_changes',
+                        { event: '*', schema: 'public', table: 'team_members' },
+                        () => this.loadTeams()
+                    )
+                    .subscribe();
+            }
+        }
+        
+        // Team Card Web Component
+        class TeamCard extends HTMLElement {
+            connectedCallback() {
+                this.render();
+            }
+            
+            render() {
+                const teamId = this.getAttribute('team-id');
+                const teamName = this.getAttribute('team-name');
+                const founder = this.getAttribute('founder');
+                const memberCount = this.getAttribute('member-count');
+                const maxMembers = this.getAttribute('max-members');
+                
+                this.innerHTML = `
+                    <div class="team-header">
+                        <div class="team-name">${teamName}</div>
+                        <div class="member-count">${memberCount}/${maxMembers}</div>
+                    </div>
+                    <div>Founded by: ${founder}</div>
+                    <button class="join-button" onclick="this.getRootNode().host.joinTeam('${teamId}')">
+                        Join Team
+                    </button>
+                `;
+            }
+            
+            async joinTeam(teamId) {
+                if (!currentProfile) {
+                    alert('Please login first!');
+                    return;
+                }
+                
+                // Check if already a member
+                const { data: existing } = await supabase
+                    .from('team_members')
+                    .select('id')
+                    .eq('team_id', teamId)
+                    .eq('player_id', currentProfile.id)
+                    .single();
+                
+                if (existing) {
+                    alert('You are already in this team!');
+                    return;
+                }
+                
+                // Create join request
+                const { error } = await supabase
+                    .from('team_join_requests')
+                    .insert({
+                        team_id: teamId,
+                        player_id: currentProfile.id
+                    });
+                
+                if (error) {
+                    if (error.code === '23505') {
+                        alert('You already have a pending request for this team!');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                    return;
+                }
+                
+                alert('Join request sent to team founder!');
+                this.querySelector('.join-button').disabled = true;
+                this.querySelector('.join-button').textContent = 'Request Sent';
+            }
+        }
+        
+        // Register Web Components
+        customElements.define('team-creator', TeamCreator);
+        customElements.define('team-list', TeamList);
+        customElements.define('team-card', TeamCard);
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            console.log('EDL Teams-First MVP initialized!');
+            console.log('Stack: Vanilla JS + Web Components + Supabase');
+            console.log('Deployment target: <60 seconds');
+        });
+    </script>
+</body>
+</html>

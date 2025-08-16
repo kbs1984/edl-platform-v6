@@ -1,0 +1,37 @@
+Starting processing at Sat Aug 16 11:55:45 KST 2025
+
+Processing: 001-1. num.label.Onboarding&Directory
+  ✓ Saved to docs/canvas-analysis/001-1. num.label.Onboarding&Directory.json
+Processing: 001-2. label.Communication, messages and Invitations
+  ✓ Saved to docs/canvas-analysis/001-2. label.Communication, messages and Invitations.json
+Processing: 001-3. seed.Contact Us Box
+  ✓ Saved to docs/canvas-analysis/001-3. seed.Contact Us Box.json
+Processing: 001-4. needlabel.Activity & Registrar Box
+  ✓ Saved to docs/canvas-analysis/001-4. needlabel.Activity & Registrar Box.json
+Processing: 001-5. seed.Activity Instance
+  ✓ Saved to docs/canvas-analysis/001-5. seed.Activity Instance.json
+Processing: 002-1. seed.PlayerID Profile Box
+  ✓ Saved to docs/canvas-analysis/002-1. seed.PlayerID Profile Box.json
+Processing: 002-2. needlabel.Associated Teams Box
+  ✓ Saved to docs/canvas-analysis/002-2. needlabel.Associated Teams Box.json
+Processing: 002-3. seed.Badges Box
+  ✓ Saved to docs/canvas-analysis/002-3. seed.Badges Box.json
+Processing: 002-4. seed.HoG Box
+  ✓ Saved to docs/canvas-analysis/002-4. seed.HoG Box.json
+Processing: 002-5. seed.Resources Box
+  ✓ Saved to docs/canvas-analysis/002-5. seed.Resources Box.json
+Processing: 003-2 seed.emCoin Transactions Box
+  ✓ Saved to docs/canvas-analysis/003-2 seed.emCoin Transactions Box.json
+
+Creating summary report...
+Summary saved to docs/canvas-analysis/BATCH-SUMMARY.md
+
+=======================================
+Processing complete!
+
+Results saved to:
+  - docs/canvas-analysis/*.json (detailed analysis)
+  - docs/canvas-analysis/BATCH-SUMMARY.md (summary)
+  - logs/canvas-processing/2025-08-16-115545.log (processing log)
+
+You can now start Claude Code and read these files.

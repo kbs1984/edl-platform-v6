@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-08-15T17:26:48.163613",
+  "session": "00006",
+  "health": {
+    "overall": 0.7208333333333334,
+    "synchronization": 1.0,
+    "completeness": 1.0,
+    "consistency": 0.6666666666666666,
+    "transparency": 0.08333333333333333
+  },
+  "agents": {
+    "fs_agent": {
+      "status": "healthy",
+      "error": null
+    },
+    "gh_agent": {
+      "status": "healthy",
+      "error": null
+    },
+    "db_agent": {
+      "status": "unavailable",
+      "error": "No Supabase credentials"
+    },
+    "partial_capability": true
+  },
+  "debt": {
+    "uncommitted_files": 0,
+    "untracked_files": 0,
+    "unpushed_commits": 0,
+    "undocumented_features": 0,
+    "missing_tests": 0,
+    "total_debt_score": 0,
+    "debt_level": "LOW"
+  },
+  "gaps": {
+    "uncommitted": 0,
+    "untracked": 0,
+    "deceptions": 0
+  },
+  "truth_score": 0.08333333333333333
+}

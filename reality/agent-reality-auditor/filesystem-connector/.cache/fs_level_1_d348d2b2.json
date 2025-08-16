@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-15T14:26:18.498885",
+    "agent": "filesystem-reality",
+    "check_type": "level_1_discovery",
+    "session_id": "d348d2b2",
+    "confidence_score": 1.0,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020061122560
+  },
+  "discoveries": {
+    "level": 1,
+    "summary": {
+      "can_list_contents": true
+    }
+  },
+  "timestamp": "2025-08-15T14:26:18.498921"
+}

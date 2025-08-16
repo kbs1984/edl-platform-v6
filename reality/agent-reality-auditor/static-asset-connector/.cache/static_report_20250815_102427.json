@@ -1,0 +1,78 @@
+{
+  "agent": "Static Asset Reality Agent",
+  "session": "00008",
+  "timestamp": "2025-08-15T10:24:27.833032",
+  "levels": {
+    "access": {
+      "accessible": true,
+      "html_files": 2,
+      "css_files": 0,
+      "js_files": 0,
+      "total_static": 2,
+      "timestamp": "2025-08-15T10:24:27.875484"
+    },
+    "inventory": {
+      "summary": {
+        "html_count": 2,
+        "css_count": 0,
+        "js_count": 0,
+        "python_dashboard_count": 3
+      },
+      "files": {
+        "html_files": [
+          {
+            "path": "dashboard.html",
+            "size": 16364,
+            "modified": "2025-08-14T14:08:52.186216"
+          },
+          {
+            "path": "reality/dashboard/reality_dashboard.html",
+            "size": 20758,
+            "modified": "2025-08-15T14:21:34.034860"
+          }
+        ],
+        "css_files": [],
+        "js_files": [],
+        "python_files": [
+          {
+            "path": "shared/tools/terminal-dashboard.py",
+            "size": 12810,
+            "type": "dashboard"
+          },
+          {
+            "path": "reality/dashboard/test_reality_dashboard.py",
+            "size": 2199,
+            "type": "dashboard"
+          },
+          {
+            "path": "reality/dashboard/reality_dashboard.py",
+            "size": 16647,
+            "type": "dashboard"
+          }
+        ],
+        "assets": []
+      },
+      "timestamp": "2025-08-15T10:24:27.886141"
+    },
+    "changes": {
+      "message": "First scan - no previous state",
+      "timestamp": "2025-08-15T10:24:27.897111"
+    },
+    "gaps": {
+      "gaps": [
+        {
+          "gap_type": "future_api_detected",
+          "severity": "INFO",
+          "file": "dashboard.html",
+          "truth": "HTML contains API call patterns",
+          "impact": "Consider implementing API Contract Agent when backend is added"
+        }
+      ],
+      "total_gaps": 1,
+      "critical_gaps": 0,
+      "health_score": 100
+    }
+  },
+  "health_score": 100,
+  "status": "healthy"
+}

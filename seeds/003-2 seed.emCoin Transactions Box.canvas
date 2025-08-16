@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"id":"623501bca9ca22e4","type":"text","text":"","x":-300,"y":-294,"width":1480,"height":50,"color":"3"},
+		{"id":"c2ee3e96bf811405","type":"text","text":"","x":-1180,"y":-98,"width":673,"height":50,"color":"3"},
+		{"id":"9b1a70903ea5e0bd","type":"text","text":"","x":-1180,"y":-51,"width":50,"height":405,"color":"3"},
+		{"id":"37797e75045523ce","type":"text","text":"","x":-557,"y":-48,"width":50,"height":405,"color":"3"},
+		{"id":"4482e06b24e7050e","type":"text","text":"### emCoin Transactions","x":-994,"y":28,"width":300,"height":50,"color":"#e633c5"},
+		{"id":"2bfc76afa33d4dc9","type":"text","text":"","x":-1180,"y":357,"width":673,"height":50,"color":"3"},
+		{"id":"2ce5168c74ebeb78","type":"text","text":"| Current Balance\n| Transaction History","x":-982,"y":89,"width":277,"height":153,"color":"#e633c5"},
+		{"id":"21cc62e31e62a100","type":"text","text":"","x":-300,"y":-245,"width":50,"height":860,"color":"3"},
+		{"id":"92fa44898593a930","type":"text","text":"","x":-300,"y":616,"width":1480,"height":50,"color":"3"},
+		{"id":"b0d6432fd4ea67da","type":"text","text":"### Payment History","x":115,"y":2,"width":300,"height":50,"color":"#e633c5"},
+		{"id":"6d2d7be3c8db95c5","type":"text","text":"### Your paymentInfo","x":435,"y":2,"width":300,"height":50,"color":"#e633c5"},
+		{"id":"99684d36cb406aa3","type":"text","text":"### Payment History\n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n(YYMMDD_DMF_ID) \n","x":115,"y":78,"width":300,"height":206,"color":"#e633c5"},
+		{"id":"7aa17af42de1922b","type":"text","text":"### paymentInfoID\n#### \"callSign\"\n#### EnablerID\n#### Bank Details","x":435,"y":78,"width":300,"height":206,"color":"#e633c5"},
+		{"id":"61dd3a9dc246773c","type":"text","text":"### Back to Dashboard","x":265,"y":304,"width":320,"height":50,"color":"6"},
+		{"id":"381d765b5837adc0","type":"text","text":"","x":1130,"y":-245,"width":50,"height":860,"color":"3"}
+	],
+	"edges":[]
+}

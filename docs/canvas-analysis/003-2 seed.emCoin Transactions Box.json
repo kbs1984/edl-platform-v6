@@ -1,0 +1,413 @@
+Parsing Obsidian Canvas...
+{
+  "tasks": {
+    "623501bca9ca22e4": {
+      "id": "623501bca9ca22e4",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -300,
+        "y": -294,
+        "width": 1480,
+        "height": 50
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "c2ee3e96bf811405": {
+      "id": "c2ee3e96bf811405",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1180,
+        "y": -98,
+        "width": 673,
+        "height": 50
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "9b1a70903ea5e0bd": {
+      "id": "9b1a70903ea5e0bd",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1180,
+        "y": -51,
+        "width": 50,
+        "height": 405
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "37797e75045523ce": {
+      "id": "37797e75045523ce",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -557,
+        "y": -48,
+        "width": 50,
+        "height": 405
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "4482e06b24e7050e": {
+      "id": "4482e06b24e7050e",
+      "text": "### emCoin Transactions",
+      "description": "### emCoin Transactions",
+      "type": "text",
+      "position": {
+        "x": -994,
+        "y": 28,
+        "width": 300,
+        "height": 50
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "2bfc76afa33d4dc9": {
+      "id": "2bfc76afa33d4dc9",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -1180,
+        "y": 357,
+        "width": 673,
+        "height": 50
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "2ce5168c74ebeb78": {
+      "id": "2ce5168c74ebeb78",
+      "text": "| Current Balance\n| Transaction History",
+      "description": "| Current Balance | Transaction History",
+      "type": "text",
+      "position": {
+        "x": -982,
+        "y": 89,
+        "width": 277,
+        "height": 153
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "21cc62e31e62a100": {
+      "id": "21cc62e31e62a100",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -300,
+        "y": -245,
+        "width": 50,
+        "height": 860
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "92fa44898593a930": {
+      "id": "92fa44898593a930",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": -300,
+        "y": 616,
+        "width": 1480,
+        "height": 50
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "b0d6432fd4ea67da": {
+      "id": "b0d6432fd4ea67da",
+      "text": "### Payment History",
+      "description": "### Payment History",
+      "type": "text",
+      "position": {
+        "x": 115,
+        "y": 2,
+        "width": 300,
+        "height": 50
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "6d2d7be3c8db95c5": {
+      "id": "6d2d7be3c8db95c5",
+      "text": "### Your paymentInfo",
+      "description": "### Your paymentInfo",
+      "type": "text",
+      "position": {
+        "x": 435,
+        "y": 2,
+        "width": 300,
+        "height": 50
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "99684d36cb406aa3": {
+      "id": "99684d36cb406aa3",
+      "text": "### Payment History\n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n231231_ActivityType_ActivityID \n(YYMMDD_DMF_ID) \n",
+      "description": "### Payment History 231231_ActivityType_ActivityID 231231_ActivityType_ActivityID 231231_ActivityType_ActivityID 231231_ActivityType_ActivityID (YYMMDD_DMF_ID)",
+      "type": "text",
+      "position": {
+        "x": 115,
+        "y": 78,
+        "width": 300,
+        "height": 206
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "7aa17af42de1922b": {
+      "id": "7aa17af42de1922b",
+      "text": "### paymentInfoID\n#### \"callSign\"\n#### EnablerID\n#### Bank Details",
+      "description": "### paymentInfoID #### \"callSign\" #### EnablerID #### Bank Details",
+      "type": "text",
+      "position": {
+        "x": 435,
+        "y": 78,
+        "width": 300,
+        "height": 206
+      },
+      "color": "#e633c5",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "61dd3a9dc246773c": {
+      "id": "61dd3a9dc246773c",
+      "text": "### Back to Dashboard",
+      "description": "### Back to Dashboard",
+      "type": "text",
+      "position": {
+        "x": 265,
+        "y": 304,
+        "width": 320,
+        "height": 50
+      },
+      "color": "6",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    },
+    "381d765b5837adc0": {
+      "id": "381d765b5837adc0",
+      "text": "",
+      "description": "",
+      "type": "text",
+      "position": {
+        "x": 1130,
+        "y": -245,
+        "width": 50,
+        "height": 860
+      },
+      "color": "3",
+      "priority": 2,
+      "estimated_hours": 4.0,
+      "assignee": null,
+      "tags": [],
+      "acceptance_criteria": [],
+      "depends_on": [],
+      "intent": "",
+      "complexity": "medium"
+    }
+  },
+  "edges": [],
+  "stats": {
+    "total_tasks": 15,
+    "total_dependencies": 0,
+    "independent_tasks": 15,
+    "max_dependency_depth": 1,
+    "total_estimated_hours": 60.0,
+    "average_hours_per_task": 4.0,
+    "priority_distribution": {
+      "P2": 15
+    },
+    "tag_distribution": {},
+    "complexity_distribution": {
+      "easy": 0,
+      "medium": 15,
+      "hard": 0,
+      "complex": 0
+    }
+  },
+  "issues": [
+    {
+      "type": "orphaned_tasks",
+      "severity": "warning",
+      "message": "15 tasks have no dependencies or dependents",
+      "tasks": [
+        "623501bca9ca22e4",
+        "c2ee3e96bf811405",
+        "9b1a70903ea5e0bd",
+        "37797e75045523ce",
+        "4482e06b24e7050e",
+        "2bfc76afa33d4dc9",
+        "2ce5168c74ebeb78",
+        "21cc62e31e62a100",
+        "92fa44898593a930",
+        "b0d6432fd4ea67da",
+        "6d2d7be3c8db95c5",
+        "99684d36cb406aa3",
+        "7aa17af42de1922b",
+        "61dd3a9dc246773c",
+        "381d765b5837adc0"
+      ]
+    },
+    {
+      "type": "missing_estimates",
+      "severity": "info",
+      "message": "15 tasks using default time estimates",
+      "tasks": [
+        "623501bca9ca22e4",
+        "c2ee3e96bf811405",
+        "9b1a70903ea5e0bd",
+        "37797e75045523ce",
+        "4482e06b24e7050e",
+        "2bfc76afa33d4dc9",
+        "2ce5168c74ebeb78",
+        "21cc62e31e62a100",
+        "92fa44898593a930",
+        "b0d6432fd4ea67da",
+        "6d2d7be3c8db95c5",
+        "99684d36cb406aa3",
+        "7aa17af42de1922b",
+        "61dd3a9dc246773c",
+        "381d765b5837adc0"
+      ]
+    },
+    {
+      "type": "missing_criteria",
+      "severity": "warning",
+      "message": "15 tasks without acceptance criteria",
+      "tasks": [
+        "623501bca9ca22e4",
+        "c2ee3e96bf811405",
+        "9b1a70903ea5e0bd",
+        "37797e75045523ce",
+        "4482e06b24e7050e",
+        "2bfc76afa33d4dc9",
+        "2ce5168c74ebeb78",
+        "21cc62e31e62a100",
+        "92fa44898593a930",
+        "b0d6432fd4ea67da",
+        "6d2d7be3c8db95c5",
+        "99684d36cb406aa3",
+        "7aa17af42de1922b",
+        "61dd3a9dc246773c",
+        "381d765b5837adc0"
+      ]
+    }
+  ],
+  "metadata": {
+    "parser": "Obsidian Canvas Parser",
+    "version": "1.0.0",
+    "parsed_at": "2025-08-16T02:55:46.109321",
+    "canvas_version": "unknown"
+  }
+}

@@ -1,0 +1,28 @@
+{
+	"nodes":[
+		{"id":"aa9b86833b9cf497","type":"text","text":"","x":-1680,"y":-277,"width":673,"height":50,"color":"2"},
+		{"id":"6360e9e1c927f706","type":"text","text":"","x":-1680,"y":-230,"width":50,"height":405,"color":"2"},
+		{"id":"a24fdc5a45e71f59","type":"text","text":"","x":-1680,"y":178,"width":673,"height":50,"color":"2"},
+		{"id":"9967adf6fe691445","type":"text","text":"### Contact Us","x":-1445,"y":-118,"width":204,"height":50,"color":"#ffffff"},
+		{"id":"52e1dfccf54c4c59","type":"text","text":"| Need help? \n| Suggest changes? ","x":-1437,"y":-55,"width":192,"height":143,"color":"#ffffff"},
+		{"id":"a367385b1e9a4528","type":"text","text":"","x":-1057,"y":-227,"width":50,"height":405,"color":"2"},
+		{"id":"624c2c364b24484d","type":"text","text":"","x":-790,"y":-480,"width":1480,"height":50,"color":"#ffffff"},
+		{"id":"778862c42e407424","type":"text","text":"","x":-790,"y":-431,"width":50,"height":860,"color":"2"},
+		{"id":"14421ad597c41455","type":"text","text":"","x":-790,"y":430,"width":1480,"height":50,"color":"2"},
+		{"id":"02157a8196902fa4","type":"text","text":"## How can we help you?","x":-550,"y":-280,"width":500,"height":50,"color":"#ffffff"},
+		{"id":"e31552ad4e02854d","type":"text","text":"# Area 04","x":-290,"y":-49,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"6be182dd22640734","type":"text","text":"# Area 06","x":-290,"y":107,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"5150237f3de141bf","type":"text","text":"# Activities (Event or Exercise)","x":-23,"y":-200,"width":447,"height":91,"color":"#ffffff"},
+		{"id":"41bfadada54f649a","type":"text","text":"# Analytics","x":-23,"y":-88,"width":447,"height":91,"color":"#ffffff"},
+		{"id":"51741b40a8df701a","type":"text","text":"# Badges & Ballots","x":-23,"y":29,"width":447,"height":91,"color":"#ffffff"},
+		{"id":"e60a54d536824a16","type":"text","text":"# New Features Request","x":-23,"y":151,"width":447,"height":91,"color":"#ffffff"},
+		{"id":"3a0e5dcd2ac29202","type":"text","text":"## Left\n# Per each Area, use AI chatbot to collect related information and respond within no later than 24 hours\n\n## Right\n# Ask chatbot to revise the comments for clarity and legibility \n","x":970,"y":-281,"width":640,"height":499,"color":"#ffffff"},
+		{"id":"7d5b21027d191f2b","type":"text","text":"# Area 01","x":-530,"y":-205,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"40d376a1d4b3c62a","type":"text","text":"# Area 03","x":-530,"y":-49,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"b3622aa91bdc0006","type":"text","text":"# Area 05","x":-530,"y":107,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"2010a464955d7fb4","type":"text","text":"# Area 02","x":-290,"y":-205,"width":220,"height":143,"color":"#ffffff"},
+		{"id":"8e9b115fe676567f","type":"text","text":"## What should we improve upon?","x":-50,"y":-280,"width":500,"height":50,"color":"#ffffff"},
+		{"id":"e8bfe0dd9667c8b7","type":"text","text":"","x":640,"y":-431,"width":50,"height":860,"color":"2"}
+	],
+	"edges":[]
+}

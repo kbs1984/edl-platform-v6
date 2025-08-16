@@ -1,0 +1,387 @@
+{
+  "db_create_001": {
+    "id": "db_create_001",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:35:47.284156",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:35:47.284177"
+    ],
+    "description": "Create core identity tables (profiles, schools, locations)",
+    "depends_on": [],
+    "blocks": [
+      "db_create_002",
+      "dashboard_player_001"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "profiles table with call_sign as unique identifier",
+      "schools table with location reference",
+      "locations table for geographic context",
+      "All tables have attribution columns (_why_exists, _canvas_source)",
+      "Foreign key relationships properly defined"
+    ],
+    "evidence": [],
+    "intent": "Foundation for all user identity - MUST exist first",
+    "priority": 0,
+    "estimated_hours": 3.0,
+    "why_exists": "Canvas shows Profile as central component with School/Location",
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "db_create_002": {
+    "id": "db_create_002",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:35:47.284179",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:35:47.284180"
+    ],
+    "description": "Create social structure tables (teams, team_members)",
+    "depends_on": [
+      "db_create_001"
+    ],
+    "blocks": [
+      "db_create_003",
+      "dashboard_player_003"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "teams table with founder reference to profiles",
+      "team_members table with role constraints",
+      "Unique constraints on team roles",
+      "Join request flow support"
+    ],
+    "evidence": [],
+    "intent": "Enable team formation shown in Canvas Scenario I",
+    "priority": 0,
+    "estimated_hours": 2.0,
+    "why_exists": "Canvas Scenario I shows detailed team join request flow",
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "db_create_003": {
+    "id": "db_create_003",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:35:47.284181",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:35:47.284182"
+    ],
+    "description": "Create engagement tables (activities, activity_registrations)",
+    "depends_on": [
+      "db_create_002"
+    ],
+    "blocks": [
+      "db_create_004",
+      "dashboard_player_002"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "activities table with supervisor reference",
+      "activity_registrations with unique constraint",
+      "Support for upcoming/history/registration states"
+    ],
+    "evidence": [],
+    "intent": "Activities are primary platform engagement per Canvas",
+    "priority": 0,
+    "estimated_hours": 2.0,
+    "why_exists": "Canvas Activities & Registrar section is prominent",
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "db_create_004": {
+    "id": "db_create_004",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:35:47.284183",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:35:47.284183"
+    ],
+    "description": "Create gamification tables (badges, user_badges)",
+    "depends_on": [
+      "db_create_003"
+    ],
+    "blocks": [
+      "db_create_005",
+      "dashboard_player_005"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "badges table with criteria JSON",
+      "user_badges with unique constraint per player/badge",
+      "Category and points system"
+    ],
+    "evidence": [],
+    "intent": "Gamification through achievements per Canvas Badges section",
+    "priority": 1,
+    "estimated_hours": 2.0,
+    "why_exists": "Canvas shows Available Badges and Badges Earned",
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "db_create_005": {
+    "id": "db_create_005",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:35:47.284184",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:35:47.284185"
+    ],
+    "description": "Create communication and analytics tables (messages, performance_metrics)",
+    "depends_on": [
+      "db_create_004"
+    ],
+    "blocks": [
+      "dashboard_player_004",
+      "dashboard_player_006"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "messages table with read tracking",
+      "performance_metrics with flexible JSONB structure",
+      "Support for ballots, rankings, feedback"
+    ],
+    "evidence": [],
+    "intent": "Enable communication and performance tracking",
+    "priority": 1,
+    "estimated_hours": 3.0,
+    "why_exists": "Canvas shows emDash Comm and Performance Tracking sections",
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_001": {
+    "id": "dashboard_player_001",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883622",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883642"
+    ],
+    "description": "Implement Player Profile Section",
+    "depends_on": [
+      "db_create_001"
+    ],
+    "blocks": [
+      "dashboard_player_002"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Profile image upload and display",
+      "Edit functionality for all profile fields",
+      "School and location dropdown/search",
+      "Grade and division selection",
+      "Linked users display"
+    ],
+    "evidence": [],
+    "intent": "Core player identity and profile management",
+    "priority": 0,
+    "estimated_hours": 8.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "profiles",
+      "schools",
+      "divisions"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_002": {
+    "id": "dashboard_player_002",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883645",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883646"
+    ],
+    "description": "Implement Activities & Registrar Section",
+    "depends_on": [
+      "dashboard_player_001",
+      "db_create_003"
+    ],
+    "blocks": [
+      "dashboard_player_003"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Display upcoming activities list",
+      "Activity registration flow",
+      "Activity history with filters",
+      "Integration with activity tables"
+    ],
+    "evidence": [],
+    "intent": "Enable players to discover and join activities",
+    "priority": 0,
+    "estimated_hours": 12.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "activities",
+      "activity_registrations",
+      "activity_history"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_003": {
+    "id": "dashboard_player_003",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883648",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883649"
+    ],
+    "description": "Implement Associated Teams Section",
+    "depends_on": [
+      "dashboard_player_002",
+      "db_create_002"
+    ],
+    "blocks": [
+      "dashboard_player_004"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Display team memberships",
+      "Team invitation handling",
+      "Team role display (Founder, Mate)",
+      "Join request flow as shown in Scenario I"
+    ],
+    "evidence": [],
+    "intent": "Social team dynamics and collaboration",
+    "priority": 0,
+    "estimated_hours": 10.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "teams",
+      "team_members",
+      "team_invitations"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_004": {
+    "id": "dashboard_player_004",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883651",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883651"
+    ],
+    "description": "Implement emDash Communication Section",
+    "depends_on": [
+      "dashboard_player_003",
+      "db_create_005"
+    ],
+    "blocks": [
+      "dashboard_player_005"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Recent communications display",
+      "Message preview and navigation",
+      "Team invitation notifications",
+      "Contact Us functionality"
+    ],
+    "evidence": [],
+    "intent": "Communication hub for player interactions",
+    "priority": 1,
+    "estimated_hours": 6.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "messages",
+      "team_invitations",
+      "notifications"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_005": {
+    "id": "dashboard_player_005",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883653",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883654"
+    ],
+    "description": "Implement Badges System",
+    "depends_on": [
+      "dashboard_player_004",
+      "db_create_004"
+    ],
+    "blocks": [
+      "dashboard_player_006"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Available badges display",
+      "Earned badges showcase",
+      "Badge progress tracking",
+      "Badge criteria display"
+    ],
+    "evidence": [],
+    "intent": "Gamification and achievement tracking",
+    "priority": 1,
+    "estimated_hours": 8.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "badges",
+      "user_badges",
+      "badge_criteria"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  },
+  "dashboard_player_006": {
+    "id": "dashboard_player_006",
+    "created_by": "00011",
+    "created_at": "2025-08-16T02:29:43.883655",
+    "modified_by": [
+      "00011"
+    ],
+    "modified_at": [
+      "2025-08-16T02:29:43.883656"
+    ],
+    "description": "Implement Performance Tracking Section",
+    "depends_on": [
+      "dashboard_player_005",
+      "db_create_005"
+    ],
+    "blocks": [
+      "dashboard_player_007"
+    ],
+    "status": "pending",
+    "acceptance_criteria": [
+      "Ballot and feedback display",
+      "Player rankings visualization",
+      "Team rankings display",
+      "Analytics dashboard access"
+    ],
+    "evidence": [],
+    "intent": "Performance metrics and competitive tracking",
+    "priority": 1,
+    "estimated_hours": 10.0,
+    "actual_hours": null,
+    "completion_confidence": 0,
+    "db_tables": [
+      "ballots",
+      "rankings",
+      "analytics",
+      "performance_metrics"
+    ],
+    "canvas_source": "002-1.seed.PlayerID Profile Box.canvas"
+  }
+}

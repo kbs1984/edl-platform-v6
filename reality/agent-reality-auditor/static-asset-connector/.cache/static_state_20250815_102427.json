@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "html_count": 2,
+    "css_count": 0,
+    "js_count": 0,
+    "python_dashboard_count": 3
+  },
+  "files": {
+    "html_files": [
+      {
+        "path": "dashboard.html",
+        "size": 16364,
+        "modified": "2025-08-14T14:08:52.186216"
+      },
+      {
+        "path": "reality/dashboard/reality_dashboard.html",
+        "size": 20758,
+        "modified": "2025-08-15T14:21:34.034860"
+      }
+    ],
+    "css_files": [],
+    "js_files": [],
+    "python_files": [
+      {
+        "path": "shared/tools/terminal-dashboard.py",
+        "size": 12810,
+        "type": "dashboard"
+      },
+      {
+        "path": "reality/dashboard/test_reality_dashboard.py",
+        "size": 2199,
+        "type": "dashboard"
+      },
+      {
+        "path": "reality/dashboard/reality_dashboard.py",
+        "size": 16647,
+        "type": "dashboard"
+      }
+    ],
+    "assets": []
+  },
+  "timestamp": "2025-08-15T10:24:27.896821"
+}

@@ -1,0 +1,179 @@
+#!/bin/bash
+# Reality Status Command - Session 00013
+# Usage: reality [status|check|update|commit]
+# Makes truth verification automatic and unavoidable
+
+set -e
+
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+COMMAND="${1:-status}"
+
+# Color codes for visibility
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+# Find the latest reality status file
+LATEST_STATUS=$(ls -t "$PROJECT_ROOT"/*_REALITY-STATUS.md 2>/dev/null | head -1)
+
+case "$COMMAND" in
+    status|s)
+        echo -e "${BOLD}📊 REALITY STATUS${NC}"
+        echo "=================="
+        
+        if [ -z "$LATEST_STATUS" ]; then
+            echo -e "${RED}❌ No reality status file found${NC}"
+            echo "Creating initial status..."
+            "$0" update
+            exit 0
+        fi
+        
+        # Show key sections from status file
+        echo -e "\n${BLUE}Current Truth:${NC}"
+        grep -A 10 "CURRENT TRUTH" "$LATEST_STATUS" | tail -9 || true
+        
+        echo -e "\n${YELLOW}Uncommitted Work:${NC}"
+        git status --short | head -5 || echo "  ✅ All work committed"
+        
+        echo -e "\n${GREEN}Agent Status:${NC}"
+        if [ -f "$PROJECT_ROOT/.metrics/reality-check-latest.json" ]; then
+            CONSENSUS=$(grep -o '"consensus_score": [0-9]*' "$PROJECT_ROOT/.metrics/reality-check-latest.json" | cut -d' ' -f2)
+            echo "  Consensus Score: ${CONSENSUS}%"
+        fi
+        
+        echo -e "\n${BOLD}Full details: cat $LATEST_STATUS${NC}"
+        ;;
+        
+    check|c)
+        echo -e "${BOLD}🔍 REALITY CHECK${NC}"
+        echo "================"
+        
+        # Run reality check
+        "$PROJECT_ROOT/scripts/00013_reality-check.sh" --quick
+        
+        # Show status after check
+        "$0" status
+        ;;
+        
+    update|u)
+        echo -e "${BOLD}🔄 UPDATING REALITY STATUS${NC}"
+        echo "=========================="
+        
+        SESSION=$(date +%Y%m%d-%H%M%S)
+        NEW_STATUS="$PROJECT_ROOT/00013_REALITY-STATUS-${SESSION}.md"
+        
+        # Create new status file
+        cat > "$NEW_STATUS" << 'EOF'
+# 📊 REALITY STATUS DASHBOARD
+**Generated**: $(date '+%Y-%m-%d %H:%M')
+**Session**: Current
+
+---
+
+## 🚨 CURRENT TRUTH (What IS, not what we think)
+
+### Database Reality
+```yaml
+EOF
+        
+        # Check database
+        if command -v python3 &>/dev/null; then
+            python3 -c "
+from supabase import create_client
+import os
+try:
+    client = create_client(os.getenv('SUPABASE_URL', ''), os.getenv('SUPABASE_ANON_KEY', ''))
+    tables = ['profiles', 'teams', 'team_members', 'team_join_requests']
+    found = []
+    for t in tables:
+        try:
+            r = client.table(t).select('*', count='exact').execute()
+            found.append(f'{t}: {r.count if hasattr(r, \"count\") else 0} rows')
+        except:
+            pass
+    if found:
+        print(f'Status: ✅ DEPLOYED ({len(found)} tables)')
+        for f in found:
+            print(f'  {f}')
+    else:
+        print('Status: ❌ No tables found')
+except:
+    print('Status: ⚠️ Cannot connect to database')
+" >> "$NEW_STATUS"
+        fi
+        
+        echo '```' >> "$NEW_STATUS"
+        
+        # Check git status
+        echo -e "\n### Version Control Reality" >> "$NEW_STATUS"
+        echo '```yaml' >> "$NEW_STATUS"
+        UNCOMMITTED=$(git status --short | wc -l)
+        if [ $UNCOMMITTED -gt 0 ]; then
+            echo "Status: ⚠️ UNCOMMITTED WORK ($UNCOMMITTED files)" >> "$NEW_STATUS"
+            echo "Files:" >> "$NEW_STATUS"
+            git status --short | head -10 >> "$NEW_STATUS"
+        else
+            echo "Status: ✅ All work committed" >> "$NEW_STATUS"
+        fi
+        echo '```' >> "$NEW_STATUS"
+        
+        # Check agents
+        echo -e "\n### Agent Reality" >> "$NEW_STATUS"
+        echo '```yaml' >> "$NEW_STATUS"
+        if [ -f "$PROJECT_ROOT/.metrics/reality-check-latest.json" ]; then
+            CONSENSUS=$(grep -o '"consensus_score": [0-9]*' "$PROJECT_ROOT/.metrics/reality-check-latest.json" | cut -d' ' -f2)
+            echo "Overall Consensus: ${CONSENSUS}%" >> "$NEW_STATUS"
+        fi
+        echo '```' >> "$NEW_STATUS"
+        
+        echo -e "${GREEN}✅ Status updated: $NEW_STATUS${NC}"
+        
+        # Create symlink to latest
+        ln -sf "$NEW_STATUS" "$PROJECT_ROOT/REALITY-STATUS-LATEST.md"
+        ;;
+        
+    commit|save)
+        echo -e "${BOLD}💾 COMMITTING REALITY${NC}"
+        echo "===================="
+        
+        # Check for uncommitted work
+        if [ $(git status --short | wc -l) -eq 0 ]; then
+            echo -e "${GREEN}✅ No uncommitted work${NC}"
+            exit 0
+        fi
+        
+        echo "Found uncommitted work:"
+        git status --short
+        
+        echo -e "\n${YELLOW}Committing all work...${NC}"
+        git add -A
+        git commit -m "Session $(date +%Y%m%d): Reality checkpoint
+        
+        $(git status --short | wc -l) files committed
+        Automated by reality command"
+        
+        echo -e "${GREEN}✅ Work committed${NC}"
+        ;;
+        
+    help|h|*)
+        echo -e "${BOLD}Reality Command - Truth Verification System${NC}"
+        echo ""
+        echo "Usage: reality [command]"
+        echo ""
+        echo "Commands:"
+        echo "  status (s)  - Show current reality status"
+        echo "  check (c)   - Run reality check and show status"
+        echo "  update (u)  - Update reality status file"
+        echo "  commit      - Commit all uncommitted work"
+        echo "  help (h)    - Show this help"
+        echo ""
+        echo "Examples:"
+        echo "  reality         # Show status (default)"
+        echo "  reality check   # Run agents and show status"
+        echo "  reality update  # Generate new status file"
+        echo "  reality commit  # Save all work to git"
+        ;;
+esac

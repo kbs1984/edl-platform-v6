@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-15T18:24:30.338349",
+    "agent": "filesystem-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "47e0bb64",
+    "confidence_score": 0.7,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/integration-connector",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/integration-connector",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1020059348992
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_directories": 2,
+      "total_files": 16,
+      "max_depth_reached": 1,
+      "directories_skipped": [
+        "__pycache__",
+        ".cache"
+      ],
+      "symlinks_found": 0,
+      "git_repository": true,
+      "git_root": "/home/b4sho/edl-projects-with-claude/edl-platform-v6"
+    },
+    "details": {
+      "tree": {
+        "file_count": 16,
+        "dir_count": 2,
+        "size_bytes": 89834,
+        "subdirs": {}
+      }
+    }
+  },
+  "timestamp": "2025-08-15T18:24:30.339130"
+}
