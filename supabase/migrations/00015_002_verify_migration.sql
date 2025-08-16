@@ -18,14 +18,14 @@ FROM users;
 -- 2. Check if all auth.users have corresponding users records
 SELECT 
     'Auth to Users Mapping' as check_name,
-    COUNT(auth.users.id) as auth_users,
-    COUNT(users.id) as user_records,
+    COUNT(au.id) as auth_users,
+    COUNT(u.id) as user_records,
     CASE
-        WHEN COUNT(auth.users.id) = COUNT(users.id) THEN '✅ All auth users mapped'
+        WHEN COUNT(au.id) = COUNT(u.id) THEN '✅ All auth users mapped'
         ELSE '❌ Missing user records for some auth users'
     END as status
-FROM auth.users
-LEFT JOIN users ON users.auth_id = auth.users.id;
+FROM auth.users au
+LEFT JOIN public.users u ON u.auth_id = au.id;
 
 -- 3. Check profiles table has new columns
 SELECT 
