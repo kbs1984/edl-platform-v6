@@ -151,8 +151,8 @@
             <div id="auth-form">
                 <input type="email" id="email" placeholder="Email address">
                 <input type="password" id="password" placeholder="Password">
-                <button onclick="signIn()">Sign In</button>
-                <button onclick="signUp()">Sign Up (Create Account)</button>
+                <button id="signInBtn" onclick="signIn()">Sign In</button>
+                <button id="signUpBtn" onclick="signUp()">Sign Up (Create Account)</button>
             </div>
             <div id="user-info" class="hidden">
                 <div class="status success">
@@ -259,8 +259,11 @@
         }
         
         async function signUp() {
+            console.log('SignUp function called');
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            
+            console.log('Attempting sign up for:', email);
             
             if (!email || !password) {
                 updateStatus('auth-status', 'Please enter email and password', 'error');
@@ -272,20 +275,37 @@
                 return;
             }
             
+            updateStatus('auth-status', 'Creating account...', 'info');
+            
             try {
+                console.log('Calling supabase.auth.signUp');
                 const { data, error } = await supabase.auth.signUp({ email, password });
-                if (error) throw error;
+                
+                console.log('SignUp response:', { data, error });
+                
+                if (error) {
+                    console.error('SignUp error:', error);
+                    throw error;
+                }
                 
                 if (data.user) {
-                    currentUser = data.user;
-                    showLoggedInState(data.user);
-                    updateStatus('auth-status', 'Account created successfully!', 'success');
-                    
-                    // Create profile
-                    await createProfile(data.user);
+                    // Check if email confirmation is required
+                    if (data.user.email_confirmed_at === null) {
+                        updateStatus('auth-status', 'Account created! Please check your email for confirmation link.', 'warning');
+                        console.log('User created but needs email confirmation');
+                    } else {
+                        currentUser = data.user;
+                        showLoggedInState(data.user);
+                        updateStatus('auth-status', 'Account created successfully!', 'success');
+                        // Create profile
+                        await createProfile(data.user);
+                    }
+                } else {
+                    updateStatus('auth-status', 'Account may have been created. Try signing in.', 'info');
                 }
                 
             } catch (error) {
+                console.error('Sign up error:', error);
                 updateStatus('auth-status', 'Sign up failed: ' + error.message, 'error');
             }
         }
@@ -461,7 +481,26 @@
         }
         
         // Initialize on page load
-        window.addEventListener('load', initSupabase);
+        window.addEventListener('load', () => {
+            console.log('Page loaded, initializing Supabase...');
+            initSupabase();
+            
+            // Add direct event listeners as backup
+            document.getElementById('signUpBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Sign up button clicked via event listener');
+                signUp();
+            });
+            
+            document.getElementById('signInBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Sign in button clicked via event listener');
+                signIn();
+            });
+        });
+        
+        // Also add a test function to verify JS is working
+        console.log('JavaScript loaded successfully');
     </script>
 </body>
 </html>
