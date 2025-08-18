@@ -163,6 +163,31 @@
                 </div>
                 <button onclick="signOut()">Sign Out</button>
             </div>
+            
+            <div id="profile-form" class="hidden">
+                <h3>Complete Your Profile</h3>
+                <div id="profile-status"></div>
+                <input type="text" id="call-sign" placeholder="Choose your call sign (unique name)" maxlength="50" required>
+                <div id="call-sign-availability" style="font-size: 12px; margin-bottom: 8px;"></div>
+                <select id="grade-level">
+                    <option value="">Select Grade Level</option>
+                    <option value="4">Grade 4</option>
+                    <option value="5">Grade 5</option>
+                    <option value="6">Grade 6</option>
+                    <option value="7">Grade 7</option>
+                    <option value="8">Grade 8</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <select id="user-role">
+                    <option value="player">Player (Student)</option>
+                    <option value="supervisor">Supervisor (Parent/Teacher)</option>
+                    <option value="enabler">Enabler (Judge/Evaluator)</option>
+                </select>
+                <button onclick="completeProfile()" id="complete-profile-btn">Complete Profile</button>
+            </div>
         </div>
         
         <!-- Team Creation -->
@@ -253,8 +278,16 @@
                 if (error) throw error;
                 
                 currentUser = data.user;
-                showLoggedInState(data.user);
-                updateStatus('auth-status', 'Successfully signed in!', 'success');
+                
+                // Check if profile exists
+                const hasProfile = await checkUserProfile(data.user.id);
+                if (hasProfile) {
+                    showLoggedInState(data.user);
+                    updateStatus('auth-status', 'Successfully signed in!', 'success');
+                } else {
+                    showProfileForm(data.user);
+                    updateStatus('auth-status', 'Please complete your profile.', 'info');
+                }
                 
             } catch (error) {
                 updateStatus('auth-status', 'Sign in failed: ' + error.message, 'error');
@@ -304,10 +337,15 @@
                         console.log('User created but needs email confirmation');
                     } else {
                         currentUser = data.user;
-                        showLoggedInState(data.user);
-                        updateStatus('auth-status', 'Account created successfully!', 'success');
-                        // Create profile
-                        await createProfile(data.user);
+                        // Check if profile exists
+                        const hasProfile = await checkUserProfile(data.user.id);
+                        if (hasProfile) {
+                            showLoggedInState(data.user);
+                            updateStatus('auth-status', 'Account created successfully!', 'success');
+                        } else {
+                            showProfileForm(data.user);
+                            updateStatus('auth-status', 'Account created! Please complete your profile.', 'info');
+                        }
                     }
                 } else {
                     updateStatus('auth-status', 'Account may have been created. Try signing in.', 'info');
@@ -319,21 +357,98 @@
             }
         }
         
-        async function createProfile(user) {
+        async function checkUserProfile(userId) {
             try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('id')
+                    .eq('user_id', userId)
+                    .single();
+                
+                return !error && data;
+            } catch (error) {
+                return false;
+            }
+        }
+        
+        async function checkCallSignAvailable(callSign) {
+            if (!callSign || callSign.length < 2) return false;
+            
+            try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('call_sign')
+                    .eq('call_sign', callSign)
+                    .single();
+                
+                return error || !data; // Available if error (not found) or no data
+            } catch (error) {
+                return true; // Assume available on error
+            }
+        }
+        
+        async function completeProfile() {
+            const callSign = document.getElementById('call-sign').value.trim();
+            const gradeLevel = document.getElementById('grade-level').value;
+            const role = document.getElementById('user-role').value;
+            const completeBtn = document.getElementById('complete-profile-btn');
+            
+            if (!callSign) {
+                updateStatus('profile-status', 'Please enter a call sign', 'error');
+                return;
+            }
+            
+            if (callSign.length < 2) {
+                updateStatus('profile-status', 'Call sign must be at least 2 characters', 'error');
+                return;
+            }
+            
+            if (!gradeLevel && role === 'player') {
+                updateStatus('profile-status', 'Please select your grade level', 'error');
+                return;
+            }
+            
+            completeBtn.disabled = true;
+            updateStatus('profile-status', 'Checking availability...', 'info');
+            
+            // Check if call sign is available
+            const isAvailable = await checkCallSignAvailable(callSign);
+            if (!isAvailable) {
+                updateStatus('profile-status', 'Call sign already taken. Please choose another.', 'error');
+                completeBtn.disabled = false;
+                return;
+            }
+            
+            updateStatus('profile-status', 'Creating profile...', 'info');
+            
+            try {
+                const profileData = {
+                    user_id: currentUser.id,
+                    call_sign: callSign,
+                    role: role
+                };
+                
+                if (gradeLevel) {
+                    profileData.grade_level = parseInt(gradeLevel);
+                }
+                
                 const { error } = await supabase
                     .from('profiles')
-                    .insert({
-                        id: user.id,
-                        email: user.email,
-                        role: 'player'
-                    });
+                    .insert(profileData);
                 
-                if (error && !error.message.includes('duplicate')) {
-                    console.error('Profile creation error:', error);
-                }
+                if (error) throw error;
+                
+                updateStatus('profile-status', 'Profile created successfully!', 'success');
+                
+                // Show main app
+                setTimeout(() => {
+                    showLoggedInState(currentUser);
+                }, 1000);
+                
             } catch (error) {
-                console.error('Profile creation failed:', error);
+                console.error('Profile creation error:', error);
+                updateStatus('profile-status', 'Failed to create profile: ' + error.message, 'error');
+                completeBtn.disabled = false;
             }
         }
         
@@ -348,9 +463,44 @@
             }
         }
         
+        function showProfileForm(user) {
+            document.getElementById('auth-form').classList.add('hidden');
+            document.getElementById('user-info').classList.add('hidden');
+            document.getElementById('profile-form').classList.remove('hidden');
+            document.getElementById('team-section').classList.add('hidden');
+            
+            // Add real-time call sign availability checking
+            const callSignInput = document.getElementById('call-sign');
+            let checkTimeout;
+            callSignInput.addEventListener('input', () => {
+                clearTimeout(checkTimeout);
+                const availability = document.getElementById('call-sign-availability');
+                
+                if (callSignInput.value.length < 2) {
+                    availability.textContent = '';
+                    return;
+                }
+                
+                availability.textContent = 'Checking...';
+                availability.style.color = '#666';
+                
+                checkTimeout = setTimeout(async () => {
+                    const isAvailable = await checkCallSignAvailable(callSignInput.value.trim());
+                    if (isAvailable) {
+                        availability.textContent = '✓ Available';
+                        availability.style.color = 'green';
+                    } else {
+                        availability.textContent = '✗ Already taken';
+                        availability.style.color = 'red';
+                    }
+                }, 500);
+            });
+        }
+        
         function showLoggedInState(user) {
             document.getElementById('auth-form').classList.add('hidden');
             document.getElementById('user-info').classList.remove('hidden');
+            document.getElementById('profile-form').classList.add('hidden');
             document.getElementById('user-email').textContent = user.email;
             document.getElementById('team-section').classList.remove('hidden');
             loadTeams();
@@ -359,6 +509,7 @@
         function showLoggedOutState() {
             document.getElementById('auth-form').classList.remove('hidden');
             document.getElementById('user-info').classList.add('hidden');
+            document.getElementById('profile-form').classList.add('hidden');
             document.getElementById('team-section').classList.add('hidden');
         }
         

@@ -80,6 +80,21 @@
 
 **Testing**: Ready for manual test with real email
 
+✅ **Call Sign with Uniqueness Complete**
+
+**Built**:
+- Added complete profile creation form with call_sign input
+- Real-time availability checking as user types
+- Database uniqueness constraint already exists
+- Role selection (Player/Supervisor/Enabler) 
+- Grade level selection for players
+- Frontend validation + backend verification
+- Profile completion flow for both signup and signin
+
+**Fixed**: createProfile() function now properly references user_id and includes call_sign
+
+**Note**: Created migration `00030_001_add_grade_level.sql` but needs manual application
+
 ## Next Actions
 
 - Complete password reset implementation
