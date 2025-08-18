@@ -1,0 +1,69 @@
+{
+  "timestamp": "2025-08-18T10:29:55.067308",
+  "session_id": "dffabe6a",
+  "health_scores": {
+    "synchronization": 1.0,
+    "completeness": 1.0,
+    "consistency": 0.8,
+    "transparency": 1.0,
+    "overall": 0.97,
+    "assumption_clarity": 1
+  },
+  "level_1": {
+    "level": 1,
+    "timestamp": "2025-08-18T10:29:55.067314",
+    "confidence": 1.0,
+    "agents": {
+      "fs_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "gh_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "db_agent": {
+        "status": "unavailable",
+        "error": "No Supabase credentials"
+      },
+      "partial_capability": true,
+      "vercel_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "static_agent": {
+        "status": "healthy",
+        "error": null
+      }
+    },
+    "summary": {
+      "healthy_agents": 4,
+      "limited_agents": 0,
+      "failed_agents": 0,
+      "can_proceed": true
+    }
+  },
+  "level_2": {
+    "level": 2,
+    "timestamp": "2025-08-18T10:29:56.133674",
+    "confidence": 0.4,
+    "fs_git_sync": {
+      "total_sync_issues": 0,
+      "sync_score": 1.0
+    },
+    "uncommitted": [],
+    "untracked": [],
+    "unpushed": [],
+    "error": "Git command failed: cannot unpack non-iterable CompletedProcess object"
+  },
+  "session_gaps": {
+    "timestamp": "2025-08-18T10:29:56.137232",
+    "session_id": "dffabe6a",
+    "claimed_work": [],
+    "actual_changes": [],
+    "actual_commits": [],
+    "truth_score": 1.0,
+    "deception_instances": []
+  },
+  "retroactive_logging": []
+}

@@ -6,26 +6,31 @@
 
 ## Session Logging Requirements (Constitutional)
 
-### First Action Protocol v3.0 (Claude Custom Commands)
+### First Action Protocol v3.1 (Session 28 Automation Update)
 **EVERY SESSION MUST START WITH:**
+```bash
+# Automated session startup (6 seconds, was 35 minutes manual)
+./scripts/00028-session-start.sh [session-number] "[focus]"
+
+# Examples:
+./scripts/00028-session-start.sh              # Auto-detect next session
+./scripts/00028-session-start.sh 00031        # Specific session number
+./scripts/00028-session-start.sh 00031 "Building features"  # With focus
+./scripts/00028-session-start.sh --help       # Show usage
 ```
-/project:session-start [session-number]
-```
 
-This command will:
-1. Run reality baseline check
-2. Verify system readiness (>80% consensus required)
-3. Check for session log
-4. Alert to uncommitted work
+This automation will:
+1. Run all Reality Agents (8 seconds)
+2. Parse outputs and generate reports
+3. Load context from previous session
+4. Check for handoffs
+5. Create constitutional session log
+6. Display system health summary
 
-**If check fails**: Run `/project:reality-check` for detailed diagnosis
-
-**Quick Commands Available**:
-- `/project:reality-status` - Show current truth
-- `/project:reality-check` - Run all agents  
-- `/project:commit-work` - Intelligent git commit
-- `/project:update-reality` - Update status file
-- `/project:session:handoff` - Generate handoff
+**Manual fallback if automation fails**:
+- Run `./scripts/00028-reality-check.sh` for Reality Agents
+- Create log with `./scripts/00028-create-session-log.sh`
+- See `scripts/00028-AUTOMATION-README.md` for details
 
 **THEN CONTINUE WITH:**
 1. **MANDATORY**: Read RESTORATION-MASTERPLAN-V3.md completely
