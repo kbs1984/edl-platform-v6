@@ -127,7 +127,10 @@ Phase 4: Systematic Implementation (Session 22+)
 3. **Begin Requirements extraction**
 4. **Coordinate with Session 16 findings**
 
-### Phase 2: Requirements Extraction
+### Phase 2: Requirements Extraction (EXPANDED)
+
+#### Critical Insight: User Stories Alone Are Insufficient
+Requirements must be COMPLETE before Reconciliation can effectively bridge gaps. This means beyond user stories, we need success criteria, acceptance tests, priorities, and v5 lessons.
 
 #### Tasks for Sessions 18-19
 1. **Create Requirements Domain structure**:
@@ -136,30 +139,89 @@ Phase 4: Systematic Implementation (Session 22+)
    ├── REQUIREMENTS_INDEX.md
    ├── constitution/          [EXISTING - keep]
    ├── specifications/        [EXISTING - keep]
-   ├── canvas-requirements/   [NEW - move analysis here]
-   ├── user-stories/         [NEW - extract from docs]
-   ├── success-criteria/     [NEW - define measurable]
-   └── validation-tests/     [NEW - how to verify]
+   ├── canvas-requirements/   [MOVE canvas-analysis here]
+   ├── user-stories/         [NEW - extract from Canvas]
+   ├── success-criteria/     [NEW - define "done"]
+   ├── acceptance-tests/     [NEW - how to verify]
+   ├── priority-matrix/      [NEW - P0/P1/P2 rankings]
+   ├── constraints/          [NEW - technical/business]
+   ├── v5-extraction/        [NEW - lessons & patterns]
+   └── validation-tests/     [NEW - Reality Agent checks]
    ```
 
-2. **Process Canvas files systematically**:
-   - Move canvas analysis from docs/ to requirements/
-   - Create requirement tickets from each Canvas node
+2. **Process Starter Seed (Canvas + Schema + SEED LOG)**:
+   - Move canvas-analysis from docs/ to requirements/
+   - Extract user stories from 7,023 nodes
    - Map UI elements to database needs
    - Define user journeys
 
-3. **Extract user stories from existing docs**:
-   - From 5-part EDL Foundation
-   - From Canvas wireframes
-   - From session handoffs
+3. **Extract Complete Requirements**:
+   
+   **User Stories** (WHO wants WHAT):
    - Format: "As a [role], I want [feature], so that [benefit]"
+   - Extract from Canvas JSONs
+   - Group by user role (Player/Supervisor/Enabler)
+   
+   **Success Criteria** (Definition of DONE):
+   - Measurable outcomes for each story
+   - Example: "Team creation" requires:
+     - Team record in database
+     - Creator assigned as founder
+     - Team visible in UI
+     - Join capability enabled
+   
+   **Acceptance Tests** (HOW to verify):
+   - Manual test procedures
+   - Automated test specifications
+   - Performance benchmarks
+   - Reality Agent verification methods
+   
+   **Priority Matrix** (WHEN to build):
+   - P0: Core functionality (auth, teams, profiles)
+   - P1: Essential features (activities, badges)
+   - P2: Enhancements (real-time, analytics)
+   - Based on critical user journey
 
-4. **Define measurable success criteria**:
-   - Each requirement gets acceptance criteria
-   - Each criteria gets a verification method
-   - Reality Agents assigned to verify
+4. **Process v5 Extraction (The Full Seed)**:
+   - Extract working patterns from 16,000 lines frontend
+   - Document state management approaches
+   - Capture payment/emCoin logic
+   - List architectural lessons (what NOT to do)
+   - Identify reusable components
+   - Document the `profiles` vs `profile` schema lesson
+
+5. **Document Constraints & Dependencies**:
+   - Technical constraints (Supabase RLS patterns)
+   - Business constraints (child safety requirements)
+   - Feature dependencies (what must exist first)
+   - Integration requirements
+
+#### The Two-Seed Strategy
+
+**Starter Seed** (What we have now):
+- Canvas JSONs (UI requirements)
+- Database schema proposal
+- SEED LOG (vision and philosophy)
+- Basic structure and flow
+
+**Full Seed** (v5 extraction needed):
+- Working frontend patterns
+- State management solutions
+- Payment/emCoin implementation
+- Lessons learned (what failed)
+- Reusable components
+
+Both seeds are necessary for complete Requirements that enable effective Reconciliation.
 
 ### Phase 3: Reconciliation Activation
+
+#### Prerequisites from Phase 2
+Before Reconciliation can begin, Requirements must deliver:
+- ✅ Complete user stories with success criteria
+- ✅ Acceptance tests for verification
+- ✅ Priority matrix for sequencing
+- ✅ v5 lessons integrated
+- ✅ Constraints documented
 
 #### Tasks for Sessions 20-21
 1. **Create Reconciliation Domain structure**:

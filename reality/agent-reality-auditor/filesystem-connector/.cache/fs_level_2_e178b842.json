@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-17T20:50:09.037387",
+    "agent": "filesystem-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "e178b842",
+    "confidence_score": 0.7,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/integration-connector",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/integration-connector",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1019913015296
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_directories": 6,
+      "total_files": 17,
+      "max_depth_reached": 2,
+      "directories_skipped": [
+        "__pycache__",
+        ".cache"
+      ],
+      "symlinks_found": 0,
+      "git_repository": true,
+      "git_root": "/home/b4sho/edl-projects-with-claude/edl-platform-v6"
+    },
+    "details": {
+      "tree": {
+        "file_count": 17,
+        "dir_count": 3,
+        "size_bytes": 94176,
+        "subdirs": {
+          "requirements": {
+            "file_count": 0,
+            "dir_count": 3,
+            "size_bytes": 0,
+            "subdirs": {
+              "priority-matrix": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              "v5-extraction": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              "acceptance-tests": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-17T20:50:09.037755"
+}

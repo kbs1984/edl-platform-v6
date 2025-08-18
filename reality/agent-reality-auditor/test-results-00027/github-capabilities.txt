@@ -1,0 +1,13 @@
+usage: connector.py [-h] [--level {1,2,3,4,5}] [--path PATH] [--verbose]
+                    [--output {json,text}] [--create-pr] [--create-issue]
+
+GitHub Reality Agent - Progressive Discovery
+
+options:
+  -h, --help            show this help message and exit
+  --level {1,2,3,4,5}   Maximum discovery level (1-5)
+  --path PATH           Repository path (default: current directory)
+  --verbose             Enable verbose output
+  --output {json,text}  Output format
+  --create-pr           Test PR creation (interactive)
+  --create-issue        Test issue creation (interactive)

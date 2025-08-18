@@ -1,0 +1,167 @@
+{
+  "snapshot_id": "f85829c7",
+  "timestamp": "2025-08-17T14:40:50.759873",
+  "session_id": "ca4bbc3d",
+  "discovery_level": 3,
+  "state": {
+    "connection": {
+      "metadata": {
+        "timestamp": "2025-08-17T14:40:47.293196",
+        "agent": "supabase-reality",
+        "check_type": "level_1_discovery",
+        "session_id": "ca4bbc3d",
+        "confidence_score": 1.0
+      },
+      "connection": {
+        "status": "connected",
+        "permission_level": "anon",
+        "rate_limit_remaining": -1
+      },
+      "discoveries": {
+        "level": 1,
+        "summary": {}
+      },
+      "timestamp": "2025-08-17T14:40:47.602020",
+      "from_cache": true
+    },
+    "tables": {
+      "metadata": {
+        "timestamp": "2025-08-17T14:40:47.602364",
+        "agent": "supabase-reality",
+        "check_type": "level_2_discovery",
+        "session_id": "ca4bbc3d",
+        "confidence_score": 0.5
+      },
+      "connection": {
+        "status": "connected",
+        "permission_level": "anon",
+        "rate_limit_remaining": -1
+      },
+      "discoveries": {
+        "level": 2,
+        "summary": {
+          "total_tables": 0,
+          "total_rows": 0,
+          "accessible_tables": []
+        },
+        "details": {
+          "tables": []
+        }
+      },
+      "timestamp": "2025-08-17T14:40:48.281049",
+      "from_cache": true
+    },
+    "schema": {
+      "metadata": {
+        "timestamp": "2025-08-17T14:40:48.281697",
+        "agent": "supabase-reality",
+        "check_type": "level_3_discovery",
+        "session_id": "ca4bbc3d",
+        "confidence_score": 0.6
+      },
+      "connection": {
+        "status": "connected",
+        "permission_level": "anon",
+        "rate_limit_remaining": -1
+      },
+      "discoveries": {
+        "level": 3,
+        "summary": {
+          "total_tables": 0,
+          "total_columns": 50,
+          "total_constraints": 0,
+          "total_indexes": 0
+        },
+        "details": {
+          "schemas": {
+            "profiles": {
+              "columns": [
+                "id",
+                "user_id",
+                "call_sign",
+                "role",
+                "created_at",
+                "_why_exists",
+                "_canvas_source",
+                "avatar_url",
+                "personality_type",
+                "ocean_scores",
+                "school_id",
+                "grade",
+                "division",
+                "_canvas_evidence",
+                "_frequency",
+                "proper_user_id"
+              ],
+              "column_count": 16,
+              "source": "openapi_definitions"
+            },
+            "teams": {
+              "columns": [
+                "id",
+                "name",
+                "founder_id",
+                "max_members",
+                "status",
+                "created_at",
+                "_why_exists",
+                "_canvas_source"
+              ],
+              "column_count": 8,
+              "source": "openapi_definitions"
+            },
+            "users": {
+              "columns": [
+                "id",
+                "email",
+                "auth_id",
+                "created_at",
+                "last_login",
+                "is_active",
+                "_canvas_evidence",
+                "_frequency",
+                "_session",
+                "_fixed_from"
+              ],
+              "column_count": 10,
+              "source": "openapi_definitions"
+            },
+            "team_join_requests": {
+              "columns": [
+                "id",
+                "team_id",
+                "player_id",
+                "status",
+                "requested_at",
+                "responded_at",
+                "_why_exists",
+                "_canvas_source"
+              ],
+              "column_count": 8,
+              "source": "openapi_definitions"
+            },
+            "team_members": {
+              "columns": [
+                "id",
+                "team_id",
+                "player_id",
+                "role",
+                "joined_at",
+                "_why_exists",
+                "_canvas_source",
+                "status"
+              ],
+              "column_count": 8,
+              "source": "openapi_definitions"
+            }
+          },
+          "relationships": [],
+          "rls_policies": {}
+        }
+      },
+      "notes": "Schema derived from OpenAPI definitions",
+      "timestamp": "2025-08-17T14:40:50.759408",
+      "from_cache": true
+    }
+  }
+}

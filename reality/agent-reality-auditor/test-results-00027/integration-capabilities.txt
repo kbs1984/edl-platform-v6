@@ -1,0 +1,9 @@
+usage: connector.py [-h] [--root ROOT] [--output OUTPUT] [--json]
+
+Integration Reality Agent - Meta-Reality Discovery
+
+options:
+  -h, --help       show this help message and exit
+  --root ROOT      Root path for discovery (default: current directory)
+  --output OUTPUT  Output file path (default: stdout)
+  --json           Output JSON instead of visual report

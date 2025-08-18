@@ -1,0 +1,116 @@
+Loading Canvas files...
+  Loaded 12 Canvas files
+Loading story files...
+  Loaded 13 story files
+Analyzing coverage...
+
+================================================================================
+CANVAS COVERAGE VALIDATION REPORT
+Session 00023 Emergency Validation
+================================================================================
+
+SUMMARY STATISTICS:
+  Total Canvas files: 12
+  Total Canvas tasks: 5805
+  Canvas files with story coverage: 11/12
+  Tasks in uncovered Canvas files: 15
+  Percentage of tasks uncovered: 0.3%
+
+  Total user stories created: 275
+  Compression ratio: 21.1:1 (tasks to stories)
+
+CANVAS FILE COVERAGE:
+--------------------------------------------------------------------------------
+
+001-1. num.label.Onboarding&Directory.json
+  Status: 🟡 PARTIALLY COVERED (68.4% task coverage)
+  Tasks: 782 total (668 non-empty)
+  Coverage: 457 full + 0 partial
+  Covering stories: 258 stories
+  Story IDs: US-012, US-098, US-196, US-239, US-024... and 253 more
+
+001-1.json
+  Status: 🟡 PARTIALLY COVERED (68.4% task coverage)
+  Tasks: 782 total (668 non-empty)
+  Coverage: 457 full + 0 partial
+  Covering stories: 258 stories
+  Story IDs: US-012, US-098, US-196, US-239, US-024... and 253 more
+
+001-2. label.Communication, messages and Invitatio...
+  Status: 🟡 PARTIALLY COVERED (64.1% task coverage)
+  Tasks: 1169 total (918 non-empty)
+  Coverage: 588 full + 0 partial
+  Covering stories: 216 stories
+  Story IDs: US-012, US-098, US-196, US-239, US-024... and 211 more
+
+001-3. seed.Contact Us Box.json
+  Status: ✅ WELL COVERED (93.3% task coverage)
+  Tasks: 23 total (15 non-empty)
+  Coverage: 14 full + 0 partial
+  Covering stories: 83 stories
+  Story IDs: US-196, US-024, US-047, US-199, US-179... and 78 more
+
+001-4. needlabel.Activity & Registrar Box.json
+  Status: 🟡 PARTIALLY COVERED (56.3% task coverage)
+  Tasks: 1204 total (903 non-empty)
+  Coverage: 508 full + 0 partial
+  Covering stories: 275 stories
+  Story IDs: US-012, US-098, US-196, US-239, US-024... and 270 more
+
+001-5. seed.Activity Instance.json
+  Status: 🟡 PARTIALLY COVERED (53.3% task coverage)
+  Tasks: 727 total (550 non-empty)
+  Coverage: 293 full + 0 partial
+  Covering stories: 195 stories
+  Story IDs: US-098, US-196, US-239, US-024, US-129... and 190 more
+
+002-1. seed.PlayerID Profile Box.json
+  Status: ✅ WELL COVERED (82.5% task coverage)
+  Tasks: 99 total (80 non-empty)
+  Coverage: 66 full + 0 partial
+  Covering stories: 178 stories
+  Story IDs: US-012, US-196, US-239, US-024, US-047... and 173 more
+
+002-2. needlabel.Associated Teams Box.json
+  Status: ✅ WELL COVERED (79.0% task coverage)
+  Tasks: 787 total (661 non-empty)
+  Coverage: 522 full + 0 partial
+  Covering stories: 193 stories
+  Story IDs: US-012, US-196, US-239, US-024, US-047... and 188 more
+
+002-3. seed.Badges Box.json
+  Status: 🟡 PARTIALLY COVERED (48.0% task coverage)
+  Tasks: 38 total (25 non-empty)
+  Coverage: 12 full + 0 partial
+  Covering stories: 151 stories
+  Story IDs: US-196, US-239, US-047, US-139, US-199... and 146 more
+
+002-4. seed.HoG Box.json
+  Status: ✅ WELL COVERED (94.3% task coverage)
+  Tasks: 47 total (35 non-empty)
+  Coverage: 33 full + 0 partial
+  Covering stories: 98 stories
+  Story IDs: US-098, US-196, US-024, US-047, US-199... and 93 more
+
+002-5. seed.Resources Box.json
+  Status: ✅ WELL COVERED (72.0% task coverage)
+  Tasks: 132 total (100 non-empty)
+  Coverage: 72 full + 0 partial
+  Covering stories: 180 stories
+  Story IDs: US-012, US-196, US-024, US-129, US-047... and 175 more
+
+003-2 seed.emCoin Transactions Box.json
+  Status: 🚨 UNCOVERED (0.0% task coverage)
+  Tasks: 15 total (7 non-empty)
+  ⚠️  NO STORY COVERAGE - 7 tasks at risk!
+
+================================================================================
+CRITICAL FINDINGS:
+--------------------------------------------------------------------------------
+🚨 LARGEST GAP: 003-2 seed.emCoin Transactions Box.json
+   15 tasks with ZERO coverage!
+
+
+================================================================================
+
+Detailed results saved to: requirements/validation/coverage-report-00023.json

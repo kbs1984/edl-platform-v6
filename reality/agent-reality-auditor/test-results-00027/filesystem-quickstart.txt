@@ -1,0 +1,36 @@
+🔍 File System Reality Agent - Quick Start Validation
+📂 Root path: /home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector
+------------------------------------------------------------
+1. Checking basic access...
+2. Estimating discovery scope...
+3. Checking git availability...
+4. Checking disk space...
+5. Detecting privacy risks...
+
+============================================================
+📊 QUICKSTART SUMMARY
+============================================================
+
+✅ Basic Access: OK
+   Root: /home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor/filesystem-connector
+
+📈 Estimated Scope:
+   Files: ~1413
+   Directories: ~12
+   Time: ~1.4 seconds
+   Recommended Level: 1
+
+🔧 Git: Repository detected
+
+💾 Disk Space: 949.9 GB available
+
+💡 Recommendations:
+   📁 Large directories found. These will be limited to 1000 files each
+   🚫 Will skip: __pycache__ (will be skipped)
+   ✅ Git repository detected. Will add git status to metadata
+   ⚡ Quick discovery expected (~1.4 seconds)
+
+============================================================
+✅ READY TO START DISCOVERY
+Run: python3 connector.py --level 1
+============================================================

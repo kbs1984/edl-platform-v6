@@ -1,16 +1,29 @@
 # EDL Platform v6 - Project Structure Map
-**Last Updated**: Session 00006 | 2025-08-15  
-**System Health**: 100%  
-**Reality Agents**: 4/4 Operational  
+**Last Updated**: Session 00016 | 2025-08-17  
+**System Health**: 97%  
+**Reality Agents**: 7/7 Operational  
+**Strategic Framework**: RESTORATION-MASTERPLAN-V3.md (Two-Phase Implementation)
 
 ## Core Architecture: Three Domain System
 
 ```
-EDL Platform v6
-├── Reality Domain [✅ COMPLETE - 100% operational]
-├── Requirements Domain [❌ NOT BUILT - future work]
-└── Reconciliation Domain [❌ NOT BUILT - future work]
+EDL Platform v6 (Constitutional Restoration V3)
+├── Reality Domain [✅ 97% COMPLETE - 7 agents operational]
+├── Requirements Domain [🟡 75% COMPLETE - 103 stories documented]
+└── Reconciliation Domain [🔴 0% COMPLETE - Phase 3A starting]
 ```
+
+## Two-Phase Implementation Strategy
+
+**Phase A: Prototype Implementation** (Sessions 19-25)
+- Use Starter Seed (Canvas + Schema + SEED LOG)
+- Build P0 features only (auth, teams, profiles)
+- Focus on learning and validation
+
+**Phase B: Production Implementation** (Sessions 26+)
+- Integrate v5 extraction with prototype lessons
+- Build complete system (P0 + P1 + P2)
+- Scale proven patterns
 
 ## Directory Structure
 
@@ -65,8 +78,16 @@ edl-platform-v6/
 │       ├── SPEC-003-SESSION-REALITY-PROTOCOL.md
 │       └── SPEC-004-INTEGRATION-REALITY-AGENT-ENHANCED.md
 │
-├── reconciliation/             # Reconciliation Domain (PLANNED)
-│   └── [Empty - future work]
+├── reconciliation/             # Reconciliation Domain (Phase 3A/3B)
+│   ├── prototype-plan/        # Phase 3A - Prototype reconciliation
+│   │   ├── P0-gaps.md
+│   │   ├── implementation-order.md
+│   │   └── success-metrics.md
+│   ├── production-plan/       # Phase 3B - Production reconciliation  
+│   │   ├── prototype-lessons.md
+│   │   ├── v5-integration-points.md
+│   │   └── scaling-strategy.md
+│   └── RECONCILIATION_INDEX.md
 │
 ├── scripts/                    # Utility scripts (Session 06)
 │   ├── session-guard.sh       # Session log protocol enforcement

@@ -1,0 +1,7 @@
+../tools/seed-parser.py:470:                "definition": match.group(3)
+../tools/seed-parser.py:590:        default_match = re.search(r'DEFAULT\s+([^,\s]+)', constraints_text, re.IGNORECASE)
+../tools/seed-parser.py:591:        if default_match:
+../tools/seed-parser.py:592:            default_value = default_match.group(1)
+../shared/tools/auditing/reality-auditor.py:200:    def _compare_states(self, documented: Dict, actual: Dict) -> List[str]:
+../reality/agent-reality-auditor/supabase-connector/connector.py:450:    def compare_snapshots(self, old_snapshot: Dict[str, Any], new_snapshot: Dict[str, Any]) -> Dict[str, Any]:
+../reality/agent-reality-auditor/filesystem-connector/connector.py:779:    def compare_snapshots(self, old_snapshot: Dict, new_snapshot: Dict) -> Dict[str, Any]:

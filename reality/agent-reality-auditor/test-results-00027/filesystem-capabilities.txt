@@ -1,0 +1,11 @@
+usage: connector.py [-h] [--level {1,2,3}] [--root ROOT] [--snapshot]
+                    [--no-cache]
+
+File System Reality Agent - Progressive Discovery
+
+options:
+  -h, --help       show this help message and exit
+  --level {1,2,3}  Discovery level (1: Access, 2: Structure, 3: Metadata)
+  --root ROOT      Root path to analyze (default: current directory)
+  --snapshot       Capture a snapshot at the specified level
+  --no-cache       Bypass cache and force fresh discovery

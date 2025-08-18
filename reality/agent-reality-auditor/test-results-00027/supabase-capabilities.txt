@@ -1,0 +1,9 @@
+usage: connector.py [-h] [--level {1,2,3,4}] [--output OUTPUT] [--clear-cache]
+
+Supabase Reality Agent - Progressive Discovery
+
+options:
+  -h, --help         show this help message and exit
+  --level {1,2,3,4}  Maximum discovery level (default: 2)
+  --output OUTPUT    Output file path (default: stdout)
+  --clear-cache      Clear cache before discovery
