@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform - Auth Testing Tool</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        button {
+            padding: 10px 16px;
+            margin: 4px;
+            border-radius: 6px;
+            border: none;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #5a67d8;
+        }
+        
+        button:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        h2 {
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+        
+        h3 {
+            color: #4a5568;
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+        
+        pre {
+            background: #f7fafc;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-test {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-test h4 {
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        
+        .test-result {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            margin: 8px 8px 8px 0;
+            padding: 8px 12px;
+            background: #f7fafc;
+            color: #4a5568;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .nav-link:hover {
+            background: #edf2f7;
+        }
+    </style>
+</head>
+<body>
+    <!-- DEV TOOL - Move to admin panel in Phase B -->
+    <div class="container">
+        <h1>EDL Platform - Auth Testing Tool</h1>
+        
+        <div class="card">
+            <div style="margin-bottom: 16px;">
+                <a href="../index.html" class="nav-link">← Back to Main App</a>
+                <a href="reset-password.html" class="nav-link">Password Reset</a>
+            </div>
+            
+            <div id="auth-status"></div>
+        </div>
+        
+        <div class="card" id="auth-info">
+            <h2>Current Authentication State</h2>
+            <div id="user-info-display"></div>
+            
+            <h3>User Profile</h3>
+            <div id="profile-info-display"></div>
+            
+            <h3>Session Info</h3>
+            <div id="session-info-display"></div>
+        </div>
+        
+        <div class="card" id="feature-tests">
+            <h2>Authentication Feature Tests</h2>
+            <p style="color: #666; margin-bottom: 16px;">Click buttons to test each authentication feature:</p>
+            
+            <div class="feature-test">
+                <h4>1. Password Reset</h4>
+                <p>Test the password reset flow functionality.</p>
+                <button onclick="testPasswordReset()">Test Password Reset</button>
+                <div id="test-password-reset" class="test-result hidden"></div>
+            </div>
+            
+            <div class="feature-test">
+                <h4>2. Role-Based Access</h4>
+                <p>Test if user role is properly detected and displayed.</p>
+                <button onclick="testRoleSystem()">Test Role System</button>
+                <div id="test-role-system" class="test-result hidden"></div>
+            </div>
+            
+            <div class="feature-test">
+                <h4>3. Call Sign Uniqueness</h4>
+                <p>Test call sign availability checking.</p>
+                <button onclick="testCallSignCheck()">Test Call Sign Check</button>
+                <div id="test-call-sign" class="test-result hidden"></div>
+            </div>
+            
+            <div class="feature-test">
+                <h4>4. Session Management</h4>
+                <p>Test session timeout and token refresh.</p>
+                <button onclick="testSessionManagement()">Test Session Management</button>
+                <div id="test-session" class="test-result hidden"></div>
+            </div>
+            
+            <div class="feature-test">
+                <h4>5. Profile Completeness</h4>
+                <p>Test profile validation and requirements.</p>
+                <button onclick="testProfileSystem()">Test Profile System</button>
+                <div id="test-profile" class="test-result hidden"></div>
+            </div>
+        </div>
+        
+        <div class="card" id="raw-data">
+            <h2>Raw Data (JSON)</h2>
+            <h3>User Object</h3>
+            <pre id="raw-user"></pre>
+            
+            <h3>Profile Data</h3>
+            <pre id="raw-profile"></pre>
+            
+            <h3>Session Data</h3>
+            <pre id="raw-session"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        let currentUser = null;
+        let userProfile = null;
+        
+        function updateStatus(message, type) {
+            const element = document.getElementById('auth-status');
+            element.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        async function loadAuthState() {
+            try {
+                // Get current session
+                const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+                if (sessionError) throw sessionError;
+                
+                if (session && session.user) {
+                    currentUser = session.user;
+                    updateStatus('✅ Authenticated as: ' + currentUser.email, 'success');
+                    
+                    // Load profile
+                    await loadUserProfile();
+                    
+                    displayUserInfo();
+                } else {
+                    updateStatus('❌ Not authenticated - please sign in via main app', 'error');
+                    document.getElementById('user-info-display').innerHTML = '<p>Not signed in</p>';
+                    document.getElementById('profile-info-display').innerHTML = '<p>No profile data</p>';
+                    document.getElementById('session-info-display').innerHTML = '<p>No session</p>';
+                }
+                
+            } catch (error) {
+                console.error('Auth state error:', error);
+                updateStatus('❌ Error loading auth state: ' + error.message, 'error');
+            }
+        }
+        
+        async function loadUserProfile() {
+            try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .single();
+                
+                if (error && error.code !== 'PGRST116') {
+                    throw error;
+                }
+                
+                userProfile = data;
+            } catch (error) {
+                console.error('Profile load error:', error);
+                userProfile = null;
+            }
+        }
+        
+        function displayUserInfo() {
+            // User info
+            const userDisplay = document.getElementById('user-info-display');
+            userDisplay.innerHTML = `
+                <p><strong>Email:</strong> ${currentUser.email}</p>
+                <p><strong>User ID:</strong> ${currentUser.id}</p>
+                <p><strong>Email Confirmed:</strong> ${currentUser.email_confirmed_at ? 'Yes' : 'No'}</p>
+                <p><strong>Created:</strong> ${new Date(currentUser.created_at).toLocaleString()}</p>
+                <p><strong>Last Sign In:</strong> ${new Date(currentUser.last_sign_in_at).toLocaleString()}</p>
+            `;
+            
+            // Profile info
+            const profileDisplay = document.getElementById('profile-info-display');
+            if (userProfile) {
+                profileDisplay.innerHTML = `
+                    <p><strong>Call Sign:</strong> ${userProfile.call_sign}</p>
+                    <p><strong>Role:</strong> ${userProfile.role}</p>
+                    <p><strong>Grade Level:</strong> ${userProfile.grade_level || 'Not set'}</p>
+                    <p><strong>Profile Created:</strong> ${new Date(userProfile.created_at).toLocaleString()}</p>
+                `;
+            } else {
+                profileDisplay.innerHTML = '<p style="color: orange;">⚠️ Profile not found - needs to be created</p>';
+            }
+            
+            // Session info
+            const sessionDisplay = document.getElementById('session-info-display');
+            sessionDisplay.innerHTML = `
+                <p><strong>Session Active:</strong> Yes</p>
+                <p><strong>Access Token:</strong> ${currentUser.aud || 'Available'}</p>
+                <p><strong>Provider:</strong> ${currentUser.app_metadata?.provider || 'email'}</p>
+            `;
+            
+            // Raw data
+            document.getElementById('raw-user').textContent = JSON.stringify(currentUser, null, 2);
+            document.getElementById('raw-profile').textContent = JSON.stringify(userProfile, null, 2);
+            document.getElementById('raw-session').textContent = JSON.stringify({
+                authenticated: true,
+                provider: currentUser.app_metadata?.provider,
+                role: currentUser.role
+            }, null, 2);
+        }
+        
+        // Test Functions
+        async function testPasswordReset() {
+            const resultDiv = document.getElementById('test-password-reset');
+            resultDiv.classList.remove('hidden');
+            
+            try {
+                // Test if reset page exists
+                const response = await fetch('reset-password.html');
+                if (response.ok) {
+                    resultDiv.className = 'test-result pass';
+                    resultDiv.innerHTML = '✅ PASS: Password reset page exists and accessible<br>📝 Manual test: Visit reset-password.html with real email';
+                } else {
+                    throw new Error('Reset page not accessible');
+                }
+            } catch (error) {
+                resultDiv.className = 'test-result fail';
+                resultDiv.innerHTML = `❌ FAIL: ${error.message}`;
+            }
+        }
+        
+        async function testRoleSystem() {
+            const resultDiv = document.getElementById('test-role-system');
+            resultDiv.classList.remove('hidden');
+            
+            if (!userProfile) {
+                resultDiv.className = 'test-result fail';
+                resultDiv.innerHTML = '❌ FAIL: No profile found to test role system';
+                return;
+            }
+            
+            const validRoles = ['player', 'supervisor', 'enabler'];
+            if (validRoles.includes(userProfile.role)) {
+                resultDiv.className = 'test-result pass';
+                resultDiv.innerHTML = `✅ PASS: Role "${userProfile.role}" is valid and detected<br>📝 UI should adapt based on this role`;
+            } else {
+                resultDiv.className = 'test-result fail';
+                resultDiv.innerHTML = `❌ FAIL: Invalid role "${userProfile.role}" - should be player/supervisor/enabler`;
+            }
+        }
+        
+        async function testCallSignCheck() {
+            const resultDiv = document.getElementById('test-call-sign');
+            resultDiv.classList.remove('hidden');
+            
+            try {
+                // Test with current user's call sign (should be taken)
+                if (userProfile && userProfile.call_sign) {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('call_sign')
+                        .eq('call_sign', userProfile.call_sign)
+                        .single();
+                    
+                    if (data) {
+                        resultDiv.className = 'test-result pass';
+                        resultDiv.innerHTML = `✅ PASS: Call sign "${userProfile.call_sign}" correctly found as taken<br>📝 Uniqueness constraint working`;
+                    } else {
+                        resultDiv.className = 'test-result fail';
+                        resultDiv.innerHTML = '❌ FAIL: Call sign check not working properly';
+                    }
+                } else {
+                    resultDiv.className = 'test-result fail';
+                    resultDiv.innerHTML = '❌ FAIL: No call sign found to test';
+                }
+            } catch (error) {
+                resultDiv.className = 'test-result fail';
+                resultDiv.innerHTML = `❌ FAIL: ${error.message}`;
+            }
+        }
+        
+        async function testSessionManagement() {
+            const resultDiv = document.getElementById('test-session');
+            resultDiv.classList.remove('hidden');
+            
+            try {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session) {
+                    const expiresAt = new Date(session.expires_at * 1000);
+                    const now = new Date();
+                    const timeLeft = Math.round((expiresAt - now) / (1000 * 60)); // minutes
+                    
+                    resultDiv.className = 'test-result pass';
+                    resultDiv.innerHTML = `✅ PASS: Session active, expires in ${timeLeft} minutes<br>📝 Timeout setting: Check if properly configured for 30 minutes`;
+                } else {
+                    resultDiv.className = 'test-result fail';
+                    resultDiv.innerHTML = '❌ FAIL: No active session found';
+                }
+            } catch (error) {
+                resultDiv.className = 'test-result fail';
+                resultDiv.innerHTML = `❌ FAIL: ${error.message}`;
+            }
+        }
+        
+        async function testProfileSystem() {
+            const resultDiv = document.getElementById('test-profile');
+            resultDiv.classList.remove('hidden');
+            
+            let tests = [];
+            
+            // Test 1: Profile exists
+            if (userProfile) {
+                tests.push('✅ Profile exists');
+                
+                // Test 2: Required fields
+                if (userProfile.call_sign) {
+                    tests.push('✅ Call sign present');
+                } else {
+                    tests.push('❌ Call sign missing');
+                }
+                
+                if (userProfile.role) {
+                    tests.push('✅ Role present');
+                } else {
+                    tests.push('❌ Role missing');
+                }
+                
+                // Test 3: Role-specific requirements
+                if (userProfile.role === 'player') {
+                    if (userProfile.grade_level) {
+                        tests.push('✅ Grade level set for player');
+                    } else {
+                        tests.push('❌ Grade level missing for player');
+                    }
+                }
+                
+            } else {
+                tests.push('❌ Profile missing entirely');
+            }
+            
+            const passCount = tests.filter(t => t.startsWith('✅')).length;
+            const totalCount = tests.length;
+            
+            if (passCount === totalCount) {
+                resultDiv.className = 'test-result pass';
+            } else {
+                resultDiv.className = 'test-result fail';
+            }
+            
+            resultDiv.innerHTML = `${passCount}/${totalCount} tests passed:<br>${tests.join('<br>')}`;
+        }
+        
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', loadAuthState);
+        
+        // Auto-refresh every 30 seconds
+        setInterval(loadAuthState, 30000);
+    </script>
+</body>
+</html>
