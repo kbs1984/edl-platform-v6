@@ -52,6 +52,8 @@ This automation will:
 ### Before Session End
 - Ensure log has >50 lines for substantial work
 - Include handoff information for next session
+- **UPDATE INDEX FILES** (MANDATORY): System-INDEX.md, domain INDEX files, CLAUDE.md if tools/protocols added
+- **MAINTAIN LIVING DOCS**: Update 00031-WORKFLOW-BOUNDARIES.md or other protocol docs if enhanced
 - Verify constitutional compliance (retroactive disclosure if needed)
 - Run final validation: `./scripts/session-guard.sh`
 
@@ -66,6 +68,19 @@ Per Constitution v1.3.0 Article VII:
 - `scripts/create-session-log.sh` - v2.0 Template with System State section
 - `scripts/session-guard.sh` - Validates v2.0 compliance (System State required)
 - `scripts/structure-check.sh` - Quick system structure overview
+
+## File Naming Convention (Session 31 Established)
+**MANDATORY**: All deliverable files must be prefixed with session number for tracking
+- Format: `00XXX-filename.md` or `00XXX-scriptname.sh`
+- Example: `00031-WORKFLOW-BOUNDARIES.md`, `scripts/00031-auth-autonomous-verification.py`
+- Purpose: Visual tracking of session contributions for macro analysis
+
+## Workflow Boundaries Protocol (Session 31 Addition)
+**MANDATORY READING**: `00031-WORKFLOW-BOUNDARIES.md` - Defines Claude Code autonomous capabilities vs manual intervention requirements
+- **Autonomous Testing**: `scripts/00031-auth-autonomous-verification.py` - Database, file structure, configuration validation
+- **Manual Protocol**: `00031-MANUAL-INTERVENTION-PROTOCOL.md` - When and how to transition to human testing
+- **Testing Checklist**: `00031-MANUAL-TESTING-CHECKLIST.md` - Systematic manual verification requirements
+- **Key Principle**: NEVER claim testing is complete without following autonomous → manual protocol
 
 ## System State Documentation (V3 Enhanced)
 Every session log MUST include a "System State at Session Start" section with:

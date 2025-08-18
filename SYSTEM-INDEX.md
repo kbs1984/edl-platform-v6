@@ -8,6 +8,7 @@
 - **Strategic Framework**: RESTORATION-MASTERPLAN-V3.md (Two-Phase Implementation)
 - **Current Phase**: Phase 4B - Full Educational Identity Ecosystem Implementation
 - **Truth Operating System**: ✅ COMPLETE v1.0 (Sessions 28-29)
+- **Workflow Boundaries**: ✅ COMPLETE v1.0 (Session 31) - 00031-WORKFLOW-BOUNDARIES.md
 
 ---
 
@@ -78,7 +79,7 @@
 ./scripts/00028-reality-check.sh
 ```
 
-See [TOS-ARCHITECTURE.md](TOS-ARCHITECTURE.md) for complete documentation.
+See [00030-TOS-ARCHITECTURE.md](00030-TOS-ARCHITECTURE.md) for complete documentation.
 
 ## Active Reality Agents (7/7 Operational)
 1. **FileSystem Agent**: ✅ Operational (1,247 files tracked)

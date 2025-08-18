@@ -142,7 +142,7 @@ cat /tmp/reconciliation/action-plan.json | python3 -m json.tool
 
 ## Related Documentation
 
-- [TOS-ARCHITECTURE.md](/TOS-ARCHITECTURE.md) - Complete TOS documentation
+- [00030-TOS-ARCHITECTURE.md](/00030-TOS-ARCHITECTURE.md) - Complete TOS documentation
 - [00028-AUTOMATION-README.md](00028-AUTOMATION-README.md) - Session automation guide
 - [SYSTEM-INDEX.md](/SYSTEM-INDEX.md) - Master system index
 - [CLAUDE.md](/CLAUDE.md) - Session protocols
