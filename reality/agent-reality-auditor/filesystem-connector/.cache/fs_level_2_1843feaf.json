@@ -1,0 +1,164 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-18T11:21:18.318672",
+    "agent": "filesystem-reality",
+    "check_type": "level_2_discovery",
+    "session_id": "1843feaf",
+    "confidence_score": 0.5,
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor",
+    "limitations": []
+  },
+  "connection": {
+    "status": "connected",
+    "permission_level": "read_write",
+    "root_path": "/home/b4sho/edl-projects-with-claude/edl-platform-v6/reality/agent-reality-auditor",
+    "fs_type": "Linux",
+    "case_sensitive": true,
+    "available_space_bytes": 1019886391296
+  },
+  "discoveries": {
+    "level": 2,
+    "summary": {
+      "total_directories": 31,
+      "total_files": 48,
+      "max_depth_reached": 5,
+      "directories_skipped": [
+        "integration-connector/__pycache__",
+        "integration-connector/.cache",
+        ".cache",
+        "github-connector/__pycache__",
+        "static-asset-connector/__pycache__",
+        "static-asset-connector/.cache",
+        "supabase-connector/__pycache__",
+        "supabase-connector/.cache",
+        "task-connector/__pycache__",
+        "filesystem-connector/__pycache__",
+        "filesystem-connector/.cache",
+        "vercel-connector/__pycache__",
+        "vercel-connector/.cache",
+        "vercel-connector/reality/agent-reality-auditor/static-asset-connector/.cache"
+      ],
+      "symlinks_found": 0,
+      "git_repository": true,
+      "git_root": "/home/b4sho/edl-projects-with-claude/edl-platform-v6"
+    },
+    "details": {
+      "tree": {
+        "file_count": 2,
+        "dir_count": 9,
+        "size_bytes": 3560,
+        "subdirs": {
+          "integration-connector": {
+            "file_count": 19,
+            "dir_count": 3,
+            "size_bytes": 97364,
+            "subdirs": {
+              "requirements": {
+                "file_count": 0,
+                "dir_count": 3,
+                "size_bytes": 0,
+                "subdirs": {
+                  "priority-matrix": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "v5-extraction": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  },
+                  "acceptance-tests": {
+                    "file_count": 0,
+                    "dir_count": 0,
+                    "size_bytes": 0,
+                    "subdirs": {}
+                  }
+                }
+              }
+            }
+          },
+          "github-connector": {
+            "file_count": 3,
+            "dir_count": 1,
+            "size_bytes": 50337,
+            "subdirs": {}
+          },
+          "static-asset-connector": {
+            "file_count": 1,
+            "dir_count": 2,
+            "size_bytes": 13091,
+            "subdirs": {}
+          },
+          "test-results-00027": {
+            "file_count": 9,
+            "dir_count": 0,
+            "size_bytes": 8807,
+            "subdirs": {}
+          },
+          "supabase-connector": {
+            "file_count": 5,
+            "dir_count": 2,
+            "size_bytes": 88060,
+            "subdirs": {}
+          },
+          "task-connector": {
+            "file_count": 2,
+            "dir_count": 3,
+            "size_bytes": 38412,
+            "subdirs": {
+              "tools": {
+                "file_count": 0,
+                "dir_count": 0,
+                "size_bytes": 0,
+                "subdirs": {}
+              },
+              ".tasks": {
+                "file_count": 1,
+                "dir_count": 0,
+                "size_bytes": 6137,
+                "subdirs": {}
+              }
+            }
+          },
+          "filesystem-connector": {
+            "file_count": 3,
+            "dir_count": 2,
+            "size_bytes": 59869,
+            "subdirs": {}
+          },
+          "vercel-connector": {
+            "file_count": 3,
+            "dir_count": 3,
+            "size_bytes": 19950,
+            "subdirs": {
+              "reality": {
+                "file_count": 0,
+                "dir_count": 1,
+                "size_bytes": 0,
+                "subdirs": {
+                  "agent-reality-auditor": {
+                    "file_count": 0,
+                    "dir_count": 1,
+                    "size_bytes": 0,
+                    "subdirs": {
+                      "static-asset-connector": {
+                        "file_count": 0,
+                        "dir_count": 1,
+                        "size_bytes": 0,
+                        "subdirs": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "timestamp": "2025-08-18T11:21:18.320175"
+}
