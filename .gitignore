@@ -1,1 +1,32 @@
 .vercel
+
+# Reality Agent cache files
+reality/agent-reality-auditor/filesystem-connector/.cache/
+reality/agent-reality-auditor/supabase-connector/.cache/
+reality/agent-reality-auditor/integration-connector/.cache/
+reality/agent-reality-auditor/github-connector/.cache/
+reality/agent-reality-auditor/vercel-connector/.cache/
+reality/agent-reality-auditor/static-asset-connector/.cache/
+reality/agent-reality-auditor/task-reality-connector/.cache/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/

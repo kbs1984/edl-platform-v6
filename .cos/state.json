@@ -1,0 +1,21 @@
+{
+  "metrics": {
+    "features_complete": 0.7,
+    "test_coverage": 0.62,
+    "documentation_current": true,
+    "last_commit": "2025-08-18T14:00:00",
+    "commit_frequency": "every 2 hours",
+    "violations_pending": 0,
+    "files_without_prefix": []
+  },
+  "reality_agents": {
+    "filesystem": "healthy",
+    "github": "healthy",
+    "supabase": "healthy",
+    "integration": "healthy",
+    "vercel": "unknown",
+    "static_asset": "unknown",
+    "task_reality": "unknown"
+  },
+  "last_updated": "2025-08-18T15:15:00"
+}

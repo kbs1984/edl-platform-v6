@@ -75,6 +75,15 @@ Per Constitution v1.3.0 Article VII:
 - Example: `00031-WORKFLOW-BOUNDARIES.md`, `scripts/00031-auth-autonomous-verification.py`
 - Purpose: Visual tracking of session contributions for macro analysis
 
+## Constitutional Operating System (Session 31-32)
+**MANDATORY READING**: Phase-aware development philosophy adapting to natural rhythms
+- **Master Guide**: `00031-CONSTITUTIONAL-OS-GUIDE.md` - Overview of phase-based system
+- **Phase Guides**: Read the guide for your current phase:
+  - `00031-PHASE-SEED-GUIDE.md` - Exploration & architecture (FLEXIBLE enforcement)
+  - `00031-PHASE-GROW-GUIDE.md` - Active implementation (MODERATE enforcement)
+  - `00031-PHASE-HARVEST-GUIDE.md` - Validation & documentation (STRICT enforcement)
+- **Dashboard** (Session 32): Check phase and health with `./scripts/00032-tos-dashboard.sh`
+
 ## Workflow Boundaries Protocol (Session 31 Addition)
 **MANDATORY READING**: `00031-WORKFLOW-BOUNDARIES.md` - Defines Claude Code autonomous capabilities vs manual intervention requirements
 - **Autonomous Testing**: `scripts/00031-auth-autonomous-verification.py` - Database, file structure, configuration validation

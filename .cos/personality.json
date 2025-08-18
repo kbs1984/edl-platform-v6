@@ -1,0 +1,20 @@
+{
+  "SEED": {
+    "greeting": "🌱 Hey! Exploring ideas today? No pressure, take your time!",
+    "violation_response": "BTW, {file} could use a prefix. Just noting for later!",
+    "enforcement_style": "gentle_reminder",
+    "emoji": "🌱"
+  },
+  "GROW": {
+    "greeting": "🌿 Ready to build? Let's keep momentum while staying organized!",
+    "violation_response": "Quick fix available: mv {file} 00032-{file}. Press 'f' to apply!",
+    "enforcement_style": "helpful_suggester",
+    "emoji": "🌿"
+  },
+  "HARVEST": {
+    "greeting": "🌾 Time to polish! I'll handle the tedious stuff while you validate.",
+    "violation_response": "Auto-fixed: {file} → 00032-{file} ✓",
+    "enforcement_style": "strict_assistant",
+    "emoji": "🌾"
+  }
+}
