@@ -113,20 +113,20 @@ This prevents sessions from wasting time "rediscovering" existing components and
 - **Reference**: See `00012_001_teams_first_v2.sql` for successful pattern
 
 ## Reality Agent Protocol v1.2 (MANDATORY for Truth Verification)
-**Enhanced Session 00016**: 7-Agent system fully operational for constitutional restoration
+**Enhanced Session 00016**: 7-Agent system (4 operational, 3 planned)
 - ✅ **Session baseline**: Reality check BEFORE any work begins
 - ✅ **After major changes**: Run relevant agents immediately  
 - ✅ **Phase transitions**: Full agent sweep required
 - ✅ **Evening handoff**: Quick verification before session end
 
-**All 7 Reality Agents Available**:
-1. FileSystem Agent - File discovery and tracking
-2. GitHub Agent - Repository and commit verification
-3. Supabase Agent - Database truth verification
-4. Integration Agent - Meta-coordination and consensus
-5. Vercel Agent - Deployment monitoring
-6. Static Asset Agent - Asset tracking
-7. Task Reality Agent - Dependency tracking
+**Reality Agents Status**:
+1. FileSystem Agent - ✅ Operational
+2. GitHub Agent - ✅ Operational
+3. Supabase Agent - ✅ Operational
+4. Integration Agent - ✅ Operational (calculates consensus)
+5. Vercel Agent - ⚫ Not implemented
+6. Static Asset Agent - ⚫ Not implemented
+7. Task Reality Agent - ⚫ Not implemented
 
 **Available Reality Check Modes**:
 - `--emergency` (10 seconds) - Critical issues only
@@ -138,6 +138,44 @@ This prevents sessions from wasting time "rediscovering" existing components and
 - Claiming completion without Reality validation
 - Proceeding to next phase without baseline
 - Ignoring agent consensus scores
+
+## Truth API Protocol (Session 35 Implementation)
+**MANDATORY for system truth access**: Use Truth API for all metrics and claims
+
+### Programmatic Truth Access
+```python
+from scripts.truth_api_00035 import TruthAPI
+truth = TruthAPI()
+
+# Get system health with evidence
+health = truth.get_system_health()
+print(f"Consensus: {health.consensus_score}%")
+print(f"Trust: {truth.get_trust_score()}%")
+
+# Subscribe to truth updates (push architecture)
+truth.event_stream.subscribe(on_truth_update)
+```
+
+### Key Features
+- **Push Architecture**: Truth flows to subscribers automatically
+- **Meta-Truth Agent**: System monitors itself (self-healing)
+- **Continuous Trust**: Exponential decay model for freshness
+- **Educational Ledger**: Immutable student achievement records
+- **Three-Speed System**: Real-time (5s), Operational (5m), Archival (1h)
+
+### Truth Verification Commands
+```bash
+# Test Truth API
+python3 scripts/00035-truth-api.py --test
+
+# Get current health
+python3 scripts/00035-truth-api.py --health
+
+# Get trust score
+python3 scripts/00035-truth-api.py --trust
+```
+
+**Reference**: See `00034-00035-TRUTH-LAYER-SETUP.md` for complete architecture
 
 ## V3 Two-Phase Implementation Awareness
 
