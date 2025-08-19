@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claim Your Academic Call Sign - EDL</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .identity-box {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        #callSign {
+            font-size: 60px;
+            background: transparent;
+            border: none;
+            border-bottom: 4px solid gold;
+            color: gold;
+            text-align: center;
+            text-transform: uppercase;
+            outline: none;
+            width: 100%;
+            padding: 10px;
+        }
+        #callSign::placeholder {
+            opacity: 0.3;
+        }
+        .status {
+            margin-top: 20px;
+            font-size: 24px;
+            min-height: 30px;
+        }
+        .available { color: #4ade80; }
+        .taken { color: #f87171; }
+        .checking { color: #fbbf24; }
+        .dev-notice {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #94a3b8;
+            font-style: italic;
+        }
+        #claim {
+            margin-top: 30px;
+            font-size: 24px;
+            padding: 15px 40px;
+            background: gold;
+            color: #1a1a2e;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #claim:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
+        }
+        #claim:disabled {
+            background: #475569;
+            color: #94a3b8;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="identity-box">
+        <h1>This Moment Defines You</h1>
+        <p class="subtitle">Your call sign is permanent. Choose wisely.</p>
+        
+        <input type="text" 
+               id="callSign"
+               placeholder="LEGEND"
+               maxlength="15"
+               autocomplete="off">
+        
+        <div id="status" class="status"></div>
+        <div class="dev-notice">(Development mode: TEST_ prefix will be added)</div>
+        
+        <button id="claim" style="display:none;">
+            CLAIM THIS IDENTITY
+        </button>
+    </div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        
+        const supabase = createClient(
+            'https://bbrheacetxlnqbibjwsz.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE'
+        )
+        
+        let availableCallSign = null;
+        let checkTimeout = null;
+        
+        document.getElementById('callSign').addEventListener('input', async (e) => {
+            const inputCallSign = e.target.value.toUpperCase();
+            const status = document.getElementById('status');
+            const claimBtn = document.getElementById('claim');
+            
+            // Clear previous timeout
+            if (checkTimeout) {
+                clearTimeout(checkTimeout);
+            }
+            
+            if (inputCallSign.length < 3) {
+                status.innerHTML = '';
+                claimBtn.style.display = 'none';
+                availableCallSign = null;
+                return;
+            }
+            
+            // Show checking status immediately
+            status.innerHTML = '<span class="checking">Checking...</span>';
+            claimBtn.style.display = 'none';
+            
+            // Debounce the database check
+            checkTimeout = setTimeout(async () => {
+                // Add TEST_ prefix for development
+                const testCallSign = 'TEST_' + inputCallSign;
+                
+                try {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('call_sign')
+                        .eq('call_sign', testCallSign)
+                        .maybeSingle();
+                    
+                    if (error && error.code !== 'PGRST116') {
+                        console.error('Database error:', error);
+                        status.innerHTML = '<span class="taken">Error checking availability</span>';
+                        return;
+                    }
+                    
+                    if (!data) {
+                        status.innerHTML = `<span class="available">✓ ${inputCallSign} is yours to claim</span>`;
+                        availableCallSign = testCallSign;
+                        claimBtn.style.display = 'inline-block';
+                    } else {
+                        status.innerHTML = `<span class="taken">✗ ${inputCallSign} belongs to another</span>`;
+                        availableCallSign = null;
+                        claimBtn.style.display = 'none';
+                    }
+                } catch (err) {
+                    console.error('Check error:', err);
+                    status.innerHTML = '<span class="taken">Connection error</span>';
+                }
+            }, 500); // Wait 500ms after user stops typing
+        });
+        
+        document.getElementById('claim').addEventListener('click', async () => {
+            if (!availableCallSign) return;
+            
+            // Reserve the call_sign in localStorage
+            localStorage.setItem('reserved_call_sign', availableCallSign);
+            
+            // Show confirmation
+            const status = document.getElementById('status');
+            status.innerHTML = '<span class="available">Reserving your identity...</span>';
+            
+            // Redirect to main auth with call_sign parameter
+            setTimeout(() => {
+                // Remove TEST_ prefix for display in URL
+                const displayCallSign = availableCallSign.replace('TEST_', '');
+                window.location.href = `/index.html?call_sign=${encodeURIComponent(displayCallSign)}#signup`;
+            }, 1000);
+        });
+        
+        // Check if redirected back without completing signup
+        window.addEventListener('load', () => {
+            const reserved = localStorage.getItem('reserved_call_sign');
+            if (reserved) {
+                const displayCallSign = reserved.replace('TEST_', '');
+                document.getElementById('callSign').value = displayCallSign;
+                document.getElementById('status').innerHTML = 
+                    `<span class="available">Complete signup to claim ${displayCallSign}</span>`;
+            }
+        });
+    </script>
+</body>
+</html>
