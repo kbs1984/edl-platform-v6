@@ -469,6 +469,19 @@
             document.getElementById('profile-form').classList.remove('hidden');
             document.getElementById('team-section').classList.add('hidden');
             
+            // Session 39: Check for reserved call_sign from create-identity.html
+            const reservedCallSign = localStorage.getItem('reserved_call_sign');
+            if (reservedCallSign) {
+                // Pre-fill the call_sign (keeping TEST_ prefix for development)
+                document.getElementById('call-sign').value = reservedCallSign;
+                // Clear the reservation after using it
+                localStorage.removeItem('reserved_call_sign');
+                // Show it's reserved for them
+                const availability = document.getElementById('call-sign-availability');
+                availability.textContent = '✓ Reserved for you';
+                availability.style.color = 'green';
+            }
+            
             // Add real-time call sign availability checking
             const callSignInput = document.getElementById('call-sign');
             let checkTimeout;
