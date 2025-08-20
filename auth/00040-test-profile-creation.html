@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Profile Creation - Session 00040</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        h2 { color: #666; font-size: 18px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .info { color: blue; }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover { background: #45a049; }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Profile Creation Test - Session 00040</h1>
+    
+    <div class="test-section">
+        <h2>Quick Test: Create a Test Profile</h2>
+        <p>This will create a test user and attempt to create their profile.</p>
+        
+        <input type="email" id="testEmail" placeholder="test@gmail.com" value="">
+        <input type="password" id="testPassword" placeholder="password" value="TestPass123!">
+        <button onclick="runQuickTest()">Run Quick Test</button>
+        
+        <div id="quickTestResult"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Manual Test: Step by Step</h2>
+        
+        <div style="margin-bottom: 15px;">
+            <h3>Step 1: Sign Up</h3>
+            <input type="email" id="email" placeholder="your-email@gmail.com">
+            <input type="password" id="password" placeholder="password">
+            <button onclick="signUp()">Sign Up</button>
+            <div id="signupResult"></div>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <h3>Step 2: Create Profile</h3>
+            <input type="text" id="callSign" placeholder="CALL_SIGN">
+            <select id="role">
+                <option value="player">Player</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="enabler">Enabler</option>
+            </select>
+            <input type="number" id="gradeLevel" placeholder="Grade (3-12)" min="3" max="12">
+            <button onclick="createProfile()">Create Profile</button>
+            <div id="profileResult"></div>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <h3>Step 3: Verify in Database</h3>
+            <button onclick="checkProfile()">Check My Profile</button>
+            <div id="checkResult"></div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Database Status</h2>
+        <button onclick="checkDatabase()">Check All Test Profiles</button>
+        <div id="dbStatus"></div>
+    </div>
+
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://bbrheacetxlnqbibjwsz.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        let currentUser = null;
+        
+        // Generate test email
+        function generateTestEmail() {
+            const timestamp = new Date().getTime();
+            return `test${timestamp}@gmail.com`;
+        }
+        
+        // Set initial test email
+        document.getElementById('testEmail').value = generateTestEmail();
+        
+        async function runQuickTest() {
+            const resultDiv = document.getElementById('quickTestResult');
+            resultDiv.innerHTML = '<p class="info">Running test...</p>';
+            
+            const email = document.getElementById('testEmail').value || generateTestEmail();
+            const password = document.getElementById('testPassword').value;
+            
+            try {
+                // Step 1: Sign up
+                resultDiv.innerHTML += '<p>Step 1: Signing up user...</p>';
+                const { data: { user }, error: signUpError } = await supabase.auth.signUp({
+                    email: email,
+                    password: password
+                });
+                
+                if (signUpError) throw signUpError;
+                if (!user) throw new Error('No user returned');
+                
+                resultDiv.innerHTML += `<p class="success">✅ User created: ${user.email}</p>`;
+                resultDiv.innerHTML += `<p>User ID: ${user.id}</p>`;
+                
+                // Step 2: Create profile
+                resultDiv.innerHTML += '<p>Step 2: Creating profile...</p>';
+                const callSign = 'TEST_' + Date.now().toString().slice(-6);
+                
+                const { data: profile, error: profileError } = await supabase
+                    .from('profiles')
+                    .insert({
+                        user_id: user.id,
+                        call_sign: callSign,
+                        role: 'player',
+                        grade_level: 7
+                    })
+                    .select()
+                    .single();
+                
+                if (profileError) {
+                    if (profileError.message.includes('row-level security')) {
+                        resultDiv.innerHTML += `<p class="error">❌ RLS POLICY BLOCKING PROFILE CREATION</p>`;
+                        resultDiv.innerHTML += `<pre>Error: ${profileError.message}</pre>`;
+                        resultDiv.innerHTML += `<p class="error">ACTION REQUIRED: Run the SQL fix in Supabase Dashboard</p>`;
+                        resultDiv.innerHTML += `<pre>DROP POLICY IF EXISTS "Users create own profile" ON profiles;
+CREATE POLICY "Users create own profile" ON profiles
+  FOR INSERT TO authenticated
+  WITH CHECK (auth.uid() = user_id);</pre>`;
+                    } else {
+                        throw profileError;
+                    }
+                } else {
+                    resultDiv.innerHTML += `<p class="success">✅ PROFILE CREATED SUCCESSFULLY!</p>`;
+                    resultDiv.innerHTML += `<pre>${JSON.stringify(profile, null, 2)}</pre>`;
+                    
+                    // Step 3: Verify by reading back
+                    resultDiv.innerHTML += '<p>Step 3: Verifying profile exists...</p>';
+                    const { data: verifyProfile } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('user_id', user.id)
+                        .single();
+                    
+                    if (verifyProfile) {
+                        resultDiv.innerHTML += `<p class="success">✅ PROFILE VERIFIED IN DATABASE!</p>`;
+                        resultDiv.innerHTML += `<p>Call Sign: ${verifyProfile.call_sign}</p>`;
+                    }
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML += `<p class="error">Error: ${error.message}</p>`;
+                console.error('Test failed:', error);
+            }
+        }
+        
+        async function signUp() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('signupResult');
+            
+            try {
+                const { data: { user }, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password
+                });
+                
+                if (error) throw error;
+                
+                currentUser = user;
+                resultDiv.innerHTML = `<p class="success">✅ Signed up: ${user.email}</p>`;
+                resultDiv.innerHTML += `<p>User ID: ${user.id}</p>`;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ ${error.message}</p>`;
+            }
+        }
+        
+        async function createProfile() {
+            const resultDiv = document.getElementById('profileResult');
+            
+            if (!currentUser) {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) {
+                    resultDiv.innerHTML = '<p class="error">Please sign up first</p>';
+                    return;
+                }
+                currentUser = user;
+            }
+            
+            const callSign = document.getElementById('callSign').value;
+            const role = document.getElementById('role').value;
+            const gradeLevel = parseInt(document.getElementById('gradeLevel').value);
+            
+            try {
+                const profileData = {
+                    user_id: currentUser.id,
+                    call_sign: callSign,
+                    role: role
+                };
+                
+                // Only add grade_level for players
+                if (role === 'player' && gradeLevel) {
+                    profileData.grade_level = gradeLevel;
+                }
+                
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .insert(profileData)
+                    .select()
+                    .single();
+                
+                if (error) {
+                    if (error.message.includes('row-level security')) {
+                        resultDiv.innerHTML = `<p class="error">❌ RLS Policy Error - Fix needed in Supabase</p>`;
+                    } else {
+                        resultDiv.innerHTML = `<p class="error">❌ ${error.message}</p>`;
+                    }
+                } else {
+                    resultDiv.innerHTML = `<p class="success">✅ Profile created!</p>`;
+                    resultDiv.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ ${error.message}</p>`;
+            }
+        }
+        
+        async function checkProfile() {
+            const resultDiv = document.getElementById('checkResult');
+            
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) {
+                resultDiv.innerHTML = '<p class="error">Not signed in</p>';
+                return;
+            }
+            
+            try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('user_id', user.id)
+                    .single();
+                
+                if (error) throw error;
+                
+                if (data) {
+                    resultDiv.innerHTML = `<p class="success">✅ Profile found in database!</p>`;
+                    resultDiv.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    resultDiv.innerHTML = '<p class="error">No profile found</p>';
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ ${error.message}</p>`;
+            }
+        }
+        
+        async function checkDatabase() {
+            const resultDiv = document.getElementById('dbStatus');
+            
+            try {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('call_sign, role, grade_level, created_at')
+                    .like('call_sign', 'TEST_%')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+                
+                if (error) throw error;
+                
+                if (data && data.length > 0) {
+                    resultDiv.innerHTML = `<p class="success">Found ${data.length} test profiles:</p>`;
+                    resultDiv.innerHTML += '<ul>';
+                    data.forEach(p => {
+                        resultDiv.innerHTML += `<li>${p.call_sign} - ${p.role} ${p.grade_level ? `(Grade ${p.grade_level})` : ''}</li>`;
+                    });
+                    resultDiv.innerHTML += '</ul>';
+                } else {
+                    resultDiv.innerHTML = '<p class="info">No test profiles found yet</p>';
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ ${error.message}</p>`;
+            }
+        }
+        
+        // Check auth state on load
+        window.addEventListener('load', async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                currentUser = user;
+                document.getElementById('signupResult').innerHTML = `<p class="info">Already signed in as: ${user.email}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
