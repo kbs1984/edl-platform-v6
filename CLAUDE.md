@@ -57,6 +57,17 @@ This automation will:
 - Verify constitutional compliance (retroactive disclosure if needed)
 - Run final validation: `./scripts/session-guard.sh`
 
+## CRITICAL: Check Existing Work First (Session 40 Lesson)
+**BEFORE BUILDING ANYTHING:**
+1. Run relevant Reality Agents: `python3 reality/agent-reality-auditor/[agent]/quickstart.py`
+2. Search for existing tools: `ls scripts/000* | grep [keyword]`
+3. Read previous 3 session logs COMPLETELY
+4. Check what's in `/tmp/*-agent-output.json` from session startup
+5. Only build new if nothing exists
+
+**The best code is code you don't write because it already exists.**
+See: `docs/00040-CRITICAL-LESSON-USE-EXISTING-WORK.md`
+
 ## Constitutional Compliance
 Per Constitution v1.3.0 Article VII:
 - Retroactive logging is acceptable if disclosed
