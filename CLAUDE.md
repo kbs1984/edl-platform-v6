@@ -202,6 +202,37 @@ ALL sessions must understand the current implementation phase:
 - `reality/REALITY_INDEX.md` - 7-agent operational status  
 - `SYSTEM-INDEX.md` - Overall system status
 
+## Schema Snapshot System (Sessions 38-39)
+**Purpose**: View actual database state when debugging RLS or schema issues
+
+### Check Database Reality
+```bash
+# View actual RLS policies (not assumptions from migrations)
+python3 scripts/00039-check-schema.py --table profiles --policies
+
+# Check table structure
+python3 scripts/00039-check-schema.py --table profiles --columns
+
+# View constraints
+python3 scripts/00039-check-schema.py --table profiles --constraints
+
+# See everything about a table
+python3 scripts/00039-check-schema.py --table profiles --all
+
+# Check which tables have RLS enabled
+python3 scripts/00039-check-schema.py --rls-status
+```
+
+### Update Snapshot (Manual Process)
+When database changes are made in Supabase Dashboard:
+1. Run capture queries from Session 38's scripts
+2. Copy results from Supabase SQL Editor
+3. Run `python3 scripts/00038-save-complete-snapshot.py`
+4. Paste results when prompted
+5. Commit updated snapshot files
+
+**Key Discovery**: Session 38 found RLS was enabled but ZERO policies existed, causing total lockdown.
+
 ## important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
 ALWAYS prefer editing an existing file in the codebase. NEVER write new files unless explicitly required.

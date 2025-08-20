@@ -161,11 +161,37 @@ CREATE POLICY "Users create own profile" ON profiles
 - Build on identity obsession pattern
 - Maintain focus on student value over infrastructure
 
+### Documentation Housekeeping (08:30 PM)
+**Session 38 Completion Work**:
+- Reviewed Session 38's snapshot implementation
+- Created missing reader script: `scripts/00039-check-schema.py`
+- Fixed bug in constraints parsing
+- Tested complete snapshot system functionality
+
+**File Organization**:
+- Moved snapshot docs from root to `docs/snapshot-system/`
+  - `00039-SCHEMA-SNAPSHOT-SPEC.md`
+  - `00039-SNAPSHOT-SYSTEM-SUMMARY.md`
+  - `00039-VETTING-REPORT.md`
+
+**INDEX Updates** (Constitutional requirement):
+- ✅ Updated `SYSTEM-INDEX.md` with Sessions 38-39 work
+- ✅ Updated `reality/REALITY_INDEX.md` with snapshot system
+- ✅ Updated `CLAUDE.md` with snapshot tool usage instructions
+
+**Key Discoveries from Snapshot**:
+- 7 duplicate/conflicting policies on profiles table
+- Mysterious `users` table not in our migrations
+- Both `grade` and `grade_level` columns exist
+- RLS enabled but ZERO policies = total lockdown (root cause)
+
 ## Constitutional Compliance
 - **Article VII**: Real-time logging maintained
 - **Transparency**: Full documentation of decisions and rationale
 - **Truth Priority**: Reality Agents and verifier confirmed
 - **Protocol v2.0**: Systematic approach with todo tracking
-- **File Naming**: Not applicable (HTML file, not documentation)
+- **File Naming**: Followed convention (00039-* prefix)
+- **INDEX Updates**: All major INDEX files updated per protocol
+- **Living Documentation**: Enhanced snapshot system from Session 38
 
-**Session 00039 Sign-off**: 7:50 PM - First student feature successfully implemented
+**Session 00039 Sign-off**: 8:35 PM - First student feature implemented, Session 38 work completed, housekeeping done
