@@ -1,0 +1,24 @@
+{
+  "rls_enabled": [
+    {
+      "tablename": "profiles",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "team_join_requests",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "team_members",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "teams",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "users",
+      "rowsecurity": true
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-20T13:13:29.256984",
+    "session": "00038",
+    "purpose": "Authoritative database schema snapshot after RLS policies applied",
+    "method": "Manual capture from Supabase Dashboard",
+    "notes": "Discovered duplicate policies and unknown users table"
+  },
+  "snapshot": {
+    "policies": {
+      "profiles": [
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Anyone can view profiles",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "true",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Profiles viewable by authenticated users",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "true",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Users can insert own profile",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "((user_id = auth.uid()) OR (proper_user_id IN ( SELECT users.id FROM users WHERE (users.auth_id = auth.uid()))))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Users can update own profile",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "UPDATE",
+          "qual": "((user_id = auth.uid()) OR (proper_user_id IN ( SELECT users.id FROM users WHERE (users.auth_id = auth.uid()))))",
+          "with_check": "((user_id = auth.uid()) OR (proper_user_id IN ( SELECT users.id FROM users WHERE (users.auth_id = auth.uid()))))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Users create own profile",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "(auth.uid() = user_id)"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Users delete own profile",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "DELETE",
+          "qual": "(auth.uid() = user_id)",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "profiles",
+          "policyname": "Users update own profile",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "UPDATE",
+          "qual": "(auth.uid() = user_id)",
+          "with_check": "(auth.uid() = user_id)"
+        }
+      ],
+      "team_join_requests": [
+        {
+          "schemaname": "public",
+          "tablename": "team_join_requests",
+          "policyname": "Founders respond to join requests",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "UPDATE",
+          "qual": "(team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))))",
+          "with_check": "(team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "team_join_requests",
+          "policyname": "Manage join requests",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "DELETE",
+          "qual": "((player_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))) OR (team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))))))",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "team_join_requests",
+          "policyname": "Players create join requests",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "(player_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "team_join_requests",
+          "policyname": "View relevant join requests",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "((player_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))) OR (team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))))))",
+          "with_check": null
+        }
+      ],
+      "team_members": [
+        {
+          "schemaname": "public",
+          "tablename": "team_members",
+          "policyname": "Anyone can view team members",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "true",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "team_members",
+          "policyname": "Founders add team members",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "(team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "team_members",
+          "policyname": "Manage team membership",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "DELETE",
+          "qual": "((team_id IN ( SELECT teams.id FROM teams WHERE (teams.founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))))) OR (player_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid()))))",
+          "with_check": null
+        }
+      ],
+      "teams": [
+        {
+          "schemaname": "public",
+          "tablename": "teams",
+          "policyname": "Anyone can view teams",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "true",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "teams",
+          "policyname": "Authenticated users create teams",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "(EXISTS ( SELECT 1 FROM profiles WHERE (profiles.user_id = auth.uid())))"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "teams",
+          "policyname": "Founders delete their teams",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "DELETE",
+          "qual": "(founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "teams",
+          "policyname": "Founders update their teams",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "UPDATE",
+          "qual": "(founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))",
+          "with_check": "(founder_id IN ( SELECT profiles.id FROM profiles WHERE (profiles.user_id = auth.uid())))"
+        }
+      ],
+      "users": [
+        {
+          "schemaname": "public",
+          "tablename": "users",
+          "policyname": "Allow signup process",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "INSERT",
+          "qual": null,
+          "with_check": "true"
+        },
+        {
+          "schemaname": "public",
+          "tablename": "users",
+          "policyname": "Anyone can view users",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "cmd": "SELECT",
+          "qual": "true",
+          "with_check": null
+        },
+        {
+          "schemaname": "public",
+          "tablename": "users",
+          "policyname": "Users update own record",
+          "permissive": "PERMISSIVE",
+          "roles": [
+            "authenticated"
+          ],
+          "cmd": "UPDATE",
+          "qual": "(auth_id = auth.uid())",
+          "with_check": "(auth_id = auth.uid())"
+        }
+      ]
+    },
+    "tables": {
+      "profiles": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "user_id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "call_sign",
+          "data_type": "character varying",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "role",
+          "data_type": "character varying",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "created_at",
+          "data_type": "timestamp with time zone",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "grade_level",
+          "data_type": "integer",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "proper_user_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        }
+      ],
+      "teams": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "name",
+          "data_type": "character varying",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "founder_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "max_members",
+          "data_type": "integer",
+          "is_nullable": "YES"
+        }
+      ],
+      "team_members": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "team_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "player_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        }
+      ],
+      "team_join_requests": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "team_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "player_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        }
+      ],
+      "users": [
+        {
+          "column_name": "id",
+          "data_type": "uuid",
+          "is_nullable": "NO"
+        },
+        {
+          "column_name": "auth_id",
+          "data_type": "uuid",
+          "is_nullable": "YES"
+        },
+        {
+          "column_name": "email",
+          "data_type": "text",
+          "is_nullable": "YES"
+        }
+      ]
+    },
+    "rls_status": {
+      "rls_enabled": [
+        {
+          "tablename": "profiles",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "team_join_requests",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "team_members",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "teams",
+          "rowsecurity": true
+        },
+        {
+          "tablename": "users",
+          "rowsecurity": true
+        }
+      ]
+    },
+    "constraints": {},
+    "indexes": {},
+    "row_counts": {}
+  }
+}

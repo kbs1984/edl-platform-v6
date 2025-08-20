@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-08-20T13:18:22.587528",
+  "session": "00038",
+  "purpose": "Complete authoritative database schema snapshot after RLS policies applied",
+  "method": "Manual capture from Supabase Dashboard with Desktop assistance",
+  "status": "COMPLETE - All 6 queries captured",
+  "notes": {
+    "discoveries": [
+      "21 RLS policies exist (some duplicates)",
+      "Unknown 'users' table with its own policies",
+      "Extra columns: grade_level, proper_user_id",
+      "Both grade and grade_level columns exist with same CHECK constraint",
+      "Comprehensive foreign key relationships documented"
+    ],
+    "policy_summary": {
+      "profiles": "7 policies (2 SELECT, 2 INSERT, 2 UPDATE, 1 DELETE)",
+      "teams": "4 policies (SELECT, INSERT, UPDATE, DELETE)",
+      "team_members": "3 policies (SELECT, INSERT, DELETE)",
+      "team_join_requests": "4 policies (SELECT, INSERT, UPDATE, DELETE)",
+      "users": "3 policies (SELECT, INSERT, UPDATE)"
+    }
+  }
+}
