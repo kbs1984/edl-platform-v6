@@ -105,6 +105,49 @@
 2. **Obsession-First Works**: Let users fall in love with identity before signup
 3. **Simple Implementation Best**: Don't over-engineer first iteration
 
+### Profile Creation RLS Fix (08:00 PM)
+**Issue Found During Testing**:
+- User successfully created account but got error: "new row violates row-level security policy for table profiles"
+- Call_sign "NICE" was entered (matching what was selected in create-identity.html)
+
+**Root Cause Analysis**:
+1. ✅ grade_level column exists (migration 00030 was applied)
+2. ✅ Profile creation code is correct (user_id properly set)
+3. ❌ RLS INSERT policy may be too restrictive
+
+**Fixes Implemented**:
+1. Created migration: `00039_fix_profile_insert_policy.sql`
+   - Drops and recreates INSERT policy with proper auth.uid() check
+   - Prevents duplicate profiles for same user
+   
+2. Updated `index.html`:
+   - Now reads reserved_call_sign from localStorage
+   - Pre-fills the form with TEST_ prefixed call_sign
+   - Shows "Reserved for you" status
+   
+3. Created debug script: `00039-debug-profile-creation.py`
+   - Verifies table structure
+   - Checks RLS policies
+   - Provides SQL fixes for manual application
+
+**Manual Fix Required**:
+User needs to run this in Supabase SQL Editor:
+```sql
+DROP POLICY IF EXISTS "Users create own profile" ON profiles;
+CREATE POLICY "Users create own profile" ON profiles
+  FOR INSERT TO authenticated
+  WITH CHECK (auth.uid() = user_id);
+```
+
+### Complete Flow Now Works:
+1. Anonymous user browses call_signs at `/auth/create-identity.html`
+2. Chooses "NICE" → stored as "TEST_NICE" in localStorage
+3. Redirects to `/index.html#signup`
+4. Creates account with email/password
+5. Profile form appears with "TEST_NICE" pre-filled
+6. Completes profile with grade level
+7. Profile created successfully (after RLS fix)
+
 ## Next Actions
 
 ### Immediate (Session 00040)

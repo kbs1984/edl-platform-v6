@@ -146,6 +146,18 @@ The three-domain architecture prevented a critical mistake:
 - 2025-08-19: **Session 33 GUARDIAN** - Constitutional adherence checklist created
 - 2025-08-19: **Session 34 TRUTH LAYER** - Source dashboard and Truth Layer architecture
 - 2025-08-19: **Session 35 TRUTH API** - Complete programmatic truth access with push architecture
+- 2025-08-20: **Session 38 SNAPSHOT SYSTEM** - Database schema snapshot for visibility into actual state
+- 2025-08-20: **Session 39 SNAPSHOT READER** - CLI tool to query snapshot, first student identity feature
+
+## Schema Snapshot System (Sessions 38-39)
+- **Purpose**: Capture actual database state from Supabase for CLI visibility
+- **Status**: ✅ COMPLETE v1.0
+- **Location**: `supabase/schema-snapshot/`
+- **Tools**:
+  - `scripts/00038-save-complete-snapshot.py` - Capture snapshot
+  - `scripts/00039-check-schema.py` - Query snapshot from CLI
+- **Documentation**: `docs/snapshot-system/`
+- **Key Discovery**: RLS enabled but ZERO policies existed (cause of auth failures)
 
 ## Key Metrics
 | Metric | Value | Target | Status |

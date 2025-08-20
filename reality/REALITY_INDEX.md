@@ -125,6 +125,40 @@ See [TOS-ARCHITECTURE.md](/TOS-ARCHITECTURE.md) for complete documentation.
 
 ---
 
+## Schema Snapshot System (Sessions 38-39) ✅ COMPLETE
+
+### Purpose
+Capture actual database state from Supabase Dashboard for CLI visibility into:
+- RLS policies (actual definitions, not assumptions)
+- Table structure and columns
+- Constraints and relationships
+- RLS enable/disable status
+
+### Key Discovery
+**Session 38 found**: RLS was ENABLED but ZERO policies existed = total lockdown
+This was the root cause of authentication and profile creation failures.
+
+### Tools
+- `scripts/00038-save-complete-snapshot.py` - Captures snapshot from Supabase
+- `scripts/00039-check-schema.py` - Query snapshot from CLI
+- `supabase/schema-snapshot/*.json` - Stored snapshot data
+
+### Usage
+```bash
+# Check actual RLS policies
+python3 scripts/00039-check-schema.py --table profiles --policies
+
+# View complete table info
+python3 scripts/00039-check-schema.py --table profiles --all
+```
+
+### Documentation
+- `docs/snapshot-system/00039-SCHEMA-SNAPSHOT-SPEC.md` - Original specification
+- `docs/snapshot-system/00039-SNAPSHOT-SYSTEM-SUMMARY.md` - Complete summary
+- `scripts/00038-rls-diagnosis.md` - Root cause analysis
+
+---
+
 ## Reality Domain Gaps
 
 ### Critical Gaps (RESOLVED via TOS)
