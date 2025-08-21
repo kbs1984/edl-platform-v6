@@ -1,0 +1,351 @@
+36
+
+-- Simplified schema information query
+-- 1. List all tables in public and debate schemas
+SELECT 
+    table_schema,
+    table_name,
+    pg_catalog.obj_description(
+        pg_catalog.pg_class.oid, 'pg_class'
+    ) as table_comment
+FROM 
+    information_schema.tables 
+JOIN 
+    pg_catalog.pg_class ON tables.table_name = pg_class.relname
+WHERE 
+    table_schema IN ('public', 'debate')
+    AND table_type = 'BASE TABLE'
+ORDER BY 
+    table_schema, 
+    table_name;
+
+-- 2. List all columns of these tables
+SELECT 
+    c.table_schema,
+    c.table_name,
+    c.column_name, 
+    c.data_type,
+    c.is_nullable,
+    c.column_default,
+    col_description(format('%s.%s', c.table_schema, c.table_name)::regclass::oid, c.ordinal_position) as column_comment
+FROM 
+    information_schema.columns c
+JOIN 
+    information_schema.tables t 
+    ON c.table_schema = t.table_schema 
+    AND c.table_name = t.table_name
+WHERE 
+    c.table_schema IN ('public', 'debate')
+    AND t.table_type = 'BASE TABLE'
+ORDER BY 
+    c.table_schema,
+    c.table_name, 
+    c.ordinal_position;
+
+-- 3. List all foreign keys
+SELECT
+    tc.table_schema, 
+    tc.constraint_name, 
+    tc.table_name, 
+    kcu.column_name, 
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name 
+FROM 
+    information_schema.table_constraints AS tc 
+JOIN 
+    information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN 
+    information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE 
+    tc.constraint_type = 'FOREIGN KEY'
+    AND tc.table_schema IN ('public', 'debate');
+
+-- 4. List custom enum types
+SELECT 
+    n.nspname AS enum_schema,
+    t.typname AS enum_name,
+    e.enumlabel AS enum_value,
+    e.enumsortorder
+FROM 
+    pg_type t
+JOIN 
+    pg_enum e ON t.oid = e.enumtypid
+JOIN 
+    pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE 
+    n.nspname IN ('public', 'debate')
+ORDER BY 
+    enum_schema, enum_name, e.enumsortorder;
+
+-- 5. List RLS policies (simplified)
+SELECT
+    schemaname, 
+    tablename, 
+    policyname, 
+    permissive, 
+    cmd, 
+    qual
+FROM 
+    pg_policies
+WHERE 
+    schemaname IN ('public', 'debate')
+ORDER BY 
+    schemaname, 
+    tablename;
+
+[
+  {
+    "schemaname": "debate",
+    "tablename": "ballots",
+    "policyname": "Participants can view ballots for their debates",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "(debate_id IN ( SELECT dt.debate_id\n   FROM ((debate.debate_teams dt\n     JOIN debate.debate_participants dp ON ((dp.debate_team_id = dt.id)))\n     JOIN student s ON ((dp.user_id = s.user_id)))\n  WHERE (s.user_id = auth.uid())))"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "ballots",
+    "policyname": "Judges can manage their own ballots",
+    "permissive": "PERMISSIVE",
+    "cmd": "ALL",
+    "qual": "(judge_id IN ( SELECT judge.id\n   FROM judge\n  WHERE (judge.user_id = auth.uid())))"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "criteria",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "debate_formats",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "format_rounds",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "genres",
+    "policyname": "Enable insert for authenticated users only",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "genres",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "round_templates",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "debate",
+    "tablename": "sides",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "friendship",
+    "policyname": "Allow update on friendship",
+    "permissive": "PERMISSIVE",
+    "cmd": "UPDATE",
+    "qual": "((user_id = auth.uid()) OR (friend_id = auth.uid()))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "friendship",
+    "policyname": "Allow insert on friendship",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "friendship",
+    "policyname": "Allow select on friendship",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "((user_id = auth.uid()) OR (friend_id = auth.uid()))"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "guardian",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "guardian",
+    "policyname": "Enable insert for authenticated users only",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "judge",
+    "policyname": "Enable insert for authenticated users only",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "profile",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "profile",
+    "policyname": "Allow users to select their own profile",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "(( SELECT auth.uid() AS uid) = id)"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "profile",
+    "policyname": "Allow users to update their own profile",
+    "permissive": "PERMISSIVE",
+    "cmd": "UPDATE",
+    "qual": "(( SELECT auth.uid() AS uid) = id)"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "school",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "school",
+    "policyname": "Allow authenticated users to insert school",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "student",
+    "policyname": "Enable insert for authenticated users only",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "student",
+    "policyname": "update_student_policy",
+    "permissive": "PERMISSIVE",
+    "cmd": "UPDATE",
+    "qual": "(user_id = auth.uid())"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "student",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team",
+    "policyname": "Enable delete for users based on user_id",
+    "permissive": "PERMISSIVE",
+    "cmd": "DELETE",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team",
+    "policyname": "Policy with table joins",
+    "permissive": "PERMISSIVE",
+    "cmd": "UPDATE",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team",
+    "policyname": "Enable insert for authenticated users only",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team_member",
+    "policyname": "Enable read access for all users",
+    "permissive": "PERMISSIVE",
+    "cmd": "SELECT",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team_member",
+    "policyname": "Enable delete for users based on user_id",
+    "permissive": "PERMISSIVE",
+    "cmd": "DELETE",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team_member",
+    "policyname": "Enable update for users based on email",
+    "permissive": "PERMISSIVE",
+    "cmd": "UPDATE",
+    "qual": "true"
+  },
+  {
+    "schemaname": "public",
+    "tablename": "team_member",
+    "policyname": "Enable insert for users based on user_id",
+    "permissive": "PERMISSIVE",
+    "cmd": "INSERT",
+    "qual": null
+  }
+]
+

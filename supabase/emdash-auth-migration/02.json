@@ -1,0 +1,88 @@
+02
+
+-- In your source project SQL Editor:
+SELECT
+  'DROP TABLE IF EXISTS ' || tablename || ' CASCADE;'
+FROM
+  pg_tables
+WHERE
+  schemaname = 'public';
+
+SELECT
+  'CREATE TABLE ' || schemaname || '.' || tablename || ' (' ||
+  string_agg(column_info, ', ' ORDER BY ordinal_position) || ');'
+FROM (
+  SELECT
+    t.schemaname,
+    t.tablename,
+    c.ordinal_position,
+    c.column_name || ' ' ||
+    c.data_type ||
+    CASE WHEN c.character_maximum_length IS NOT NULL THEN '(' || c.character_maximum_length || ')' ELSE '' END ||
+    CASE WHEN c.is_nullable = 'NO' THEN ' NOT NULL' ELSE '' END ||
+    CASE WHEN c.column_default IS NOT NULL THEN ' DEFAULT ' || c.column_default ELSE '' END
+    AS column_info
+  FROM
+    pg_tables t
+  JOIN
+    information_schema.columns c
+    ON t.schemaname = c.table_schema AND t.tablename = c.table_name
+  WHERE
+    t.schemaname = 'public'
+) subquery
+GROUP BY
+  schemaname, tablename;
+
+[
+  {
+    "?column?": "CREATE TABLE public.admin (id uuid NOT NULL DEFAULT uuid_generate_v4(), user_id uuid NOT NULL, created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP, updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP);"
+  },
+  {
+    "?column?": "CREATE TABLE public.bank_account (id uuid NOT NULL DEFAULT gen_random_uuid(), active boolean NOT NULL, guardian_id uuid NOT NULL, name text NOT NULL, routing text NOT NULL, swift_code text NOT NULL, i_b_a_n text NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.friendship (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp with time zone NOT NULL DEFAULT now(), updated_at timestamp with time zone DEFAULT now(), user_id uuid NOT NULL DEFAULT auth.uid(), friend_id uuid NOT NULL, status USER-DEFINED NOT NULL DEFAULT 'PENDING'::status, accpted_at timestamp with time zone);"
+  },
+  {
+    "?column?": "CREATE TABLE public.guardian (id uuid NOT NULL DEFAULT gen_random_uuid(), user_id uuid NOT NULL DEFAULT auth.uid(), payment_method text, billing_address text);"
+  },
+  {
+    "?column?": "CREATE TABLE public.guardian_request (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp with time zone NOT NULL DEFAULT now(), status USER-DEFINED DEFAULT 'PENDING'::status, updated_at timestamp without time zone NOT NULL, sender uuid, reciever uuid);"
+  },
+  {
+    "?column?": "CREATE TABLE public.guild (id uuid NOT NULL DEFAULT gen_random_uuid(), school_id uuid NOT NULL, created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp without time zone NOT NULL, name text NOT NULL, requirement text NOT NULL, division USER-DEFINED NOT NULL, image_path text NOT NULL, description text NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.guild_member (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp without time zone NOT NULL, student_id uuid NOT NULL, guild_id uuid NOT NULL, join_date timestamp without time zone, is_leader boolean NOT NULL DEFAULT false, status USER-DEFINED NOT NULL DEFAULT 'PENDING'::status);"
+  },
+  {
+    "?column?": "CREATE TABLE public.invitation (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp without time zone NOT NULL, accepted_at timestamp without time zone, inviter_id uuid NOT NULL, invitee_id uuid NOT NULL, team_id uuid, guild_id uuid, status USER-DEFINED NOT NULL DEFAULT 'PENDING'::status, expires_at timestamp without time zone, type USER-DEFINED NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.judge (id uuid NOT NULL DEFAULT gen_random_uuid(), user_id uuid NOT NULL DEFAULT auth.uid(), job_title text NOT NULL, biography text NOT NULL, bank_account_info text, referral_user_id uuid);"
+  },
+  {
+    "?column?": "CREATE TABLE public.log (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, log_type USER-DEFINED NOT NULL, description text NOT NULL, guild_id uuid, team_id uuid, student_id uuid NOT NULL, type USER-DEFINED NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.payment_history (id uuid NOT NULL DEFAULT gen_random_uuid(), guardian_id uuid NOT NULL, amount integer NOT NULL, currency_code text NOT NULL, payment_provider USER-DEFINED NOT NULL, payment_date timestamp without time zone NOT NULL, payment_state USER-DEFINED NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.profile (id uuid NOT NULL DEFAULT auth.uid(), name text DEFAULT ''::text, username text, image_path text, date_of_birth date, gender USER-DEFINED, user_role USER-DEFINED, active boolean NOT NULL DEFAULT false, term_agree_time timestamp with time zone, email text DEFAULT ''::text, invited boolean NOT NULL DEFAULT false);"
+  },
+  {
+    "?column?": "CREATE TABLE public.rating (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, rate integer NOT NULL, judge_id uuid NOT NULL, rater_id uuid NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.school (id uuid NOT NULL DEFAULT gen_random_uuid(), name text NOT NULL, created_at timestamp without time zone NOT NULL DEFAULT now(), updated_at timestamp without time zone NOT NULL DEFAULT now(), created_by uuid NOT NULL DEFAULT auth.uid());"
+  },
+  {
+    "?column?": "CREATE TABLE public.student (id uuid NOT NULL DEFAULT gen_random_uuid(), user_id uuid NOT NULL DEFAULT auth.uid(), guardian_id uuid, school_id uuid, division USER-DEFINED, location text NOT NULL, exp integer NOT NULL DEFAULT 0, ranking smallint NOT NULL DEFAULT '0'::smallint, challenge_enabled boolean NOT NULL DEFAULT false, graduation_year bigint NOT NULL, relationship_with_guardian text, level integer NOT NULL DEFAULT 0);"
+  },
+  {
+    "?column?": "CREATE TABLE public.team (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp without time zone NOT NULL, name text NOT NULL, description text NOT NULL, division USER-DEFINED NOT NULL, image_path text NOT NULL);"
+  },
+  {
+    "?column?": "CREATE TABLE public.team_member (id uuid NOT NULL DEFAULT gen_random_uuid(), created_at timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at timestamp without time zone NOT NULL, student_id uuid NOT NULL, team_id uuid NOT NULL, join_date timestamp without time zone, is_leader boolean NOT NULL DEFAULT false, status USER-DEFINED NOT NULL DEFAULT 'PENDING'::status);"
+  }
+]

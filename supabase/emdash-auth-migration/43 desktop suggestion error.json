@@ -1,0 +1,37 @@
+43 desktop suggestion error
+
+ERROR:  42P01: relation "debate.scorecards" does not exist
+LINE 18: LEFT JOIN debate.scorecards s ON b.id = s.ballot_id
+
+-- Examine debate workflow relationships
+SELECT 
+    'debates_to_ballots' as relationship,
+    COUNT(DISTINCT d.id) as debates_count,
+    COUNT(DISTINCT b.id) as ballots_count,
+    COUNT(DISTINCT b.id)::float / NULLIF(COUNT(DISTINCT d.id), 0) as ballots_per_debate
+FROM debate.debates d
+LEFT JOIN debate.ballots b ON d.id = b.debate_id
+
+UNION ALL
+
+SELECT 
+    'ballots_to_scorecards',
+    COUNT(DISTINCT b.id),
+    COUNT(DISTINCT s.id),
+    COUNT(DISTINCT s.id)::float / NULLIF(COUNT(DISTINCT b.id), 0)
+FROM debate.ballots b
+LEFT JOIN debate.scorecards s ON b.id = s.ballot_id
+
+UNION ALL
+
+SELECT 
+    'scorecards_to_scores',
+    COUNT(DISTINCT s.id),
+    COUNT(DISTINCT sc.id),
+    COUNT(DISTINCT sc.id)::float / NULLIF(COUNT(DISTINCT s.id), 0)
+FROM debate.scorecards s
+LEFT JOIN debate.scores sc ON s.id = sc.scorecard_id;
+
+SEE ERROR
+
+

@@ -1,0 +1,272 @@
+24
+
+SELECT
+    tc.constraint_name, 
+    tc.table_name, 
+    kcu.column_name, 
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name 
+FROM 
+    information_schema.table_constraints AS tc 
+JOIN 
+    information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN 
+    information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE 
+    tc.constraint_type = 'FOREIGN KEY' AND
+    tc.table_schema = 'debate';
+
+[
+  {
+    "constraint_name": "genres_proposer_id_fkey",
+    "table_name": "genres",
+    "column_name": "proposer_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "motions_genre_id_fkey",
+    "table_name": "motions",
+    "column_name": "genre_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "genres",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "motions_proposer_id_fkey",
+    "table_name": "motions",
+    "column_name": "proposer_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debates_debate_format_id_fkey",
+    "table_name": "debates",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debates_motion_id_fkey",
+    "table_name": "debates",
+    "column_name": "motion_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "motions",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "format_rounds_debate_format_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "format_rounds_round_template_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "round_template_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "round_templates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "format_rounds_side_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "side_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "sides",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debate_teams_debate_id_fkey",
+    "table_name": "debate_teams",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debate_teams_side_id_fkey",
+    "table_name": "debate_teams",
+    "column_name": "side_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "sides",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "videos_debate_id_fkey",
+    "table_name": "videos",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "videos_uploaded_by_fkey",
+    "table_name": "videos",
+    "column_name": "uploaded_by",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "judge_comments_criteria_id_fkey",
+    "table_name": "judge_comments",
+    "column_name": "criteria_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "criteria",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "judge_comments_judge_id_fkey",
+    "table_name": "judge_comments",
+    "column_name": "judge_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "judge",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "constraint_name": "judge_comments_video_id_fkey",
+    "table_name": "judge_comments",
+    "column_name": "video_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "videos",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "judge_scores_criteria_id_fkey",
+    "table_name": "judge_scores",
+    "column_name": "criteria_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "criteria",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "judge_scores_debate_id_fkey",
+    "table_name": "judge_scores",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "judge_scores_judge_id_fkey",
+    "table_name": "judge_scores",
+    "column_name": "judge_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "judge",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "constraint_name": "criteria_format_id_fkey",
+    "table_name": "criteria",
+    "column_name": "format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "matchmaking_queue_entries_debate_format_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "matchmaking_queue_entries_debate_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "matchmaking_queue_entries_opponent_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "opponent_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "matchmaking_queue_entries_team_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "ballots_debate_id_fkey",
+    "table_name": "ballots",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "ballots_format_id_fkey",
+    "table_name": "ballots",
+    "column_name": "format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "ballots_judge_id_fkey",
+    "table_name": "ballots",
+    "column_name": "judge_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "judge",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debate_participants_debate_team_id_fkey",
+    "table_name": "debate_participants",
+    "column_name": "debate_team_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_teams",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "debate_participants_user_id_fkey",
+    "table_name": "debate_participants",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "constraint_name": "speeches_debate_id_fkey",
+    "table_name": "speeches",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "speeches_format_round_id_fkey",
+    "table_name": "speeches",
+    "column_name": "format_round_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "format_rounds",
+    "foreign_column_name": "id"
+  },
+  {
+    "constraint_name": "speeches_participant_id_fkey",
+    "table_name": "speeches",
+    "column_name": "participant_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_participants",
+    "foreign_column_name": "id"
+  }
+]

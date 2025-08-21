@@ -1,0 +1,831 @@
+37 desktop suggestion
+
+-- Get complete structure for all tables we haven't fully examined
+SELECT 
+    c.table_schema,
+    c.table_name,
+    c.column_name,
+    c.data_type,
+    c.is_nullable,
+    c.column_default,
+    c.character_maximum_length,
+    pgd.description as column_comment
+FROM information_schema.columns c
+LEFT JOIN pg_catalog.pg_statio_all_tables st 
+    ON c.table_schema = st.schemaname 
+    AND c.table_name = st.relname
+LEFT JOIN pg_catalog.pg_description pgd 
+    ON pgd.objoid = st.relid 
+    AND pgd.objsubid = c.ordinal_position
+WHERE c.table_schema IN ('public', 'debate', 'chat')
+AND c.table_name IN (
+    'profile', 'school', 'guild', 'guild_member',
+    'speeches', 'motions', 'motion_categories',
+    'ballots', 'scorecards', 'scores', 'feedback',
+    'ballot_templates', 'round_templates',
+    'message', 'room', 'participant'
+)
+ORDER BY c.table_schema, c.table_name, c.ordinal_position;
+
+[
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "room_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "sender_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "is_system",
+    "data_type": "boolean",
+    "is_nullable": "NO",
+    "column_default": "false",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "room_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "student_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "joined_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "last_read_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "type",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "title",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "team_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "guild_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "uuid_generate_v4()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "debate_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "judge_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "status",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "column_default": "'PENDING'::debate_ballot_status_enum",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "submitted_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "format_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "version",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": "1",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "NO",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "topic",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "genre_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "details",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "proposer_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "code",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "default_time",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "description",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "debate_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "format_round_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "participant_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "content",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "delivered_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "duration_seconds",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "school_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "requirement",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "division",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "image_path",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "description",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": "CURRENT_TIMESTAMP",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "student_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "guild_id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "join_date",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "is_leader",
+    "data_type": "boolean",
+    "is_nullable": "NO",
+    "column_default": "false",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "status",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "NO",
+    "column_default": "'PENDING'::status",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "auth.uid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": "''::text",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "username",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "image_path",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "date_of_birth",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "gender",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "user_role",
+    "data_type": "USER-DEFINED",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "active",
+    "data_type": "boolean",
+    "is_nullable": "NO",
+    "column_default": "false",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "term_agree_time",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": "Records when the user agreed the terms and conditions"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "email",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": "''::text",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "column_name": "invited",
+    "data_type": "boolean",
+    "is_nullable": "NO",
+    "column_default": "false",
+    "character_maximum_length": null,
+    "column_comment": "check if guardian invited the user. if invited, role is going to be fixed as student"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "gen_random_uuid()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null,
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "NO",
+    "column_default": "now()",
+    "character_maximum_length": null,
+    "column_comment": null
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "created_by",
+    "data_type": "uuid",
+    "is_nullable": "NO",
+    "column_default": "auth.uid()",
+    "character_maximum_length": null,
+    "column_comment": "user uuid who created"
+  }
+]

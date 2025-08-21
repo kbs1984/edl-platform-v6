@@ -1,0 +1,96 @@
+40 desktop suggestion
+
+-- Get function definitions for chat automation
+SELECT 
+    n.nspname AS schema_name,
+    p.proname AS function_name,
+    pg_get_function_arguments(p.oid) AS arguments,
+    pg_get_functiondef(p.oid) AS definition
+FROM pg_proc p
+JOIN pg_namespace n ON p.pronamespace = n.oid
+WHERE n.nspname = 'chat'
+OR p.proname LIKE '%chat%'
+OR p.proname LIKE '%room%'
+OR p.proname LIKE '%message%'
+ORDER BY n.nspname, p.proname;
+
+[
+  {
+    "schema_name": "chat",
+    "function_name": "approve_friendship",
+    "arguments": "p_friendship_id uuid",
+    "definition": "CREATE OR REPLACE FUNCTION chat.approve_friendship(p_friendship_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nDECLARE\n  f RECORD;\n  room_id UUID;\nBEGIN\n  -- 1) friendship 존재 및 PENDING 확인\n  SELECT * INTO f\n    FROM public.friendship\n   WHERE id = p_friendship_id;\n  IF NOT FOUND THEN\n    RAISE EXCEPTION 'Friendship % not found', p_friendship_id;\n  END IF;\n  IF f.status = 'ACCEPTED' THEN\n    -- 이미 승인된 경우, 기존 방 있으면 리턴\n    SELECT r.id INTO room_id\n      FROM chat.room r\n      JOIN chat.participant p1 ON p1.room_id = r.id AND p1.student_id = f.user_id\n      JOIN chat.participant p2 ON p2.room_id = r.id AND p2.student_id = f.friend_id\n     WHERE r.type = 'FRIEND'\n     LIMIT 1;\n    IF room_id IS NOT NULL THEN\n      RETURN room_id;\n    END IF;\n  END IF;\n\n  -- 2) 상태 업데이트\n  UPDATE public.friendship\n     SET status = 'ACCEPTED', accpted_at = NOW(), updated_at = NOW()\n   WHERE id = p_friendship_id;\n\n  -- 3) 채팅방 생성\n  INSERT INTO chat.room(type)\n  VALUES ('FRIEND')\n  RETURNING id INTO room_id;\n\n  -- 4) participant 추가\n  INSERT INTO chat.participant(room_id, student_id)\n  VALUES (room_id, f.user_id), (room_id, f.friend_id)\n  ON CONFLICT DO NOTHING;\n\n  RETURN room_id;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_add_guild_member_to_room",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_add_guild_member_to_room()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nDECLARE\n  rid UUID;\nBEGIN\n  IF (TG_OP = 'INSERT' AND NEW.status = 'ACCEPTED')\n   OR (TG_OP = 'UPDATE' AND NEW.status = 'ACCEPTED' AND OLD.status <> 'ACCEPTED')\n  THEN\n    SELECT id INTO rid\n      FROM chat.room\n     WHERE type = 'GUILD' AND guild_id = NEW.guild_id\n     LIMIT 1;\n    IF rid IS NOT NULL THEN\n      INSERT INTO chat.participant(room_id, student_id)\n      VALUES (rid, NEW.student_id)\n      ON CONFLICT DO NOTHING;\n    END IF;\n  END IF;\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_add_team_member_to_room",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_add_team_member_to_room()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nDECLARE\n  rid UUID;\nBEGIN\n  IF (TG_OP = 'INSERT' AND NEW.status = 'ACCEPTED')\n   OR (TG_OP = 'UPDATE' AND NEW.status = 'ACCEPTED' AND OLD.status <> 'ACCEPTED')\n  THEN\n    SELECT id INTO rid\n      FROM chat.room\n     WHERE type = 'TEAM' AND team_id = NEW.team_id\n     LIMIT 1;\n    IF rid IS NOT NULL THEN\n      INSERT INTO chat.participant(room_id, student_id)\n      VALUES (rid, NEW.student_id)\n      ON CONFLICT DO NOTHING;\n    END IF;\n  END IF;\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_create_guild_room",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_create_guild_room()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  INSERT INTO chat.room(type, title, guild_id)\n  VALUES ('GUILD', NEW.name, NEW.id);\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_create_team_room",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_create_team_room()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  INSERT INTO chat.room(type, title, team_id)\n  VALUES ('TEAM', NEW.name, NEW.id);\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_sync_guild_room_title",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_sync_guild_room_title()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  UPDATE chat.room\n    SET title = NEW.name, updated_at = NOW()\n  WHERE type = 'GUILD' AND guild_id = NEW.id;\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "fn_sync_team_room_title",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.fn_sync_team_room_title()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  UPDATE chat.room\n    SET title = NEW.name, updated_at = NOW()\n  WHERE type = 'TEAM' AND team_id = NEW.id;\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "get_friend_room",
+    "arguments": "p_user uuid, p_friend uuid",
+    "definition": "CREATE OR REPLACE FUNCTION chat.get_friend_room(p_user uuid, p_friend uuid)\n RETURNS chat.room\n LANGUAGE sql\n SECURITY DEFINER\nAS $function$\n  SELECT r.*\n  FROM chat.room r\n  JOIN chat.participant p1 ON p1.room_id = r.id AND p1.student_id = p_user\n  JOIN chat.participant p2 ON p2.room_id = r.id AND p2.student_id = p_friend\n  WHERE r.type = 'FRIEND'\n  LIMIT 1\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "get_room_messages",
+    "arguments": "p_room_id uuid",
+    "definition": "CREATE OR REPLACE FUNCTION chat.get_room_messages(p_room_id uuid)\n RETURNS TABLE(id uuid, room_id uuid, sender_id uuid, content text, is_system boolean, created_at timestamp with time zone, updated_at timestamp with time zone, sender_name text, image_path text)\n LANGUAGE sql\n SECURITY DEFINER\nAS $function$\n  SELECT\n    m.id,\n    m.room_id,\n    m.sender_id,\n    m.content,\n    m.is_system,\n    m.created_at,\n    m.updated_at,\n    p.name        AS sender_name,\n    p.image_path\n  FROM chat.message AS m\n  JOIN public.profile AS p\n    ON p.id = m.sender_id\n  WHERE m.room_id = p_room_id\n  ORDER BY m.created_at ASC;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "is_room_member",
+    "arguments": "p_room_id uuid, p_user_id uuid",
+    "definition": "CREATE OR REPLACE FUNCTION chat.is_room_member(p_room_id uuid, p_user_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nDECLARE\n  _t   TEXT;\n  _tid UUID;\n  _gid UUID;\nBEGIN\n  SELECT type, team_id, guild_id\n    INTO _t, _tid, _gid\n    FROM chat.room\n   WHERE id = p_room_id;\n\n  IF _t = 'FRIEND' THEN\n    RETURN EXISTS(\n      SELECT 1 FROM chat.participant p\n       WHERE p.room_id    = p_room_id\n         AND p.student_id = p_user_id\n    );\n  ELSIF _t = 'TEAM' THEN\n    RETURN EXISTS(\n      SELECT 1 FROM public.team_member tm\n       WHERE tm.team_id    = _tid\n         AND tm.student_id = p_user_id\n         AND tm.status     = 'ACCEPTED'::public.status\n    );\n  ELSIF _t = 'GUILD' THEN\n    RETURN EXISTS(\n      SELECT 1 FROM public.guild_member gm\n       WHERE gm.guild_id    = _gid\n         AND gm.student_id  = p_user_id\n         AND gm.status      = 'ACCEPTED'::public.status\n    );\n  ELSE\n    RETURN FALSE;\n  END IF;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "chat",
+    "function_name": "set_timestamp",
+    "arguments": "",
+    "definition": "CREATE OR REPLACE FUNCTION chat.set_timestamp()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  NEW.updated_at := NOW();\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "pg_catalog",
+    "function_name": "pg_logical_emit_message",
+    "arguments": "boolean, text, bytea",
+    "definition": "CREATE OR REPLACE FUNCTION pg_catalog.pg_logical_emit_message(boolean, text, bytea)\n RETURNS pg_lsn\n LANGUAGE internal\n STRICT\nAS $function$pg_logical_emit_message_bytea$function$\n"
+  },
+  {
+    "schema_name": "pg_catalog",
+    "function_name": "pg_logical_emit_message",
+    "arguments": "boolean, text, text",
+    "definition": "CREATE OR REPLACE FUNCTION pg_catalog.pg_logical_emit_message(boolean, text, text)\n RETURNS pg_lsn\n LANGUAGE internal\n STRICT\nAS $function$pg_logical_emit_message_text$function$\n"
+  }
+]

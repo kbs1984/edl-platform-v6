@@ -1,0 +1,620 @@
+17
+
+SELECT
+    tc.table_schema, 
+    tc.constraint_name, 
+    tc.table_name, 
+    kcu.column_name, 
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name 
+FROM 
+    information_schema.table_constraints AS tc 
+JOIN 
+    information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN 
+    information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE 
+    tc.constraint_type = 'FOREIGN KEY';
+
+[
+  {
+    "table_schema": "storage",
+    "constraint_name": "objects_bucketId_fkey",
+    "table_name": "objects",
+    "column_name": "bucket_id",
+    "foreign_table_schema": "storage",
+    "foreign_table_name": "buckets",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "matchmaking_queue_entries_debate_format_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "matchmaking_queue_entries_debate_id_fkey",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "criteria_format_id_fkey",
+    "table_name": "criteria",
+    "column_name": "format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "guardian_request_sender_fkey",
+    "table_name": "guardian_request",
+    "column_name": "sender",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "guardian_request_reciever_fkey",
+    "table_name": "guardian_request",
+    "column_name": "reciever",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "motions_genre_id_fkey",
+    "table_name": "motions",
+    "column_name": "genre_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "genres",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Student_guardianId_fkey",
+    "table_name": "student",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Student_schoolId_fkey",
+    "table_name": "student",
+    "column_name": "school_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "school",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Judge_referralUserId_fkey",
+    "table_name": "judge",
+    "column_name": "referral_user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Judge_userId_fkey",
+    "table_name": "judge",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Rating_judgeId_fkey",
+    "table_name": "rating",
+    "column_name": "judge_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "judge",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Rating_raterId_fkey",
+    "table_name": "rating",
+    "column_name": "rater_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Guardian_userId_fkey",
+    "table_name": "guardian",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "BankAccount_guardianId_fkey",
+    "table_name": "bank_account",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "PaymentHistory_guardianId_fkey",
+    "table_name": "payment_history",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Guild_schoolId_fkey",
+    "table_name": "guild",
+    "column_name": "school_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "school",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "GuildMember_guildId_fkey",
+    "table_name": "guild_member",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "GuildMember_studentId_fkey",
+    "table_name": "guild_member",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "TeamMember_teamId_fkey",
+    "table_name": "team_member",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_guildId_fkey",
+    "table_name": "invitation",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_inviteeId_fkey",
+    "table_name": "invitation",
+    "column_name": "invitee_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_inviterId_fkey",
+    "table_name": "invitation",
+    "column_name": "inviter_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_teamId_fkey",
+    "table_name": "invitation",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_guildId_fkey",
+    "table_name": "log",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_studentId_fkey",
+    "table_name": "log",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_teamId_fkey",
+    "table_name": "log",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "format_rounds_debate_format_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "format_rounds_round_template_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "round_template_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "round_templates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "format_rounds_side_id_fkey",
+    "table_name": "format_rounds",
+    "column_name": "side_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "sides",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "debates_debate_format_id_fkey",
+    "table_name": "debates",
+    "column_name": "debate_format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "debates_motion_id_fkey",
+    "table_name": "debates",
+    "column_name": "motion_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "motions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "debate_teams_debate_id_fkey",
+    "table_name": "debate_teams",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "student_user_id_fkey",
+    "table_name": "student",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "debate_teams_side_id_fkey",
+    "table_name": "debate_teams",
+    "column_name": "side_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "sides",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "debate_participants_debate_team_id_fkey",
+    "table_name": "debate_participants",
+    "column_name": "debate_team_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_teams",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "speeches_debate_id_fkey",
+    "table_name": "speeches",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "speeches_format_round_id_fkey",
+    "table_name": "speeches",
+    "column_name": "format_round_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "format_rounds",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "speeches_participant_id_fkey",
+    "table_name": "speeches",
+    "column_name": "participant_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_participants",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "videos_debate_id_fkey",
+    "table_name": "videos",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "judge_comments_video_id_fkey",
+    "table_name": "judge_comments",
+    "column_name": "video_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "videos",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "judge_comments_criteria_id_fkey",
+    "table_name": "judge_comments",
+    "column_name": "criteria_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "criteria",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "judge_scores_debate_id_fkey",
+    "table_name": "judge_scores",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "judge_scores_criteria_id_fkey",
+    "table_name": "judge_scores",
+    "column_name": "criteria_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "criteria",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "ballots_debate_id_fkey",
+    "table_name": "ballots",
+    "column_name": "debate_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debates",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "debate",
+    "constraint_name": "ballots_format_id_fkey",
+    "table_name": "ballots",
+    "column_name": "format_id",
+    "foreign_table_schema": "debate",
+    "foreign_table_name": "debate_formats",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "team_member_student_id_fkey1",
+    "table_name": "team_member",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "friendship_user_id_fkey",
+    "table_name": "friendship",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "friendship_friend_id_fkey",
+    "table_name": "friendship",
+    "column_name": "friend_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "identities_user_id_fkey",
+    "table_name": "identities",
+    "column_name": "user_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "users",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "chat",
+    "constraint_name": "participant_room_id_fkey",
+    "table_name": "participant",
+    "column_name": "room_id",
+    "foreign_table_schema": "chat",
+    "foreign_table_name": "room",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "sessions_user_id_fkey",
+    "table_name": "sessions",
+    "column_name": "user_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "users",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "refresh_tokens_session_id_fkey",
+    "table_name": "refresh_tokens",
+    "column_name": "session_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "sessions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "mfa_factors_user_id_fkey",
+    "table_name": "mfa_factors",
+    "column_name": "user_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "users",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "mfa_challenges_auth_factor_id_fkey",
+    "table_name": "mfa_challenges",
+    "column_name": "factor_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "mfa_factors",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "mfa_amr_claims_session_id_fkey",
+    "table_name": "mfa_amr_claims",
+    "column_name": "session_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "sessions",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "sso_domains_sso_provider_id_fkey",
+    "table_name": "sso_domains",
+    "column_name": "sso_provider_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "sso_providers",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "saml_providers_sso_provider_id_fkey",
+    "table_name": "saml_providers",
+    "column_name": "sso_provider_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "sso_providers",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "saml_relay_states_sso_provider_id_fkey",
+    "table_name": "saml_relay_states",
+    "column_name": "sso_provider_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "sso_providers",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "chat",
+    "constraint_name": "message_room_id_fkey",
+    "table_name": "message",
+    "column_name": "room_id",
+    "foreign_table_schema": "chat",
+    "foreign_table_name": "room",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "saml_relay_states_flow_state_id_fkey",
+    "table_name": "saml_relay_states",
+    "column_name": "flow_state_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "flow_state",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "auth",
+    "constraint_name": "one_time_tokens_user_id_fkey",
+    "table_name": "one_time_tokens",
+    "column_name": "user_id",
+    "foreign_table_schema": "auth",
+    "foreign_table_name": "users",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "storage",
+    "constraint_name": "s3_multipart_uploads_bucket_id_fkey",
+    "table_name": "s3_multipart_uploads",
+    "column_name": "bucket_id",
+    "foreign_table_schema": "storage",
+    "foreign_table_name": "buckets",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "storage",
+    "constraint_name": "s3_multipart_uploads_parts_upload_id_fkey",
+    "table_name": "s3_multipart_uploads_parts",
+    "column_name": "upload_id",
+    "foreign_table_schema": "storage",
+    "foreign_table_name": "s3_multipart_uploads",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "storage",
+    "constraint_name": "s3_multipart_uploads_parts_bucket_id_fkey",
+    "table_name": "s3_multipart_uploads_parts",
+    "column_name": "bucket_id",
+    "foreign_table_schema": "storage",
+    "foreign_table_name": "buckets",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "storage",
+    "constraint_name": "prefixes_bucketId_fkey",
+    "table_name": "prefixes",
+    "column_name": "bucket_id",
+    "foreign_table_schema": "storage",
+    "foreign_table_name": "buckets",
+    "foreign_column_name": "id"
+  }
+]
+

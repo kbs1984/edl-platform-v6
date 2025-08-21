@@ -1,0 +1,275 @@
+35
+
+-- Get schema information
+SELECT schema_name FROM information_schema.schemata ORDER BY schema_name;
+
+-- Get tables from relevant schemas
+SELECT table_schema, table_name 
+FROM information_schema.tables 
+WHERE table_schema IN ('public', 'debate')
+ORDER BY table_schema, table_name;
+
+-- Get detailed table columns
+SELECT 
+    table_schema,
+    table_name, 
+    column_name, 
+    data_type, 
+    is_nullable, 
+    column_default
+FROM 
+    information_schema.columns
+WHERE 
+    table_schema IN ('public', 'debate')
+ORDER BY 
+    table_schema, table_name, ordinal_position;
+
+-- Get foreign key relationships
+SELECT
+    tc.constraint_name,
+    tc.table_schema,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM
+    information_schema.table_constraints AS tc
+JOIN
+    information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN
+    information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE
+    tc.constraint_type = 'FOREIGN KEY'
+    AND (tc.table_schema IN ('public', 'debate') OR ccu.table_schema IN ('public', 'debate'));
+
+-- Get custom enum types
+SELECT 
+    n.nspname AS enum_schema,
+    t.typname AS enum_name,
+    e.enumlabel AS enum_value
+FROM 
+    pg_type t
+JOIN 
+    pg_enum e ON t.oid = e.enumtypid
+JOIN 
+    pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE 
+    n.nspname IN ('public', 'debate')
+ORDER BY 
+    enum_schema, enum_name, e.enumsortorder;
+
+-- Get number of rows in key tables (checking if tables exist first)
+SELECT 'profile' as table_name, COUNT(*) as row_count FROM public.profile
+UNION ALL 
+SELECT 'student', COUNT(*) FROM public.student
+UNION ALL
+SELECT 'friendship', COUNT(*) FROM public.friendship WHERE EXISTS (
+    SELECT 1 FROM information_schema.tables 
+    WHERE table_schema = 'public' AND table_name = 'friendship'
+)
+UNION ALL
+SELECT 'team', COUNT(*) FROM public.team
+UNION ALL
+SELECT 'team_member', COUNT(*) FROM public.team_member
+UNION ALL
+SELECT 'debate_formats', COUNT(*) FROM debate.debate_formats
+UNION ALL
+SELECT 'debates', COUNT(*) FROM debate.debates
+UNION ALL
+SELECT 'debate_participants', COUNT(*) FROM debate.debate_participants WHERE EXISTS (
+    SELECT 1 FROM information_schema.tables 
+    WHERE table_schema = 'debate' AND table_name = 'debate_participants'
+)
+ORDER BY table_name;
+
+-- Check which tables related to presence and realtime features exist
+SELECT table_schema, table_name 
+FROM information_schema.tables 
+WHERE table_name LIKE '%presence%' OR table_name LIKE '%online%' OR table_name LIKE '%realtime%'
+ORDER BY table_schema, table_name;
+
+-- Get table and index sizes for existing tables
+SELECT
+    table_schema,
+    table_name,
+    pg_size_pretty(pg_total_relation_size(quote_ident(table_schema) || '.' || quote_ident(table_name))) as total_size
+FROM
+    information_schema.tables
+WHERE
+    table_schema IN ('public', 'debate')
+    AND table_type = 'BASE TABLE'
+ORDER BY
+    pg_total_relation_size(quote_ident(table_schema) || '.' || quote_ident(table_name)) DESC;
+
+[
+  {
+    "table_schema": "public",
+    "table_name": "profile",
+    "total_size": "80 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "format_rounds",
+    "total_size": "80 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "total_size": "80 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guardian",
+    "total_size": "80 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team_member",
+    "total_size": "72 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "friendship",
+    "total_size": "72 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "criteria",
+    "total_size": "64 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "judge",
+    "total_size": "64 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "total_size": "64 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_formats",
+    "total_size": "48 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "total_size": "48 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "sides",
+    "total_size": "48 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "total_size": "48 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "total_size": "40 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debates",
+    "total_size": "32 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "genres",
+    "total_size": "32 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team",
+    "total_size": "32 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "invitation",
+    "total_size": "24 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_teams",
+    "total_size": "24 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "log",
+    "total_size": "24 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_participants",
+    "total_size": "24 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "admin",
+    "total_size": "24 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "bank_account",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "payment_history",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "videos",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_comments",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_scores",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "total_size": "16 kB"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "rating",
+    "total_size": "8192 bytes"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "matchmaking_queue_entries",
+    "total_size": "8192 bytes"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guardian_request",
+    "total_size": "8192 bytes"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "total_size": "8192 bytes"
+  }
+]

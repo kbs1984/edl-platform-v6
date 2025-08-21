@@ -1,0 +1,51 @@
+53 desktop suggestion 
+
+-- Corrected query for actual system usage
+WITH user_stats AS (
+    SELECT 'Total Users' as metric, COUNT(*) as count FROM auth.users
+    UNION ALL
+    SELECT 'Students', COUNT(*) FROM public.student
+    UNION ALL
+    SELECT 'Judges', COUNT(*) FROM public.judge
+    UNION ALL
+    SELECT 'Teams', COUNT(*) FROM public.team
+    UNION ALL
+    SELECT 'Total Debates', COUNT(*) FROM debate.debates
+    UNION ALL
+    SELECT 'Debates with SYNC mode', COUNT(*) FROM debate.debates WHERE mode = 'SYNC'
+    UNION ALL
+    SELECT 'Debates with ASYNC mode', COUNT(*) FROM debate.debates WHERE mode = 'ASYNC'
+)
+SELECT * FROM user_stats
+ORDER BY count DESC;
+
+[
+  {
+    "metric": "Total Users",
+    "count": 21
+  },
+  {
+    "metric": "Students",
+    "count": 6
+  },
+  {
+    "metric": "Judges",
+    "count": 2
+  },
+  {
+    "metric": "Teams",
+    "count": 2
+  },
+  {
+    "metric": "Total Debates",
+    "count": 0
+  },
+  {
+    "metric": "Debates with SYNC mode",
+    "count": 0
+  },
+  {
+    "metric": "Debates with ASYNC mode",
+    "count": 0
+  }
+]

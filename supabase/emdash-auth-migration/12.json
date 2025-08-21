@@ -1,0 +1,385 @@
+12
+
+SELECT
+  n.nspname AS schema_name,
+  c.relname AS table_name,
+  CASE c.relkind
+    WHEN 'r' THEN 'table'
+    WHEN 'v' THEN 'view'
+    WHEN 'm' THEN 'materialized view'
+    WHEN 'f' THEN 'foreign table'
+    ELSE c.relkind::text
+  END AS type
+FROM
+  pg_class c
+  JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE
+  n.nspname NOT IN ('pg_catalog', 'information_schema')
+  AND n.nspname NOT LIKE 'pg_toast%'
+  AND c.relkind IN ('r', 'v', 'm', 'f')
+ORDER BY
+  schema_name, table_name;
+
+[
+  {
+    "schema_name": "auth",
+    "table_name": "audit_log_entries",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "flow_state",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "identities",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "instances",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "mfa_amr_claims",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "mfa_challenges",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "mfa_factors",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "one_time_tokens",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "refresh_tokens",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "saml_providers",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "saml_relay_states",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "schema_migrations",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "sessions",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "sso_domains",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "sso_providers",
+    "type": "table"
+  },
+  {
+    "schema_name": "auth",
+    "table_name": "users",
+    "type": "table"
+  },
+  {
+    "schema_name": "chat",
+    "table_name": "message",
+    "type": "table"
+  },
+  {
+    "schema_name": "chat",
+    "table_name": "participant",
+    "type": "table"
+  },
+  {
+    "schema_name": "chat",
+    "table_name": "room",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "ballots",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "criteria",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "debate_formats",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "debate_participants",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "debate_teams",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "debates",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "format_rounds",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "genres",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "judge_comments",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "judge_scores",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "matchmaking_queue_entries",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "motions",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "round_templates",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "sides",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "speeches",
+    "type": "table"
+  },
+  {
+    "schema_name": "debate",
+    "table_name": "videos",
+    "type": "table"
+  },
+  {
+    "schema_name": "extensions",
+    "table_name": "pg_stat_statements",
+    "type": "view"
+  },
+  {
+    "schema_name": "extensions",
+    "table_name": "pg_stat_statements_info",
+    "type": "view"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "admin",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "bank_account",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "friendship",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "guardian",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "guardian_request",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "guild",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "guild_member",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "invitation",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "judge",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "log",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "payment_history",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "profile",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "rating",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "school",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "student",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "team",
+    "type": "table"
+  },
+  {
+    "schema_name": "public",
+    "table_name": "team_member",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "messages_2025_08_18",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "messages_2025_08_19",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "messages_2025_08_20",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "messages_2025_08_21",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "messages_2025_08_22",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "schema_migrations",
+    "type": "table"
+  },
+  {
+    "schema_name": "realtime",
+    "table_name": "subscription",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "buckets",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "buckets_analytics",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "migrations",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "objects",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "prefixes",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "s3_multipart_uploads",
+    "type": "table"
+  },
+  {
+    "schema_name": "storage",
+    "table_name": "s3_multipart_uploads_parts",
+    "type": "table"
+  },
+  {
+    "schema_name": "supabase_migrations",
+    "table_name": "schema_migrations",
+    "type": "table"
+  },
+  {
+    "schema_name": "supabase_migrations",
+    "table_name": "seed_files",
+    "type": "table"
+  },
+  {
+    "schema_name": "vault",
+    "table_name": "decrypted_secrets",
+    "type": "view"
+  },
+  {
+    "schema_name": "vault",
+    "table_name": "secrets",
+    "type": "table"
+  }
+]
+

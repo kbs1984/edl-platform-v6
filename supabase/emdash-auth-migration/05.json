@@ -1,0 +1,69 @@
+05
+
+SELECT 
+  n.nspname AS schema,
+  t.typname AS type_name,
+  array_agg(e.enumlabel ORDER BY e.enumsortorder) AS enum_values
+FROM 
+  pg_type t
+  JOIN pg_enum e ON t.oid = e.enumtypid
+  JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE 
+  n.nspname = 'public'
+GROUP BY 
+  schema, type_name
+ORDER BY 
+  schema, type_name;
+
+[
+  {
+    "schema": "public",
+    "type_name": "debate_ballot_status_enum",
+    "enum_values": "{PENDING,IN_PROGRESS,COMPLETE}"
+  },
+  {
+    "schema": "public",
+    "type_name": "debate_session_status",
+    "enum_values": "{SCHEDULED,ONGOING,COMPLETED,CANCELLED}"
+  },
+  {
+    "schema": "public",
+    "type_name": "division",
+    "enum_values": "{VILLIGER,LOWER,UPPER,SENIOR,OPEN}"
+  },
+  {
+    "schema": "public",
+    "type_name": "gender",
+    "enum_values": "{MALE,FEMALE,\"do not wish to specify\"}"
+  },
+  {
+    "schema": "public",
+    "type_name": "group_type",
+    "enum_values": "{GUILD,TEAM}"
+  },
+  {
+    "schema": "public",
+    "type_name": "log_type",
+    "enum_values": "{REQUEST_JOIN,JOINED,LEFT,INVITED,KICKED,UPDATED,DELETED,CREATED}"
+  },
+  {
+    "schema": "public",
+    "type_name": "payment_provider",
+    "enum_values": "{TOSS,NAVER_PAY,KAKAO_PAY}"
+  },
+  {
+    "schema": "public",
+    "type_name": "payment_state",
+    "enum_values": "{REQUESTED,PENDING,FAILED,COMPLETED,AUTHORIZED,ABANDONED,REFUNDED,PREAPPROVED}"
+  },
+  {
+    "schema": "public",
+    "type_name": "status",
+    "enum_values": "{PENDING,ACCEPTED,REJECTED,EXPIRED,CANCELLED}"
+  },
+  {
+    "schema": "public",
+    "type_name": "user_role_type",
+    "enum_values": "{STUDENT,JUDGE,GUARDIAN}"
+  }
+]

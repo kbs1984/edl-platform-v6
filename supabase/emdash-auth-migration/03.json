@@ -1,0 +1,107 @@
+03
+
+-- Get foreign key constraints:
+SELECT
+  'ALTER TABLE ' || tc.table_schema || '.' || tc.table_name || 
+  ' ADD CONSTRAINT ' || tc.constraint_name || 
+  ' FOREIGN KEY (' || kcu.column_name || ')' ||
+  ' REFERENCES ' || ccu.table_schema || '.' || ccu.table_name || 
+  ' (' || ccu.column_name || ');'
+FROM
+  information_schema.table_constraints tc
+JOIN
+  information_schema.key_column_usage kcu
+  ON tc.constraint_name = kcu.constraint_name
+JOIN
+  information_schema.constraint_column_usage ccu
+  ON tc.constraint_name = ccu.constraint_name
+WHERE
+  tc.constraint_type = 'FOREIGN KEY' AND
+  tc.table_schema = 'public';
+
+[
+  {
+    "?column?": "ALTER TABLE public.admin ADD CONSTRAINT admin_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth.users (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guardian_request ADD CONSTRAINT guardian_request_sender_fkey FOREIGN KEY (sender) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guardian_request ADD CONSTRAINT guardian_request_reciever_fkey FOREIGN KEY (reciever) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.student ADD CONSTRAINT Student_guardianId_fkey FOREIGN KEY (guardian_id) REFERENCES public.guardian (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.student ADD CONSTRAINT Student_schoolId_fkey FOREIGN KEY (school_id) REFERENCES public.school (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.judge ADD CONSTRAINT Judge_referralUserId_fkey FOREIGN KEY (referral_user_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.judge ADD CONSTRAINT Judge_userId_fkey FOREIGN KEY (user_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.rating ADD CONSTRAINT Rating_judgeId_fkey FOREIGN KEY (judge_id) REFERENCES public.judge (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.rating ADD CONSTRAINT Rating_raterId_fkey FOREIGN KEY (rater_id) REFERENCES public.student (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guardian ADD CONSTRAINT Guardian_userId_fkey FOREIGN KEY (user_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.bank_account ADD CONSTRAINT BankAccount_guardianId_fkey FOREIGN KEY (guardian_id) REFERENCES public.guardian (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.payment_history ADD CONSTRAINT PaymentHistory_guardianId_fkey FOREIGN KEY (guardian_id) REFERENCES public.guardian (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guild ADD CONSTRAINT Guild_schoolId_fkey FOREIGN KEY (school_id) REFERENCES public.school (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guild_member ADD CONSTRAINT GuildMember_guildId_fkey FOREIGN KEY (guild_id) REFERENCES public.guild (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.guild_member ADD CONSTRAINT GuildMember_studentId_fkey FOREIGN KEY (student_id) REFERENCES public.student (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.team_member ADD CONSTRAINT TeamMember_teamId_fkey FOREIGN KEY (team_id) REFERENCES public.team (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.invitation ADD CONSTRAINT Invitation_guildId_fkey FOREIGN KEY (guild_id) REFERENCES public.guild (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.invitation ADD CONSTRAINT Invitation_inviteeId_fkey FOREIGN KEY (invitee_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.invitation ADD CONSTRAINT Invitation_inviterId_fkey FOREIGN KEY (inviter_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.invitation ADD CONSTRAINT Invitation_teamId_fkey FOREIGN KEY (team_id) REFERENCES public.team (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.log ADD CONSTRAINT Log_guildId_fkey FOREIGN KEY (guild_id) REFERENCES public.guild (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.log ADD CONSTRAINT Log_studentId_fkey FOREIGN KEY (student_id) REFERENCES public.student (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.log ADD CONSTRAINT Log_teamId_fkey FOREIGN KEY (team_id) REFERENCES public.team (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.student ADD CONSTRAINT student_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.profile ADD CONSTRAINT User_id_fkey FOREIGN KEY (id) REFERENCES auth.users (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.team_member ADD CONSTRAINT team_member_student_id_fkey1 FOREIGN KEY (student_id) REFERENCES public.profile (id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.friendship ADD CONSTRAINT friendship_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.student (user_id);"
+  },
+  {
+    "?column?": "ALTER TABLE public.friendship ADD CONSTRAINT friendship_friend_id_fkey FOREIGN KEY (friend_id) REFERENCES public.student (user_id);"
+  }
+]

@@ -1,0 +1,36 @@
+47 desktop suggestion
+
+-- Check if video recording system exists
+SELECT 
+    table_schema,
+    table_name,
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE table_schema = 'debate' 
+    AND table_name = 'videos'
+ORDER BY ordinal_position;
+
+-- If no videos table, check if recordings are stored elsewhere
+SELECT 
+    table_schema,
+    table_name,
+    column_name
+FROM information_schema.columns
+WHERE column_name LIKE '%video%' 
+    OR column_name LIKE '%recording%'
+    OR column_name LIKE '%media%'
+ORDER BY table_schema, table_name;
+
+[
+  {
+    "table_schema": "debate",
+    "table_name": "judge_comments",
+    "column_name": "video_id"
+  },
+  {
+    "table_schema": "pg_catalog",
+    "table_name": "pg_index",
+    "column_name": "indimmediate"
+  }
+]

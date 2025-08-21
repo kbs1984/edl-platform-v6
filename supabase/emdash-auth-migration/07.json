@@ -1,0 +1,185 @@
+07
+
+SELECT
+  tablename,
+  indexname,
+  indexdef
+FROM
+  pg_indexes
+WHERE
+  schemaname = 'public'
+ORDER BY
+  tablename, indexname;
+
+[
+  {
+    "tablename": "admin",
+    "indexname": "admin_pkey",
+    "indexdef": "CREATE UNIQUE INDEX admin_pkey ON public.admin USING btree (id)"
+  },
+  {
+    "tablename": "bank_account",
+    "indexname": "BankAccount_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"BankAccount_pkey\" ON public.bank_account USING btree (id)"
+  },
+  {
+    "tablename": "friendship",
+    "indexname": "friend_unique",
+    "indexdef": "CREATE UNIQUE INDEX friend_unique ON public.friendship USING btree (user_id, friend_id)"
+  },
+  {
+    "tablename": "friendship",
+    "indexname": "friendship_pkey",
+    "indexdef": "CREATE UNIQUE INDEX friendship_pkey ON public.friendship USING btree (id)"
+  },
+  {
+    "tablename": "guardian",
+    "indexname": "Guardian_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Guardian_pkey\" ON public.guardian USING btree (id)"
+  },
+  {
+    "tablename": "guardian",
+    "indexname": "Guardian_userId_idx",
+    "indexdef": "CREATE INDEX \"Guardian_userId_idx\" ON public.guardian USING btree (user_id)"
+  },
+  {
+    "tablename": "guardian",
+    "indexname": "Guardian_userId_key",
+    "indexdef": "CREATE UNIQUE INDEX \"Guardian_userId_key\" ON public.guardian USING btree (user_id)"
+  },
+  {
+    "tablename": "guardian",
+    "indexname": "guardian_user_id_key",
+    "indexdef": "CREATE UNIQUE INDEX guardian_user_id_key ON public.guardian USING btree (user_id)"
+  },
+  {
+    "tablename": "guardian_request",
+    "indexname": "guardian_request_pkey",
+    "indexdef": "CREATE UNIQUE INDEX guardian_request_pkey ON public.guardian_request USING btree (id)"
+  },
+  {
+    "tablename": "guild",
+    "indexname": "Guild_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Guild_pkey\" ON public.guild USING btree (id)"
+  },
+  {
+    "tablename": "guild_member",
+    "indexname": "GuildMember_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"GuildMember_pkey\" ON public.guild_member USING btree (id)"
+  },
+  {
+    "tablename": "invitation",
+    "indexname": "Invitation_inviteeId_idx",
+    "indexdef": "CREATE INDEX \"Invitation_inviteeId_idx\" ON public.invitation USING btree (invitee_id)"
+  },
+  {
+    "tablename": "invitation",
+    "indexname": "Invitation_inviterId_idx",
+    "indexdef": "CREATE INDEX \"Invitation_inviterId_idx\" ON public.invitation USING btree (inviter_id)"
+  },
+  {
+    "tablename": "invitation",
+    "indexname": "Invitation_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Invitation_pkey\" ON public.invitation USING btree (id)"
+  },
+  {
+    "tablename": "judge",
+    "indexname": "Judge_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Judge_pkey\" ON public.judge USING btree (id)"
+  },
+  {
+    "tablename": "judge",
+    "indexname": "Judge_userId_idx",
+    "indexdef": "CREATE INDEX \"Judge_userId_idx\" ON public.judge USING btree (user_id)"
+  },
+  {
+    "tablename": "judge",
+    "indexname": "Judge_userId_key",
+    "indexdef": "CREATE UNIQUE INDEX \"Judge_userId_key\" ON public.judge USING btree (user_id)"
+  },
+  {
+    "tablename": "log",
+    "indexname": "Log_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Log_pkey\" ON public.log USING btree (id)"
+  },
+  {
+    "tablename": "log",
+    "indexname": "Log_studentId_idx",
+    "indexdef": "CREATE INDEX \"Log_studentId_idx\" ON public.log USING btree (student_id)"
+  },
+  {
+    "tablename": "payment_history",
+    "indexname": "PaymentHistory_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"PaymentHistory_pkey\" ON public.payment_history USING btree (id)"
+  },
+  {
+    "tablename": "profile",
+    "indexname": "User_id_key",
+    "indexdef": "CREATE UNIQUE INDEX \"User_id_key\" ON public.profile USING btree (id)"
+  },
+  {
+    "tablename": "profile",
+    "indexname": "User_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"User_pkey\" ON public.profile USING btree (id)"
+  },
+  {
+    "tablename": "profile",
+    "indexname": "User_username_key",
+    "indexdef": "CREATE UNIQUE INDEX \"User_username_key\" ON public.profile USING btree (username)"
+  },
+  {
+    "tablename": "profile",
+    "indexname": "User_username_key1",
+    "indexdef": "CREATE UNIQUE INDEX \"User_username_key1\" ON public.profile USING btree (username)"
+  },
+  {
+    "tablename": "rating",
+    "indexname": "Rating_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Rating_pkey\" ON public.rating USING btree (id)"
+  },
+  {
+    "tablename": "school",
+    "indexname": "School_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"School_pkey\" ON public.school USING btree (id)"
+  },
+  {
+    "tablename": "school",
+    "indexname": "school_name_key",
+    "indexdef": "CREATE UNIQUE INDEX school_name_key ON public.school USING btree (name)"
+  },
+  {
+    "tablename": "student",
+    "indexname": "Student_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Student_pkey\" ON public.student USING btree (id)"
+  },
+  {
+    "tablename": "student",
+    "indexname": "Student_userId_idx",
+    "indexdef": "CREATE INDEX \"Student_userId_idx\" ON public.student USING btree (user_id)"
+  },
+  {
+    "tablename": "student",
+    "indexname": "Student_userId_key",
+    "indexdef": "CREATE UNIQUE INDEX \"Student_userId_key\" ON public.student USING btree (user_id)"
+  },
+  {
+    "tablename": "student",
+    "indexname": "student_user_id_key",
+    "indexdef": "CREATE UNIQUE INDEX student_user_id_key ON public.student USING btree (user_id)"
+  },
+  {
+    "tablename": "team",
+    "indexname": "Team_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"Team_pkey\" ON public.team USING btree (id)"
+  },
+  {
+    "tablename": "team_member",
+    "indexname": "TeamMember_pkey",
+    "indexdef": "CREATE UNIQUE INDEX \"TeamMember_pkey\" ON public.team_member USING btree (id)"
+  },
+  {
+    "tablename": "team_member",
+    "indexname": "team_member_student_team_unique",
+    "indexdef": "CREATE UNIQUE INDEX team_member_student_team_unique ON public.team_member USING btree (student_id, team_id)"
+  }
+]

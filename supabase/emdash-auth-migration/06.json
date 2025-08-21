@@ -1,0 +1,260 @@
+06
+
+SELECT
+  tc.table_schema, 
+  tc.constraint_name, 
+  tc.table_name, 
+  kcu.column_name, 
+  ccu.table_schema AS foreign_table_schema,
+  ccu.table_name AS foreign_table_name,
+  ccu.column_name AS foreign_column_name 
+FROM 
+  information_schema.table_constraints AS tc 
+  JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+  JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE 
+  tc.constraint_type = 'FOREIGN KEY' 
+  AND tc.table_schema = 'public'
+ORDER BY 
+  tc.table_name;
+
+[
+  {
+    "table_schema": "public",
+    "constraint_name": "BankAccount_guardianId_fkey",
+    "table_name": "bank_account",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "friendship_user_id_fkey",
+    "table_name": "friendship",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "friendship_friend_id_fkey",
+    "table_name": "friendship",
+    "column_name": "friend_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "user_id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Guardian_userId_fkey",
+    "table_name": "guardian",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "guardian_request_sender_fkey",
+    "table_name": "guardian_request",
+    "column_name": "sender",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "guardian_request_reciever_fkey",
+    "table_name": "guardian_request",
+    "column_name": "reciever",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Guild_schoolId_fkey",
+    "table_name": "guild",
+    "column_name": "school_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "school",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "GuildMember_guildId_fkey",
+    "table_name": "guild_member",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "GuildMember_studentId_fkey",
+    "table_name": "guild_member",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_guildId_fkey",
+    "table_name": "invitation",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_inviteeId_fkey",
+    "table_name": "invitation",
+    "column_name": "invitee_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_inviterId_fkey",
+    "table_name": "invitation",
+    "column_name": "inviter_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Invitation_teamId_fkey",
+    "table_name": "invitation",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Judge_userId_fkey",
+    "table_name": "judge",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Judge_referralUserId_fkey",
+    "table_name": "judge",
+    "column_name": "referral_user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_teamId_fkey",
+    "table_name": "log",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_guildId_fkey",
+    "table_name": "log",
+    "column_name": "guild_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guild",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Log_studentId_fkey",
+    "table_name": "log",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "PaymentHistory_guardianId_fkey",
+    "table_name": "payment_history",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Rating_raterId_fkey",
+    "table_name": "rating",
+    "column_name": "rater_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "student",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Rating_judgeId_fkey",
+    "table_name": "rating",
+    "column_name": "judge_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "judge",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "student_user_id_fkey",
+    "table_name": "student",
+    "column_name": "user_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Student_schoolId_fkey",
+    "table_name": "student",
+    "column_name": "school_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "school",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "Student_guardianId_fkey",
+    "table_name": "student",
+    "column_name": "guardian_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "guardian",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "team_member_student_id_fkey1",
+    "table_name": "team_member",
+    "column_name": "student_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "profile",
+    "foreign_column_name": "id"
+  },
+  {
+    "table_schema": "public",
+    "constraint_name": "TeamMember_teamId_fkey",
+    "table_name": "team_member",
+    "column_name": "team_id",
+    "foreign_table_schema": "public",
+    "foreign_table_name": "team",
+    "foreign_column_name": "id"
+  }
+]

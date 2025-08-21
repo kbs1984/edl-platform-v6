@@ -1,0 +1,30 @@
+52 desktop suggestion
+
+-- Find league-related structures
+SELECT DISTINCT
+    data_type,
+    udt_schema,
+    udt_name
+FROM information_schema.columns
+WHERE column_name = 'league_id'
+    AND table_schema = 'debate';
+
+-- Get league enum values or table
+SELECT 
+    n.nspname AS schema_name,
+    t.typname AS type_name,
+    string_agg(e.enumlabel, ', ' ORDER BY e.enumsortorder) AS values
+FROM pg_type t
+JOIN pg_enum e ON t.oid = e.enumtypid
+JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE t.typname LIKE '%league%'
+GROUP BY n.nspname, t.typname;
+
+[
+  {
+    "data_type": "USER-DEFINED",
+    "udt_schema": "public",
+    "udt_name": "division"
+  }
+]
+

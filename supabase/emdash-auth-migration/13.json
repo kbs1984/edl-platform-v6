@@ -1,0 +1,62 @@
+13
+
+SELECT
+  format(
+    'CREATE TYPE %I.%I AS ENUM (%s);',
+    n.nspname,
+    t.typname,
+    string_agg(
+      quote_literal(e.enumlabel),
+      ', ' 
+      ORDER BY e.enumsortorder
+    )
+  ) AS enum_ddl
+FROM
+  pg_type t
+  JOIN pg_enum e ON t.oid = e.enumtypid
+  JOIN pg_namespace n ON n.oid = t.typnamespace
+WHERE
+  n.nspname IN ('public', 'debate')
+GROUP BY
+  n.nspname, t.typname;
+
+
+[
+  {
+    "enum_ddl": "CREATE TYPE debate.criteria_group AS ENUM ('STYLE', 'RESPECT', 'ANALYSIS');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE debate.speech_mode AS ENUM ('SYNC', 'ASYNC');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.debate_ballot_status_enum AS ENUM ('PENDING', 'IN_PROGRESS', 'COMPLETE');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.debate_session_status AS ENUM ('SCHEDULED', 'ONGOING', 'COMPLETED', 'CANCELLED');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.division AS ENUM ('VILLIGER', 'LOWER', 'UPPER', 'SENIOR', 'OPEN');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.gender AS ENUM ('MALE', 'FEMALE', 'do not wish to specify');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.group_type AS ENUM ('GUILD', 'TEAM');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.log_type AS ENUM ('REQUEST_JOIN', 'JOINED', 'LEFT', 'INVITED', 'KICKED', 'UPDATED', 'DELETED', 'CREATED');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.payment_provider AS ENUM ('TOSS', 'NAVER_PAY', 'KAKAO_PAY');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.payment_state AS ENUM ('REQUESTED', 'PENDING', 'FAILED', 'COMPLETED', 'AUTHORIZED', 'ABANDONED', 'REFUNDED', 'PREAPPROVED');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.status AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED', 'EXPIRED', 'CANCELLED');"
+  },
+  {
+    "enum_ddl": "CREATE TYPE public.user_role_type AS ENUM ('STUDENT', 'JUDGE', 'GUARDIAN');"
+  }
+]
+

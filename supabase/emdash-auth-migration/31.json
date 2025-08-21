@@ -1,0 +1,146 @@
+31
+
+-- Query to help create a text-based schema diagram
+WITH fkeys AS (
+    SELECT
+        tc.table_schema, 
+        tc.table_name,
+        kcu.column_name,
+        ccu.table_schema AS target_table_schema,
+        ccu.table_name AS target_table_name,
+        ccu.column_name AS target_column_name
+    FROM 
+        information_schema.table_constraints tc
+    JOIN 
+        information_schema.key_column_usage kcu 
+        ON tc.constraint_name = kcu.constraint_name
+    JOIN 
+        information_schema.constraint_column_usage ccu 
+        ON ccu.constraint_name = tc.constraint_name
+    WHERE 
+        tc.constraint_type = 'FOREIGN KEY' AND
+        tc.table_schema = 'debate'
+)
+SELECT
+    t.table_schema,
+    t.table_name,
+    string_agg(c.column_name || ' ' || c.data_type, ', ') AS columns,
+    string_agg(
+        CASE WHEN fk.target_table_name IS NOT NULL 
+        THEN c.column_name || ' → ' || fk.target_table_schema || '.' || fk.target_table_name || '.' || fk.target_column_name
+        ELSE NULL END, 
+        E'\n'
+    ) AS foreign_keys
+FROM
+    information_schema.tables t
+JOIN
+    information_schema.columns c ON t.table_schema = c.table_schema AND t.table_name = c.table_name
+LEFT JOIN
+    fkeys fk ON t.table_schema = fk.table_schema AND t.table_name = fk.table_name AND c.column_name = fk.column_name
+WHERE
+    t.table_schema = 'debate' AND
+    t.table_type = 'BASE TABLE'
+GROUP BY
+    t.table_schema, t.table_name
+ORDER BY
+    t.table_name;
+
+[
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "columns": "status USER-DEFINED, created_at timestamp with time zone, version integer, format_id uuid, updated_at timestamp with time zone, submitted_at timestamp with time zone, id uuid, debate_id uuid, judge_id uuid",
+    "foreign_keys": "format_id → debate.debate_formats.id\ndebate_id → debate.debates.id\njudge_id → public.judge.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "criteria",
+    "columns": "format_id uuid, label text, criteria text, name text, group USER-DEFINED, id uuid",
+    "foreign_keys": "format_id → debate.debate_formats.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_formats",
+    "columns": "description text, type USER-DEFINED, name text, id uuid",
+    "foreign_keys": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_participants",
+    "columns": "id uuid, debate_team_id uuid, user_id uuid, invite_status USER-DEFINED, speaker_position smallint",
+    "foreign_keys": "debate_team_id → debate.debate_teams.id\nuser_id → public.student.user_id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_teams",
+    "columns": "side_id uuid, id uuid, debate_id uuid",
+    "foreign_keys": "side_id → debate.sides.id\ndebate_id → debate.debates.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debates",
+    "columns": "scheduled_at timestamp with time zone, created_at timestamp with time zone, mode USER-DEFINED, id uuid, debate_format_id uuid, motion_id uuid",
+    "foreign_keys": "debate_format_id → debate.debate_formats.id\nmotion_id → debate.motions.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "format_rounds",
+    "columns": "sequence integer, side_id uuid, speaker_positions ARRAY, number_of_speakers smallint, id uuid, debate_format_id uuid, round_template_id uuid",
+    "foreign_keys": "side_id → debate.sides.id\ndebate_format_id → debate.debate_formats.id\nround_template_id → debate.round_templates.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "genres",
+    "columns": "id uuid, created_at timestamp with time zone, updated_at timestamp with time zone, title text, description text, proposer_id uuid",
+    "foreign_keys": "proposer_id → public.profile.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_comments",
+    "columns": "id uuid, video_id uuid, judge_id uuid, criteria_id uuid, at_seconds integer, comment text, created_at timestamp with time zone",
+    "foreign_keys": "video_id → debate.videos.id\njudge_id → public.judge.user_id\ncriteria_id → debate.criteria.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_scores",
+    "columns": "id uuid, debate_id uuid, judge_id uuid, criteria_id uuid, score numeric, created_at timestamp with time zone",
+    "foreign_keys": "debate_id → debate.debates.id\njudge_id → public.judge.user_id\ncriteria_id → debate.criteria.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "matchmaking_queue_entries",
+    "columns": "id uuid, team_id uuid, debate_format_id uuid, league_id USER-DEFINED, team_rank integer, challenge_mode_active boolean, status USER-DEFINED, queued_at timestamp with time zone, debate_id uuid, opponent_id uuid",
+    "foreign_keys": "team_id → public.team.id\ndebate_format_id → debate.debate_formats.id\ndebate_id → debate.debates.id\nopponent_id → public.team.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "columns": "details text, genre_id uuid, topic text, updated_at timestamp with time zone, id uuid, created_at timestamp with time zone, proposer_id uuid",
+    "foreign_keys": "genre_id → debate.genres.id\nproposer_id → public.profile.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "columns": "id uuid, name text, code text, default_time integer, description text",
+    "foreign_keys": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "sides",
+    "columns": "id uuid, title text",
+    "foreign_keys": null
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "columns": "id uuid, format_round_id uuid, participant_id uuid, content text, delivered_at timestamp with time zone, duration_seconds integer, debate_id uuid",
+    "foreign_keys": "format_round_id → debate.format_rounds.id\nparticipant_id → debate.debate_participants.id\ndebate_id → debate.debates.id"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "videos",
+    "columns": "debate_id uuid, id uuid, uploaded_at timestamp with time zone, url text, uploaded_by uuid, storage_path text",
+    "foreign_keys": "debate_id → debate.debates.id\nuploaded_by → public.profile.id"
+  }
+]
+

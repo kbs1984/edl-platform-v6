@@ -1,0 +1,76 @@
+39 desktop suggestion
+
+-- Get all enum types and their values
+SELECT 
+    n.nspname AS schema_name,
+    t.typname AS enum_name,
+    string_agg(e.enumlabel, ', ' ORDER BY e.enumsortorder) AS enum_values
+FROM pg_type t
+JOIN pg_enum e ON t.oid = e.enumtypid
+JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE n.nspname IN ('public', 'debate', 'chat')
+GROUP BY n.nspname, t.typname
+ORDER BY n.nspname, t.typname;
+
+[
+  {
+    "schema_name": "debate",
+    "enum_name": "criteria_group",
+    "enum_values": "STYLE, RESPECT, ANALYSIS"
+  },
+  {
+    "schema_name": "debate",
+    "enum_name": "speech_mode",
+    "enum_values": "SYNC, ASYNC"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "debate_ballot_status_enum",
+    "enum_values": "PENDING, IN_PROGRESS, COMPLETE"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "debate_session_status",
+    "enum_values": "SCHEDULED, ONGOING, COMPLETED, CANCELLED"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "division",
+    "enum_values": "VILLIGER, LOWER, UPPER, SENIOR, OPEN"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "gender",
+    "enum_values": "MALE, FEMALE, do not wish to specify"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "group_type",
+    "enum_values": "GUILD, TEAM"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "log_type",
+    "enum_values": "REQUEST_JOIN, JOINED, LEFT, INVITED, KICKED, UPDATED, DELETED, CREATED"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "payment_provider",
+    "enum_values": "TOSS, NAVER_PAY, KAKAO_PAY"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "payment_state",
+    "enum_values": "REQUESTED, PENDING, FAILED, COMPLETED, AUTHORIZED, ABANDONED, REFUNDED, PREAPPROVED"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "status",
+    "enum_values": "PENDING, ACCEPTED, REJECTED, EXPIRED, CANCELLED"
+  },
+  {
+    "schema_name": "public",
+    "enum_name": "user_role_type",
+    "enum_values": "STUDENT, JUDGE, GUARDIAN"
+  }
+]

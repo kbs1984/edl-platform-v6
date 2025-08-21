@@ -1,0 +1,13 @@
+50 desktop suggestion
+
+-- Check for notification infrastructure
+SELECT 
+    table_schema,
+    table_name
+FROM information_schema.tables
+WHERE table_name LIKE '%notif%' 
+    OR table_name LIKE '%alert%'
+    OR table_name LIKE '%announcement%'
+ORDER BY table_schema, table_name;
+
+"Success. No row returned."

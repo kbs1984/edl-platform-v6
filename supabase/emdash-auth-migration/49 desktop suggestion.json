@@ -1,0 +1,43 @@
+49 desktop suggestion
+
+-- Check for user activity tracking
+SELECT 
+    table_schema,
+    table_name,
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE table_schema = 'public' 
+    AND table_name IN ('student', 'profile')
+    AND (column_name LIKE '%exp%' 
+         OR column_name LIKE '%level%' 
+         OR column_name LIKE '%ranking%'
+         OR column_name LIKE '%division%')
+ORDER BY table_name, ordinal_position;
+
+[
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "column_name": "division",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "column_name": "exp",
+    "data_type": "integer"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "column_name": "ranking",
+    "data_type": "smallint"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "column_name": "level",
+    "data_type": "integer"
+  }
+]

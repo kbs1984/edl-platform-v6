@@ -1,0 +1,245 @@
+21
+
+SELECT schema_name 
+FROM information_schema.schemata;
+
+[
+  {
+    "schema_name": "pg_toast"
+  },
+  {
+    "schema_name": "pg_catalog"
+  },
+  {
+    "schema_name": "pg_temp_25"
+  },
+  {
+    "schema_name": "information_schema"
+  },
+  {
+    "schema_name": "pg_toast_temp_25"
+  },
+  {
+    "schema_name": "pgbouncer"
+  },
+  {
+    "schema_name": "pg_temp_28"
+  },
+  {
+    "schema_name": "realtime"
+  },
+  {
+    "schema_name": "extensions"
+  },
+  {
+    "schema_name": "storage"
+  },
+  {
+    "schema_name": "auth"
+  },
+  {
+    "schema_name": "pg_toast_temp_28"
+  },
+  {
+    "schema_name": "pg_temp_9"
+  },
+  {
+    "schema_name": "vault"
+  },
+  {
+    "schema_name": "pg_toast_temp_9"
+  },
+  {
+    "schema_name": "graphql_public"
+  },
+  {
+    "schema_name": "graphql"
+  },
+  {
+    "schema_name": "pg_temp_11"
+  },
+  {
+    "schema_name": "pg_toast_temp_11"
+  },
+  {
+    "schema_name": "pg_temp_8"
+  },
+  {
+    "schema_name": "pg_toast_temp_8"
+  },
+  {
+    "schema_name": "pg_temp_14"
+  },
+  {
+    "schema_name": "pg_temp_24"
+  },
+  {
+    "schema_name": "pg_toast_temp_14"
+  },
+  {
+    "schema_name": "public"
+  },
+  {
+    "schema_name": "pg_temp_10"
+  },
+  {
+    "schema_name": "pg_toast_temp_10"
+  },
+  {
+    "schema_name": "pg_temp_15"
+  },
+  {
+    "schema_name": "pg_toast_temp_15"
+  },
+  {
+    "schema_name": "pg_temp_16"
+  },
+  {
+    "schema_name": "pg_toast_temp_16"
+  },
+  {
+    "schema_name": "pg_temp_17"
+  },
+  {
+    "schema_name": "pg_toast_temp_17"
+  },
+  {
+    "schema_name": "pg_temp_13"
+  },
+  {
+    "schema_name": "pg_toast_temp_13"
+  },
+  {
+    "schema_name": "pg_temp_20"
+  },
+  {
+    "schema_name": "pg_toast_temp_20"
+  },
+  {
+    "schema_name": "pg_temp_19"
+  },
+  {
+    "schema_name": "pg_toast_temp_19"
+  },
+  {
+    "schema_name": "pg_temp_18"
+  },
+  {
+    "schema_name": "pg_toast_temp_18"
+  },
+  {
+    "schema_name": "pg_temp_22"
+  },
+  {
+    "schema_name": "pg_toast_temp_22"
+  },
+  {
+    "schema_name": "pg_temp_21"
+  },
+  {
+    "schema_name": "pg_toast_temp_21"
+  },
+  {
+    "schema_name": "pg_temp_23"
+  },
+  {
+    "schema_name": "pg_toast_temp_23"
+  },
+  {
+    "schema_name": "pg_toast_temp_24"
+  },
+  {
+    "schema_name": "pg_temp_31"
+  },
+  {
+    "schema_name": "pg_toast_temp_31"
+  },
+  {
+    "schema_name": "pg_temp_30"
+  },
+  {
+    "schema_name": "pg_toast_temp_30"
+  },
+  {
+    "schema_name": "pg_temp_27"
+  },
+  {
+    "schema_name": "pg_toast_temp_27"
+  },
+  {
+    "schema_name": "pg_temp_29"
+  },
+  {
+    "schema_name": "pg_toast_temp_29"
+  },
+  {
+    "schema_name": "pg_temp_34"
+  },
+  {
+    "schema_name": "pg_toast_temp_34"
+  },
+  {
+    "schema_name": "pg_temp_26"
+  },
+  {
+    "schema_name": "pg_toast_temp_26"
+  },
+  {
+    "schema_name": "pg_temp_33"
+  },
+  {
+    "schema_name": "pg_toast_temp_33"
+  },
+  {
+    "schema_name": "pg_temp_7"
+  },
+  {
+    "schema_name": "pg_toast_temp_7"
+  },
+  {
+    "schema_name": "pg_temp_32"
+  },
+  {
+    "schema_name": "pg_toast_temp_32"
+  },
+  {
+    "schema_name": "pg_temp_35"
+  },
+  {
+    "schema_name": "pg_toast_temp_35"
+  },
+  {
+    "schema_name": "pg_temp_37"
+  },
+  {
+    "schema_name": "pg_toast_temp_37"
+  },
+  {
+    "schema_name": "pg_temp_12"
+  },
+  {
+    "schema_name": "pg_toast_temp_12"
+  },
+  {
+    "schema_name": "supabase_migrations"
+  },
+  {
+    "schema_name": "pg_temp_36"
+  },
+  {
+    "schema_name": "pg_toast_temp_36"
+  },
+  {
+    "schema_name": "pg_temp_38"
+  },
+  {
+    "schema_name": "pg_toast_temp_38"
+  },
+  {
+    "schema_name": "debate"
+  },
+  {
+    "schema_name": "chat"
+  }
+]
+

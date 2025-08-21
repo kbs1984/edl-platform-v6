@@ -1,0 +1,163 @@
+15
+
+SELECT 
+   event_object_schema,
+   event_object_table,
+   trigger_name,
+   action_timing,
+   event_manipulation,
+   action_statement
+FROM 
+   information_schema.triggers
+WHERE 
+   event_object_schema IN ('public', 'debate')
+ORDER BY 
+   event_object_schema,
+   event_object_table;
+
+[
+  {
+    "event_object_schema": "public",
+    "event_object_table": "friendship",
+    "trigger_name": "trg_cleanup_friendship_status",
+    "action_timing": "AFTER",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION delete_invalid_friendship()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "friendship",
+    "trigger_name": "check_friendship_update_allowed_columns_trigger",
+    "action_timing": "BEFORE",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION check_friendship_update_allowed_columns()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "friendship",
+    "trigger_name": "trg_cleanup_friendship_status",
+    "action_timing": "AFTER",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION delete_invalid_friendship()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "guild",
+    "trigger_name": "trg_guild_create_room",
+    "action_timing": "AFTER",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION chat.fn_create_guild_room()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "guild",
+    "trigger_name": "trg_guild_update_room_title",
+    "action_timing": "AFTER",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION chat.fn_sync_guild_room_title()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "guild_member",
+    "trigger_name": "trg_guild_member_add_participant",
+    "action_timing": "AFTER",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION chat.fn_add_guild_member_to_room()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "guild_member",
+    "trigger_name": "trg_guild_member_add_participant",
+    "action_timing": "AFTER",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION chat.fn_add_guild_member_to_room()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "student",
+    "trigger_name": "check_insert_allowed_columns_trigger",
+    "action_timing": "BEFORE",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION check_insert_allowed_columns()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "student",
+    "trigger_name": "trg_set_division",
+    "action_timing": "BEFORE",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION set_division()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "student",
+    "trigger_name": "trg_set_division",
+    "action_timing": "BEFORE",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION set_division()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "student",
+    "trigger_name": "check_update_allowed_columns_trigger",
+    "action_timing": "BEFORE",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION check_update_allowed_columns()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team",
+    "trigger_name": "trg_team_create_room",
+    "action_timing": "AFTER",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION chat.fn_create_team_room()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team",
+    "trigger_name": "trg_before_update_team",
+    "action_timing": "BEFORE",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION check_team_update_leader()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team",
+    "trigger_name": "trg_team_update_room_title",
+    "action_timing": "AFTER",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION chat.fn_sync_team_room_title()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team_member",
+    "trigger_name": "trg_team_member_add_participant",
+    "action_timing": "AFTER",
+    "event_manipulation": "UPDATE",
+    "action_statement": "EXECUTE FUNCTION chat.fn_add_team_member_to_room()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team_member",
+    "trigger_name": "trg_before_delete_team_member",
+    "action_timing": "BEFORE",
+    "event_manipulation": "DELETE",
+    "action_statement": "EXECUTE FUNCTION check_team_member_delete()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team_member",
+    "trigger_name": "trg_after_delete_team_member",
+    "action_timing": "AFTER",
+    "event_manipulation": "DELETE",
+    "action_statement": "EXECUTE FUNCTION delete_empty_team_after_member_delete()"
+  },
+  {
+    "event_object_schema": "public",
+    "event_object_table": "team_member",
+    "trigger_name": "trg_team_member_add_participant",
+    "action_timing": "AFTER",
+    "event_manipulation": "INSERT",
+    "action_statement": "EXECUTE FUNCTION chat.fn_add_team_member_to_room()"
+  }
+]

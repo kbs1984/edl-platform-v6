@@ -1,0 +1,55 @@
+32
+
+SELECT tablename FROM pg_tables WHERE schemaname = 'debate';
+
+[
+  {
+    "tablename": "genres"
+  },
+  {
+    "tablename": "motions"
+  },
+  {
+    "tablename": "debate_formats"
+  },
+  {
+    "tablename": "sides"
+  },
+  {
+    "tablename": "round_templates"
+  },
+  {
+    "tablename": "debates"
+  },
+  {
+    "tablename": "format_rounds"
+  },
+  {
+    "tablename": "debate_teams"
+  },
+  {
+    "tablename": "videos"
+  },
+  {
+    "tablename": "judge_comments"
+  },
+  {
+    "tablename": "judge_scores"
+  },
+  {
+    "tablename": "criteria"
+  },
+  {
+    "tablename": "matchmaking_queue_entries"
+  },
+  {
+    "tablename": "ballots"
+  },
+  {
+    "tablename": "debate_participants"
+  },
+  {
+    "tablename": "speeches"
+  }
+]
+

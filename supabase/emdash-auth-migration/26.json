@@ -1,0 +1,145 @@
+26
+
+SELECT
+    tablename,
+    indexname,
+    indexdef
+FROM
+    pg_indexes
+WHERE
+    schemaname = 'debate'
+ORDER BY
+    tablename, indexname;
+
+[
+  {
+    "tablename": "ballots",
+    "indexname": "ballots_debate_id_judge_id_key",
+    "indexdef": "CREATE UNIQUE INDEX ballots_debate_id_judge_id_key ON debate.ballots USING btree (debate_id, judge_id)"
+  },
+  {
+    "tablename": "ballots",
+    "indexname": "ballots_pkey",
+    "indexdef": "CREATE UNIQUE INDEX ballots_pkey ON debate.ballots USING btree (id)"
+  },
+  {
+    "tablename": "ballots",
+    "indexname": "idx_ballots_debate_id",
+    "indexdef": "CREATE INDEX idx_ballots_debate_id ON debate.ballots USING btree (debate_id)"
+  },
+  {
+    "tablename": "ballots",
+    "indexname": "idx_ballots_judge_id",
+    "indexdef": "CREATE INDEX idx_ballots_judge_id ON debate.ballots USING btree (judge_id)"
+  },
+  {
+    "tablename": "ballots",
+    "indexname": "idx_ballots_status",
+    "indexdef": "CREATE INDEX idx_ballots_status ON debate.ballots USING btree (status)"
+  },
+  {
+    "tablename": "criteria",
+    "indexname": "criteria_pkey",
+    "indexdef": "CREATE UNIQUE INDEX criteria_pkey ON debate.criteria USING btree (id)"
+  },
+  {
+    "tablename": "criteria",
+    "indexname": "idx_criteria_format_id",
+    "indexdef": "CREATE INDEX idx_criteria_format_id ON debate.criteria USING btree (format_id)"
+  },
+  {
+    "tablename": "criteria",
+    "indexname": "idx_criteria_group",
+    "indexdef": "CREATE INDEX idx_criteria_group ON debate.criteria USING btree (\"group\")"
+  },
+  {
+    "tablename": "debate_formats",
+    "indexname": "debate_formats_name_key",
+    "indexdef": "CREATE UNIQUE INDEX debate_formats_name_key ON debate.debate_formats USING btree (name)"
+  },
+  {
+    "tablename": "debate_formats",
+    "indexname": "debate_formats_pkey",
+    "indexdef": "CREATE UNIQUE INDEX debate_formats_pkey ON debate.debate_formats USING btree (id)"
+  },
+  {
+    "tablename": "debate_participants",
+    "indexname": "debate_participants_pkey",
+    "indexdef": "CREATE UNIQUE INDEX debate_participants_pkey ON debate.debate_participants USING btree (id)"
+  },
+  {
+    "tablename": "debate_teams",
+    "indexname": "debate_teams_pkey",
+    "indexdef": "CREATE UNIQUE INDEX debate_teams_pkey ON debate.debate_teams USING btree (id)"
+  },
+  {
+    "tablename": "debates",
+    "indexname": "debates_pkey",
+    "indexdef": "CREATE UNIQUE INDEX debates_pkey ON debate.debates USING btree (id)"
+  },
+  {
+    "tablename": "format_rounds",
+    "indexname": "format_rounds_format_sequence_unique",
+    "indexdef": "CREATE UNIQUE INDEX format_rounds_format_sequence_unique ON debate.format_rounds USING btree (debate_format_id, sequence)"
+  },
+  {
+    "tablename": "format_rounds",
+    "indexname": "format_rounds_pkey",
+    "indexdef": "CREATE UNIQUE INDEX format_rounds_pkey ON debate.format_rounds USING btree (id)"
+  },
+  {
+    "tablename": "genres",
+    "indexname": "genres_pkey",
+    "indexdef": "CREATE UNIQUE INDEX genres_pkey ON debate.genres USING btree (id)"
+  },
+  {
+    "tablename": "judge_comments",
+    "indexname": "judge_comments_pkey",
+    "indexdef": "CREATE UNIQUE INDEX judge_comments_pkey ON debate.judge_comments USING btree (id)"
+  },
+  {
+    "tablename": "judge_scores",
+    "indexname": "judge_scores_pkey",
+    "indexdef": "CREATE UNIQUE INDEX judge_scores_pkey ON debate.judge_scores USING btree (id)"
+  },
+  {
+    "tablename": "matchmaking_queue_entries",
+    "indexname": "matchmaking_queue_entries_pkey",
+    "indexdef": "CREATE UNIQUE INDEX matchmaking_queue_entries_pkey ON debate.matchmaking_queue_entries USING btree (id)"
+  },
+  {
+    "tablename": "motions",
+    "indexname": "motions_pkey",
+    "indexdef": "CREATE UNIQUE INDEX motions_pkey ON debate.motions USING btree (id)"
+  },
+  {
+    "tablename": "round_templates",
+    "indexname": "round_templates_code_key",
+    "indexdef": "CREATE UNIQUE INDEX round_templates_code_key ON debate.round_templates USING btree (code)"
+  },
+  {
+    "tablename": "round_templates",
+    "indexname": "round_templates_pkey",
+    "indexdef": "CREATE UNIQUE INDEX round_templates_pkey ON debate.round_templates USING btree (id)"
+  },
+  {
+    "tablename": "sides",
+    "indexname": "sides_pkey",
+    "indexdef": "CREATE UNIQUE INDEX sides_pkey ON debate.sides USING btree (id)"
+  },
+  {
+    "tablename": "sides",
+    "indexname": "sides_title_key",
+    "indexdef": "CREATE UNIQUE INDEX sides_title_key ON debate.sides USING btree (title)"
+  },
+  {
+    "tablename": "speeches",
+    "indexname": "speeches_pkey",
+    "indexdef": "CREATE UNIQUE INDEX speeches_pkey ON debate.speeches USING btree (id)"
+  },
+  {
+    "tablename": "videos",
+    "indexname": "videos_pkey",
+    "indexdef": "CREATE UNIQUE INDEX videos_pkey ON debate.videos USING btree (id)"
+  }
+]

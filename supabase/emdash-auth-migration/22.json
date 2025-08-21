@@ -1,0 +1,57 @@
+22
+
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'debate';
+
+[
+  {
+    "table_name": "genres"
+  },
+  {
+    "table_name": "motions"
+  },
+  {
+    "table_name": "sides"
+  },
+  {
+    "table_name": "format_rounds"
+  },
+  {
+    "table_name": "debate_formats"
+  },
+  {
+    "table_name": "round_templates"
+  },
+  {
+    "table_name": "debates"
+  },
+  {
+    "table_name": "debate_teams"
+  },
+  {
+    "table_name": "videos"
+  },
+  {
+    "table_name": "judge_comments"
+  },
+  {
+    "table_name": "criteria"
+  },
+  {
+    "table_name": "judge_scores"
+  },
+  {
+    "table_name": "ballots"
+  },
+  {
+    "table_name": "matchmaking_queue_entries"
+  },
+  {
+    "table_name": "debate_participants"
+  },
+  {
+    "table_name": "speeches"
+  }
+]
+

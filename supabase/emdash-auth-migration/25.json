@@ -1,0 +1,45 @@
+25
+
+SELECT 
+    n.nspname AS enum_schema,
+    t.typname AS enum_name,
+    e.enumlabel AS enum_value
+FROM 
+    pg_type t
+JOIN 
+    pg_enum e ON t.oid = e.enumtypid
+JOIN 
+    pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE 
+    n.nspname = 'debate'
+ORDER BY 
+    enum_schema, enum_name, e.enumsortorder;
+
+[
+  {
+    "enum_schema": "debate",
+    "enum_name": "criteria_group",
+    "enum_value": "STYLE"
+  },
+  {
+    "enum_schema": "debate",
+    "enum_name": "criteria_group",
+    "enum_value": "RESPECT"
+  },
+  {
+    "enum_schema": "debate",
+    "enum_name": "criteria_group",
+    "enum_value": "ANALYSIS"
+  },
+  {
+    "enum_schema": "debate",
+    "enum_name": "speech_mode",
+    "enum_value": "SYNC"
+  },
+  {
+    "enum_schema": "debate",
+    "enum_name": "speech_mode",
+    "enum_value": "ASYNC"
+  }
+]
+

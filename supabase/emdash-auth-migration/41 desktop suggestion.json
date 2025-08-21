@@ -1,0 +1,52 @@
+41 desktop suggestion
+
+-- Check storage configuration
+SELECT 
+    id,
+    name,
+    owner,
+    created_at,
+    updated_at,
+    public,
+    avif_autodetection,
+    file_size_limit,
+    allowed_mime_types
+FROM storage.buckets
+ORDER BY name;
+
+[
+  {
+    "id": "logo",
+    "name": "logo",
+    "owner": null,
+    "created_at": "2025-04-05 02:15:45.864681+00",
+    "updated_at": "2025-04-05 02:15:45.864681+00",
+    "public": true,
+    "avif_autodetection": false,
+    "file_size_limit": null,
+    "allowed_mime_types": null
+  },
+  {
+    "id": "profile-images",
+    "name": "profile-images",
+    "owner": null,
+    "created_at": "2025-04-06 13:36:52.681039+00",
+    "updated_at": "2025-04-06 13:36:52.681039+00",
+    "public": true,
+    "avif_autodetection": false,
+    "file_size_limit": 102400,
+    "allowed_mime_types": null
+  },
+  {
+    "id": "team-assets",
+    "name": "team-assets",
+    "owner": null,
+    "created_at": "2025-05-12 15:57:17.462742+00",
+    "updated_at": "2025-05-12 15:57:17.462742+00",
+    "public": true,
+    "avif_autodetection": false,
+    "file_size_limit": null,
+    "allowed_mime_types": null
+  }
+]
+

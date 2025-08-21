@@ -1,0 +1,169 @@
+18
+
+SELECT * FROM pg_tables 
+WHERE schemaname = 'auth' 
+LIMIT 30;
+
+[
+  {
+    "schemaname": "auth",
+    "tablename": "schema_migrations",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": false,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "instances",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": false,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "users",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "refresh_tokens",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "mfa_factors",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "mfa_challenges",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "audit_log_entries",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": false,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "sessions",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "identities",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "sso_providers",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "sso_domains",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "saml_relay_states",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "mfa_amr_claims",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "saml_providers",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "flow_state",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  },
+  {
+    "schemaname": "auth",
+    "tablename": "one_time_tokens",
+    "tableowner": "supabase_auth_admin",
+    "tablespace": null,
+    "hasindexes": true,
+    "hasrules": false,
+    "hastriggers": true,
+    "rowsecurity": true
+  }
+]
+

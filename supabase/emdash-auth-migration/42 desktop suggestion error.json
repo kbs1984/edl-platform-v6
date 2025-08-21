@@ -1,0 +1,49 @@
+42 desktop suggestion 
+
+error 
+ERROR:  42703: column "status" does not exist
+LINE 35:     WHERE status != 'COMPLETED'
+
+
+-- Get system usage statistics
+WITH user_stats AS (
+    SELECT 
+        'Total Users' as metric,
+        COUNT(*) as count
+    FROM auth.users
+    
+    UNION ALL
+    
+    SELECT 
+        'Students',
+        COUNT(*)
+    FROM public.student
+    
+    UNION ALL
+    
+    SELECT 
+        'Judges',
+        COUNT(*)
+    FROM public.judge
+    
+    UNION ALL
+    
+    SELECT 
+        'Teams',
+        COUNT(*)
+    FROM public.team
+    
+    UNION ALL
+    
+    SELECT 
+        'Active Debates',
+        COUNT(*)
+    FROM debate.debates
+    WHERE status != 'COMPLETED'
+)
+SELECT * FROM user_stats
+ORDER BY metric;
+
+
+SEE ERROR 
+

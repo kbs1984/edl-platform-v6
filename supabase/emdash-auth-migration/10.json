@@ -1,0 +1,132 @@
+10
+
+
+SELECT 
+  n.nspname AS schema_name,
+  p.proname AS function_name,
+  pg_get_function_arguments(p.oid) AS arguments,
+  CASE WHEN p.prokind = 'f' THEN 'function' ELSE 'procedure' END AS type,
+  pg_get_functiondef(p.oid) AS definition
+FROM 
+  pg_proc p
+  JOIN pg_namespace n ON p.pronamespace = n.oid
+WHERE 
+  n.nspname = 'public'
+ORDER BY 
+  schema_name, function_name;
+
+
+[
+  {
+    "schema_name": "public",
+    "function_name": "add_new_user",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.add_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nbegin\n  if new.raw_app_meta_data ->> 'provider' = 'email' then\n    insert into public.profile (id)\n    values (new.id);\n    \n  elsif new.raw_app_meta_data ->> 'provider' = 'kakao'\n        or new.raw_app_meta_data ->> 'provider' = 'google' then\n    insert into public.profile (id, email, name, image_path)\n    values (\n      new.id,\n      new.email,\n      new.raw_user_meta_data ->> 'name',\n      new.raw_user_meta_data ->> 'avatar_url'\n    );\n  end if;\n  \n  return new;\nend;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "check_friendship_update_allowed_columns",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.check_friendship_update_allowed_columns()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  IF NEW.user_id IS DISTINCT FROM OLD.user_id THEN\n    RAISE EXCEPTION 'user_id는 업데이트할 수 없습니다.';\n  END IF;\n  \n  IF NEW.friend_id IS DISTINCT FROM OLD.friend_id THEN\n    RAISE EXCEPTION 'friend_id는 업데이트할 수 없습니다.';\n  END IF;\n  \n  IF NEW.created_at IS DISTINCT FROM OLD.created_at THEN\n    RAISE EXCEPTION 'created_at은 업데이트할 수 없습니다.';\n  END IF;\n  \n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "check_insert_allowed_columns",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.check_insert_allowed_columns()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- division는 삽입할 수 없음\n  IF NEW.division IS NOT NULL THEN\n    RAISE EXCEPTION 'division은 삽입할 수 없습니다.';\n  END IF;\n\n  IF NEW.level != 0 THEN\n    RAISE EXCEPTION 'level은 삽입할 수 없습니다.';\n  END IF;\n\n  IF NEW.exp != 0 THEN\n    RAISE EXCEPTION 'exp는 삽입할 수 없습니다.';\n  END IF;\n\n  IF NEW.ranking != '0'::smallint THEN\n    RAISE EXCEPTION 'ranking은 삽입할 수 없습니다.';\n  END IF;\n  \n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "check_team_member_delete",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.check_team_member_delete()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- 삭제 요청자가 본인(student_id)인지 확인\n  IF auth.uid()::uuid <> OLD.student_id THEN\n    -- 본인이 아니면 같은 팀에서 is_leader = true 인지 확인\n    IF NOT EXISTS (\n      SELECT 1\n      FROM public.team_member tm\n      WHERE tm.team_id = OLD.team_id\n        AND tm.student_id = auth.uid()::uuid\n        AND tm.is_leader = TRUE\n    ) THEN\n      RAISE EXCEPTION '삭제 권한이 없습니다. 본인이거나 팀 리더만 삭제할 수 있습니다.';\n    END IF;\n  END IF;\n  RETURN OLD;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "check_team_update_leader",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.check_team_update_leader()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- 인증된 사용자만\n  IF auth.uid() IS NULL THEN\n    RAISE EXCEPTION 'Unauthorized: 로그인한 사용자만 접근할 수 있습니다.';\n  END IF;\n\n  -- 해당 팀의 리더인지 확인\n  IF NOT EXISTS (\n    SELECT 1\n    FROM public.team_member tm\n    WHERE tm.team_id   = OLD.id\n      AND tm.student_id = auth.uid()::uuid\n      AND tm.is_leader  = TRUE\n  ) THEN\n    RAISE EXCEPTION 'Permission denied: 오직 팀 리더만 팀 정보를 수정할 수 있습니다.';\n  END IF;\n\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "check_update_allowed_columns",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.check_update_allowed_columns()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- division는 변경할 수 없음\n  IF NEW.division IS DISTINCT FROM OLD.division THEN\n    RAISE EXCEPTION 'division는 변경할 수 없습니다.';\n  END IF;\n  \n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "delete_empty_team_after_member_delete",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.delete_empty_team_after_member_delete()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n  -- 삭제된 멤버의 team_id에 해당하는 남은 멤버 수 조회\n  IF NOT EXISTS (\n    SELECT 1\n    FROM public.team_member\n    WHERE team_id = OLD.team_id\n  ) THEN\n    -- 남은 멤버가 없으면 team 삭제\n    DELETE FROM public.team\n    WHERE id = OLD.team_id;\n  END IF;\n  RETURN NULL;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "delete_invalid_friendship",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.delete_invalid_friendship()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nbegin\n  -- 상태가 허용된 값에 없다면\n  if new.status not in ('PENDING', 'ACCEPTED') then\n    -- 방금 삽입/수정된 행을 삭제\n    delete from public.friendship\n      where id = new.id;\n  end if;\n  -- AFTER 트리거이므로 반환값은 무시되지만, convention 상 null을 반환\n  return null;\nend;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "get_friend_list",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.get_friend_list()\n RETURNS TABLE(id uuid, friend_id uuid, created_at timestamp with time zone, updated_at timestamp with time zone, status status)\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\nAS $function$\nBEGIN\n  RETURN QUERY\n  SELECT\n    f.id AS id,\n    CASE \n      WHEN f.user_id = auth.uid() THEN f.friend_id\n      ELSE f.user_id\n    END AS friend_id,\n    f.created_at,\n    f.updated_at,\n    f.status\n  FROM public.friendship f\n  WHERE (f.user_id = auth.uid() OR f.friend_id = auth.uid());\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "get_friend_profiles",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.get_friend_profiles()\n RETURNS TABLE(id uuid, friend_id uuid, image_path text, username text, exp integer)\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\nAS $function$\nDECLARE\n  current_user uuid;\nBEGIN  \n  RETURN QUERY\n  SELECT \n    f.id AS friendship_id,\n    CASE \n      WHEN f.user_id = auth.uid() THEN f.friend_id \n      ELSE f.user_id \n    END AS friend_id,\n    p.image_path,\n    p.username,\n    s.exp\n  FROM public.friendship f\n  JOIN public.profile p\n    ON p.id = (\n         CASE \n           WHEN f.user_id = auth.uid() THEN f.friend_id \n           ELSE f.user_id \n         END\n       )\n  JOIN public.student s\n    ON s.user_id = p.id\n  WHERE (f.user_id = auth.uid() OR f.friend_id = auth.uid())\n    AND f.status = 'ACCEPTED';\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "get_profile_and_student",
+    "arguments": "_user_id uuid",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.get_profile_and_student(_user_id uuid)\n RETURNS TABLE(id uuid, name text, username text, image_path text, date_of_birth date, gender gender, user_role user_role_type, active boolean, term_agree_time timestamp with time zone, email text, invited boolean, student_id uuid, guardian_id uuid, school_id uuid, division division, location text, exp integer, ranking smallint, challenge_enabled boolean, graduation_year bigint, relationship_with_guardian text, level integer)\n LANGUAGE plpgsql\n STABLE\nAS $function$\nbegin\n  -- 1) Profile 존재 체크\n  if not exists (\n    select 1 from public.profile where id = _user_id\n  ) then\n    raise exception 'Profile not found' using errcode = 'P0001';\n  end if;\n\n  -- 2) Student 존재 체크\n  if not exists (\n    select 1 from public.student where user_id = _user_id\n  ) then\n    raise exception 'Student not found' using errcode = 'P0002';\n  end if;\n\n  -- 3) 실제 데이터 리턴\n  return query\n    select\n      p.id, p.name, p.username, p.image_path, p.date_of_birth,\n      p.gender, p.user_role, p.active, p.term_agree_time, p.email, p.invited,\n      s.id           as student_id,\n      s.guardian_id,\n      s.school_id,\n      s.division,\n      s.location,\n      s.exp,\n      s.ranking,\n      s.challenge_enabled,\n      s.graduation_year,\n      s.relationship_with_guardian,\n      s.level\n    from public.profile p\n    left join public.student s on s.user_id = p.id\n    where p.id = _user_id;\nend;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "get_profile_uuid",
+    "arguments": "input text",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.get_profile_uuid(input text)\n RETURNS uuid\n LANGUAGE plpgsql\n STABLE\nAS $function$\nDECLARE\n    id uuid;\nBEGIN\n    SELECT p.id\n      INTO id\n      FROM public.profile p\n     WHERE p.email = input OR p.username = input\n     LIMIT 1;\n\n    RETURN id;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "get_table_ddl",
+    "arguments": "p_schema_name character varying, p_table_name character varying",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.get_table_ddl(p_schema_name character varying, p_table_name character varying)\n RETURNS text\n LANGUAGE plpgsql\nAS $function$\r\nDECLARE\r\n  v_table_ddl text;\r\n  column_record record;\r\n  constraint_record record;\r\n  index_record record;\r\nBEGIN\r\n  -- Start the create table statement\r\n  v_table_ddl := 'CREATE TABLE ' || p_schema_name || '.' || p_table_name || ' (' || chr(10);\r\n  \r\n  -- Get columns\r\n  FOR column_record IN \r\n    SELECT \r\n      column_name,\r\n      data_type,\r\n      coalesce(character_maximum_length::text, '') as character_maximum_length,\r\n      is_nullable,\r\n      column_default\r\n    FROM \r\n      information_schema.columns\r\n    WHERE \r\n      table_schema = p_schema_name\r\n      AND table_name = p_table_name\r\n    ORDER BY \r\n      ordinal_position \r\n  LOOP\r\n    v_table_ddl := v_table_ddl || '  ' || column_record.column_name || ' ' || column_record.data_type;\r\n    \r\n    -- Add length for varchar\r\n    IF column_record.character_maximum_length <> '' THEN\r\n      v_table_ddl := v_table_ddl || '(' || column_record.character_maximum_length || ')';\r\n    END IF;\r\n    \r\n    -- Add nullable\r\n    IF column_record.is_nullable = 'NO' THEN\r\n      v_table_ddl := v_table_ddl || ' NOT NULL';\r\n    END IF;\r\n    \r\n    -- Add default\r\n    IF column_record.column_default IS NOT NULL THEN\r\n      v_table_ddl := v_table_ddl || ' DEFAULT ' || column_record.column_default;\r\n    END IF;\r\n    \r\n    v_table_ddl := v_table_ddl || ',' || chr(10);\r\n  END LOOP;\r\n\r\n  -- Remove the last comma and newline\r\n  v_table_ddl := substring(v_table_ddl, 1, length(v_table_ddl) - 2) || chr(10) || ');';\r\n  \r\n  -- Add primary key constraint\r\n  FOR constraint_record IN\r\n    SELECT \r\n      tc.constraint_name,\r\n      string_agg(kcu.column_name, ', ') as columns\r\n    FROM \r\n      information_schema.table_constraints tc\r\n      JOIN information_schema.key_column_usage kcu\r\n        ON tc.constraint_catalog = kcu.constraint_catalog\r\n        AND tc.constraint_schema = kcu.constraint_schema\r\n        AND tc.constraint_name = kcu.constraint_name\r\n    WHERE \r\n      tc.constraint_type = 'PRIMARY KEY'\r\n      AND tc.table_schema = p_schema_name\r\n      AND tc.table_name = p_table_name\r\n    GROUP BY\r\n      tc.constraint_name\r\n  LOOP\r\n    v_table_ddl := v_table_ddl || chr(10) || 'ALTER TABLE ' || p_schema_name || '.' || p_table_name || \r\n                  ' ADD CONSTRAINT ' || constraint_record.constraint_name || \r\n                  ' PRIMARY KEY (' || constraint_record.columns || ');';\r\n  END LOOP;\r\n  \r\n  RETURN v_table_ddl;\r\nEND;\r\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "search_school",
+    "arguments": "search_query text",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.search_school(search_query text)\n RETURNS TABLE(id uuid, name text)\n LANGUAGE sql\n STABLE\nAS $function$\nwith preprocessed as (\n  select \n    id, \n    name,\n    translate(lower(name), ' ', '') as name_nospace,\n    translate(lower(search_query), ' ', '') as query_nospace\n  from school\n)\nselect id, name\nfrom (\n  select \n    id, \n    name,\n    case \n      when name_nospace ilike '%' || query_nospace || '%' then 1.0\n      else similarity(name_nospace, query_nospace)\n    end as score\n  from preprocessed\n) t\nwhere score > 0.1\norder by score desc;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "set_division",
+    "arguments": "",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.set_division()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nDECLARE\n  current_year INT := EXTRACT(YEAR FROM CURRENT_DATE)::INT;\n  adjusted_year INT;\n  current_grade INT;\nBEGIN\n  -- 7월 1일 기준으로 학년도 조정\n  IF CURRENT_DATE >= make_date(current_year, 7, 1) THEN\n    adjusted_year := current_year + 1;\n  ELSE\n    adjusted_year := current_year;\n  END IF;\n\n  -- 현재 학년 계산 (학생은 4학년부터 시작, 총 9년 과정으로 가정)\n  -- graduationYear가 졸업하는 해라면, 현재 학년 = adjusted_year - graduationYear + 12\n  current_grade := adjusted_year - NEW.graduation_year + 12;\n\n  -- 학년에 따른 division 설정\n  IF current_grade BETWEEN 4 AND 5 THEN\n    NEW.division := 'VILLIGER';\n  ELSIF current_grade BETWEEN 6 AND 7 THEN\n    NEW.division := 'LOWER';\n  ELSIF current_grade BETWEEN 8 AND 9 THEN\n    NEW.division := 'UPPER';\n  ELSIF current_grade BETWEEN 10 AND 12 THEN\n    NEW.division := 'SENIOR';\n  ELSE\n    NEW.division := 'OPEN';\n  END IF;\n\n  RETURN NEW;\nEND;\n$function$\n"
+  },
+  {
+    "schema_name": "public",
+    "function_name": "set_team_leader",
+    "arguments": "p_team_id uuid, p_student_id uuid",
+    "type": "function",
+    "definition": "CREATE OR REPLACE FUNCTION public.set_team_leader(p_team_id uuid, p_student_id uuid)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\nAS $function$\nBEGIN\n  -- 1. 인증 여부 확인\n  IF auth.uid() IS NULL THEN\n    RAISE EXCEPTION 'Unauthorized: 로그인된 사용자만 호출할 수 있습니다.';\n  END IF;\n\n  -- 2. 호출자가 해당 팀의 멤버인지 확인\n  IF NOT EXISTS (\n    SELECT 1\n      FROM public.team_member\n     WHERE team_id    = p_team_id\n       AND student_id = auth.uid()::uuid\n  ) THEN\n    RAISE EXCEPTION 'Permission denied: 호출자가 팀의 멤버가 아닙니다.';\n  END IF;\n\n  -- 3. 호출자가 현재 팀 리더인지 확인\n  IF NOT EXISTS (\n    SELECT 1\n      FROM public.team_member\n     WHERE team_id    = p_team_id\n       AND student_id = auth.uid()::uuid\n       AND is_leader  = TRUE\n  ) THEN\n    RAISE EXCEPTION 'Permission denied: 오직 현재 팀 리더만 리더를 변경할 수 있습니다.';\n  END IF;\n\n  -- 4. 새 리더가 같은 팀의 멤버인지 확인\n  IF NOT EXISTS (\n    SELECT 1\n      FROM public.team_member\n     WHERE team_id    = p_team_id\n       AND student_id = p_student_id\n  ) THEN\n    RAISE EXCEPTION 'Cannot set leader: 대상 사용자가 해당 팀의 멤버가 아닙니다.';\n  END IF;\n\n  -- 5. 기존 리더들 해제\n  UPDATE public.team_member\n     SET is_leader = FALSE\n   WHERE team_id   = p_team_id\n     AND is_leader = TRUE;\n\n  -- 6. 새로운 리더 지정\n  UPDATE public.team_member\n     SET is_leader = TRUE\n   WHERE team_id    = p_team_id\n     AND student_id = p_student_id;\nEND;\n$function$\n"
+  }
+]

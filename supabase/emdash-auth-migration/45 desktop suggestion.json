@@ -1,0 +1,608 @@
+45 desktop suggestion
+
+-- Look for any computed columns or generated data
+SELECT 
+    c.table_schema,
+    c.table_name,
+    c.column_name,
+    c.data_type,
+    c.is_generated,
+    c.generation_expression,
+    c.column_default
+FROM information_schema.columns c
+WHERE c.table_schema IN ('public', 'debate', 'chat')
+    AND (c.is_generated = 'ALWAYS' 
+         OR c.column_default LIKE '%nextval%'
+         OR c.column_default LIKE '%gen_random_uuid%'
+         OR c.column_default LIKE '%CURRENT%'
+         OR c.column_default LIKE '%now()%')
+ORDER BY c.table_schema, c.table_name, c.column_name;
+
+
+[
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "message",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "joined_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "participant",
+    "column_name": "last_read_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "chat",
+    "table_name": "room",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "ballots",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "criteria",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_formats",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_participants",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debate_teams",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debates",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "debates",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "format_rounds",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "genres",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "genres",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "genres",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_comments",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_comments",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_scores",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "judge_scores",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "matchmaking_queue_entries",
+    "column_name": "queued_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "motions",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "round_templates",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "sides",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "delivered_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "speeches",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "videos",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "debate",
+    "table_name": "videos",
+    "column_name": "uploaded_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "admin",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "admin",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "bank_account",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "friendship",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "friendship",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "friendship",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guardian",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guardian_request",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guardian_request",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "guild_member",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "invitation",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "invitation",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "judge",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "log",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "log",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "payment_history",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "rating",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "rating",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "school",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "now()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "student",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team_member",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "team_member",
+    "column_name": "id",
+    "data_type": "uuid",
+    "is_generated": "NEVER",
+    "generation_expression": null,
+    "column_default": "gen_random_uuid()"
+  }
+]

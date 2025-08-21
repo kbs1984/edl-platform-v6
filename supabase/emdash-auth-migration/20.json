@@ -1,0 +1,38 @@
+20
+
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'friendship'  -- Or other relevant tables
+ORDER BY ordinal_position;
+
+
+[
+  {
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "column_name": "friend_id",
+    "data_type": "uuid"
+  },
+  {
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "column_name": "accpted_at",
+    "data_type": "timestamp with time zone"
+  }
+]

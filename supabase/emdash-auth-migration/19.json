@@ -1,0 +1,62 @@
+19
+
+
+SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'public' 
+ORDER BY table_name;
+
+[
+  {
+    "table_name": "admin"
+  },
+  {
+    "table_name": "bank_account"
+  },
+  {
+    "table_name": "friendship"
+  },
+  {
+    "table_name": "guardian"
+  },
+  {
+    "table_name": "guardian_request"
+  },
+  {
+    "table_name": "guild"
+  },
+  {
+    "table_name": "guild_member"
+  },
+  {
+    "table_name": "invitation"
+  },
+  {
+    "table_name": "judge"
+  },
+  {
+    "table_name": "log"
+  },
+  {
+    "table_name": "payment_history"
+  },
+  {
+    "table_name": "profile"
+  },
+  {
+    "table_name": "rating"
+  },
+  {
+    "table_name": "school"
+  },
+  {
+    "table_name": "student"
+  },
+  {
+    "table_name": "team"
+  },
+  {
+    "table_name": "team_member"
+  }
+]
+

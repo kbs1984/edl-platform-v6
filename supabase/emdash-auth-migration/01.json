@@ -1,0 +1,509 @@
+01
+
+SELECT table_name, column_name, data_type
+FROM information_schema.columns
+WHERE table_schema = 'public';
+
+[
+  {
+    "table_name": "admin",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "guild",
+    "column_name": "school_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guild",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "guild",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "student",
+    "column_name": "ranking",
+    "data_type": "smallint"
+  },
+  {
+    "table_name": "student",
+    "column_name": "challenge_enabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "student",
+    "column_name": "graduation_year",
+    "data_type": "bigint"
+  },
+  {
+    "table_name": "student",
+    "column_name": "level",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "school",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "school",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "school",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "school",
+    "column_name": "created_by",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "sender",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guardian_request",
+    "column_name": "reciever",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "friend_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "friendship",
+    "column_name": "accpted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "admin",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "admin",
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "admin",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "guild",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guild",
+    "column_name": "division",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "student_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "team_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "join_date",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "is_leader",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "team_member",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "student_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "guild_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "join_date",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "is_leader",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "guild_member",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "rating",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "rating",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "rating",
+    "column_name": "rate",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "rating",
+    "column_name": "judge_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "rating",
+    "column_name": "rater_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "bank_account",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "bank_account",
+    "column_name": "active",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "bank_account",
+    "column_name": "guardian_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "guardian_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "amount",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "payment_provider",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "payment_date",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "payment_history",
+    "column_name": "payment_state",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "accepted_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "inviter_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "invitee_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "team_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "guild_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "expires_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "invitation",
+    "column_name": "type",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "log",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "log",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "log",
+    "column_name": "log_type",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "log",
+    "column_name": "guild_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "log",
+    "column_name": "team_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "log",
+    "column_name": "student_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "log",
+    "column_name": "type",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "team",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "team",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "team",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "team",
+    "column_name": "division",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "date_of_birth",
+    "data_type": "date"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "gender",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "user_role",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "active",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "term_agree_time",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "profile",
+    "column_name": "invited",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "guardian",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "guardian",
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "judge",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "judge",
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "judge",
+    "column_name": "referral_user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "student",
+    "column_name": "id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "student",
+    "column_name": "user_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "student",
+    "column_name": "guardian_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "student",
+    "column_name": "school_id",
+    "data_type": "uuid"
+  },
+  {
+    "table_name": "student",
+    "column_name": "division",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "student",
+    "column_name": "exp",
+    "data_type": "integer"
+  }
+]
+
