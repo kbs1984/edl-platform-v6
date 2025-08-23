@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd reconciliation/active-work/auth-gateway && npm install && npm run build",
+  "buildCommand": "cd reconciliation/active-work/auth-gateway && npm install --legacy-peer-deps && npm run build",
   "outputDirectory": "reconciliation/active-work/auth-gateway/.next",
-  "installCommand": "cd reconciliation/active-work/auth-gateway && npm install",
+  "installCommand": "cd reconciliation/active-work/auth-gateway && npm install --legacy-peer-deps",
   "framework": "nextjs",
   "rewrites": [
     {

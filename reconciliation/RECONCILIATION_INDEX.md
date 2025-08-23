@@ -1,49 +1,74 @@
+---
+session: "00042"
+type: "index"
+status: "current"
+created: "2025-01-17"
+modified: "2025-08-21"
+title: "Reconciliation Domain Index"
+purpose: "Central index for reconciliation between requirements, reality, and implementation"
+topics: ["reconciliation", "index", "implementation", "integration"]
+priority: "P0"
+domain: "reconciliation"
+review_date: "2025-09-21"
+estimated_shelf_life: "indefinite"
+---
+
 # Reconciliation Domain Index
 
-**Last Updated**: 2025-08-17 | Session #00020  
-**Active Phase**: 3A - Educational Identity Prototype Planning ✅ COMPLETE  
-**Strategic Framework**: RESTORATION-MASTERPLAN-V3.md  
-**Status**: Ready for Phase 4A Implementation (Session 21)  
+**Last Updated**: 2025-08-21 | Session #00042  
+**Active Phase**: Truth Seed Implementation (Post-Pivot)  
+**Strategic Framework**: requirements/masterplans/AUTH-MASTERPLAN.md + DASHBOARD-MASTERPLAN.md  
+**Status**: Active development of auth gateway and dashboard  
 
 ---
 
-## Current Status: Phase 3A Reconciliation
+## Current Status: Truth Seed Implementation
 
-### Educational Identity Gap Analysis
-- **Last Scan**: Session #00020
-- **Focus**: P0 features for "Cyworld of Education" prototype
-- **Critical Gaps**: 4 (Identity elements missing)
-- **Requirements Analyzed**: 48 P0 stories
-- **Reality Assessed**: 4 tables, basic UI, 0 data
+### Active Work Structure
+```
+reconciliation/
+├── active-work/
+│   ├── session-42-auth-deployment/    # Current auth gateway work
+│   ├── session-43-dashboard-completion/ # Dashboard completion tasks
+│   └── [session-XX-description]/      # Future work areas
+├── gap-analysis/
+│   └── [analysis documents]            # Gap between plan and reality
+├── migration-scripts/
+│   └── [SQL migrations pending]        # Database changes to apply
+└── RECONCILIATION_INDEX.md            # This file
+```
 
-### Active Reconciliation Work
-- **Phase 3A**: Educational Identity Prototype Planning
-- **Vision**: Students building academic personas like Cyworld minihompys
-- **Scope**: Authentication, Teams, Profiles with identity focus
+### Current Gaps (Post-Pivot)
+- **Database**: Missing call_sign column (CRITICAL)
+- **Auth Gateway**: Ready to deploy, needs testing
+- **Dashboard**: Missing call_sign UI, judge/guardian dashboards
 
 ---
 
-## Reconciliation Categories - Phase 3A Educational Identity
+## Active Work Areas (Session 42-43)
 
-### Gap Analysis (Session 00020 Completed)
-- [Identity vs Reality](gap-analysis/00020-identity-vs-reality.md) - Complete P0 gap analysis using template
-- [Persona Building Gaps](gap-analysis/00020-persona-building-gaps.md) - What prevents academic persona creation
-- [Social Identity Gaps](gap-analysis/00020-social-identity-gaps.md) - Team/community building gaps
-- [Cyworld Experience Gaps](gap-analysis/00020-cyworld-experience-gaps.md) - Missing "minihompy" feeling
+### session-42-auth-deployment/
+**Goal**: Deploy auth gateway from truth-seed  
+**Tasks**:
+1. Add call_sign column to database (PRIORITY 1)
+2. Configure environment variables
+3. Test locally with known credentials
+4. Deploy to Vercel
+5. Verify with Reality Agents
 
-### Prototype Planning (Session 00020 Completed)
-- [P0 Identity Gaps](prototype-plan/00020-P0-identity-gaps.md) - Critical identity features analysis
-- [Cyworld Features Order](prototype-plan/00020-cyworld-features-order.md) - Implementation sequence
-- [Identity Success Metrics](prototype-plan/00020-identity-success-metrics.md) - How to measure success
-- [Starter Seed Execution](prototype-plan/00020-starter-seed-execution.md) - 15-day technical plan
+### session-43-dashboard-completion/
+**Goal**: Complete dashboard features  
+**Tasks**:
+1. Add call_sign selection to onboarding
+2. Complete Judge dashboard
+3. Complete Guardian dashboard
+4. Fix broken features
+5. Test end-to-end flow
 
-### Progress Tracking (Session 00020 Established)
-- [Identity Sprint Plan](progress-tracking/00020-identity-sprint-plan.md) - 3-week sprint breakdown
-- [Engagement Metrics](progress-tracking/00020-engagement-metrics.md) - Identity building measurements
-- [Prototype Milestones](progress-tracking/00020-prototype-milestones.md) - Major checkpoints
-
-### Architectural Decisions (Session 00020 Documented)
-- [Identity Architecture](decisions/00020-identity-architecture.md) - Key platform decisions
+### Historical Work (Pre-Pivot)
+- Session 20 Gap Analysis documents in `gap-analysis/`
+- Session 20 Prototype plans in `prototype-plan/`
+- Session 20 Progress tracking in `progress-tracking/`
 
 ---
 
@@ -66,33 +91,49 @@
 
 ---
 
-## Recent Activity
+## Work Protocol
 
-### Session #00001
-- Gap detection system activated
-- First requirement (GOAL-001) defined
-- Reality feasibility assessment completed
-- Awaiting action plan creation
+1. **Start**: Create directory in `active-work/`
+2. **During**: Keep WIP here, run Reality Agents
+3. **Complete**: Move verified work to `reality/`
 
 ---
 
-## Pending Work
+## Critical Pending Work
 
-1. Create action plan for GOAL-001 (Project Integration)
-2. Resolve constitutional violations
-3. Complete reality audit
-4. Establish baseline metrics
+1. **Add call_sign column** (blocks everything)
+   ```sql
+   ALTER TABLE public.student
+   ADD COLUMN call_sign TEXT UNIQUE;
+   CREATE INDEX idx_student_call_sign ON public.student(call_sign);
+   ```
+2. **Deploy auth gateway** (Session 42)
+3. **Complete dashboard** (Session 43)
+4. **Verify with Reality Agents** (ongoing)
 
 ---
 
-## Quick Actions
+## Quick Commands
 
 ```bash
-make gaps           # Scan for gaps
-make prioritize     # Get prioritized gap list
-make check          # Full system reconciliation check
+# Check Reality
+SUPABASE_URL="https://bbrheacetxlnqbibjwsz.supabase.co" \
+SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE" \
+./scripts/00028-reality-check.sh --quick
+
+# Or use the helper
+./scripts/00042-reality-check-with-creds.sh --quick
 ```
 
 ---
 
-*This index is maintained by the Reconciliation Domain Manager*
+## Key Documents
+
+- `requirements/masterplans/AUTH-MASTERPLAN.md` - Auth implementation
+- `requirements/masterplans/DASHBOARD-MASTERPLAN.md` - Dashboard completion
+- `reality/truth-seed-manifest.json` - Current Truth Seed state
+- `QUICK-START-00042.md` - Navigation reference
+
+---
+
+*Work flows: Requirements → Reconciliation → Reality*

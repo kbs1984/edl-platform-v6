@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "architecture"
+status: "current"
+created: "2025-08-23"
+title: "MASTERPLAN-003: Lifecycle Orchestration System"
+purpose: "Document masterplan-003: lifecycle orchestration system"
+topics: ['architecture']
+priority: "P1"
+domain: "core"
+---
+
 # MASTERPLAN-003: Lifecycle Orchestration System
 **Version**: 1.0.0  
 **Created**: Session 00014  

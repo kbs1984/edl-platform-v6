@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "GOAL-001: Project Integration"
+purpose: "Document goal-001: project integration"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # GOAL-001: Project Integration
 **Priority**: High  
 **Created**: 2025-08-14 | Session #00001  

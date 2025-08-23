@@ -1,13 +1,48 @@
+---
+session: "multiple"
+type: "guide"
+status: "current"
+created: "2025-01-01"
+modified: "2025-08-21"
+title: "Three-Domain Constitutional System Master Index"
+purpose: "Central index and navigation hub for the entire EDL Platform system"
+topics: ["index", "navigation", "system", "domains", "architecture"]
+priority: "P0"
+domain: "core"
+audience: "all"
+complexity: "beginner"
+validation_method: "manual"
+review_date: "2025-09-23"
+estimated_shelf_life: "indefinite"
+related_to: ["requirements/REQUIREMENTS_INDEX.md", "reality/REALITY_INDEX.md", "reconciliation/RECONCILIATION_INDEX.md", "CLAUDE.md", "PROJECT-STRUCTURE.md", "RESTORATION-MASTERPLAN-V3.md"]
+implements: ["00031-CONSTITUTIONAL-OS-GUIDE.md"]
+---
+
 # Three-Domain Constitutional System with Truth Layer - Master Index
-## Constitutional Restoration | Sessions 01-35 | Updated 2025-08-19
+## Constitutional Restoration | Sessions 01-41 | Updated 2025-08-21
+
+---
+
+## 🚨 CRITICAL UPDATE - SESSION 41 PIVOT 🚨
+
+**MANDATORY READING**: 
+1. [PIVOT-NOTICE-00041.md](PIVOT-NOTICE-00041.md) - Architectural shift explanation
+2. [AUTH-MASTERPLAN.md](AUTH-MASTERPLAN.md) - New primary development guide
+3. [truth-seed/](truth-seed/) - Working emdash platform codebase
+
+**What Changed**: We're no longer building from scratch. We're adopting the complete emdash debate platform (25+ tables, auth, teams, chat) as our foundation and building EDL features on top.
+
+---
 
 ### System Status
 - **Constitution Version**: 1.3.0
 - **Active Domains**: 3/3 + Truth Layer Operational
 - **System Health**: 95% consensus (via Truth API)
 - **Trust Score**: 80.9% (Meta-Truth verified)
-- **Strategic Framework**: RESTORATION-MASTERPLAN-V3.md (Two-Phase Implementation)
-- **Current Phase**: Phase 4B - Full Educational Identity Ecosystem Implementation
+- **🚨 ARCHITECTURAL PIVOT**: Session 41 - Adopting emdash platform as Truth Seed
+- **Strategic Framework**: AUTH-MASTERPLAN.md + DASHBOARD-MASTERPLAN.md (Truth Seed Architecture)
+- **Previous Framework**: ~~RESTORATION-MASTERPLAN-V3.md~~ (DEPRECATED - Session 41)
+- **Current Phase**: Truth Seed Integration - emdash platform adoption
 - **Truth Operating System**: ✅ COMPLETE v1.0 (Sessions 28-29)
 - **Truth API**: ✅ COMPLETE v1.0 (Session 35) - Full programmatic access
 - **Workflow Boundaries**: ✅ COMPLETE v1.0 (Session 31) - 00031-WORKFLOW-BOUNDARIES.md

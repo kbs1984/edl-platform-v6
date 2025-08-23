@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 User Stories - Authentication & Onboarding"
+purpose: "Document p0 user stories - authentication & onboarding"
+topics: ['auth', 'requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 User Stories - Authentication & Onboarding
 
 **Extracted From**: Canvas 001-1 (Onboarding & Directory)  

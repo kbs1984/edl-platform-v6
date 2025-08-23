@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P1 User Stories - Complete Coverage Extraction"
+purpose: "Document p1 user stories - complete coverage extraction"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # P1 User Stories - Complete Coverage Extraction
 
 **Created**: Session 00025  

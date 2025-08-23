@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Priority Matrix Framework"
+purpose: "Document priority matrix framework"
+topics: ['auth', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # Priority Matrix Framework
 
 **Created**: Session 00017  

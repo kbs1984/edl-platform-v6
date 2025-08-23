@@ -1,7 +1,23 @@
+---
+session: "00042"
+type: "index"
+status: "current"
+created: "2025-01-17"
+modified: "2025-08-21"
+title: "Reality Domain Index"
+purpose: "Central index for Reality Domain agents and truth verification systems"
+topics: ["reality", "index", "agents", "truth", "verification"]
+priority: "P0"
+domain: "reality"
+review_date: "2025-09-21"
+estimated_shelf_life: "indefinite"
+---
+
 # Reality Domain Index
-**Last Updated**: Session 00030 | 2025-08-18  
+**Last Updated**: Session 00042 | 2025-08-21  
 **Domain Status**: 97% Complete (TOS v1.0 operational)  
 **Constitutional Role**: LEADERSHIP DOMAIN (has veto power)
+**Truth Seed Status**: See `reality/truth-seed-manifest.json` for current state
 
 ---
 
@@ -44,10 +60,34 @@ TOS Status: v1.0 OPERATIONAL (Sessions 28-29)
 
 ### 🗄️ Database Reality
 
-**Tables Deployed** (Session 12/15):
-- `profiles` - User profiles with RLS
-- `teams` - Team entities with RLS
-- `team_members` - Team membership with RLS
+**🚨 SESSION 42 UPDATE - TRUTH SEED ADOPTION 🚨**
+
+**DECISION**: Full adoption of emdash platform (36 tables)
+**Status**: See `reality/truth-seed-manifest.json`
+**Authority**: `TRUTH-SEED-ADOPTION-DECISION.md` (no debate)
+
+**Current Reality (Session 00052 FINAL - 16:31)**:
+- Auth Gateway: Functional (truth-seed/emdash-auth-main/)
+- Dashboard: Partial (truth-seed/emdash-dashboard-main/)
+- Database Migration: 🎉 100% COMPLETE 🎉
+  - ✅ Schemas: 3 (public, chat, debate)
+  - ✅ Extensions: uuid-ossp, pg_trgm
+  - ✅ Types: 12 custom ENUM types
+  - ✅ Tables: 36 with all constraints (PKs, uniques, FKs)
+  - ✅ Functions: 27 business logic functions
+  - ✅ Triggers: 17 automation triggers
+  - ✅ Indexes: 15 performance indexes
+  - ✅ RLS: 19 tables secured, 40 policies active
+  - ✅ EDL Additions: call_sign column added to student table
+
+**Truth Seed Database** (`/truth-seed/supabase-migration/`):
+- **3 Schemas**: public, debate, chat
+- **36 Total Tables**: Full production system
+- **User Management**: profile, student, judge, guardian, admin
+- **Team System**: team, team_member, invitation, guild
+- **Debate System**: debates, participants, ballots, scorecards
+- **Chat System**: messages, rooms, presence
+- **21 Test Users**: System populated with data
 - `team_join_requests` - Join requests with RLS
 
 **RLS Policies**: 14 active policies ensuring data protection
@@ -156,6 +196,89 @@ python3 scripts/00039-check-schema.py --table profiles --all
 - `docs/snapshot-system/00039-SCHEMA-SNAPSHOT-SPEC.md` - Original specification
 - `docs/snapshot-system/00039-SNAPSHOT-SYSTEM-SUMMARY.md` - Complete summary
 - `scripts/00038-rls-diagnosis.md` - Root cause analysis
+
+---
+
+## Migration Batch System (Sessions 50-52) ✅ COMPLETE
+
+### Systematic Migration Approach
+Created a 13-batch migration system for controlled database deployment:
+
+**Location**: `migrations/batches/`
+**Manifest**: `migrations/batches/migration-manifest.json`
+
+| Batch | Component | Status | Session | Verified |
+|-------|-----------|--------|---------|----------|
+| 01 | Foundation (schemas, uuid-ossp) | ✅ COMPLETED | 00051 | 2025-08-22 14:00 |
+| 01b | PG_TRGM Extension (similarity) | ✅ COMPLETED | 00052 | 2025-08-22 16:12 |
+| 02 | Types (12 ENUMs) | ✅ COMPLETED | 00051 | 2025-08-22 14:05 |
+| 03 | Tables (36 tables, structure only) | ✅ COMPLETED | 00051 | 2025-08-22 15:18 |
+| 03b | Primary Keys (36 PKs) | ✅ COMPLETED | 00051 | 2025-08-22 15:35 |
+| 03c | Unique Constraints (12 from backup) | ✅ COMPLETED | 00051 | 2025-08-22 15:40 |
+| 03d | Additional Unique (judge.user_id) | ✅ COMPLETED | 00051 | 2025-08-22 15:45 |
+| 04 | Foreign Keys (52 constraints) | ✅ COMPLETED | 00051 | 2025-08-22 15:50 |
+| 05 | Functions (27 total) | ✅ COMPLETED | 00052 | 2025-08-22 16:13 |
+| 06 | Triggers (17 automation) | ✅ COMPLETED | 00052 | 2025-08-22 16:20 |
+| 07 | Indexes (15 performance) | ✅ COMPLETED | 00052 | 2025-08-22 16:21 |
+| 08 | RLS Policies (40 policies, fixed) | ✅ COMPLETED | 00052 | 2025-08-22 16:28 |
+| 09 | EDL Additions (call_sign) | ✅ COMPLETED | 00052 | 2025-08-22 16:30 |
+
+**Progress**: 13/13 batches completed (100%) 🎉
+
+### Session 00052 Contributions (MIGRATION COMPLETE!)
+- **Extension Fix**: Discovered missing pg_trgm, created Batch 01b
+- **Functions**: Extracted all 27 functions from backup (was only 1)
+- **Triggers**: Fixed syntax errors (duplicate AFTER/BEFORE keywords)
+- **Indexes**: Created batch with 15 performance indexes
+- **RLS**: Fixed column mismatches, removed duplicates (40 policies)
+- **EDL Additions**: Successfully added call_sign column
+- **Issues Fixed**: 7 major issues including typos, missing dependencies, syntax errors
+- **Progress**: Advanced migration from 69% to 100% COMPLETE! 🎉
+- **Files Created**: 8 new batch files, 2 extraction scripts
+
+### Issues Fixed During Migration
+1. ✅ Missing pg_trgm extension for similarity() function
+2. ✅ Incomplete function extraction (1 of 27)
+3. ✅ Trigger syntax errors (duplicate keywords)
+4. ✅ Column name typo: "reciever" instead of "receiver"
+5. ✅ RLS policies referencing non-existent columns
+6. ✅ Duplicate policy definitions
+7. ✅ Missing primary keys in initial table creation
+
+### Migration Complete Summary
+**Sessions 50-52 Achievement**: Successfully migrated the entire truth-seed database with improvements!
+- **Total Time**: ~2.5 hours across 3 sessions
+- **Batches Executed**: 13 (including fixes)
+- **Issues Fixed**: 7 major problems from source
+- **Final State**: Clean, working database ready for EDL platform
+- **Key Success**: Not just migrated, but IMPROVED the original system
+
+**Current Database State** (as of 2025-08-22 15:50):
+- ✅ Schemas: 3 (public, chat, debate)
+- ✅ Extensions: uuid-ossp
+- ✅ Custom Types: 12 ENUMs
+- ✅ Tables: 36 (all base tables created!)
+- ✅ Primary Keys: 36 (all tables have PKs now!)
+- ✅ Unique Constraints: 13 (12 from backup + 1 additional)
+- ✅ Foreign Keys: 52 (all relationships established!)
+- ⏳ Functions: 0 (pending Batch 05)
+- ⏳ Triggers: 0 (pending Batch 06)
+- ⏳ Indexes: 0 (pending Batch 07)
+- ⏳ RLS Policies: 0 (pending Batch 08)
+- ⏳ call_sign column: Not yet (pending Batch 09)
+
+### Tracking System
+- `migration-manifest.json` - Real-time state tracking
+- `verify-batch.py` - Verification after each batch
+- Reality agents update manifest with actual database state
+
+### Key Files
+- `migrations/supabase-project.backup` - Authoritative source (17,317 lines)
+- `migrations/desktop-edl-complete-migration-draft.sql` - Clean migration (1,522 lines)
+- `migrations/batches/README.md` - Batch execution guide
+
+### Principle
+Each batch must be verified before proceeding to next. The backup file is the ultimate authority for any missing components.
 
 ---
 

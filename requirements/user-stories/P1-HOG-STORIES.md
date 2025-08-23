@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P1 User Stories - Hall of Game"
+purpose: "Document p1 user stories - hall of game"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # P1 User Stories - Hall of Game
 
 **Extracted From**: Canvas 002-4 (Hall of Game Box)  

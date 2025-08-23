@@ -61,10 +61,12 @@ print("SUCCESS")
 
         # 3. Check frontend files exist
         auth_files = [
-            "index.html",  # Has auth UI
-            "auth/test.html",  # Test interface
+            "auth.html",  # New auth page
+            "auth/js/auth-forms.js",  # Auth form logic
+            "auth/js/supabase-client.js",  # Supabase client
+            "index.html",  # Dashboard (protected)
         ]
-        checks['frontend_form'] = any(Path(f).exists() for f in auth_files)
+        checks['frontend_form'] = all(Path(f).exists() for f in auth_files)
 
         # 4. Check if Supabase auth is configured
         checks['api_endpoint'] = checks['database_table']  # If DB works, API works
@@ -110,7 +112,7 @@ Reality Side (Database):
   {checkmarks['unique_constraint']} Unique constraint active
 
 Reality Side (Frontend):
-  {checkmarks['frontend_form']} Auth form exists
+  {checkmarks['frontend_form']} Complete auth system exists (auth.html + components)
   {checkmarks['api_endpoint']} Supabase API configured
 
 Implementation Status: {'✅ READY TO TEST' if p0_auth['implementation_complete'] else '❌ GAPS EXIST'}

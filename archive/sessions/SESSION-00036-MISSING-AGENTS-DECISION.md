@@ -1,3 +1,15 @@
+---
+session: "00036"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Architectural Decision: Missing Reality Agents"
+purpose: "Document architectural decision: missing reality agents"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Architectural Decision: Missing Reality Agents
 
 ## Decision

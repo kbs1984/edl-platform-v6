@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "architecture"
+status: "current"
+created: "2025-08-23"
+title: "Masterplan Foundation Principles"
+purpose: "Document masterplan foundation principles"
+topics: ['auth', 'architecture']
+priority: "P1"
+domain: "requirements"
+---
+
 # Masterplan Foundation Principles
 **Version**: 1.0.0  
 **Created**: Session 00014  

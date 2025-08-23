@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 User Stories - emCoin Transaction System"
+purpose: "Document p0 user stories - emcoin transaction system"
+topics: ['requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 User Stories - emCoin Transaction System
 
 **Created**: Session 00024  

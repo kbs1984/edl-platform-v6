@@ -1,3 +1,15 @@
+---
+session: "00040"
+type: "script"
+status: "current"
+created: "2025-08-23"
+title: "Session 00040: Update Schema Snapshot After RLS Fix"
+purpose: "Document session 00040: update schema snapshot after rls fix"
+topics: ['script']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00040: Update Schema Snapshot After RLS Fix
 
 ## Quick Instructions

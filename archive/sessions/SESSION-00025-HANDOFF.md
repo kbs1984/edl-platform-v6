@@ -1,3 +1,15 @@
+---
+session: "00025"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00025 Handoff - Complete Truth Discovery"
+purpose: "Document session 00025 handoff - complete truth discovery"
+topics: ['auth', 'session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00025 Handoff - Complete Truth Discovery
 **From**: Session 00024  
 **To**: Session 00025  

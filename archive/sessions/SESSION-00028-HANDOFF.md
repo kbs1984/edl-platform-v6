@@ -1,3 +1,15 @@
+---
+session: "00028"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00028 Handoff: Build Session Automation Framework"
+purpose: "Document session 00028 handoff: build session automation framework"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00028 Handoff: Build Session Automation Framework
 **From**: Session 00027  
 **To**: Session 00028  

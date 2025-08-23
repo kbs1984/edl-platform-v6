@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Domain Interaction Contracts"
+purpose: "Document domain interaction contracts"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Domain Interaction Contracts
 ## Communication Standards Between Domains
 

@@ -1,3 +1,15 @@
+---
+session: "00003"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session #00003B Gift to Session #00004: The Truth Protocol"
+purpose: "Document session #00003b gift to session #00004: the truth protocol"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session #00003B Gift to Session #00004: The Truth Protocol
 
 **From**: Session #00003B  

@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P1 User Stories - Activities & Registrar"
+purpose: "Document p1 user stories - activities & registrar"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # P1 User Stories - Activities & Registrar
 
 **Extracted From**: Canvas 001-4 (Activity & Registrar Box) and 001-5 (Activity Instance)  

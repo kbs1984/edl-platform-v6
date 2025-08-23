@@ -1,3 +1,15 @@
+---
+session: "00026"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00026 Automation Roadmap"
+purpose: "Document session 00026 automation roadmap"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00026 Automation Roadmap
 **Created**: Session 00026  
 **Purpose**: Systematic plan for implementing automation workflow across multiple sessions  

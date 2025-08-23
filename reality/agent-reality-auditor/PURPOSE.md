@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Reality Auditor Agent Brigade Purpose"
+purpose: "Document reality auditor agent brigade purpose"
+topics: ['database', 'documentation']
+priority: "P1"
+domain: "reality"
+---
+
 # Reality Auditor Agent Brigade Purpose
 
 ## Mission

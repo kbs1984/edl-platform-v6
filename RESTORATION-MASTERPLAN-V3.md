@@ -1,3 +1,22 @@
+---
+session: "00016"
+type: "specification"
+status: "superseded"
+created: "2025-01-16"
+modified: "2025-08-18"
+title: "Three-Domain Restoration Masterplan V3.1"
+purpose: "Restore constitutional order to build the Cyworld of Education through prototype → production approach"
+topics: ["masterplan", "architecture", "restoration", "strategy", "phases"]
+priority: "P0"
+domain: "core"
+superseded_by: ["00042-TRUTH-SEED-ADOPTION-DECISION.md"]
+related_to: ["requirements/masterplans/AUTH-MASTERPLAN.md", "requirements/masterplans/DASHBOARD-MASTERPLAN.md"]
+audience: "architect"
+complexity: "advanced"
+validation_method: "manual"
+estimated_shelf_life: "historical reference"
+---
+
 # Three-Domain Restoration Masterplan V3.1
 ## Two-Phase Implementation Strategy
 **Created**: Session 00016  

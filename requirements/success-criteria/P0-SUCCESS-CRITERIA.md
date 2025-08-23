@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 Success Criteria - Core Foundation Requirements"
+purpose: "Document p0 success criteria - core foundation requirements"
+topics: ['auth', 'database', 'requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 Success Criteria - Core Foundation Requirements
 
 **Session**: 00018  

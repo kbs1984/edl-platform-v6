@@ -1,3 +1,15 @@
+---
+session: "00036"
+type: "script"
+status: "current"
+created: "2025-08-23"
+title: "Dashboard Enhancement Options - Session 36"
+purpose: "Document dashboard enhancement options - session 36"
+topics: ['script']
+priority: "P1"
+domain: "core"
+---
+
 # Dashboard Enhancement Options - Session 36
 
 ## Current Dashboard Sections & Potential Enhancements

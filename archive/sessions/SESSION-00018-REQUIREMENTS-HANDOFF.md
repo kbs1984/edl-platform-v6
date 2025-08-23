@@ -1,3 +1,15 @@
+---
+session: "00018"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00018 Requirements Handoff"
+purpose: "Document session 00018 requirements handoff"
+topics: ['auth', 'session-log', 'handoff']
+priority: "P1"
+domain: "requirements"
+---
+
 # Session 00018 Requirements Handoff
 
 **From**: Session 00017  

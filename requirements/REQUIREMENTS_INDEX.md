@@ -1,12 +1,38 @@
+---
+session: "00041"
+type: "index"
+status: "current"
+created: "2025-01-17"
+modified: "2025-08-21"
+title: "Requirements Domain Index"
+purpose: "Central index for all requirements documentation and user stories"
+topics: ["requirements", "index", "user-stories", "documentation"]
+priority: "P0"
+domain: "requirements"
+review_date: "2025-09-21"
+estimated_shelf_life: "indefinite"
+related_to: ["SYSTEM-INDEX.md", "requirements/masterplans/AUTH-MASTERPLAN.md", "requirements/masterplans/DASHBOARD-MASTERPLAN.md"]
+implements: ["00042-TRUTH-SEED-ADOPTION-DECISION.md"]
+---
+
 # Requirements Domain Index
 
 **Created**: Session 00017  
-**Last Updated**: Session 00030  
-**Date**: 2025-08-18  
-**Status**: ✅ ~95% COMPLETE - 275 user stories extracted with systematic coverage  
+**Last Updated**: Session 00041 (ARCHITECTURAL PIVOT)  
+**Date**: 2025-08-21  
+**Status**: ✅ ~95% COMPLETE - 275 user stories extracted | 🔄 MANY NOW PROVIDED BY EMDASH  
 **Validation**: TOS v1.0 provides automated verification  
-**Strategic Framework**: RESTORATION-MASTERPLAN.md (Constitutional Restoration)
+**Strategic Framework**: requirements/masterplans/AUTH-MASTERPLAN.md + DASHBOARD-MASTERPLAN.md
+**Authoritative Decision**: TRUTH-SEED-ADOPTION-DECISION.md (Session 42)
 **Purpose**: Central registry of all system requirements from multiple sources
+
+## 🚨 SESSION 41 UPDATE: Requirements Met by emdash Platform 🚨
+**Many of our 275 user stories are NOW ALREADY IMPLEMENTED** in the emdash platform we're adopting:
+- ✅ Authentication (15 stories) - COMPLETE in emdash-auth
+- ✅ Teams (12 stories) - COMPLETE in database schema
+- ✅ Profile/Dashboard (21 stories) - PARTIAL in emdash-dashboard
+- ⚠️ Activity Runtime (50 stories) - Debate system provides foundation
+- ❌ EmCoin (7 stories) - NOT IMPLEMENTED, needs custom work
 
 ## ✅ SUCCESS STORY (Sessions 22-25) - From Crisis to Completion
 Sessions 22-24: Discovered Canvas 001-5 "Activity Instance" - 727 tasks representing the RUNTIME ENGINE.
@@ -36,7 +62,11 @@ Sources include:
 
 ```
 requirements/
-├── REQUIREMENTS_INDEX.md              🟡 (this file - updated Session 23)
+├── masterplans/                        ✅ [SESSION 42 - Strategic implementation plans]
+│   ├── AUTH-MASTERPLAN.md            ✅ [Auth gateway implementation]
+│   ├── DASHBOARD-MASTERPLAN.md       ✅ [Dashboard completion strategy]
+│   └── [future masterplans]          
+├── REQUIREMENTS_INDEX.md              🟡 (this file - updated Session 42)
 ├── REQUIREMENTS-COMPLETION-REPORT.md  ❌ [INCORRECT - claims 100% when ~88%]
 ├── constitution/                       ✅ [EXISTING - constitutional requirements]
 ├── specifications/                     ✅ [EXISTING - technical specs]

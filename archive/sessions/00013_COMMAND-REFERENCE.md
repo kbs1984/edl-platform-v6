@@ -1,3 +1,15 @@
+---
+session: "00013"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Claude Custom Commands Reference"
+purpose: "Document claude custom commands reference"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Claude Custom Commands Reference
 **Created**: Session 00013  
 **Purpose**: Systematic truth verification through Claude commands

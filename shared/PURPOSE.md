@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Shared Resources Purpose"
+purpose: "Document shared resources purpose"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Shared Resources Purpose
 
 ## Mission

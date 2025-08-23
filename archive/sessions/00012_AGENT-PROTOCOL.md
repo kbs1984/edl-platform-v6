@@ -1,3 +1,15 @@
+---
+session: "00012"
+type: "protocol"
+status: "current"
+created: "2025-08-23"
+title: "Reality Agent Protocol"
+purpose: "Document reality agent protocol"
+topics: ['database', 'protocol']
+priority: "P1"
+domain: "core"
+---
+
 # Reality Agent Protocol
 ## Session 00012 Established - Systematic Agent Usage Framework
 *Based on Strategic Communications 001-A/B/C*

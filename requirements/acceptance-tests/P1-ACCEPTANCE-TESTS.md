@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P1 Acceptance Tests - Essential Features"
+purpose: "Document p1 acceptance tests - essential features"
+topics: ['testing', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # P1 Acceptance Tests - Essential Features
 
 **Session**: 00018 (Extended)  

@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "architecture"
+status: "current"
+created: "2025-08-23"
+title: "MASTERPLAN-000: Unified Monitoring Dashboard"
+purpose: "Document masterplan-000: unified monitoring dashboard"
+topics: ['architecture']
+priority: "P1"
+domain: "core"
+---
+
 # MASTERPLAN-000: Unified Monitoring Dashboard
 **Version**: 1.0.0  
 **Created**: Session 00014  

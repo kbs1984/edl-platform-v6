@@ -1,3 +1,15 @@
+---
+session: "00007"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00007 Handoff: Session Log Protocol v2.0"
+purpose: "Document session 00007 handoff: session log protocol v2.0"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00007 Handoff: Session Log Protocol v2.0
 
 ## Primary Mission

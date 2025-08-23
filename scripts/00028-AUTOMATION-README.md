@@ -1,3 +1,15 @@
+---
+session: "00028"
+type: "script"
+status: "current"
+created: "2025-08-23"
+title: "Session Automation Framework v1.0"
+purpose: "Document session automation framework v1.0"
+topics: ['script']
+priority: "P1"
+domain: "core"
+---
+
 # Session Automation Framework v1.0
 **Created by**: Session 00028  
 **Date**: 2025-08-18  

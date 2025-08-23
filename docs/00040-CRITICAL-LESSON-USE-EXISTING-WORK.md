@@ -1,3 +1,15 @@
+---
+session: "00040"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00040: Critical Lesson - Always Use What Previous Sessions Built"
+purpose: "Document session 00040: critical lesson - always use what previous sessions built"
+topics: ['auth', 'documentation']
+priority: "P0"
+domain: "core"
+---
+
 # Session 00040: Critical Lesson - Always Use What Previous Sessions Built
 
 ## The Failure That Cost Hours

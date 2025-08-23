@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Technical Constraints & Requirements"
+purpose: "Document technical constraints & requirements"
+topics: ['auth', 'database', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # Technical Constraints & Requirements
 
 **Session**: 00018  

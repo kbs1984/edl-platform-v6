@@ -1,3 +1,15 @@
+---
+session: "00012"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00012 Handoff Document"
+purpose: "Document session 00012 handoff document"
+topics: ['auth', 'yaml', 'session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00012 Handoff Document
 **From**: Session 00011  
 **Date**: 2025-08-16  

@@ -1,3 +1,15 @@
+---
+session: "00006"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00006 Handoff: Reality Domain Completion & Validation"
+purpose: "Document session 00006 handoff: reality domain completion & validation"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00006 Handoff: Reality Domain Completion & Validation
 
 ## Mission Brief

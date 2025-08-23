@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00020 Reconciliation Handoff"
+purpose: "Document session 00020 reconciliation handoff"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Session 00020 Reconciliation Handoff
 
 **From**: Session 00019  

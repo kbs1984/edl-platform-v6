@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "locked_at": "2025-08-22T17:36:10.172208",
+  "locked_by_session": "00053",
+  "migration_completed": "2025-08-22T16:30:00",
+  "migration_session": "00052",
+  "total_batches_applied": 13,
+  "migration_batches": [
+    "01-foundation",
+    "01b-pg-trgm",
+    "02-types",
+    "03-tables",
+    "03b-primary-keys",
+    "03c-unique-constraints",
+    "03d-additional-unique",
+    "04-foreign-keys",
+    "05-functions",
+    "06-triggers",
+    "07-indexes",
+    "08-rls-policies",
+    "09-edl-additions"
+  ],
+  "database_state": {
+    "schemas": [
+      "public",
+      "chat",
+      "debate"
+    ],
+    "tables_count": 36,
+    "functions_count": 27,
+    "types_count": 12,
+    "triggers_count": 17,
+    "indexes_count": 15,
+    "primary_keys": 36,
+    "unique_constraints": 13,
+    "foreign_keys": 52,
+    "rls_enabled_tables": 19,
+    "rls_policies": 40,
+    "edl_additions": [
+      "call_sign column"
+    ],
+    "extensions": [
+      "uuid-ossp",
+      "pg_trgm"
+    ]
+  },
+  "database_checksum": "273932f6bb0d81b3691fadabff7b53bbfb09873db5e329dc80fef18004fa9816",
+  "checksum_algorithm": "sha256",
+  "immutable_objects": {
+    "tables": [
+      "public.student",
+      "public.guardian",
+      "public.judge",
+      "public.admin",
+      "public.team",
+      "public.guild",
+      "public.team_member",
+      "public.guild_member",
+      "public.invitation",
+      "public.friendship",
+      "public.school",
+      "public.profile",
+      "chat.message",
+      "chat.participant",
+      "chat.room",
+      "debate.debates",
+      "debate.ballots",
+      "debate.motions",
+      "debate.participants"
+    ],
+    "trigger_functions": [
+      "public.handle_new_user",
+      "public.update_updated_at_column"
+    ],
+    "business_functions": [
+      "public.add_new_user",
+      "public.search_school",
+      "chat.create_room"
+    ],
+    "types": [
+      "debate.criteria_group",
+      "debate.speech_mode",
+      "public.debate_ballot_status_enum",
+      "public.debate_session_status",
+      "public.division",
+      "public.gender",
+      "public.group_type",
+      "public.log_type",
+      "public.payment_provider",
+      "public.payment_state",
+      "public.status",
+      "public.user_role_type"
+    ],
+    "foreign_keys": 52
+  },
+  "modifiable_with_tracking": {
+    "rls_policies": "Can be refined for security",
+    "indexes": "Can add more for performance",
+    "new_functions": "Additions allowed with review",
+    "new_columns": "Can extend tables with compatibility",
+    "call_sign": "EDL addition, can be enhanced"
+  },
+  "override_requires": "constitutional_amendment",
+  "verification_script": "scripts/00053-verify-migration-integrity.sh",
+  "notes": [
+    "This lock file represents the immutable baseline for the EDL platform database",
+    "Any drift from this baseline will be detected by Reality Agents",
+    "Modifications to immutable objects require constitutional amendment",
+    "Modifiable objects can evolve but must be tracked in Reality manifest"
+  ]
+}

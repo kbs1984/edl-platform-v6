@@ -1,0 +1,180 @@
+name: YAML Frontmatter Validation
+# Session: 00059
+# Purpose: CI/CD pipeline for YAML frontmatter validation and cross-reference checking
+
+on:
+  push:
+    branches: [ main, master, develop ]
+    paths:
+      - '**.md'
+      - 'schemas/**.json'
+      - 'scripts/**yaml**.py'
+  pull_request:
+    branches: [ main, master, develop ]
+    paths:
+      - '**.md'
+      - 'schemas/**.json'
+      - 'scripts/**yaml**.py'
+
+jobs:
+  validate-yaml:
+    name: Validate YAML Frontmatter
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install python-frontmatter jsonschema pyyaml
+          
+      - name: Validate YAML frontmatter against schema
+        run: |
+          echo "🔍 Validating YAML frontmatter..."
+          python scripts/00059-yaml-indexer.py
+          
+      - name: Check for validation errors
+        run: |
+          python -c "
+          import sys
+          sys.path.append('scripts')
+          from importlib import import_module
+          indexer_module = import_module('00059-yaml-indexer')
+          indexer = indexer_module.YAMLIndexer()
+          indexer.scan_files()
+          stats = indexer.get_statistics()
+          
+          print('📊 Validation Results:')
+          print(f'  Files processed: {stats[\"files_processed\"]}')
+          print(f'  Files indexed: {stats[\"total_indexed\"]}')
+          print(f'  Validation errors: {stats[\"validation_errors\"]}')
+          
+          # Fail if validation errors exceed threshold
+          if stats['validation_errors'] > 20:  # Allow some legacy files
+              print(f'❌ Too many validation errors: {stats[\"validation_errors\"]} > 20')
+              sys.exit(1)
+          else:
+              print('✅ Validation passed')
+          "
+          
+      - name: Check cross-references
+        run: |
+          echo "🔗 Checking cross-references..."
+          python scripts/00059-yaml-query.py --broken || true
+          
+      - name: Performance check
+        run: |
+          echo "⚡ Performance validation..."
+          python -c "
+          import sys
+          import time
+          sys.path.append('scripts')
+          from importlib import import_module
+          
+          # Test indexing performance
+          indexer_module = import_module('00059-yaml-indexer')
+          
+          # First run (no cache)
+          indexer1 = indexer_module.YAMLIndexer(cache_enabled=False)
+          start = time.time()
+          indexer1.scan_files()
+          no_cache_time = time.time() - start
+          
+          # Second run (with cache)
+          indexer2 = indexer_module.YAMLIndexer(cache_enabled=True)
+          start = time.time()
+          indexer2.scan_files()
+          cache_time = time.time() - start
+          
+          print(f'Performance without cache: {no_cache_time:.3f}s')
+          print(f'Performance with cache: {cache_time:.3f}s')
+          
+          # Check against thresholds
+          if cache_time > 0.5:
+              print(f'⚠️ Warning: Cache performance {cache_time:.3f}s exceeds 0.5s target')
+          else:
+              print(f'✅ Performance target met: {cache_time:.3f}s < 0.5s')
+          "
+          
+      - name: Generate organization report
+        if: always()
+        run: |
+          echo "📊 Generating organization report..."
+          python reality/agent-filesystem/00059-filesystem-agent-level3.py || echo "FileSystem Agent not available"
+          
+      - name: Upload validation report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: yaml-validation-report
+          path: |
+            .yaml-index-cache.pkl
+            
+  check-new-files:
+    name: Check New Files for YAML
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Full history for diff
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install python-frontmatter jsonschema
+          
+      - name: Check new markdown files
+        run: |
+          echo "📝 Checking new files for YAML frontmatter..."
+          
+          # Get list of new/modified markdown files
+          git diff --name-only --diff-filter=AM origin/${{ github.base_ref }}...HEAD | grep '\.md$' > changed_files.txt || true
+          
+          if [ -s changed_files.txt ]; then
+            python -c "
+          import frontmatter
+          import sys
+          
+          with open('changed_files.txt') as f:
+              files = f.read().strip().split('\n')
+          
+          missing_yaml = []
+          for filepath in files:
+              if not filepath:
+                  continue
+              try:
+                  with open(filepath, 'r') as f:
+                      post = frontmatter.load(f)
+                      if not post.metadata:
+                          missing_yaml.append(filepath)
+              except Exception as e:
+                  print(f'Error checking {filepath}: {e}')
+          
+          if missing_yaml:
+              print('⚠️ Files missing YAML frontmatter:')
+              for f in missing_yaml:
+                  print(f'  - {f}')
+              print('')
+              print('Please add YAML frontmatter to all new markdown files.')
+              print('Template: templates/00059-YAML-TEMPLATE-OPTIMIZED.md')
+              sys.exit(1)
+          else:
+              print('✅ All new files have YAML frontmatter')
+            "
+          else
+            echo "No markdown files changed"
+          fi

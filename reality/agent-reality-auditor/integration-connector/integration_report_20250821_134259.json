@@ -1,0 +1,424 @@
+{
+  "timestamp": "2025-08-21T13:42:59.250289",
+  "session_id": "55e1d9b6",
+  "health_scores": {
+    "synchronization": 1.0,
+    "completeness": 1.0,
+    "consistency": 0.8,
+    "transparency": 0.05263157894736842,
+    "overall": 0.7331578947368422,
+    "assumption_clarity": 1
+  },
+  "level_1_health": {
+    "level": 1,
+    "timestamp": "2025-08-21T13:43:00.457712",
+    "confidence": 1.0,
+    "agents": {
+      "fs_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "gh_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "db_agent": {
+        "status": "unavailable",
+        "error": "No Supabase credentials"
+      },
+      "partial_capability": true,
+      "vercel_agent": {
+        "status": "healthy",
+        "error": null
+      },
+      "static_agent": {
+        "status": "healthy",
+        "error": null
+      }
+    },
+    "summary": {
+      "healthy_agents": 4,
+      "limited_agents": 0,
+      "failed_agents": 0,
+      "can_proceed": true
+    }
+  },
+  "level_2_correlation": {
+    "level": 2,
+    "timestamp": "2025-08-21T13:43:01.618990",
+    "confidence": 0.4,
+    "fs_git_sync": {
+      "total_sync_issues": 0,
+      "sync_score": 1.0
+    },
+    "uncommitted": [],
+    "untracked": [],
+    "unpushed": [],
+    "error": "Git command failed: cannot unpack non-iterable CompletedProcess object"
+  },
+  "session_gaps": {
+    "timestamp": "2025-08-21T13:42:56.495909",
+    "session_id": "55e1d9b6",
+    "claimed_work": [
+      {
+        "session": "00003",
+        "claim": "Created file: SESSION-00003B-VALIDATION-REPORT.md",
+        "file": "SESSION-00003B-LOG.md",
+        "type": "file_claim",
+        "claimed_file": "SESSION-00003B-VALIDATION-REPORT.md"
+      },
+      {
+        "session": "00027",
+        "claim": "VALIDATION COMPLETE - FOUNDATION VERIFIED",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**275 user stories verified** (perfect match, no duplicates)",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**All claimed files exist** with expected content",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**Runtime ENGINE fully specified** (50 stories for Canvas 001-5)",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**P0 expanded correctly** (48 \u2192 105 stories including engine)",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**Quality assessment passed** (proper format, Canvas traceability)",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00027",
+        "claim": "**Constitutional success confirmed** (Reality veto \u2192 true completion)",
+        "file": "SESSION-00027-HANDOFF.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00003",
+        "claim": "14:00-16:00",
+        "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00004",
+        "claim": "{changes['files_added']}\")",
+        "file": "SESSION-00004-TRUTH-RECONCILIATION.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 03)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 04)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 02/06)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (Session 05)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (tracking 1,247 files)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (8 recent commits)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (database connected)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Healthy (100% coordination)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      },
+      {
+        "session": "00007",
+        "claim": "Complete (4 agents)",
+        "file": "SESSION-00007-GUIDANCE.md",
+        "type": "completion_claim"
+      }
+    ],
+    "actual_changes": [],
+    "actual_commits": [],
+    "truth_score": 0.05263157894736842,
+    "deception_instances": []
+  },
+  "retroactive_logging": [
+    {
+      "file": "SESSION-00002-FINAL-STATUS.md",
+      "current_session": 2,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00002-FINAL-STATUS.md",
+      "current_session": 2,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-REVIEW-OF-00004-FIX-PLAN.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00003B-VERIFICATION-OF-00004.md",
+      "current_session": 3,
+      "references_session": 4,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00005-LOG.md",
+      "current_session": 5,
+      "references_session": 6,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00006-LOG.md",
+      "current_session": 6,
+      "references_session": 7,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00007-LOG.md",
+      "current_session": 7,
+      "references_session": 8,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00009-LOG.md",
+      "current_session": 9,
+      "references_session": 10,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00009-LOG.md",
+      "current_session": 9,
+      "references_session": 10,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00009-LOG.md",
+      "current_session": 9,
+      "references_session": 10,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00009-LOG.md",
+      "current_session": 9,
+      "references_session": 10,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00013-LOG.md",
+      "current_session": 13,
+      "references_session": 14,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00020-LOG.md",
+      "current_session": 20,
+      "references_session": 21,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00023-LOG.md",
+      "current_session": 23,
+      "references_session": 24,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00026-AUTOMATION-ROADMAP.md",
+      "current_session": 26,
+      "references_session": 27,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00027-LOG.md",
+      "current_session": 27,
+      "references_session": 28,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00027-LOG.md",
+      "current_session": 27,
+      "references_session": 28,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    },
+    {
+      "file": "SESSION-00028-HANDOFF.md",
+      "current_session": 28,
+      "references_session": 29,
+      "type": "future_reference",
+      "severity": "CRITICAL"
+    }
+  ]
+}

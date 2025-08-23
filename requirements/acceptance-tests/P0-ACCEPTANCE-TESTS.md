@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 Acceptance Tests - Core Foundation"
+purpose: "Document p0 acceptance tests - core foundation"
+topics: ['auth', 'database', 'testing', 'requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 Acceptance Tests - Core Foundation
 
 **Session**: 00018  

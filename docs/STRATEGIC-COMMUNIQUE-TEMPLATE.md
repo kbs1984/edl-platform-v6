@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Strategic Communique Template"
+purpose: "Document strategic communique template"
+topics: ['auth', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 📜 STRATEGIC COMMUNIQUE: OPERATION ANCHOR
 Foundation for Reality-Based Development
 Issued: Session 09 | Date: December 2024

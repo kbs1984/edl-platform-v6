@@ -1,3 +1,15 @@
+---
+session: "00030"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00030: TOS Testing Results & Fixes"
+purpose: "Document session 00030: tos testing results & fixes"
+topics: ['auth', 'testing', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00030: TOS Testing Results & Fixes
 
 **Date**: 2025-08-18  

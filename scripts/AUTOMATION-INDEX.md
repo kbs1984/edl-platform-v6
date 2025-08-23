@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "index"
+status: "current"
+created: "2025-08-23"
+title: "Automation Scripts Index"
+purpose: "Document automation scripts index"
+topics: ['index']
+priority: "P1"
+domain: "core"
+---
+
 # Automation Scripts Index
 **Created**: Session 00030  
 **Last Updated**: 2025-08-18  

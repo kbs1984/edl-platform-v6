@@ -1,3 +1,15 @@
+---
+session: "00004"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session #00004 Handoff to Session #00005"
+purpose: "Document session #00004 handoff to session #00005"
+topics: ['auth', 'session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session #00004 Handoff to Session #00005
 **Date**: 2025-08-14  
 **Session Type**: CLI  

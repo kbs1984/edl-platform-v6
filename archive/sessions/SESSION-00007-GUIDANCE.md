@@ -1,3 +1,15 @@
+---
+session: "00007"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00007 Guidance: Session Log Protocol v2.0"
+purpose: "Document session 00007 guidance: session log protocol v2.0"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00007 Guidance: Session Log Protocol v2.0
 
 ## Mission: Enhance Session Log Protocol with Structural Awareness

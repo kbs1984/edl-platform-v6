@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Reality Domain Purpose"
+purpose: "Document reality domain purpose"
+topics: ['documentation']
+priority: "P1"
+domain: "reality"
+---
+
 # Reality Domain Purpose
 
 ## Mission

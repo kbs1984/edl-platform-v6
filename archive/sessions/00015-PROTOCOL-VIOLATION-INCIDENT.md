@@ -1,3 +1,15 @@
+---
+session: "00015"
+type: "protocol"
+status: "current"
+created: "2025-08-23"
+title: "Session 00015 Protocol Violation Incident Report"
+purpose: "Document session 00015 protocol violation incident report"
+topics: ['auth', 'database', 'protocol']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00015 Protocol Violation Incident Report
 
 **Date**: 2025-08-16  

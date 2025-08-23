@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "architecture"
+status: "current"
+created: "2025-08-23"
+title: "MASTERPLAN-002: Self-Healing Protocol System"
+purpose: "Document masterplan-002: self-healing protocol system"
+topics: ['architecture']
+priority: "P1"
+domain: "core"
+---
+
 # MASTERPLAN-002: Self-Healing Protocol System
 **Version**: 1.0.0  
 **Created**: Session 00014  

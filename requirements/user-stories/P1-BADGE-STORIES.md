@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P1 User Stories - Badge System"
+purpose: "Document p1 user stories - badge system"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # P1 User Stories - Badge System
 
 **Extracted From**: Canvas 002-3 (Badges Box)  

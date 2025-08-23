@@ -1,0 +1,282 @@
+{
+  "migration_session": "00052",
+  "migration_date": "2025-08-22",
+  "migration_status": "COMPLETE",
+  "source": "migrations/supabase-project.backup",
+  "total_batches": 13,
+  "current_batch": 13,
+  "database_state": {
+    "schemas": ["public", "chat", "debate"],
+    "tables_count": 36,
+    "functions_count": 27,
+    "types_count": 12,
+    "triggers_count": 17,
+    "indexes_count": 15,
+    "primary_keys": 36,
+    "unique_constraints": 13,
+    "foreign_keys": 52,
+    "rls_enabled_tables": 19,
+    "rls_policies": 40,
+    "edl_additions": ["call_sign column"],
+    "extensions": ["uuid-ossp", "pg_trgm"]
+  },
+  "batches": {
+    "01": {
+      "name": "Foundation",
+      "file": "done-batch-01-foundation.sql",
+      "status": "completed",
+      "components": "extensions, schemas",
+      "dependencies": "none",
+      "executed_at": "2025-08-22T14:00:00",
+      "verified": true,
+      "verification": {
+        "expected_schemas": 3,
+        "actual_schemas": 3,
+        "schemas_created": ["public", "chat", "debate"],
+        "extensions_verified": ["uuid-ossp"]
+      }
+    },
+    "01b": {
+      "name": "PG_TRGM Extension",
+      "file": "batch-01b-pg-trgm-extension.sql",
+      "status": "completed",
+      "components": "pg_trgm extension for text similarity",
+      "dependencies": "none",
+      "executed_at": "2025-08-22T16:12:00",
+      "verified": true,
+      "verification": {
+        "extension_added": "pg_trgm",
+        "purpose": "Enables similarity() function for public.search_school",
+        "note": "Added in Session 00052 after Batch 05 failed without it"
+      }
+    },
+    "02": {
+      "name": "Custom Types",
+      "file": "batch-02-types.sql",
+      "status": "completed",
+      "components": "12 ENUM types",
+      "dependencies": "batch-01",
+      "executed_at": "2025-08-22T14:05:00",
+      "verified": true,
+      "verification": {
+        "expected_types": 12,
+        "actual_types": 12,
+        "types_created": [
+          "debate.criteria_group",
+          "debate.speech_mode",
+          "public.debate_ballot_status_enum",
+          "public.debate_session_status",
+          "public.division",
+          "public.gender",
+          "public.group_type",
+          "public.log_type",
+          "public.payment_provider",
+          "public.payment_state",
+          "public.status",
+          "public.user_role_type"
+        ]
+      }
+    },
+    "03": {
+      "name": "Base Tables",
+      "file": "batch-03-tables.sql",
+      "status": "completed",
+      "components": "36 tables (no foreign keys, no primary keys)",
+      "dependencies": "batch-01, batch-02",
+      "executed_at": "2025-08-22T15:18:00",
+      "verified": true,
+      "verification": {
+        "expected_tables": 36,
+        "actual_tables": 36,
+        "tables_created": [
+          "chat: message, participant, room (3)",
+          "debate: 17 tables including debates, ballots, motions",
+          "public: 16 tables including student, guardian, team, guild"
+        ],
+        "note": "Fixed syntax error on line 436 before execution. Tables created without PKs."
+      }
+    },
+    "03b": {
+      "name": "Primary Keys",
+      "file": "batch-03b-primary-keys.sql",
+      "status": "completed",
+      "components": "36 primary key constraints",
+      "dependencies": "batch-03",
+      "executed_at": "2025-08-22T15:35:00",
+      "verified": true,
+      "verification": {
+        "expected_pks": 36,
+        "actual_pks": 36,
+        "schemas": {
+          "chat": 3,
+          "debate": 16,
+          "public": 17
+        },
+        "note": "Critical fix - PKs were missing from Batch 03, required for FKs"
+      }
+    },
+    "03c": {
+      "name": "Unique Constraints",
+      "file": "batch-03c-unique-constraints.sql",
+      "status": "completed",
+      "components": "12 unique constraints from backup",
+      "dependencies": "batch-03b",
+      "executed_at": "2025-08-22T15:40:00",
+      "verified": true,
+      "verification": {
+        "expected_uniques": 12,
+        "actual_uniques": 12,
+        "schemas": {
+          "chat": 1,
+          "debate": 5,
+          "public": 6
+        },
+        "note": "Includes student(user_id) unique needed for FKs"
+      }
+    },
+    "03d": {
+      "name": "Additional Unique",
+      "file": "batch-03d-additional-unique.sql",
+      "status": "completed",
+      "components": "1 additional unique constraint for judge(user_id)",
+      "dependencies": "batch-03c",
+      "executed_at": "2025-08-22T15:45:00",
+      "verified": true,
+      "verification": {
+        "expected_uniques": 1,
+        "actual_uniques": 1,
+        "note": "judge(user_id) not in backup but required by FKs"
+      }
+    },
+    "04": {
+      "name": "Foreign Key Constraints",
+      "file": "batch-04-constraints-fixed.sql",
+      "status": "completed",
+      "components": "52 foreign key constraints (removed 13 duplicates)",
+      "dependencies": "batch-03, 03b, 03c, 03d",
+      "executed_at": "2025-08-22T15:50:00",
+      "verified": true,
+      "verification": {
+        "expected_constraints": 52,
+        "actual_constraints": 52,
+        "schemas": {
+          "chat": 6,
+          "debate": 25,
+          "public": 21
+        },
+        "note": "Fixed duplicates and added IF NOT EXISTS checks"
+      }
+    },
+    "05": {
+      "name": "Functions",
+      "file": "batch-05-functions-complete.sql",
+      "status": "completed",
+      "components": "27 functions (16 public, 11 chat, 0 debate)",
+      "dependencies": "batch-01b, batch-03, batch-04",
+      "executed_at": "2025-08-22T16:13:00",
+      "verified": true,
+      "verification": {
+        "expected_functions": 27,
+        "actual_functions": 27,
+        "schemas": {
+          "public": 16,
+          "chat": 11,
+          "debate": 0
+        },
+        "trigger_functions": 16,
+        "regular_functions": 11,
+        "note": "Session 00052 extracted all functions from backup. Includes RLS helpers, triggers, and business logic."
+      }
+    },
+    "06": {
+      "name": "Triggers",
+      "file": "batch-06-triggers-fixed.sql",
+      "status": "completed",
+      "components": "17 triggers (1 auth, 2 chat, 14 public)",
+      "dependencies": "batch-05",
+      "executed_at": "2025-08-22T16:20:00",
+      "verified": true,
+      "verification": {
+        "expected_triggers": 17,
+        "actual_triggers": 17,
+        "schemas": {
+          "auth": 1,
+          "chat": 2,
+          "public": 14
+        },
+        "note": "Session 00052 fixed syntax errors (duplicate AFTER/BEFORE keywords, duplicate trigger)"
+      }
+    },
+    "07": {
+      "name": "Indexes",
+      "file": "batch-07-indexes.sql",
+      "status": "completed",
+      "components": "15 performance indexes (4 chat, 5 debate, 6 public)",
+      "dependencies": "batch-03",
+      "executed_at": "2025-08-22T16:21:00",
+      "verified": true,
+      "verification": {
+        "expected_indexes": 15,
+        "actual_indexes": 15,
+        "schemas": {
+          "chat": 4,
+          "debate": 5,
+          "public": 6
+        },
+        "note": "Session 00052 extracted from backup. Performance indexes only (PKs/uniques excluded)."
+      }
+    },
+    "08": {
+      "name": "RLS Policies",
+      "file": "batch-08-rls-corrected.sql",
+      "status": "completed",
+      "components": "19 tables with RLS, 40 security policies",
+      "dependencies": "batch-03, batch-05",
+      "executed_at": "2025-08-22T16:28:00",
+      "verified": true,
+      "verification": {
+        "expected_tables_with_rls": 19,
+        "expected_policies": 40,
+        "actual_tables_with_rls": 19,
+        "actual_policies": 40,
+        "tables_by_schema": {
+          "public": 9,
+          "chat": 3,
+          "debate": 7
+        },
+        "policies_by_schema": {
+          "public": 20,
+          "chat": 10,
+          "debate": 7
+        },
+        "issues_fixed": [
+          "Column name mismatches (guardian_request: sender/reciever)",
+          "Duplicate policy definitions removed",
+          "Policy naming conflicts resolved"
+        ],
+        "note": "Session 00052 fixed column references and duplicates. Corrected typo 'reciever' in column name."
+      }
+    },
+    "09": {
+      "name": "EDL Additions",
+      "file": "batch-09-edl.sql",
+      "status": "completed",
+      "components": "call_sign column and EDL-specific changes",
+      "dependencies": "batch-03",
+      "executed_at": "2025-08-22T16:30:00",
+      "verified": true,
+      "verification": {
+        "call_sign_column": true,
+        "table_modified": "public.student",
+        "column_type": "text",
+        "note": "EDL-specific requirement for student identification. Final batch completes migration."
+      }
+    }
+  },
+  "notes": [
+    "Batches must be executed in order due to dependencies",
+    "Each batch should be verified before proceeding to next",
+    "Reality Agent should update this manifest after each batch",
+    "Backup file is authoritative source for any missing components"
+  ]
+}

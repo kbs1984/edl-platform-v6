@@ -1,3 +1,15 @@
+---
+session: "00038"
+type: "script"
+status: "current"
+created: "2025-08-23"
+title: "RLS Diagnosis Report - Session 00038"
+purpose: "Document rls diagnosis report - session 00038"
+topics: ['auth', 'database', 'script']
+priority: "P1"
+domain: "core"
+---
+
 # RLS Diagnosis Report - Session 00038
 
 ## The Problem Discovered

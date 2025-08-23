@@ -1,3 +1,15 @@
+---
+session: "00004"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00004 Fix Plan"
+purpose: "Document session 00004 fix plan"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00004 Fix Plan
 **Time**: 23:34  
 **Purpose**: Fix GitHub integration and session logging issues

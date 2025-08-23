@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Reality Agent Validation Test Specifications"
+purpose: "Document reality agent validation test specifications"
+topics: ['database', 'testing', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # Reality Agent Validation Test Specifications
 
 **Session**: 00019  

@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "guide"
+status: "current"
+created: "2025-08-23"
+title: "Integration Reality Agent"
+purpose: "Document integration reality agent"
+topics: ['guide']
+priority: "P1"
+domain: "reality"
+---
+
 # Integration Reality Agent
 
 **Meta-Reality Discovery for Reality Agents**

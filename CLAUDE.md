@@ -1,8 +1,39 @@
-# Claude Code Session Protocol v2.0
-## Constitutional Restoration Framework
+---
+session: "multiple"
+type: "guide"
+status: "current"
+created: "2025-01-01"
+modified: "2025-08-23"
+title: "Claude Code Session Protocol v2.1"
+purpose: "Define mandatory protocols and guidelines for all Claude Code sessions"
+topics: ["protocol", "session", "guidelines", "constitution", "workflow"]
+priority: "P0"
+domain: "core"
+audience: "developer"
+complexity: "intermediate"
+validation_method: "manual"
+review_date: "2025-09-23"
+estimated_shelf_life: "indefinite"
+related_to: ["SYSTEM-INDEX.md", "00031-CONSTITUTIONAL-OS-GUIDE.md", "00031-WORKFLOW-BOUNDARIES.md", "PROJECT-STRUCTURE.md"]
+implements: ["SESSION-PROTOCOL.md"]
+---
 
-**Strategic Framework**: RESTORATION-MASTERPLAN-V3.md (Two-Phase Implementation)
-**Required Reading**: All sessions must review V3 masterplan before any work
+# Claude Code Session Protocol v2.1
+## CRITICAL ARCHITECTURAL PIVOT - SESSION 41
+
+🚨 **MANDATORY READING BEFORE ANY WORK** 🚨
+1. **TRUTH-SEED-ADOPTION-DECISION.md** - 🔴 AUTHORITATIVE - NO DEBATE
+2. **requirements/masterplans/AUTH-MASTERPLAN.md** - Auth gateway implementation
+3. **requirements/masterplans/DASHBOARD-MASTERPLAN.md** - Dashboard completion
+4. **QUICK-START-00042.md** - Quick navigation reference
+5. **truth-seed/** directory - Contains working emdash platform we're adopting
+
+**DECISION IS FINAL**: Full adoption of ALL 36 tables. No hybrids. No partial adoption.
+
+**Strategic Framework**: requirements/masterplans/AUTH-MASTERPLAN.md + DASHBOARD-MASTERPLAN.md
+**Truth Seed Code**: truth-seed/ (contains working platform)
+**Active Work**: reconciliation/active-work/
+**Old Framework**: RESTORATION-MASTERPLAN-V3.md (DEPRECATED - historical reference only)
 
 ## Session Logging Requirements (Constitutional)
 
@@ -123,32 +154,146 @@ This prevents sessions from wasting time "rediscovering" existing components and
 - ✅ Verification scripts for all migrations
 - **Reference**: See `00012_001_teams_first_v2.sql` for successful pattern
 
-## Reality Agent Protocol v1.2 (MANDATORY for Truth Verification)
-**Enhanced Session 00016**: 7-Agent system (4 operational, 3 planned)
-- ✅ **Session baseline**: Reality check BEFORE any work begins
-- ✅ **After major changes**: Run relevant agents immediately  
+## Reality Agent Protocol v1.3 (MANDATORY for Truth Verification)
+**Enhanced Session 00042**: Use KNOWN credentials, don't ask for them
+
+### Known Supabase Credentials (PUBLIC - Use These)
+```bash
+# These are NOT secret - they're the public anon key
+SUPABASE_URL="https://bbrheacetxlnqbibjwsz.supabase.co"
+SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE"
+```
+
+### Running Reality Agents
+- ✅ **Session baseline**: Use `./scripts/00028-session-start.sh` (includes agents)
+- ✅ **After major changes**: Run relevant agents with above credentials
 - ✅ **Phase transitions**: Full agent sweep required
 - ✅ **Evening handoff**: Quick verification before session end
 
 **Reality Agents Status**:
 1. FileSystem Agent - ✅ Operational
-2. GitHub Agent - ✅ Operational
-3. Supabase Agent - ✅ Operational
+2. GitHub Agent - ✅ Operational (no credentials needed)
+3. Supabase Agent - ✅ Operational (use credentials above)
 4. Integration Agent - ✅ Operational (calculates consensus)
 5. Vercel Agent - ⚫ Not implemented
 6. Static Asset Agent - ⚫ Not implemented
 7. Task Reality Agent - ⚫ Not implemented
 
 **Available Reality Check Modes**:
-- `--emergency` (10 seconds) - Critical issues only
-- `--quick` (30 seconds) - Essential verification
-- `--full` (3-5 minutes) - Comprehensive all-agent sweep
+```bash
+# With automated startup (RECOMMENDED)
+./scripts/00028-session-start.sh
+
+# Manual with known credentials
+SUPABASE_URL="https://bbrheacetxlnqbibjwsz.supabase.co" \
+SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE" \
+./scripts/00028-reality-check.sh --quick
+```
 
 **V3 Anti-patterns to AVOID**:
+- Asking for Supabase credentials (they're above!)
 - Working without agent verification
 - Claiming completion without Reality validation
-- Proceeding to next phase without baseline
 - Ignoring agent consensus scores
+
+## Database Verification Protocol (Sessions 44-55 Critical Lessons)
+**MANDATORY for database work**: Verify actual database state BEFORE making any assumptions
+
+### The Confusion Festival Pattern (Sessions 44-47, 53-55)
+**Critical Learning**: Multiple sessions made incorrect assumptions about database state without checking the backup file (source of truth).
+
+**Pattern of Failure**:
+1. Session assumes migration deployed correctly ❌
+2. Session interprets PGRST205 errors as failure ❌  
+3. Session creates theoretical solutions for non-problems ❌
+4. Session discovers solutions already exist or problems don't exist ❌
+
+### Truth-Aligned Database Protocol (Session 55 Addition)
+
+**BEFORE ANY DATABASE WORK - CHECK REALITY FIRST**:
+
+```bash
+# 1. Test actual table existence (expect RLS blocks)
+SUPABASE_URL="https://bbrheacetxlnqbibjwsz.supabase.co" \
+SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+python3 -c "
+from supabase import create_client
+client = create_client('$SUPABASE_URL', '$SUPABASE_ANON_KEY')
+for table in ['profile', 'profiles', 'student']:
+    try:
+        client.table(table).select('*').limit(1).execute()
+        print(f'✅ {table}: ACCESSIBLE')
+    except Exception as e:
+        if 'PGRST205' in str(e):
+            print(f'🔒 {table}: RLS PROTECTED (table exists)')
+        elif '42P01' in str(e):
+            print(f'❌ {table}: DOES NOT EXIST')
+        else:
+            print(f'⚠️ {table}: {str(e)[:50]}')
+"
+
+# 2. Check what migrations actually deployed
+ls migrations/batches/done-batch-*.sql
+./scripts/00053-verify-migration-integrity.sh  # if exists
+
+# 3. Read Session 56 start guidance
+cat 00056-SESSION-START-GUIDANCE.md
+```
+
+**Authoritative Sources (in order)**:
+1. **Backup file / Live database query results** (ONLY source of truth)
+2. Migration lock system (`reality/truth-seed-manifest-lock.json`)
+3. Completed batches (`done-batch-*.sql` files)  
+4. Session 44's actual fixes (`FIX-PROFILE-CREATION.sql`, `PROFILE-FIX-SUCCESS-REPORT.md`)
+
+**Common Mistakes to Avoid (Lessons from 44-55)**:
+- ❌ Assuming database state without testing actual queries
+- ❌ Creating theoretical solutions before understanding real problems  
+- ❌ Interpreting PGRST205 as "deployment failure" (it means RLS working)
+- ❌ Making percentage claims about completeness without source verification
+- ❌ **Extrapolating from one issue to assume systemic problems**
+- ❌ **Creating comprehensive fixes when targeted fixes work**
+- ❌ **Ignoring existing working solutions in favor of theoretical ones**
+
+### Self-Accountability Principle (Session 46 Addition)
+**CRITICAL**: Never create authoritative documentation about files/systems you haven't personally verified in the current session.
+
+**Before writing guides about "what sessions should do":**
+1. ✅ **First**: Actually perform those steps yourself
+2. ✅ **Verify**: The files/commands you reference actually work
+3. ✅ **Document**: What you personally observed, not what you assume
+4. ✅ **Distinguish**: Between verified facts and reasonable inferences
+
+**Example from Session 46**:
+- ❌ **Wrong**: "Sessions should read done-batch-*.sql files" (without reading them myself)
+- ✅ **Correct**: "I ran migration integrity check and it passed; files may contain deployment details"
+
+**If caught making unverified claims**: Acknowledge immediately, verify the facts, then correct the guidance. Model intellectual humility.
+
+### Critical Learning: PGRST205 Error Interpretation
+**PGRST205 "table not found" usually means RLS is working correctly, NOT deployment failure**
+
+```python
+# ❌ WRONG interpretation:
+if "PGRST205" in error:
+    print("Database deployment failed")
+
+# ✅ CORRECT interpretation:
+if "PGRST205" in error:
+    print("RLS is protecting table - check schema existence separately")
+```
+
+### Required Verification Steps
+1. **Schema Check**: Verify table exists in information_schema
+2. **Access Check**: Test API access (may be blocked by RLS)
+3. **Interpret Results**: RLS block + schema exists = SUCCESS
+
+### Tools Available
+- `python3 scripts/00044-dual-verification-protocol.py` - Dual existence/access check
+- `docs/00044-ERROR-CODE-REFERENCE.md` - Error code meanings
+- `templates/DATABASE-HANDOFF-TEMPLATE.md` - Handoff guidance
+
+**Session 44 Key Insight**: Production security can appear as development failures. Always verify table existence separately from API access.
 
 ## Truth API Protocol (Session 35 Implementation)
 **MANDATORY for system truth access**: Use Truth API for all metrics and claims

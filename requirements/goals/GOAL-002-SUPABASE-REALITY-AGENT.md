@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "GOAL-002: Supabase Reality Agent"
+purpose: "Document goal-002: supabase reality agent"
+topics: ['database', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # GOAL-002: Supabase Reality Agent
 **Priority**: High  
 **Created**: 2025-08-14 | Session #00001  

@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 User Stories - Dashboard & Profile"
+purpose: "Document p0 user stories - dashboard & profile"
+topics: ['requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 User Stories - Dashboard & Profile
 
 **Extracted From**: Canvas 002-1 (PlayerID Profile Box)  

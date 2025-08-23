@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 User Stories - Activity Runtime Execution"
+purpose: "Document p0 user stories - activity runtime execution"
+topics: ['requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 User Stories - Activity Runtime Execution
 
 **Created**: Session 00023  

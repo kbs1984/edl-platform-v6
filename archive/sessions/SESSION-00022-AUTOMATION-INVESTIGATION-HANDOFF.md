@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00022 Automation Investigation Handoff"
+purpose: "Document session 00022 automation investigation handoff"
+topics: ['database', 'session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00022 Automation Investigation Handoff
 **From**: Session 00021  
 **To**: Session 00022  

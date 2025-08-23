@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Reconciliation Domain Purpose"
+purpose: "Document reconciliation domain purpose"
+topics: ['documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Reconciliation Domain Purpose
 
 ## Mission

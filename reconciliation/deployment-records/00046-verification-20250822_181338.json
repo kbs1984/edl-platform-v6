@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-08-22T18:13:31.922539",
+  "checks": {
+    "public_tables": {
+      "found": [],
+      "missing": [],
+      "total_expected": 9,
+      "total_found": 0
+    },
+    "debate_tables": {
+      "found": [],
+      "missing": [],
+      "total_expected": 6,
+      "total_found": 0
+    },
+    "chat_tables": {
+      "found": [],
+      "missing": [],
+      "total_expected": 3,
+      "total_found": 0
+    },
+    "call_sign_column": "error",
+    "rls_status": {
+      "enabled": [],
+      "disabled_or_open": []
+    }
+  },
+  "health_score": 0,
+  "success": true,
+  "status": "critical"
+}

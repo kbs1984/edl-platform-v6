@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "index"
+status: "current"
+created: "2025-08-23"
+title: "Session 20 INDEX Files Verification Checklist"
+purpose: "Document session 20 index files verification checklist"
+topics: ['session-log', 'index']
+priority: "P1"
+domain: "core"
+---
+
 # Session 20 INDEX Files Verification Checklist
 
 **Session**: 00019 (preparing for 00020)  

@@ -1,3 +1,27 @@
+---
+breakthrough: Phase-aware development adapting to natural rhythms
+created: '2025-08-17'
+domain: core
+estimated_shelf_life: indefinite
+modified: '2025-08-23'
+priority: P0
+purpose: Master guide for phase-aware development philosophy
+related_to:
+- 00031-PHASE-SEED-GUIDE.md
+- 00031-PHASE-GROW-GUIDE.md
+- 00031-PHASE-HARVEST-GUIDE.md
+session: '00031'
+status: current
+title: Constitutional Operating System Guide
+topics:
+- constitution
+- os
+- phases
+- development
+type: guide
+validation_method: manual
+---
+
 # Constitutional Operating System (COS) - Master Guide
 **Session 31 Synthesis** | **Version 1.0** | **2025-08-18**
 

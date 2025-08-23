@@ -1,3 +1,20 @@
+---
+session: "00006"
+type: "specification"
+status: "current"
+created: "2025-01-06"
+modified: "2025-08-23"
+title: "EDL Platform v6 - Project Structure Map"
+purpose: "Define and document the complete project directory structure and organization"
+topics: ["structure", "organization", "directories", "architecture"]
+priority: "P0"
+domain: "core"
+review_date: "2025-09-23"
+estimated_shelf_life: "indefinite"
+related_to: ["SYSTEM-INDEX.md", "CLAUDE.md", "RESTORATION-MASTERPLAN-V3.md", "00031-CONSTITUTIONAL-OS-GUIDE.md"]
+implements: ["archive-organization"]
+---
+
 # EDL Platform v6 - Project Structure Map
 **Last Updated**: Session 00016 | 2025-08-17  
 **System Health**: 97%  

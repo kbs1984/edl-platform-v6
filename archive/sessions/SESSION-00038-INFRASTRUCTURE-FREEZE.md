@@ -1,3 +1,15 @@
+---
+session: "00038"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Infrastructure Freeze v1.1 - Session 38"
+purpose: "Document infrastructure freeze v1.1 - session 38"
+topics: ['auth', 'session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Infrastructure Freeze v1.1 - Session 38
 
 **Date**: 2025-08-19

@@ -1,3 +1,15 @@
+---
+session: "00040"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00040 Handoff: Major Architectural Decision - Complete emdash-auth Migration"
+purpose: "Document session 00040 handoff: major architectural decision - complete emdash-auth migration"
+topics: ['auth', 'database', 'session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00040 Handoff: Major Architectural Decision - Complete emdash-auth Migration
 
 **Date**: 2025-08-20

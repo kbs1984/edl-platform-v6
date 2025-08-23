@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Feasibility Check Request"
+purpose: "Document feasibility check request"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # Feasibility Check Request
 ## From: Requirements Domain
 ## To: Reality Domain

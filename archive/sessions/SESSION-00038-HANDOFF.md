@@ -1,3 +1,15 @@
+---
+session: "00038"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00038 Handoff"
+purpose: "Document session 00038 handoff"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00038 Handoff
 
 **Session Date**: 2025-08-19

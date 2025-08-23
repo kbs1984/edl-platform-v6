@@ -17,6 +17,18 @@ fi
 echo "📝 Creating Session $SESSION_NUM log..."
 
 cat > "$SESSION_FILE" << EOF
+---
+session: "$SESSION_NUM"
+type: "log"
+status: "current"
+created: "$TODAY"
+title: "Session #$SESSION_NUM Log - $SESSION_FOCUS"
+purpose: "Document work completed in Session $SESSION_NUM"
+topics: ["session-log", "work-tracking"]
+priority: "P0"
+domain: "core"
+---
+
 # Session #$SESSION_NUM Log
 
 **Date**: $TODAY

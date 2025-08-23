@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P0 User Stories - Team Management"
+purpose: "Document p0 user stories - team management"
+topics: ['requirements']
+priority: "P0"
+domain: "requirements"
+---
+
 # P0 User Stories - Team Management
 
 **Extracted From**: Canvas 002-2 (Associated Teams Box)  

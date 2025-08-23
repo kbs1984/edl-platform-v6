@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "P2 User Stories - Communication & Messaging"
+purpose: "Document p2 user stories - communication & messaging"
+topics: ['requirements']
+priority: "P2"
+domain: "requirements"
+---
+
 # P2 User Stories - Communication & Messaging
 
 **Extracted From**: Canvas 001-2 (Communication, messages and Invitations)  

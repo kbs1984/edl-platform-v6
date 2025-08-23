@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "EDL Platform Foundation Documentation"
+purpose: "Document edl platform foundation documentation"
+topics: ['database', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # EDL Platform Foundation Documentation
 ## Part 1: Vision & Philosophy - The Educational Cyworld
 

@@ -1,3 +1,25 @@
+---
+created: '2025-08-17'
+domain: core
+estimated_shelf_life: indefinite
+modified: '2025-08-23'
+priority: P0
+purpose: Define Claude Code autonomous capabilities vs manual intervention requirements
+related_to:
+- 00031-MANUAL-INTERVENTION-PROTOCOL.md
+- 00031-MANUAL-TESTING-CHECKLIST.md
+session: '00031'
+status: current
+title: Workflow Boundaries Protocol
+topics:
+- workflow
+- boundaries
+- protocol
+- automation
+type: guide
+validation_method: manual
+---
+
 # Workflow Boundaries: Claude Code vs Manual Intervention
 
 **Session 00031 - Critical Workflow Gap Resolution**  

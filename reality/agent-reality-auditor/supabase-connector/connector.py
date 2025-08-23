@@ -8,6 +8,7 @@ import subprocess
 import json
 import os
 import sys
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional, Dict, Any, List
@@ -124,6 +125,490 @@ class SupabaseConnector:
         except Exception as e:
             return {"error": f"REALITY_001: {str(e)}"}
     
+    def discover_level_01_backup_reality(self) -> Dict[str, Any]:
+        """Level 0.1: Parse backup file as ultimate source of truth (Session 57 Backup-Centric)"""
+        
+        result = {
+            "metadata": {
+                "timestamp": datetime.now().isoformat(),
+                "agent": "supabase-reality",
+                "check_type": "level_01_backup_reality",
+                "session_id": self.session_id,
+                "confidence_score": 1.0  # Backup file is ultimate truth
+            },
+            "ultimate_truth": {
+                "backup_file_exists": False,
+                "tables": [],
+                "functions": [],
+                "schemas": [],
+                "roles": [],
+                "file_size_mb": 0,
+                "line_count": 0
+            },
+            "authority": "backup_file"
+        }
+        
+        # Find backup file
+        backup_file = self.project_root / "migrations" / "supabase-project.backup"
+        if not backup_file.exists():
+            result["error"] = "REALITY_CRITICAL: Ultimate source of truth (backup file) missing"
+            result["metadata"]["confidence_score"] = 0.0
+            result["critical_warning"] = "Cannot assess true completeness without backup file"
+            return result
+        
+        try:
+            # Parse backup file
+            backup_content = backup_file.read_text(encoding='utf-8', errors='ignore')
+            result["ultimate_truth"]["backup_file_exists"] = True
+            result["ultimate_truth"]["file_size_mb"] = backup_file.stat().st_size / (1024 * 1024)
+            result["ultimate_truth"]["line_count"] = len(backup_content.splitlines())
+            
+            # Extract comprehensive schema information
+            tables, functions, schemas, roles = self._parse_backup_file(backup_content)
+            
+            result["ultimate_truth"]["tables"] = sorted(list(tables))
+            result["ultimate_truth"]["functions"] = sorted(list(functions))
+            result["ultimate_truth"]["schemas"] = sorted(list(schemas))
+            result["ultimate_truth"]["roles"] = sorted(list(roles))
+            
+            result["summary"] = {
+                "total_tables": len(tables),
+                "total_functions": len(functions),
+                "total_schemas": len(schemas),
+                "total_roles": len(roles)
+            }
+            
+        except Exception as e:
+            result["error"] = f"REALITY_006: Failed to parse backup file: {str(e)}"
+            result["metadata"]["confidence_score"] = 0.0
+        
+        return result
+    
+    def _parse_backup_file(self, content: str) -> tuple[set, set, set, set]:
+        """Parse PostgreSQL backup file for complete schema inventory"""
+        
+        tables = set()
+        functions = set()
+        schemas = set()
+        roles = set()
+        
+        lines = content.splitlines()
+        
+        for line in lines:
+            line_stripped = line.strip()
+            
+            # Skip comments and empty lines
+            if not line_stripped or line_stripped.startswith('--'):
+                continue
+            
+            # Extract CREATE TABLE statements (more comprehensive patterns)
+            table_patterns = [
+                r"CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:(\w+)\.)?(\w+)\s*\(",
+                r"CREATE TABLE\s+(?:public\.)?(\w+)\s*\(",
+                r"CREATE UNLOGGED TABLE\s+(?:(\w+)\.)?(\w+)\s*\("
+            ]
+            
+            for pattern in table_patterns:
+                matches = re.findall(pattern, line_stripped, re.IGNORECASE)
+                for match in matches:
+                    if isinstance(match, tuple):
+                        # Handle schema.table format
+                        schema, table = match if len(match) == 2 else (None, match[0])
+                        if schema and schema not in ['information_schema', 'pg_catalog']:
+                            schemas.add(schema)
+                        if table and not table.startswith('pg_'):
+                            tables.add(table)
+                    else:
+                        # Handle simple table name
+                        if match and not match.startswith('pg_'):
+                            tables.add(match)
+            
+            # Extract CREATE FUNCTION statements
+            function_patterns = [
+                r"CREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+(?:(\w+)\.)?(\w+)\s*\(",
+                r"CREATE\s+FUNCTION\s+(\w+)\s*\("
+            ]
+            
+            for pattern in function_patterns:
+                matches = re.findall(pattern, line_stripped, re.IGNORECASE)
+                for match in matches:
+                    if isinstance(match, tuple):
+                        schema, func = match if len(match) == 2 else (None, match[0])
+                        if schema and schema not in ['information_schema', 'pg_catalog']:
+                            schemas.add(schema)
+                        if func:
+                            functions.add(func)
+                    else:
+                        if match:
+                            functions.add(match)
+            
+            # Extract CREATE SCHEMA statements
+            schema_patterns = [
+                r"CREATE SCHEMA\s+(?:IF NOT EXISTS\s+)?(\w+)",
+                r"CREATE SCHEMA\s+(\w+)"
+            ]
+            
+            for pattern in schema_patterns:
+                matches = re.findall(pattern, line_stripped, re.IGNORECASE)
+                for match in matches:
+                    if match not in ['information_schema', 'pg_catalog']:
+                        schemas.add(match)
+            
+            # Extract CREATE ROLE statements
+            role_patterns = [
+                r"CREATE ROLE\s+(\w+)",
+                r"CREATE USER\s+(\w+)"
+            ]
+            
+            for pattern in role_patterns:
+                matches = re.findall(pattern, line_stripped, re.IGNORECASE)
+                for match in matches:
+                    if not match.startswith('pg_') and match not in ['postgres']:
+                        roles.add(match)
+        
+        return tables, functions, schemas, roles
+    
+    def discover_level_05_migration_reality(self) -> Dict[str, Any]:
+        """Level 0.5: Compare migration extraction vs backup file completeness (Session 57 Backup-Centric)"""
+        
+        # Get ultimate truth from backup file first
+        backup_reality = self.discover_level_01_backup_reality()
+        
+        result = {
+            "metadata": {
+                "timestamp": datetime.now().isoformat(),
+                "agent": "supabase-reality",
+                "check_type": "level_05_extraction_completeness",
+                "session_id": self.session_id,
+                "confidence_score": 0.0  # Will be calculated based on extraction completeness
+            },
+            "backup_authority": backup_reality.get("authority", "unknown"),
+            "extraction_analysis": {
+                "batches_completed": 0,
+                "extracted_tables": [],
+                "extracted_functions": [],
+                "completeness_pct": 0.0,
+                "missing_from_extraction": {
+                    "tables": [],
+                    "functions": []
+                }
+            },
+            "session_fixes": {}
+        }
+        
+        # If backup file analysis failed, we can't assess completeness
+        if "error" in backup_reality:
+            result["error"] = "REALITY_CRITICAL: Cannot assess extraction completeness without backup file"
+            result["metadata"]["confidence_score"] = 0.0
+            result["critical_warning"] = "Working blind without backup file truth"
+            return result
+        
+        # Get backup truth data
+        backup_tables = set(backup_reality.get("ultimate_truth", {}).get("tables", []))
+        backup_functions = set(backup_reality.get("ultimate_truth", {}).get("functions", []))
+        
+        # Parse migration batches
+        migrations_dir = self.project_root / "migrations" / "batches"
+        if not migrations_dir.exists():
+            result["error"] = "REALITY_005: No migrations/batches directory found"
+            result["metadata"]["confidence_score"] = 0.0
+            return result
+        
+        completed_files = sorted(migrations_dir.glob("done-batch-*.sql"))
+        result["extraction_analysis"]["batches_completed"] = len(completed_files)
+        
+        extracted_tables = set()
+        extracted_functions = set()
+        
+        for batch_file in completed_files:
+            try:
+                tables, functions = self._parse_migration_batch(batch_file)
+                extracted_tables.update(tables)
+                extracted_functions.update(functions)
+            except Exception as e:
+                # Continue parsing other files even if one fails
+                pass
+        
+        result["extraction_analysis"]["extracted_tables"] = sorted(list(extracted_tables))
+        result["extraction_analysis"]["extracted_functions"] = sorted(list(extracted_functions))
+        
+        # Calculate extraction completeness
+        if backup_tables or backup_functions:
+            table_completeness = len(extracted_tables & backup_tables) / len(backup_tables) if backup_tables else 1.0
+            function_completeness = len(extracted_functions & backup_functions) / len(backup_functions) if backup_functions else 1.0
+            
+            # Overall completeness (weighted average)
+            overall_completeness = (table_completeness * 0.6 + function_completeness * 0.4) * 100
+            result["extraction_analysis"]["completeness_pct"] = round(overall_completeness, 1)
+        else:
+            result["extraction_analysis"]["completeness_pct"] = 0.0
+        
+        # Identify what's missing from extraction
+        result["extraction_analysis"]["missing_from_extraction"]["tables"] = sorted(list(backup_tables - extracted_tables))
+        result["extraction_analysis"]["missing_from_extraction"]["functions"] = sorted(list(backup_functions - extracted_functions))
+        
+        # Set confidence based on extraction completeness
+        completeness = result["extraction_analysis"]["completeness_pct"]
+        if completeness >= 95:
+            result["metadata"]["confidence_score"] = 0.95
+        elif completeness >= 80:
+            result["metadata"]["confidence_score"] = 0.8
+        elif completeness >= 50:
+            result["metadata"]["confidence_score"] = 0.6
+        else:
+            result["metadata"]["confidence_score"] = 0.3
+        
+        # Check for session fixes
+        result["session_fixes"] = self._check_session_fixes()
+        
+        # Add extraction quality assessment
+        result["extraction_quality"] = self._assess_extraction_quality(
+            backup_reality, extracted_tables, extracted_functions
+        )
+        
+        return result
+    
+    def _assess_extraction_quality(self, backup_reality: Dict, extracted_tables: set, extracted_functions: set) -> Dict:
+        """Assess the quality and completeness of the extraction"""
+        
+        backup_summary = backup_reality.get("summary", {})
+        backup_tables = set(backup_reality.get("ultimate_truth", {}).get("tables", []))
+        backup_functions = set(backup_reality.get("ultimate_truth", {}).get("functions", []))
+        
+        quality = {
+            "extraction_status": "unknown",
+            "critical_gaps": [],
+            "recommended_action": "unknown"
+        }
+        
+        tables_extracted = len(extracted_tables & backup_tables)
+        functions_extracted = len(extracted_functions & backup_functions)
+        
+        table_pct = (tables_extracted / len(backup_tables)) * 100 if backup_tables else 100
+        function_pct = (functions_extracted / len(backup_functions)) * 100 if backup_functions else 100
+        
+        # Check for critical auth tables
+        critical_auth_tables = {'profile', 'student', 'guardian', 'team', 'judge'}
+        missing_critical_tables = critical_auth_tables - extracted_tables
+        
+        if table_pct >= 95 and function_pct >= 90:
+            quality["extraction_status"] = "complete"
+            quality["recommended_action"] = "proceed_with_confidence"
+        elif table_pct >= 80 and function_pct >= 70:
+            quality["extraction_status"] = "mostly_complete"
+            quality["recommended_action"] = "proceed_with_caution"
+        elif missing_critical_tables:
+            quality["extraction_status"] = "critically_incomplete"
+            quality["critical_gaps"].append(f"Missing critical auth tables: {missing_critical_tables}")
+            quality["recommended_action"] = "complete_extraction_first"
+        else:
+            quality["extraction_status"] = "incomplete"
+            quality["recommended_action"] = "significant_extraction_work_needed"
+        
+        # Add specific gaps
+        if table_pct < 90:
+            quality["critical_gaps"].append(f"Only {table_pct:.1f}% of tables extracted")
+        if function_pct < 80:
+            quality["critical_gaps"].append(f"Only {function_pct:.1f}% of functions extracted")
+            
+        return quality
+    
+    def _parse_migration_batch(self, batch_file: Path) -> tuple[set, set]:
+        """Parse SQL batch file to extract expected schema elements"""
+        
+        sql_content = batch_file.read_text()
+        
+        # Extract CREATE TABLE statements
+        tables = set()
+        create_table_patterns = [
+            r"CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(?:public\.)?(\w+)\s*\(",
+            r"CREATE TABLE\s+(?:IF NOT EXISTS\s+)?(\w+)\s*\("
+        ]
+        
+        for pattern in create_table_patterns:
+            matches = re.findall(pattern, sql_content, re.IGNORECASE | re.MULTILINE)
+            for match in matches:
+                table_name = match.strip()
+                if table_name and not table_name.lower().startswith('pg_'):
+                    tables.add(table_name)
+        
+        # Extract CREATE FUNCTION statements
+        functions = set()
+        create_function_patterns = [
+            r"CREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+(?:public\.)?(\w+)\s*\(",
+            r"CREATE\s+FUNCTION\s+(\w+)\s*\("
+        ]
+        
+        for pattern in create_function_patterns:
+            matches = re.findall(pattern, sql_content, re.IGNORECASE | re.MULTILINE)
+            for match in matches:
+                function_name = match.strip()
+                if function_name:
+                    functions.add(function_name)
+        
+        return tables, functions
+    
+    def _check_session_fixes(self) -> Dict[str, Any]:
+        """Check for known fixes from previous sessions (Session 57 Enhancement)"""
+        
+        fixes = {}
+        
+        # Session 44: Profile creation fix
+        profile_fix = self.project_root / "FIX-PROFILE-CREATION.sql"
+        if profile_fix.exists():
+            fixes["profile_creation_fix"] = {
+                "file": "FIX-PROFILE-CREATION.sql",
+                "session": 44,
+                "status": "available_for_deployment",
+                "last_modified": profile_fix.stat().st_mtime,
+                "purpose": "Fixes profile creation after auth signup"
+            }
+        
+        # Session 55: Function fixes
+        function_fixes = [
+            "00055-COMPLETE-FUNCTION-FIXES.sql",
+            "00055-CRITICAL-BUSINESS-LOGIC.sql"
+        ]
+        
+        for fix_file in function_fixes:
+            fix_path = self.project_root / fix_file
+            if fix_path.exists():
+                fixes[f"function_fix_{fix_file.replace('.sql', '').replace('00055-', '')}"] = {
+                    "file": fix_file,
+                    "session": 55,
+                    "status": "available_for_deployment",
+                    "last_modified": fix_path.stat().st_mtime,
+                    "purpose": "Database function completeness fixes"
+                }
+        
+        return fixes
+    
+    def _generate_masterplan_guidance(self, analysis: Dict, migration_reality: Dict) -> List[str]:
+        """Generate backup-aware masterplan guidance (Session 57 Backup-Centric)"""
+        
+        guidance = []
+        security_analysis = analysis.get("security_analysis", {})
+        expected_vs_actual = analysis.get("expected_vs_actual", {})
+        
+        # NEW: Get extraction analysis from Level 0.5
+        extraction_analysis = migration_reality.get("extraction_analysis", {})
+        extraction_quality = migration_reality.get("extraction_quality", {})
+        completeness_pct = extraction_analysis.get("completeness_pct", 0)
+        
+        # 1. FIRST PRIORITY: Check backup file extraction completeness
+        guidance.append("🔍 EXTRACTION COMPLETENESS vs BACKUP FILE:")
+        guidance.append(f"   Completeness: {completeness_pct:.1f}% of backup file extracted")
+        
+        if completeness_pct < 80:
+            guidance.append(f"❌ CRITICAL BLOCKER: Only {completeness_pct:.1f}% of backup file extracted")
+            guidance.append("   → RISK: Unknown features/logic will break in production")
+            guidance.append("   → ACTION: Complete backup extraction before ANY deployment")
+            guidance.append("   → CHECK: migrations/supabase-project.backup for missing elements")
+            
+            missing_tables = extraction_analysis.get("missing_from_extraction", {}).get("tables", [])
+            missing_functions = extraction_analysis.get("missing_from_extraction", {}).get("functions", [])
+            
+            if missing_tables:
+                guidance.append(f"   → MISSING TABLES: {missing_tables[:5]}{'...' if len(missing_tables) > 5 else ''}")
+            if missing_functions:
+                guidance.append(f"   → MISSING FUNCTIONS: {missing_functions[:3]}{'...' if len(missing_functions) > 3 else ''}")
+                
+            guidance.append("")
+            guidance.append("🎯 AUTH MASTERPLAN READINESS: ❌ NOT READY - EXTRACTION INCOMPLETE")
+            guidance.append("   → Must reach 80%+ extraction before proceeding")
+            return guidance  # Stop here - can't proceed with incomplete extraction
+        
+        elif completeness_pct < 95:
+            guidance.append(f"⚠️ CAUTION: {completeness_pct:.1f}% extracted - some features may be missing")
+            guidance.append("   → RECOMMEND: Verify missing elements before production")
+            guidance.append("   → ACCEPTABLE: Can proceed with heightened caution")
+        else:
+            guidance.append(f"✅ EXTRACTION EXCELLENT: {completeness_pct:.1f}% - comprehensive coverage")
+        
+        # 2. Check deployed vs extracted (security analysis)
+        security_score = security_analysis.get("security_score", 0)
+        
+        guidance.append("")
+        guidance.append("🔒 DEPLOYMENT SECURITY vs EXTRACTED SCHEMA:")
+        
+        # Check critical auth tables
+        critical_auth_tables = ['profile', 'student', 'team', 'guardian', 'judge']
+        missing_critical = []
+        insecure_critical = []
+        protected_critical = []
+        
+        for table in critical_auth_tables:
+            if table in expected_vs_actual:
+                table_info = expected_vs_actual[table]
+                security_status = table_info.get("security_status", "")
+                
+                if "TABLE MISSING" in security_status:
+                    missing_critical.append(table)
+                elif "RLS NOT WORKING" in security_status:
+                    insecure_critical.append(table)
+                elif "RLS PROTECTING" in security_status:
+                    protected_critical.append(table)
+        
+        if missing_critical:
+            guidance.append(f"❌ DEPLOYMENT BLOCKER: Critical tables missing: {missing_critical}")
+            guidance.append("   → ACTION: Run remaining migration batches")
+            guidance.append("   → CHECK: migrations/batches/ for done-batch-*.sql files")
+            return guidance  # Can't proceed without basic tables
+        
+        if insecure_critical:
+            guidance.append(f"❌ SECURITY BLOCKER: Unprotected tables: {insecure_critical}")
+            guidance.append("   → ACTION: Deploy RLS policies immediately")
+            guidance.append("   → CHECK: migrations/batches/done-batch-08-rls-corrected.sql")
+        
+        if protected_critical:
+            guidance.append(f"✅ SECURITY GOOD: {len(protected_critical)} critical tables properly protected")
+        
+        # 3. Overall readiness assessment (backup-aware)
+        guidance.append("")
+        
+        if completeness_pct >= 95 and security_score >= 90:
+            guidance.append("🎯 AUTH MASTERPLAN READINESS: ✅ READY FOR PRODUCTION")
+            guidance.append("   → Backup extraction: Comprehensive")
+            guidance.append("   → Security deployment: Excellent") 
+            guidance.append("   → Next: Deploy auth gateway to Vercel")
+            guidance.append("   → Reference: requirements/masterplans/AUTH-MASTERPLAN.md Phase 1")
+            
+            guidance.append("")
+            guidance.append("📋 RECOMMENDED NEXT STEPS:")
+            guidance.append("   1. Deploy auth gateway: cp -r truth-seed/emdash-auth-main/ new-auth-gateway/")
+            guidance.append("   2. Configure environment variables for edl-platform.vercel.app")
+            guidance.append("   3. Test cookie propagation between subdomains")
+            guidance.append("   4. Verify profile creation flow")
+            
+        elif completeness_pct >= 80 and security_score >= 70:
+            guidance.append("🎯 AUTH MASTERPLAN READINESS: ⚠️ PROCEED WITH CAUTION")
+            guidance.append(f"   → Extraction: {completeness_pct:.1f}% (some features may be missing)")
+            guidance.append(f"   → Security: {security_score:.0f}% (fix gaps first)")
+            guidance.append("   → RECOMMEND: Test thoroughly in staging environment")
+            
+        else:
+            guidance.append("🎯 AUTH MASTERPLAN READINESS: ❌ NOT READY")
+            if completeness_pct < 80:
+                guidance.append("   → PRIMARY ISSUE: Incomplete backup extraction")
+            if security_score < 70:
+                guidance.append("   → SECONDARY ISSUE: Security gaps")
+        
+        # 4. Session fixes and context
+        session_fixes = migration_reality.get("session_fixes", {})
+        if session_fixes:
+            guidance.append("")
+            guidance.append("📋 AVAILABLE FIXES:")
+            for fix_key, fix_info in session_fixes.items():
+                guidance.append(f"   • {fix_info['file']} (Session {fix_info['session']}) - {fix_info['purpose']}")
+        
+        guidance.append("")
+        guidance.append("💡 BACKUP-CENTRIC TRUTH APPROACH (Session 57):")
+        guidance.append("   • Backup file = Ultimate truth (what we're replicating)")
+        guidance.append("   • Migration batches = Quick reference (extracted subset)")
+        guidance.append("   • When problems arise = Go back to backup for analysis")
+        
+        return guidance
+    
     def discover_level_1(self) -> Dict[str, Any]:
         """Level 1: Connection test and basic permissions check"""
         
@@ -217,7 +702,7 @@ class SupabaseConnector:
         return result
     
     def discover_level_2(self) -> Dict[str, Any]:
-        """Level 2: Table listing and basic structure discovery"""
+        """Level 2: Migration-aware table discovery with RLS interpretation (Session 57 Enhanced)"""
         
         # Ensure Level 1 has passed
         level_1 = self.discover_level_1()
@@ -227,70 +712,127 @@ class SupabaseConnector:
                 "level_1_status": level_1["connection"]["status"]
             }
         
-        # Check cache
-        cached = self._get_cached_data("tables")
-        if cached:
-            cached["from_cache"] = True
-            return cached
+        # Get migration reality as source of truth (Level 0.5)
+        migration_reality = self.discover_level_05_migration_reality()
+        expected_tables = migration_reality.get("migration_state", {}).get("expected_tables", [])
         
         result = {
             "metadata": {
                 "timestamp": datetime.now().isoformat(),
                 "agent": "supabase-reality",
-                "check_type": "level_2_discovery",
+                "check_type": "level_2_enhanced_discovery",
                 "session_id": self.session_id,
                 "confidence_score": 0.0
             },
             "connection": level_1["connection"],
-            "discoveries": {
-                "level": 2,
-                "summary": {
-                    "total_tables": 0,
-                    "total_rows": 0,
-                    "accessible_tables": []
-                },
-                "details": {
-                    "tables": []
-                }
-            }
+            "migration_authority": migration_reality["authority"],
+            "expected_vs_actual": {},
+            "security_analysis": {},
+            "masterplan_guidance": []
         }
         
-        # Try to get table information
-        # First, attempt to query the information_schema
-        schema_response = self._make_api_call("/rpc/get_tables", {
-            "Prefer": "params=single-object"
-        })
+        # If no migration files found, fall back to old behavior
+        if not expected_tables:
+            result["error"] = "REALITY_005: No migration files found - cannot determine expected schema"
+            result["fallback_note"] = "Run migration batches first or check migrations/batches directory"
+            result["metadata"]["confidence_score"] = 0.1
+            return result
         
-        # If RPC doesn't exist, try direct table access
-        if "error" in schema_response or schema_response == {}:
-            # Fallback: Try to list tables via a different method
-            # We'll attempt to query a common Supabase system view
-            tables_response = self._make_api_call("/")
+        # Test each expected table with RLS intelligence
+        tables_tested = 0
+        rls_protected_count = 0
+        accessible_count = 0
+        missing_count = 0
+        
+        for table in expected_tables:
+            tables_tested += 1
+            table_analysis = {
+                "expected": True,
+                "api_accessible": False,
+                "security_status": "unknown",
+                "interpretation": "unknown"
+            }
             
-            if isinstance(tables_response, dict) and "error" not in tables_response:
-                # Parse available endpoints as potential tables
-                # This is a heuristic approach when we can't access metadata
-                result["discoveries"]["summary"]["total_tables"] = 0
-                result["discoveries"]["details"]["tables"] = []
-                result["metadata"]["confidence_score"] = 0.3
-                result["notes"] = "Limited discovery - cannot access table metadata directly"
-            else:
-                result["error"] = "REALITY_003: Cannot discover tables with current permissions"
-                result["metadata"]["confidence_score"] = 0.0
-        else:
-            # Successfully got table information
-            if isinstance(schema_response, list):
-                result["discoveries"]["summary"]["total_tables"] = len(schema_response)
-                result["discoveries"]["summary"]["accessible_tables"] = [
-                    t.get("table_name", "unknown") for t in schema_response
-                ]
-                result["discoveries"]["details"]["tables"] = schema_response
-                result["metadata"]["confidence_score"] = 0.9
-            else:
-                result["metadata"]["confidence_score"] = 0.5
+            try:
+                # Test API access to table
+                response = self._make_api_call(f"/{table}?limit=1")
+                
+                # Check if response is an error dict (PGRST format)
+                if isinstance(response, dict) and "code" in response:
+                    # Handle API error responses (this is the common case)
+                    error_code = response.get("code", "")
+                    error_message = response.get("message", "")
+                    
+                    if error_code == "PGRST205" or "Could not find" in error_message:
+                        # This is GOOD - RLS is working correctly
+                        table_analysis["api_accessible"] = False
+                        table_analysis["security_status"] = "✅ RLS PROTECTING TABLE"
+                        table_analysis["interpretation"] = "Security working correctly - table exists but RLS blocks access"
+                        rls_protected_count += 1
+                    elif error_code == "42P01" or "does not exist" in error_message:
+                        # Table doesn't exist
+                        table_analysis["api_accessible"] = False
+                        table_analysis["security_status"] = "❌ TABLE MISSING FROM DATABASE"
+                        table_analysis["interpretation"] = "Migration may not have been applied"
+                        missing_count += 1
+                    else:
+                        # Other API error
+                        table_analysis["security_status"] = f"⚠️ API ERROR: {error_code} - {error_message[:50]}"
+                        table_analysis["interpretation"] = f"API returned error: {response}"
+                
+                elif isinstance(response, list):
+                    # If we can access the table data, RLS is NOT working properly
+                    table_analysis["api_accessible"] = True
+                    table_analysis["security_status"] = "❌ RLS NOT WORKING - SECURITY GAP!"
+                    table_analysis["interpretation"] = "Table accessible without auth - RLS policies missing/broken"
+                    accessible_count += 1
+                else:
+                    # Unexpected response format
+                    table_analysis["security_status"] = "⚠️ Unexpected response format"
+                    table_analysis["interpretation"] = f"Unexpected response type: {type(response)}, content: {str(response)[:100]}"
+                
+            except Exception as e:
+                error_str = str(e)
+                
+                if 'PGRST205' in error_str or 'Could not find' in error_str:
+                    # This is GOOD - RLS is working correctly
+                    table_analysis["api_accessible"] = False
+                    table_analysis["security_status"] = "✅ RLS PROTECTING TABLE"
+                    table_analysis["interpretation"] = "Security working correctly - table exists but RLS blocks access"
+                    rls_protected_count += 1
+                elif '42P01' in error_str or 'does not exist' in error_str:
+                    # Table doesn't exist in database
+                    table_analysis["api_accessible"] = False
+                    table_analysis["security_status"] = "❌ TABLE MISSING FROM DATABASE"
+                    table_analysis["interpretation"] = "Migration may not have been applied"
+                    missing_count += 1
+                else:
+                    # Other error
+                    table_analysis["security_status"] = f"⚠️ UNKNOWN ERROR: {error_str[:50]}"
+                    table_analysis["interpretation"] = "Unexpected database error"
+            
+            result["expected_vs_actual"][table] = table_analysis
         
-        # Cache if we got some data
-        if result["metadata"]["confidence_score"] > 0:
+        # Generate security analysis summary
+        result["security_analysis"] = {
+            "total_tables_tested": tables_tested,
+            "rls_protected_correctly": rls_protected_count,
+            "accessible_without_auth": accessible_count,
+            "missing_from_database": missing_count,
+            "security_score": rls_protected_count / max(tables_tested, 1) * 100 if tables_tested > 0 else 0
+        }
+        
+        # Generate masterplan guidance
+        result["masterplan_guidance"] = self._generate_masterplan_guidance(result, migration_reality)
+        
+        # Set confidence score based on analysis quality
+        if tables_tested > 0:
+            result["metadata"]["confidence_score"] = 0.95  # High confidence with migration file authority
+        else:
+            result["metadata"]["confidence_score"] = 0.1
+        
+        # Cache results
+        if result["metadata"]["confidence_score"] > 0.5:
             self._save_cache("tables", result)
             self.discovery_level = 2
         
@@ -609,8 +1151,16 @@ class SupabaseConnector:
             "levels": {}
         }
         
-        # Progressive discovery
-        for level in range(1, min(max_level + 1, 5)):
+        # Progressive discovery (Session 57: Backup-Centric Truth Hierarchy)
+        # Level 0.1: Ultimate truth from backup file
+        results["levels"][0.1] = self.discover_level_01_backup_reality()
+        
+        # Level 0.5: Extraction completeness vs backup
+        results["levels"][0.5] = self.discover_level_05_migration_reality()
+        
+        # Handle integer levels (1, 2, 3, 4)
+        max_int_level = int(max_level) if max_level >= 1 else 0
+        for level in range(1, min(max_int_level + 1, 5)):
             if level == 1:
                 results["levels"][1] = self.discover_level_1()
             elif level == 2:
@@ -653,10 +1203,9 @@ def main():
     parser = argparse.ArgumentParser(description="Supabase Reality Agent - Progressive Discovery")
     parser.add_argument(
         "--level",
-        type=int,
+        type=float,
         default=2,
-        choices=[1, 2, 3, 4],
-        help="Maximum discovery level (default: 2)"
+        help="Maximum discovery level (default: 2) - supports 0.1, 0.5, 1, 2, 3, 4"
     )
     parser.add_argument(
         "--output",
