@@ -203,11 +203,63 @@ session: "00071"
 - **Systemic**: ~70 existing session logs don't have YAML frontmatter
 
 ## Session Metrics
-- **Duration**: ~2 hours (extended by commit issues)
-- **Files Created**: 2 (Quick Start Guide, test files)
-- **Files Modified**: 4 (pre-commit hook fixed TWICE, Quick Start modified, session log, handoff)
-- **Bugs Fixed**: 3 (original subshell bug, extraction bug, code example bug)
-- **Bugs Discovered But Not Fixed**: 1 (session logs lacking YAML)
-- **Documentation**: Enhanced beyond requirements with real discoveries
+- **Duration**: ~2.5 hours (extended by investigation and alignment work)
+- **Files Created**: 3 (Quick Start Guide, Boundaries Clarification, test files)
+- **Files Modified**: 8 (pre-commit hook x2, Quick Start, 3 session logs, automation script, handoff)
+- **Bugs Fixed**: 4 (subshell bug, extraction bug, code example bug, automation bypass)
+- **System Alignment**: Restored YAML compliance for session logs
+- **Investigation Work**: Deep root cause analysis of infrastructure gaps
+- **Documentation**: Comprehensive with discoveries, fixes, and clarifications
 
-**Session 00071 Sign-off**: Testing revealed truth, fixed critical bugs, but commit process revealed more
+## Deep Investigation: YAML System Alignment (6:10-6:45 PM)
+
+### The Investigation Trigger
+User questioned why Session 71 faced commit issues and asked for root cause analysis. This led to discovering a fundamental misalignment in the YAML infrastructure.
+
+### Critical Discovery: The Automation Bypass
+**Investigation revealed**: Session 28's automation was bypassing YAML requirements!
+
+#### What the Investigation Found
+1. **Original Intent (Session 61)**: "ALL 61 session logs (0% coverage)" must be fixed
+2. **Session 63**: Updated `create-session-log.sh` to include YAML
+3. **Session 69**: Unified Protocol shows logs WITH YAML in examples
+4. **Reality**: Sessions 60-69 have YAML, Sessions 70-72 don't
+
+#### The Root Cause
+Two competing scripts existed:
+- `create-session-log.sh` - Updated with YAML (Session 63)
+- `00028-create-session-log.sh` - Never updated, no YAML (Session 28)
+
+The automated startup (`00028-session-start.sh`) was calling the OLD script!
+
+### Alignment Restoration Work
+
+#### Fixed Session 28's Script
+- Added YAML frontmatter generation to `00028-create-session-log.sh`
+- Tested to ensure it works correctly
+- This prevents future sessions from losing YAML
+
+#### Retrofitted Sessions 70-72
+- Added YAML frontmatter to all three session logs
+- Aligned them with Session 61's requirements
+- Restored discoverability for these sessions
+
+#### Created Boundaries Document
+- `core/00071-YAML-BOUNDARIES-CLARIFICATION.md`
+- Defines what requires YAML (our files) vs what doesn't (external code)
+- Clarifies the "97.7% coverage" metric confusion
+
+### The Deeper Truth Revealed
+The YAML system wasn't broken by design - it was broken by legacy automation that predated the requirements. Sessions 70-72 were victims of this automation gap. The investigation showed:
+
+1. **The intent was always clear**: All session deliverables need YAML
+2. **The implementation had gaps**: Automation wasn't updated
+3. **The metrics were misleading**: Counting files we don't control
+
+### Impact of This Work
+- **Immediate**: Future sessions will have YAML automatically
+- **Retroactive**: Sessions 70-72 now discoverable
+- **Systemic**: Clear boundaries prevent future confusion
+- **Trust**: System now works as originally intended
+
+**Session 00071 Sign-off**: Testing revealed bugs, investigation revealed systemic gaps, fixes restored alignment

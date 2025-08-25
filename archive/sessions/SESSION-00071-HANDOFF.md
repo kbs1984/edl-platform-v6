@@ -24,6 +24,16 @@ related_to: ["SESSION-00070-HANDOFF.md", "core/00071-FILE-SYSTEM-QUICK-START.md"
 
 ## 🎯 What Session 71 Accomplished
 
+### Critical System Alignment Work 🔧
+**Discovered and fixed fundamental YAML infrastructure misalignment:**
+- Found Session 28's automation was bypassing YAML requirements
+- Fixed `00028-create-session-log.sh` to include YAML frontmatter
+- Retrofitted Sessions 70-72 logs with proper YAML
+- Created boundaries clarification document
+- Restored system to original Session 61 intent
+
+**Root Cause**: Legacy automation predated YAML system and was never updated. When Sessions 70+ used automated startup, they got logs without YAML, breaking discoverability.
+
 ### Priority 3: Full Workflow Testing ✅
 Executed the complete 10-step test sequence:
 - Created test files with proper YAML
@@ -58,6 +68,9 @@ Without this fix, invalid YAML would have entered the repository despite "valida
 
 ## 📋 Implementation Wisdom Discovered
 
+### Critical System Insight
+**Legacy automation can silently bypass new requirements.** Session 71 discovered that Session 28's automation had been creating non-compliant logs for Sessions 70-72. Always verify that ALL file creation paths follow current standards.
+
 ### Must-Know for Future Sessions
 1. **Files must be staged before auto-organize** - Not documented anywhere else
 2. **Validation script is batch-only** - Can't validate single files
@@ -78,7 +91,22 @@ Without this fix, invalid YAML would have entered the repository despite "valida
 
 ## 🚀 Recommended Priorities for Session 72
 
-### Option A: Clean Up Remaining YAML Issues (Recommended)
+### Priority 0: Verify System Alignment ✅
+Session 71 fixed critical alignment issues. Verify:
+```bash
+# Check new logs have YAML
+head -1 archive/sessions/SESSION-0007*-LOG.md
+
+# Test automated log creation
+./scripts/00028-create-session-log.sh 99999 "Test"
+head -15 archive/sessions/SESSION-99999-LOG.md
+rm archive/sessions/SESSION-99999-LOG.md
+
+# Read boundaries document
+cat core/00071-YAML-BOUNDARIES-CLARIFICATION.md
+```
+
+### Option A: Clean Up Remaining YAML Issues (Still Recommended)
 Fix the 31 validation errors to achieve 100% compliance:
 ```bash
 # See what needs fixing
@@ -179,7 +207,18 @@ The file system infrastructure (Sessions 58-71) is now:
 
 ## 🎭 The Meta-Truth
 
-Session 71 discovered that Session 69's "complete" system had a critical flaw. This proves:
+Session 71 discovered multiple layers of truth:
+
+### Layer 1: The Pre-commit Hook Bug
+Session 69's "complete" hook had a bash subshell flaw that let invalid YAML through.
+
+### Layer 2: The Automation Bypass
+Session 28's automation was silently creating non-compliant logs for Sessions 70-72.
+
+### Layer 3: The System Misalignment
+The YAML infrastructure appeared complete but had fundamental gaps in coverage.
+
+This proves:
 1. Testing beats assumption
 2. Implementation reveals truth
 3. No system is complete until battle-tested
