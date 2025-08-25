@@ -1,13 +1,17 @@
 ---
-session: "00036"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Auth Integration Test - Session 36"
-purpose: "Document auth integration test - session 36"
-topics: ['auth', 'testing', 'documentation']
-priority: "P1"
-domain: "core"
+session: '00036'
+type: guide
+status: current
+created: '2025-08-23'
+title: Auth Integration Test - Session 36
+purpose: Document auth integration test - session 36
+topics:
+- auth
+- testing
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Auth Integration Test - Session 36

@@ -8,6 +8,174 @@
       "timestamp": "2025-08-25T10:51:59.159076",
       "references_updated": [],
       "git_commit": "56448d26"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00021-system-understanding-report.md",
+      "to": "core/00021-system-understanding-report.md",
+      "timestamp": "2025-08-25T11:45:12.599548",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00022-scripts-inventory.md",
+      "to": "core/00022-scripts-inventory.md",
+      "timestamp": "2025-08-25T11:45:12.606914",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "to": "core/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "timestamp": "2025-08-25T11:45:12.613539",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00027-constitutional-remediation-plan.md",
+      "to": "core/00027-constitutional-remediation-plan.md",
+      "timestamp": "2025-08-25T11:45:12.621412",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00027-session-28-reading-list.md",
+      "to": "core/00027-session-28-reading-list.md",
+      "timestamp": "2025-08-25T11:45:12.629286",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-1/00030-TOS-ARCHITECTURE.md",
+      "to": "core/00030-TOS-ARCHITECTURE.md",
+      "timestamp": "2025-08-25T11:45:12.637719",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00031-PHASE-GROW-GUIDE.md",
+      "to": "core/00031-PHASE-GROW-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.774302",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00034-00035-TRUTH-LAYER-SETUP.md",
+      "to": "core/00034-00035-TRUTH-LAYER-SETUP.md",
+      "timestamp": "2025-08-25T11:46:44.782997",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00031-PHASE-HARVEST-GUIDE.md",
+      "to": "core/00031-PHASE-HARVEST-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.790212",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "to": "core/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "timestamp": "2025-08-25T11:46:44.798337",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00031-PHASE-SEED-GUIDE.md",
+      "to": "core/00031-PHASE-SEED-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.805284",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "to": "core/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.812532",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00036-auth-integration-test.md",
+      "to": "core/00036-auth-integration-test.md",
+      "timestamp": "2025-08-25T11:46:44.822163",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00044-CURRENT-TEST-STATUS.md",
+      "to": "core/00044-CURRENT-TEST-STATUS.md",
+      "timestamp": "2025-08-25T11:46:44.829976",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "to": "core/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "timestamp": "2025-08-25T11:46:44.838118",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00032-DASHBOARD-USAGE.md",
+      "to": "core/00032-DASHBOARD-USAGE.md",
+      "timestamp": "2025-08-25T11:46:44.846364",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "to": "core/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "timestamp": "2025-08-25T11:46:44.856038",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "to": "core/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "timestamp": "2025-08-25T11:46:44.864109",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "to": "core/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "timestamp": "2025-08-25T11:46:44.871921",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00046-MIGRATION-STATUS-GUIDE.md",
+      "to": "core/00046-MIGRATION-STATUS-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.879916",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "to": "core/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "timestamp": "2025-08-25T11:46:44.888812",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "to": "core/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "timestamp": "2025-08-25T11:46:44.897200",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00031-MANUAL-TESTING-CHECKLIST.md",
+      "to": "core/00031-MANUAL-TESTING-CHECKLIST.md",
+      "timestamp": "2025-08-25T11:46:44.905271",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
+    },
+    {
+      "from": "archive/session-deliverables/phase-2/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "to": "core/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "timestamp": "2025-08-25T11:46:44.913583",
+      "references_updated": [],
+      "git_commit": "1c4afe16"
     }
   ],
   "reference_updates": [],

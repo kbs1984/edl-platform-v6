@@ -1,13 +1,15 @@
 ---
-session: "00034"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Truth API Technical Specification"
-purpose: "Document truth api technical specification"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00034'
+type: guide
+status: current
+created: '2025-08-23'
+title: Truth API Technical Specification
+purpose: Document truth api technical specification
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Truth API Technical Specification

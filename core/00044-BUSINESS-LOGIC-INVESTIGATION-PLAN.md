@@ -1,13 +1,18 @@
 ---
-session: "00044"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🔍 Business Logic Investigation Plan"
-purpose: "Document 🔍 business logic investigation plan"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+session: '00044'
+type: guide
+status: current
+created: '2025-08-23'
+title: "\U0001F50D Business Logic Investigation Plan"
+purpose: "Document \U0001F50D business logic investigation plan"
+topics:
+- auth
+- database
+- documentation
+priority: P1
+domain: core
+lifecycle: OBSOLETE
+obsolete_reason: Session 44-55 database confusion period
 ---
 
 # 🔍 Business Logic Investigation Plan

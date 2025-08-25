@@ -1,13 +1,18 @@
 ---
-session: "00031"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Manual Testing Checklist"
-purpose: "Document manual testing checklist"
-topics: ['auth', 'database', 'testing', 'documentation']
-priority: "P1"
-domain: "core"
+session: '00031'
+type: guide
+status: current
+created: '2025-08-23'
+title: Manual Testing Checklist
+purpose: Document manual testing checklist
+topics:
+- auth
+- database
+- testing
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 

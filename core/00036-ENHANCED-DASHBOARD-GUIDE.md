@@ -1,13 +1,15 @@
 ---
-session: "00036"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Enhanced Truth Dashboard Guide - Session 36"
-purpose: "Document enhanced truth dashboard guide - session 36"
-topics: ['guide']
-priority: "P1"
-domain: "core"
+session: '00036'
+type: guide
+status: current
+created: '2025-08-23'
+title: Enhanced Truth Dashboard Guide - Session 36
+purpose: Document enhanced truth dashboard guide - session 36
+topics:
+- guide
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Enhanced Truth Dashboard Guide - Session 36

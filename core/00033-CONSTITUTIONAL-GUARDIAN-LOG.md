@@ -1,13 +1,16 @@
 ---
-session: "00033"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 33: Constitutional Guardian - Pattern Validation & Drift Detection"
-purpose: "Document session 33: constitutional guardian - pattern validation & drift detection"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00033'
+type: guide
+status: current
+created: '2025-08-23'
+title: 'Session 33: Constitutional Guardian - Pattern Validation & Drift Detection'
+purpose: 'Document session 33: constitutional guardian - pattern validation & drift
+  detection'
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Session 33: Constitutional Guardian - Pattern Validation & Drift Detection

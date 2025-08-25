@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "script"
-status: "current"
-created: "2025-08-23"
-title: "Scripts Inventory"
-purpose: "Document scripts inventory"
-topics: ['script']
-priority: "P1"
-domain: "core"
+session: '00022'
+type: script
+status: current
+created: '2025-08-23'
+title: Scripts Inventory
+purpose: Document scripts inventory
+topics:
+- script
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 ### Python Scripts Found (13 automation-related)

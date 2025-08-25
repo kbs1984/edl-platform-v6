@@ -1,13 +1,16 @@
 ---
-session: "00031"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "🌿 GROW Phase Guide - Constitutional OS"
-purpose: "Document 🌿 grow phase guide - constitutional os"
-topics: ['auth', 'guide']
-priority: "P1"
-domain: "core"
+session: '00031'
+type: guide
+status: current
+created: '2025-08-23'
+title: "\U0001F33F GROW Phase Guide - Constitutional OS"
+purpose: "Document \U0001F33F grow phase guide - constitutional os"
+topics:
+- auth
+- guide
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # 🌿 GROW Phase Guide - Constitutional OS

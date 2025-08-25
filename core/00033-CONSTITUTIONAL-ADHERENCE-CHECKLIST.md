@@ -1,13 +1,15 @@
 ---
-session: "00033"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Constitutional Adherence Checklist for All Sessions"
-purpose: "Document constitutional adherence checklist for all sessions"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00033'
+type: guide
+status: current
+created: '2025-08-23'
+title: Constitutional Adherence Checklist for All Sessions
+purpose: Document constitutional adherence checklist for all sessions
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Constitutional Adherence Checklist for All Sessions

@@ -1,0 +1,256 @@
+{
+  "files_processed": 18,
+  "moves_planned": [
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-GROW-GUIDE.md",
+      "target": "core/00031-PHASE-GROW-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00034-00035-TRUTH-LAYER-SETUP.md",
+      "target": "core/00034-00035-TRUTH-LAYER-SETUP.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-HARVEST-GUIDE.md",
+      "target": "core/00031-PHASE-HARVEST-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "target": "core/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-SEED-GUIDE.md",
+      "target": "core/00031-PHASE-SEED-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "target": "core/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00036-auth-integration-test.md",
+      "target": "core/00036-auth-integration-test.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-CURRENT-TEST-STATUS.md",
+      "target": "core/00044-CURRENT-TEST-STATUS.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "target": "core/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00032-DASHBOARD-USAGE.md",
+      "target": "core/00032-DASHBOARD-USAGE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "target": "core/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "target": "core/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "target": "core/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00046-MIGRATION-STATUS-GUIDE.md",
+      "target": "core/00046-MIGRATION-STATUS-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "target": "core/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "target": "core/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-MANUAL-TESTING-CHECKLIST.md",
+      "target": "core/00031-MANUAL-TESTING-CHECKLIST.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "target": "core/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "moves_executed": [
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-GROW-GUIDE.md",
+      "target": "core/00031-PHASE-GROW-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00034-00035-TRUTH-LAYER-SETUP.md",
+      "target": "core/00034-00035-TRUTH-LAYER-SETUP.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-HARVEST-GUIDE.md",
+      "target": "core/00031-PHASE-HARVEST-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "target": "core/00044-PROFILE-FIX-SUCCESS-REPORT.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-PHASE-SEED-GUIDE.md",
+      "target": "core/00031-PHASE-SEED-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "target": "core/00044-TEST-AUTH-FLOW-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00036-auth-integration-test.md",
+      "target": "core/00036-auth-integration-test.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-CURRENT-TEST-STATUS.md",
+      "target": "core/00044-CURRENT-TEST-STATUS.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "target": "core/00031-MANUAL-INTERVENTION-PROTOCOL.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00032-DASHBOARD-USAGE.md",
+      "target": "core/00032-DASHBOARD-USAGE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "target": "core/00044-CRITICAL-MIGRATION-GAP-REPORT.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "target": "core/00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "target": "core/00033-CONSTITUTIONAL-GUARDIAN-LOG.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00046-MIGRATION-STATUS-GUIDE.md",
+      "target": "core/00046-MIGRATION-STATUS-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "target": "core/00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "target": "core/00034-00035-TRUTH-API-SPECIFICATION.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00031-MANUAL-TESTING-CHECKLIST.md",
+      "target": "core/00031-MANUAL-TESTING-CHECKLIST.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-2/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "target": "core/00036-ENHANCED-DASHBOARD-GUIDE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "yaml_fixes": [
+    "00031-PHASE-GROW-GUIDE.md: Added lifecycle=ON",
+    "00034-00035-TRUTH-LAYER-SETUP.md: type documentation\u2192guide",
+    "00034-00035-TRUTH-LAYER-SETUP.md: Added lifecycle=ON",
+    "00031-PHASE-HARVEST-GUIDE.md: Added lifecycle=ON",
+    "00044-PROFILE-FIX-SUCCESS-REPORT.md: type documentation\u2192guide",
+    "00044-PROFILE-FIX-SUCCESS-REPORT.md: Added lifecycle=OBSOLETE",
+    "00031-PHASE-SEED-GUIDE.md: Added lifecycle=ON",
+    "00044-TEST-AUTH-FLOW-GUIDE.md: Added lifecycle=OBSOLETE",
+    "00036-auth-integration-test.md: type documentation\u2192guide",
+    "00036-auth-integration-test.md: Added lifecycle=ON",
+    "00044-CURRENT-TEST-STATUS.md: type documentation\u2192guide",
+    "00044-CURRENT-TEST-STATUS.md: Added lifecycle=OBSOLETE",
+    "00031-MANUAL-INTERVENTION-PROTOCOL.md: Added lifecycle=ON",
+    "00032-DASHBOARD-USAGE.md: type documentation\u2192guide",
+    "00032-DASHBOARD-USAGE.md: Added lifecycle=ON",
+    "00044-CRITICAL-MIGRATION-GAP-REPORT.md: type documentation\u2192guide",
+    "00044-CRITICAL-MIGRATION-GAP-REPORT.md: Added lifecycle=OBSOLETE",
+    "00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md: type documentation\u2192guide",
+    "00033-CONSTITUTIONAL-ADHERENCE-CHECKLIST.md: Added lifecycle=ON",
+    "00033-CONSTITUTIONAL-GUARDIAN-LOG.md: type documentation\u2192guide",
+    "00033-CONSTITUTIONAL-GUARDIAN-LOG.md: Added lifecycle=ON",
+    "00046-MIGRATION-STATUS-GUIDE.md: Added lifecycle=OBSOLETE",
+    "00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md: type documentation\u2192guide",
+    "00044-BUSINESS-LOGIC-INVESTIGATION-PLAN.md: Added lifecycle=OBSOLETE",
+    "00034-00035-TRUTH-API-SPECIFICATION.md: type documentation\u2192guide",
+    "00034-00035-TRUTH-API-SPECIFICATION.md: Added lifecycle=ON",
+    "00031-MANUAL-TESTING-CHECKLIST.md: type documentation\u2192guide",
+    "00031-MANUAL-TESTING-CHECKLIST.md: Added lifecycle=ON",
+    "00036-ENHANCED-DASHBOARD-GUIDE.md: Added lifecycle=ON"
+  ],
+  "errors": [],
+  "dry_run": false
+}

@@ -1,13 +1,15 @@
 ---
-session: "00027"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00027: Constitutional Remediation Plan"
-purpose: "Document session 00027: constitutional remediation plan"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00027'
+type: guide
+status: current
+created: '2025-08-23'
+title: 'Session 00027: Constitutional Remediation Plan'
+purpose: 'Document session 00027: constitutional remediation plan'
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Session 00027: Constitutional Remediation Plan

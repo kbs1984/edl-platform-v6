@@ -1,13 +1,18 @@
 ---
-session: "00044"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🚨 CRITICAL MIGRATION GAP - Session 00046 Discovery"
-purpose: "Document 🚨 critical migration gap - session 00046 discovery"
-topics: ['auth', 'migration', 'documentation']
-priority: "P0"
-domain: "core"
+session: '00044'
+type: guide
+status: current
+created: '2025-08-23'
+title: "\U0001F6A8 CRITICAL MIGRATION GAP - Session 00046 Discovery"
+purpose: "Document \U0001F6A8 critical migration gap - session 00046 discovery"
+topics:
+- auth
+- migration
+- documentation
+priority: P0
+domain: core
+lifecycle: OBSOLETE
+obsolete_reason: Session 44-55 database confusion period
 ---
 
 # 🚨 CRITICAL MIGRATION GAP - Session 00046 Discovery

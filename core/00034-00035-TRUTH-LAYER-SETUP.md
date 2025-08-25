@@ -1,13 +1,17 @@
 ---
-session: "00034"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "The Truth Layer: Authoritative Source Architecture for EDL Platform v6"
-purpose: "Document the truth layer: authoritative source architecture for edl platform v6"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+session: '00034'
+type: guide
+status: current
+created: '2025-08-23'
+title: 'The Truth Layer: Authoritative Source Architecture for EDL Platform v6'
+purpose: 'Document the truth layer: authoritative source architecture for edl platform
+  v6'
+topics:
+- auth
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # The Truth Layer: Authoritative Source Architecture for EDL Platform v6

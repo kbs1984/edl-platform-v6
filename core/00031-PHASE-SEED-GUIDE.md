@@ -1,13 +1,15 @@
 ---
-session: "00031"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "🌱 SEED Phase Guide - Constitutional OS"
-purpose: "Document 🌱 seed phase guide - constitutional os"
-topics: ['guide']
-priority: "P1"
-domain: "core"
+session: '00031'
+type: guide
+status: current
+created: '2025-08-23'
+title: "\U0001F331 SEED Phase Guide - Constitutional OS"
+purpose: "Document \U0001F331 seed phase guide - constitutional os"
+topics:
+- guide
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # 🌱 SEED Phase Guide - Constitutional OS

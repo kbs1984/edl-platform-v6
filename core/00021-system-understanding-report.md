@@ -1,13 +1,15 @@
 ---
-session: "00021"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00021 System Understanding Report"
-purpose: "Document session 00021 system understanding report"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00021'
+type: guide
+status: current
+created: '2025-08-23'
+title: Session 00021 System Understanding Report
+purpose: Document session 00021 system understanding report
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Session 00021 System Understanding Report

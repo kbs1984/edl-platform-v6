@@ -1,13 +1,15 @@
 ---
-session: "00032"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Constitutional OS Dashboard - Usage Guide"
-purpose: "Document constitutional os dashboard - usage guide"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00032'
+type: guide
+status: current
+created: '2025-08-23'
+title: Constitutional OS Dashboard - Usage Guide
+purpose: Document constitutional os dashboard - usage guide
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Constitutional OS Dashboard - Usage Guide

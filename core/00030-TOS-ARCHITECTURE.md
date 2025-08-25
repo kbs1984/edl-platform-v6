@@ -1,13 +1,15 @@
 ---
-session: "00030"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Truth Operating System (TOS) Architecture v1.0"
-purpose: "Document truth operating system (tos) architecture v1.0"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+session: '00030'
+type: guide
+status: current
+created: '2025-08-23'
+title: Truth Operating System (TOS) Architecture v1.0
+purpose: Document truth operating system (tos) architecture v1.0
+topics:
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Truth Operating System (TOS) Architecture v1.0

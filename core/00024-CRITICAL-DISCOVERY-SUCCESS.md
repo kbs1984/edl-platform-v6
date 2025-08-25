@@ -1,13 +1,15 @@
 ---
-session: "00024"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Critical Discovery Phase - Constitutional Success Story"
-purpose: "Document critical discovery phase - constitutional success story"
-topics: ['documentation']
-priority: "P0"
-domain: "core"
+session: '00024'
+type: guide
+status: current
+created: '2025-08-23'
+title: Critical Discovery Phase - Constitutional Success Story
+purpose: Document critical discovery phase - constitutional success story
+topics:
+- documentation
+priority: P0
+domain: core
+lifecycle: 'ON'
 ---
 
 # Critical Discovery Phase - Constitutional Success Story

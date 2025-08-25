@@ -1,13 +1,15 @@
 ---
-session: "00031"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "🌾 HARVEST Phase Guide - Constitutional OS"
-purpose: "Document 🌾 harvest phase guide - constitutional os"
-topics: ['guide']
-priority: "P1"
-domain: "core"
+session: '00031'
+type: guide
+status: current
+created: '2025-08-23'
+title: "\U0001F33E HARVEST Phase Guide - Constitutional OS"
+purpose: "Document \U0001F33E harvest phase guide - constitutional os"
+topics:
+- guide
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # 🌾 HARVEST Phase Guide - Constitutional OS

@@ -1,13 +1,16 @@
 ---
-session: "00027"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 28 Essential Reading List"
-purpose: "Document session 28 essential reading list"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+session: '00027'
+type: guide
+status: current
+created: '2025-08-23'
+title: Session 28 Essential Reading List
+purpose: Document session 28 essential reading list
+topics:
+- session-log
+- documentation
+priority: P1
+domain: core
+lifecycle: 'ON'
 ---
 
 # Session 28 Essential Reading List

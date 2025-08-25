@@ -1,0 +1,94 @@
+{
+  "files_processed": 6,
+  "moves_planned": [
+    {
+      "source": "archive/session-deliverables/phase-1/00021-system-understanding-report.md",
+      "target": "core/00021-system-understanding-report.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00022-scripts-inventory.md",
+      "target": "core/00022-scripts-inventory.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "target": "core/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00027-constitutional-remediation-plan.md",
+      "target": "core/00027-constitutional-remediation-plan.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00027-session-28-reading-list.md",
+      "target": "core/00027-session-28-reading-list.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00030-TOS-ARCHITECTURE.md",
+      "target": "core/00030-TOS-ARCHITECTURE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "moves_executed": [
+    {
+      "source": "archive/session-deliverables/phase-1/00021-system-understanding-report.md",
+      "target": "core/00021-system-understanding-report.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00022-scripts-inventory.md",
+      "target": "core/00022-scripts-inventory.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "target": "core/00024-CRITICAL-DISCOVERY-SUCCESS.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00027-constitutional-remediation-plan.md",
+      "target": "core/00027-constitutional-remediation-plan.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00027-session-28-reading-list.md",
+      "target": "core/00027-session-28-reading-list.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    },
+    {
+      "source": "archive/session-deliverables/phase-1/00030-TOS-ARCHITECTURE.md",
+      "target": "core/00030-TOS-ARCHITECTURE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "yaml_fixes": [
+    "00021-system-understanding-report.md: type documentation\u2192guide",
+    "00021-system-understanding-report.md: Added lifecycle=ON",
+    "00022-scripts-inventory.md: Added lifecycle=ON",
+    "00024-CRITICAL-DISCOVERY-SUCCESS.md: type documentation\u2192guide",
+    "00024-CRITICAL-DISCOVERY-SUCCESS.md: Added lifecycle=ON",
+    "00027-constitutional-remediation-plan.md: type documentation\u2192guide",
+    "00027-constitutional-remediation-plan.md: Added lifecycle=ON",
+    "00027-session-28-reading-list.md: type documentation\u2192guide",
+    "00027-session-28-reading-list.md: Added lifecycle=ON",
+    "00030-TOS-ARCHITECTURE.md: type documentation\u2192guide",
+    "00030-TOS-ARCHITECTURE.md: Added lifecycle=ON"
+  ],
+  "errors": [],
+  "dry_run": false
+}
