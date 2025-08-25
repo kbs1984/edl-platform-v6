@@ -1,0 +1,22 @@
+{
+  "files_processed": 1,
+  "moves_planned": [
+    {
+      "source": "00071-TEST-WORKFLOW.md",
+      "target": "core/00071-TEST-WORKFLOW.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "moves_executed": [
+    {
+      "source": "00071-TEST-WORKFLOW.md",
+      "target": "core/00071-TEST-WORKFLOW.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "yaml_fixes": [],
+  "errors": [],
+  "dry_run": false
+}
