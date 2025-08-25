@@ -119,19 +119,49 @@ Per Constitution v1.3.0 Article VII:
 
 ## Constitutional Operating System (Session 31-32)
 **MANDATORY READING**: Phase-aware development philosophy adapting to natural rhythms
-- **Master Guide**: `00031-CONSTITUTIONAL-OS-GUIDE.md` - Overview of phase-based system
-- **Phase Guides**: Read the guide for your current phase:
-  - `00031-PHASE-SEED-GUIDE.md` - Exploration & architecture (FLEXIBLE enforcement)
-  - `00031-PHASE-GROW-GUIDE.md` - Active implementation (MODERATE enforcement)
-  - `00031-PHASE-HARVEST-GUIDE.md` - Validation & documentation (STRICT enforcement)
+- **Master Guide**: `00031-CONSTITUTIONAL-OS-GUIDE.md` - Overview of phase-based system (in root)
+- **Phase Guides**: Read the guide for your current phase (in core/):
+  - `core/00031-PHASE-SEED-GUIDE.md` - Exploration & architecture (FLEXIBLE enforcement)
+  - `core/00031-PHASE-GROW-GUIDE.md` - Active implementation (MODERATE enforcement)
+  - `core/00031-PHASE-HARVEST-GUIDE.md` - Validation & documentation (STRICT enforcement)
 - **Dashboard** (Session 32): Check phase and health with `./scripts/00032-tos-dashboard.sh`
 
 ## Workflow Boundaries Protocol (Session 31 Addition)
-**MANDATORY READING**: `00031-WORKFLOW-BOUNDARIES.md` - Defines Claude Code autonomous capabilities vs manual intervention requirements
+**MANDATORY READING**: `00031-WORKFLOW-BOUNDARIES.md` - Defines Claude Code autonomous capabilities vs manual intervention requirements (in root)
 - **Autonomous Testing**: `scripts/00031-auth-autonomous-verification.py` - Database, file structure, configuration validation
-- **Manual Protocol**: `00031-MANUAL-INTERVENTION-PROTOCOL.md` - When and how to transition to human testing
-- **Testing Checklist**: `00031-MANUAL-TESTING-CHECKLIST.md` - Systematic manual verification requirements
+- **Manual Protocol**: `core/00031-MANUAL-INTERVENTION-PROTOCOL.md` - When and how to transition to human testing
+- **Testing Checklist**: `core/00031-MANUAL-TESTING-CHECKLIST.md` - Systematic manual verification requirements
 - **Key Principle**: NEVER claim testing is complete without following autonomous → manual protocol
+
+## File Organization Structure (Sessions 67-68 Update)
+
+**IMPORTANT**: Session 67 reorganized critical files. Use these new locations:
+
+### Current Structure
+- **core/**: Essential platform documentation (25+ files as of Session 68)
+  - All P0 protocols and critical guides
+  - Constitutional OS phase guides
+  - Critical implementation specs from Sessions 21-46
+  
+- **archive/**: Historical reference only
+  - session-deliverables/phase-1/ (EMPTY - moved to core/)
+  - session-deliverables/phase-2/ (EMPTY - moved to core/)
+  - session-deliverables/phase-3/ (32 files pending organization)
+  
+- **scripts/**: Active tools with lifecycle metadata
+  - ON: Currently active (Sessions 28, 63, 66, 67, 68)
+  - OFF: Dormant but contains useful patterns
+  - OBSOLETE: Session 44-55 database confusion period
+
+### Finding Documents
+```bash
+# OLD WAY (Don't use - files moved!)
+ls archive/session-deliverables/phase-*/00031-*.md
+
+# NEW WAY (Use this)
+ls core/00031-*.md          # Most protocol docs
+ls 00031-*.md               # Some still in root (pending move)
+```
 
 ## System State Documentation (V3 Enhanced)
 Every session log MUST include a "System State at Session Start" section with:
