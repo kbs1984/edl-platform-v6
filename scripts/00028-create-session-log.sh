@@ -44,13 +44,29 @@ else
     COVERAGE=" Unknown"
 fi
 
-# Create the session log
+# Get today's date for YAML
+TODAY=$(date +%Y-%m-%d)
+TIME=$(date +"%I:%M %p")
+
+# Create the session log WITH YAML FRONTMATTER (per Session 61 requirements)
 cat > "$OUTPUT_FILE" << EOF
+---
+session: "${SESSION_NUM}"
+type: "log"
+status: "current"
+created: "${TODAY}"
+title: "Session #${SESSION_NUM} Log"
+purpose: "Document work completed in Session ${SESSION_NUM}"
+topics: ["session-log", "work-tracking"]
+priority: "P0"
+domain: "core"
+---
+
 # Session #${SESSION_NUM} Log
 
-**Date**: $(date +%Y-%m-%d)
+**Date**: ${TODAY}
 **Type**: CLI Session  
-**Started**: $(date "+%I:%M %p")
+**Started**: ${TIME}
 **Session Focus**: ${SESSION_FOCUS}
 
 ## System State at Session Start
