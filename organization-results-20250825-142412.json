@@ -1,0 +1,22 @@
+{
+  "files_processed": 1,
+  "moves_planned": [
+    {
+      "source": "archive/session-deliverables/phase-3/00053-MIGRATION-COMPLETION-CERTIFICATE.md",
+      "target": "core/00053-MIGRATION-COMPLETION-CERTIFICATE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "moves_executed": [
+    {
+      "source": "archive/session-deliverables/phase-3/00053-MIGRATION-COMPLETION-CERTIFICATE.md",
+      "target": "core/00053-MIGRATION-COMPLETION-CERTIFICATE.md",
+      "reason": "Domain is 'core'",
+      "affected_references": 0
+    }
+  ],
+  "yaml_fixes": [],
+  "errors": [],
+  "dry_run": false
+}

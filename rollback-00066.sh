@@ -215,3 +215,11 @@ if [ -f "core/00036-ENHANCED-DASHBOARD-GUIDE.md" ]; then
 else
     echo "⚠️  File not found: core/00036-ENHANCED-DASHBOARD-GUIDE.md"
 fi
+
+# Rollback: core/00053-MIGRATION-COMPLETION-CERTIFICATE.md → archive/session-deliverables/phase-3/00053-MIGRATION-COMPLETION-CERTIFICATE.md
+if [ -f "core/00053-MIGRATION-COMPLETION-CERTIFICATE.md" ]; then
+    git mv "core/00053-MIGRATION-COMPLETION-CERTIFICATE.md" "archive/session-deliverables/phase-3/00053-MIGRATION-COMPLETION-CERTIFICATE.md"
+    echo "✅ Rolled back: core/00053-MIGRATION-COMPLETION-CERTIFICATE.md → archive/session-deliverables/phase-3/00053-MIGRATION-COMPLETION-CERTIFICATE.md"
+else
+    echo "⚠️  File not found: core/00053-MIGRATION-COMPLETION-CERTIFICATE.md"
+fi
