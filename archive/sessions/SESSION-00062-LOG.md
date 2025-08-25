@@ -8,6 +8,8 @@ purpose: "Document session #00062 log"
 topics: ['session-log']
 priority: "P1"
 domain: "core"
+related_to: ["SESSION-00062-HANDOFF.md", "SESSION-00061-HANDOFF.md", "SESSION-00063-LOG.md"]
+implements: ["SESSION-00061-HANDOFF.md"]
 ---
 
 # Session #00062 Log

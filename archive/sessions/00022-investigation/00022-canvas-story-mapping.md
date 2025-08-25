@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Canvas Story Mapping"
+purpose: "Document canvas story mapping"
+topics: ['auth', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 === Canvas to Story Mapping Investigation ===
 Sample Canvas node IDs found: 0
 First 10 IDs: []

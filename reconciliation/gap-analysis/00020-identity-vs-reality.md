@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Educational Identity vs Reality Gap Analysis"
+purpose: "Document educational identity vs reality gap analysis"
+topics: ['auth', 'database', 'documentation']
+priority: "P1"
+domain: "reality"
+---
+
 # Educational Identity vs Reality Gap Analysis
 
 **Session**: 00020  

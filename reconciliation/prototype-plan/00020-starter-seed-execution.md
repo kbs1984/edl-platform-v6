@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Starter Seed Execution Plan"
+purpose: "Document starter seed execution plan"
+topics: ['auth', 'database', 'documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Starter Seed Execution Plan
 
 **Session**: 00020  

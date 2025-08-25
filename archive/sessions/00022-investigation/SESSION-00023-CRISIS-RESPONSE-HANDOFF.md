@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "handoff"
+status: "current"
+created: "2025-08-23"
+title: "Session 00023 Crisis Response Handoff"
+purpose: "Document session 00023 crisis response handoff"
+topics: ['session-log', 'handoff']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00023 Crisis Response Handoff
 **From**: Sessions 00021-00022 Investigation Team  
 **To**: Session 00023  

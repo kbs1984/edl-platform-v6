@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Reality Agent Capabilities Summary"
+purpose: "Document reality agent capabilities summary"
+topics: ['database', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Reality Agent Capabilities Summary
 
 ## Discovered Agent Capabilities

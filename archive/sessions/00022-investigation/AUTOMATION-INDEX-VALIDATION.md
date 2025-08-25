@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "index"
+status: "current"
+created: "2025-08-23"
+title: "AUTOMATION-INDEX.md Validation Report"
+purpose: "Document automation-index.md validation report"
+topics: ['index']
+priority: "P1"
+domain: "core"
+---
+
 # AUTOMATION-INDEX.md Validation Report
 **Reviewer**: Session 00022  
 **Date**: 2025-08-17

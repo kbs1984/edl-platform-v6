@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: Working Agents Inventory"
+purpose: "Document session 00027: working agents inventory"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: Working Agents Inventory
 **Created**: 2025-08-18 | Hour 1-2
 **Purpose**: Document which Reality Agents work reliably for automation

@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: Agent Output Analysis"
+purpose: "Document session 00027: agent output analysis"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: Agent Output Analysis
 **Created**: 2025-08-18 | Hour 1-2
 **Purpose**: Analyze what data each Reality Agent provides and how to use it

@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: Session Startup Patterns Analysis"
+purpose: "Document session 00027: session startup patterns analysis"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: Session Startup Patterns Analysis
 **Created**: 2025-08-18 | Hour 3
 **Purpose**: Document how Sessions 16-26 actually start and common patterns

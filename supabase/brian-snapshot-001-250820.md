@@ -1,3 +1,15 @@
+---
+session: "25082"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "RLS Policies"
+purpose: "Document rls policies"
+topics: ['auth', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # RLS Policies
 
 [

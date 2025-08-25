@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Educational Identity Success Metrics"
+purpose: "Document educational identity success metrics"
+topics: ['documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Educational Identity Success Metrics
 
 **Session**: 00020  

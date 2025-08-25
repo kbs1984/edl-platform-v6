@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Engagement Metrics for Educational Identity"
+purpose: "Document engagement metrics for educational identity"
+topics: ['documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Engagement Metrics for Educational Identity
 
 **Session**: 00020  

@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "guide"
+status: "current"
+created: "2025-08-23"
+title: "Readme"
+purpose: "Document readme"
+topics: ['guide']
+priority: "P1"
+domain: "reconciliation"
+---
+
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
   <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
   <h1 align="center">Next.js and Supabase Starter Kit</h1>

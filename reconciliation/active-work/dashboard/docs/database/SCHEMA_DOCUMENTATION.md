@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Database Schema Documentation"
+purpose: "Document database schema documentation"
+topics: ['auth', 'database', 'documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Database Schema Documentation
 
 ## Table of Contents

@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: Missing Session Attribution Audit"
+purpose: "Document session 00027: missing session attribution audit"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: Missing Session Attribution Audit
 **Created**: 2025-08-18 | Hour 3
 **Purpose**: Document all files lacking proper session prefixes per Article VII

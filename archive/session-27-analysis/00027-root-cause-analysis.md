@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: Root Cause Analysis - Why Manual Chaos Persists"
+purpose: "Document session 00027: root cause analysis - why manual chaos persists"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: Root Cause Analysis - Why Manual Chaos Persists
 **Created**: 2025-08-18 | Hour 4
 **Purpose**: Understand WHY sessions remain manual and files violate constitution

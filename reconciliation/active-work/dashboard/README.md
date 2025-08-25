@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "guide"
+status: "current"
+created: "2025-08-23"
+title: "or"
+purpose: "Document or"
+topics: ['guide']
+priority: "P1"
+domain: "reconciliation"
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

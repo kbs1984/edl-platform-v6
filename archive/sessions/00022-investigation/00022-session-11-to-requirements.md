@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Session 11 To Requirements"
+purpose: "Document session 11 to requirements"
+topics: ['session-log', 'requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 === Tracing Session 11 to Requirements ===
 
 Entity: Teams

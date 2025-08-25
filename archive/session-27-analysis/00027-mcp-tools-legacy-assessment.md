@@ -1,3 +1,15 @@
+---
+session: "00027"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00027: MCP Tools Legacy Assessment"
+purpose: "Document session 00027: mcp tools legacy assessment"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00027: MCP Tools Legacy Assessment
 **Created**: 2025-08-18 | Hour 3
 **Purpose**: Document MCP session management tools as legacy from v5 system

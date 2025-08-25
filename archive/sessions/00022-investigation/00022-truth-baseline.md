@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session 00022 Truth Baseline"
+purpose: "Document session 00022 truth baseline"
+topics: ['documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session 00022 Truth Baseline
 **Investigation Complete**: All 5 phases executed
 **Date**: 2025-08-17

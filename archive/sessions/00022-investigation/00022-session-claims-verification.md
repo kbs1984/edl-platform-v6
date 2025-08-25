@@ -1,3 +1,15 @@
+---
+session: "00022"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Session Claims Verification"
+purpose: "Document session claims verification"
+topics: ['session-log', 'documentation']
+priority: "P1"
+domain: "core"
+---
+
 # Session Claims Verification
 
 ## Session 17 Claims

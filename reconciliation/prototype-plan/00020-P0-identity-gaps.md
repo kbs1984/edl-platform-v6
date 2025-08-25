@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "P0 Educational Identity Gaps Analysis"
+purpose: "Document p0 educational identity gaps analysis"
+topics: ['auth', 'database', 'documentation']
+priority: "P0"
+domain: "reconciliation"
+---
+
 # P0 Educational Identity Gaps Analysis
 
 **Session**: 00020  

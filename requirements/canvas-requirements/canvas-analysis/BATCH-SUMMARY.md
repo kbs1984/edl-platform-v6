@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "requirements"
+status: "current"
+created: "2025-08-23"
+title: "Canvas Batch Processing Summary"
+purpose: "Document canvas batch processing summary"
+topics: ['requirements']
+priority: "P1"
+domain: "requirements"
+---
+
 # Canvas Batch Processing Summary
 **Generated**: 2025-08-16T11:55:46.129716
 **Session**: 00011

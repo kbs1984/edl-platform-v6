@@ -1,0 +1,34 @@
+{
+  "generated": "2025-08-25T11:08:35.656200",
+  "session": "00066",
+  "reference_map": {
+    "SYSTEM-INDEX.md": [
+      "reality/REALITY_INDEX.md",
+      "AUTH-MASTERPLAN.md",
+      "requirements/PURPOSE.md",
+      "PIVOT-NOTICE-00041.md",
+      "reconciliation/PURPOSE.md",
+      "reconciliation/RECONCILIATION_INDEX.md",
+      "archive/PURPOSE.md",
+      "00030-TOS-ARCHITECTURE.md",
+      "reality/PURPOSE.md",
+      "requirements/REQUIREMENTS_INDEX.md",
+      "shared/PURPOSE.md"
+    ],
+    "reality/REALITY_INDEX.md": [
+      "/TOS-ARCHITECTURE.md"
+    ],
+    "scripts/AUTOMATION-INDEX.md": [
+      "00028-AUTOMATION-README.md",
+      "/CLAUDE.md",
+      "/00030-TOS-ARCHITECTURE.md",
+      "/SYSTEM-INDEX.md"
+    ]
+  },
+  "reverse_map": {},
+  "stats": {
+    "total_files": 437,
+    "files_with_refs": 3,
+    "total_references": 16
+  }
+}

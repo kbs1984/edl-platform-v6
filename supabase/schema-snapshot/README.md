@@ -1,3 +1,15 @@
+---
+session: "unknown"
+type: "guide"
+status: "current"
+created: "2025-08-23"
+title: "Supabase Schema Snapshot System"
+purpose: "Document supabase schema snapshot system"
+topics: ['database', 'guide']
+priority: "P1"
+domain: "core"
+---
+
 # Supabase Schema Snapshot System
 
 **Created**: Session 38 (2025-08-20)

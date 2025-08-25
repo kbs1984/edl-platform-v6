@@ -1,3 +1,15 @@
+---
+session: "00020"
+type: "documentation"
+status: "current"
+created: "2025-08-23"
+title: "Cyworld Features Implementation Order"
+purpose: "Document cyworld features implementation order"
+topics: ['documentation']
+priority: "P1"
+domain: "reconciliation"
+---
+
 # Cyworld Features Implementation Order
 
 **Session**: 00020  
