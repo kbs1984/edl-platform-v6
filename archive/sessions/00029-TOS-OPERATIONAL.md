@@ -1,13 +1,14 @@
 ---
-session: "00029"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Truth Operating System v1.0 - OPERATIONAL"
-purpose: "Document truth operating system v1.0 - operational"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document truth operating system v1.0 - operational
+session: 00029
+status: current
+title: Truth Operating System v1.0 - OPERATIONAL
+topics:
+- documentation
+type: guide
 ---
 
 # Truth Operating System v1.0 - OPERATIONAL

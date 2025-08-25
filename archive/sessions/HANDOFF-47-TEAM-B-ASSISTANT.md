@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "handoff"
-status: "current"
-created: "2025-08-23"
-title: "Team B Assistant Handoff: Session 47"
-purpose: "Document team b assistant handoff: session 47"
-topics: ['auth', 'database', 'handoff']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document team b assistant handoff: session 47'
+session: legacy
+status: current
+title: 'Team B Assistant Handoff: Session 47'
+topics:
+- auth
+- database
+- handoff
+type: handoff
 ---
 
 # Team B Assistant Handoff: Session 47

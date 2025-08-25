@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 User Stories - Dashboard & Profile"
-purpose: "Document p0 user stories - dashboard & profile"
-topics: ['requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 user stories - dashboard & profile
+session: legacy
+status: current
+title: P0 User Stories - Dashboard & Profile
+topics:
+- requirements
+type: specification
 ---
 
 # P0 User Stories - Dashboard & Profile

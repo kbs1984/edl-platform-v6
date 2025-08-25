@@ -1,13 +1,16 @@
 ---
-session: "00050"
-type: "documentation"
-status: "draft"
-created: "2025-08-23"
-title: "Migration Verification Report - Session 00050"
-purpose: "Document migration verification report - session 00050"
-topics: ['auth', 'migration', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document migration verification report - session 00050
+session: '00050'
+status: draft
+title: Migration Verification Report - Session 00050
+topics:
+- auth
+- migration
+- documentation
+type: guide
 ---
 
 # Migration Verification Report - Session 00050

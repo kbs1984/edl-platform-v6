@@ -1,11 +1,14 @@
 ---
 attribution:
+  created_at: 2025-08-15 12:00:53.975536
   created_by: Session 00009
-  created_at: 2025-08-15T12:00:53.975536
-  intent: "Complete workflow documentation for Session 00010 seed planting"
-  task_id: unknown
-  task_description: "No task context set"
+  intent: Complete workflow documentation for Session 00010 seed planting
   session: 00009
+  task_description: No task context set
+  task_id: unknown
+created: '2025-08-25'
+session: legacy
+status: active
 ---
 # Seed Reception Protocol v1.0
 **Session 00009 Implementation**

@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "AUTH-MASTERPLAN: Truth Seed Authentication Gateway"
-purpose: "Document auth-masterplan: truth seed authentication gateway"
-topics: ['auth', 'architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document auth-masterplan: truth seed authentication gateway'
+session: legacy
+status: current
+title: 'AUTH-MASTERPLAN: Truth Seed Authentication Gateway'
+topics:
+- auth
+- architecture
+type: specification
 ---
 
 # AUTH-MASTERPLAN: Truth Seed Authentication Gateway

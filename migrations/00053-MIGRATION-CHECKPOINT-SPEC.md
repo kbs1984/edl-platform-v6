@@ -1,13 +1,16 @@
 ---
-session: "00053"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Migration Checkpoint Specification"
-purpose: "Document migration checkpoint specification"
-topics: ['database', 'migration', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document migration checkpoint specification
+session: '00053'
+status: current
+title: Migration Checkpoint Specification
+topics:
+- database
+- migration
+- documentation
+type: guide
 ---
 
 # Migration Checkpoint Specification

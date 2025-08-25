@@ -1,13 +1,14 @@
 ---
-session: "00022"
-type: "index"
-status: "current"
-created: "2025-08-23"
-title: "AUTOMATION-INDEX.md Validation Report"
-purpose: "Document automation-index.md validation report"
-topics: ['index']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document automation-index.md validation report
+session: '00022'
+status: current
+title: AUTOMATION-INDEX.md Validation Report
+topics:
+- index
+type: guide
 ---
 
 # AUTOMATION-INDEX.md Validation Report

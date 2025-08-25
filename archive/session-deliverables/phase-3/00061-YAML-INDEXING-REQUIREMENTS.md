@@ -1,18 +1,27 @@
 ---
-session: "00061"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "YAML Frontmatter Requirements for Future Sessions"
-purpose: "Establish mandatory YAML frontmatter requirements for all session deliverables"
-topics: ["yaml", "requirements", "indexing", "metadata", "organization"]
-priority: "P0"
-domain: "core"
-implements: ["organizational-health", "discoverability"]
-related_to: ["00059-yaml-indexer.py", "CLAUDE.md"]
-validation_method: "automated"
-review_date: "2025-09-23"
-estimated_shelf_life: "indefinite"
+created: '2025-08-23'
+domain: core
+estimated_shelf_life: indefinite
+implements:
+- organizational-health
+- discoverability
+priority: P0
+purpose: Establish mandatory YAML frontmatter requirements for all session deliverables
+related_to:
+- 00059-yaml-indexer.py
+- CLAUDE.md
+review_date: '2025-09-23'
+session: '00061'
+status: current
+title: YAML Frontmatter Requirements for Future Sessions
+topics:
+- yaml
+- requirements
+- indexing
+- metadata
+- organization
+type: specification
+validation_method: automated
 ---
 
 # YAML Frontmatter Requirements for Future Sessions

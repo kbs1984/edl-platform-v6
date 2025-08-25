@@ -1,13 +1,16 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Starter Seed Execution Plan"
-purpose: "Document starter seed execution plan"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document starter seed execution plan
+session: '00020'
+status: current
+title: Starter Seed Execution Plan
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Starter Seed Execution Plan

@@ -1,13 +1,14 @@
 ---
-session: "25051"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00.00_TABLE-OF-CONTENTS"
-purpose: "Document 00.00_table-of-contents"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document 00.00_table-of-contents
+session: '25051'
+status: current
+title: 00.00_TABLE-OF-CONTENTS
+topics:
+- documentation
+type: guide
 ---
 
 EDL 00_PROJECT-OVERVIEW/

@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Directory Map Constitution"
-purpose: "Document directory map constitution"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document directory map constitution
+session: legacy
+status: current
+title: Directory Map Constitution
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Directory Map Constitution

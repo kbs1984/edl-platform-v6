@@ -1,17 +1,17 @@
 ---
-session: '00031'
-type: protocol
-status: current
 created: '2025-08-23'
-title: Manual Intervention Protocol v1.0
+domain: core
+lifecycle: 'ON'
+priority: P1
 purpose: Document manual intervention protocol v1.0
+session: '00031'
+status: current
+title: Manual Intervention Protocol v1.0
 topics:
 - auth
 - database
 - protocol
-priority: P1
-domain: core
-lifecycle: 'ON'
+type: specification
 ---
 
 # Manual Intervention Protocol v1.0

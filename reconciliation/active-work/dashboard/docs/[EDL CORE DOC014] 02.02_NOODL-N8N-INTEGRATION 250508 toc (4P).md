@@ -1,13 +1,15 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "02.02_NOODL-N8N-INTEGRATION"
-purpose: "Document 02.02_noodl-n8n-integration"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document 02.02_noodl-n8n-integration
+session: '25050'
+status: current
+title: 02.02_NOODL-N8N-INTEGRATION
+topics:
+- database
+- documentation
+type: guide
 ---
 
 EDL 02_IMPLEMENTATION-PATTERNS/

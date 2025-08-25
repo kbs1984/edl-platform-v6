@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "MASTERPLAN-002: Self-Healing Protocol System"
-purpose: "Document masterplan-002: self-healing protocol system"
-topics: ['architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document masterplan-002: self-healing protocol system'
+session: legacy
+status: current
+title: 'MASTERPLAN-002: Self-Healing Protocol System'
+topics:
+- architecture
+type: specification
 ---
 
 # MASTERPLAN-002: Self-Healing Protocol System

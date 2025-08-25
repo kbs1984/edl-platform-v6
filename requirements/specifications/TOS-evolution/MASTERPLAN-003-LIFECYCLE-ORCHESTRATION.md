@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "MASTERPLAN-003: Lifecycle Orchestration System"
-purpose: "Document masterplan-003: lifecycle orchestration system"
-topics: ['architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document masterplan-003: lifecycle orchestration system'
+session: legacy
+status: current
+title: 'MASTERPLAN-003: Lifecycle Orchestration System'
+topics:
+- architecture
+type: specification
 ---
 
 # MASTERPLAN-003: Lifecycle Orchestration System

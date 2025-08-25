@@ -1,14 +1,22 @@
 ---
-session: "00062"
-type: "command"
-status: "current"
-created: "2025-08-23"
-title: "Project Insights Command"
-purpose: "Quick access to project insights from YAML metadata"
-topics: ["insights", "analytics", "metadata", "yaml", "project-management"]
-priority: "P1"
-domain: "core"
-related_to: ["00062-project-insights.py", "00059-yaml-query.py", "00062-yaml-compliance-check.sh"]
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Quick access to project insights from YAML metadata
+related_to:
+- 00062-project-insights.py
+- 00059-yaml-query.py
+- 00062-yaml-compliance-check.sh
+session: '00062'
+status: current
+title: Project Insights Command
+topics:
+- insights
+- analytics
+- metadata
+- yaml
+- project-management
+type: script
 ---
 
 # Get Project Insights

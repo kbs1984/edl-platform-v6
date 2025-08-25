@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Shared Resources Purpose"
-purpose: "Document shared resources purpose"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document shared resources purpose
+session: legacy
+status: current
+title: Shared Resources Purpose
+topics:
+- documentation
+type: guide
 ---
 
 # Shared Resources Purpose

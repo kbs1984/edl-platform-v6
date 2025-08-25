@@ -1,18 +1,26 @@
 ---
-session: "00061"
-type: "documentation"
-status: "completed"
-created: "2025-08-23"
-title: "YAML Health Check Integration into Session Startup"
-purpose: "Document the successful integration of YAML health check into main session workflow"
-topics: ["yaml", "integration", "session-startup", "enhancement"]
-priority: "P0"
-domain: "core"
-fixes: ["Session 59 integration gap"]
-related_to: ["00059-session-start-enhanced.sh", "00028-session-start.sh"]
-validation_method: "tested"
-review_date: "2025-09-23"
-estimated_shelf_life: "indefinite"
+created: '2025-08-23'
+domain: core
+estimated_shelf_life: indefinite
+fixes:
+- Session 59 integration gap
+priority: P0
+purpose: Document the successful integration of YAML health check into main session
+  workflow
+related_to:
+- 00059-session-start-enhanced.sh
+- 00028-session-start.sh
+review_date: '2025-09-23'
+session: '00061'
+status: completed
+title: YAML Health Check Integration into Session Startup
+topics:
+- yaml
+- integration
+- session-startup
+- enhancement
+type: guide
+validation_method: tested
 ---
 
 # YAML Health Check Integration into Session Startup

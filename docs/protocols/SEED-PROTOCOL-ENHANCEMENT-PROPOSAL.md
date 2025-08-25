@@ -1,11 +1,15 @@
 ---
 attribution:
+  created_at: 2025-08-15 12:35:07.541984
   created_by: Session 00010
-  created_at: 2025-08-15T12:35:07.541984
-  intent: "Enhance SEED protocol with reality establishment stages to prevent v5-style assumption cascades"
+  intent: Enhance SEED protocol with reality establishment stages to prevent v5-style
+    assumption cascades
+  session: 8
+  task_description: No task context set
   task_id: unknown
-  task_description: "No task context set"
-  session: 00010
+created: '2025-08-25'
+session: legacy
+status: active
 ---
 # SEED Protocol Enhancement Proposal v2.0
 **From**: Session 00010  

@@ -1,11 +1,14 @@
 ---
 attribution:
+  created_at: 2025-08-15 12:00:58.562352
   created_by: Session 00009
-  created_at: 2025-08-15T12:00:58.562352
-  intent: "Validation framework ensuring Session 00010 readiness for seed planting"
-  task_id: unknown
-  task_description: "No task context set"
+  intent: Validation framework ensuring Session 00010 readiness for seed planting
   session: 00009
+  task_description: No task context set
+  task_id: unknown
+created: '2025-08-25'
+session: legacy
+status: active
 ---
 # Seed Readiness Checklist v1.0
 **Session 00009 Validation Framework**

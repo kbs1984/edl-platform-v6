@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "protocol"
-status: "current"
-created: "2025-08-23"
-title: "Supabase SQL Protocol"
-purpose: "Document supabase sql protocol"
-topics: ['auth', 'database', 'protocol']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document supabase sql protocol
+session: legacy
+status: current
+title: Supabase SQL Protocol
+topics:
+- auth
+- database
+- protocol
+type: specification
 ---
 
 # Supabase SQL Protocol

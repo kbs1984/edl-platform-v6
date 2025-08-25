@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Test Directory"
-purpose: "Document test directory"
-topics: ['guide']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document test directory
+session: legacy
+status: current
+title: Test Directory
+topics:
+- guide
+type: guide
 ---
 
 # Test Directory

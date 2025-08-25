@@ -1,13 +1,16 @@
 ---
-session: "00015"
-type: "protocol"
-status: "current"
-created: "2025-08-23"
-title: "Session 00015 Protocol Violation Incident Report"
-purpose: "Document session 00015 protocol violation incident report"
-topics: ['auth', 'database', 'protocol']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00015 protocol violation incident report
+session: '00015'
+status: current
+title: Session 00015 Protocol Violation Incident Report
+topics:
+- auth
+- database
+- protocol
+type: specification
 ---
 
 # Session 00015 Protocol Violation Incident Report

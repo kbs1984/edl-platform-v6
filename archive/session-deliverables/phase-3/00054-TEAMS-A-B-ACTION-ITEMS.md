@@ -1,13 +1,16 @@
 ---
-session: "00054"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🚀 TEAMS A & B: IMMEDIATE ACTION ITEMS"
-purpose: "Document 🚀 teams a & b: immediate action items"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document \U0001F680 teams a & b: immediate action items"
+session: '00054'
+status: current
+title: "\U0001F680 TEAMS A & B: IMMEDIATE ACTION ITEMS"
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # 🚀 TEAMS A & B: IMMEDIATE ACTION ITEMS

@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Supabase Schema Snapshot System"
-purpose: "Document supabase schema snapshot system"
-topics: ['database', 'guide']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document supabase schema snapshot system
+session: legacy
+status: current
+title: Supabase Schema Snapshot System
+topics:
+- database
+- guide
+type: guide
 ---
 
 # Supabase Schema Snapshot System

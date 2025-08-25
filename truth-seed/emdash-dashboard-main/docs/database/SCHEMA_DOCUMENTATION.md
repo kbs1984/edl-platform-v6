@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Database Schema Documentation"
-purpose: "Document database schema documentation"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document database schema documentation
+session: legacy
+status: current
+title: Database Schema Documentation
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Database Schema Documentation

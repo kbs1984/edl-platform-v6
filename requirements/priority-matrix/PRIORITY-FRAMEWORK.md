@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Priority Matrix Framework"
-purpose: "Document priority matrix framework"
-topics: ['auth', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document priority matrix framework
+session: legacy
+status: current
+title: Priority Matrix Framework
+topics:
+- auth
+- requirements
+type: specification
 ---
 
 # Priority Matrix Framework

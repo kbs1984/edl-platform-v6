@@ -1,13 +1,16 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00.02_CONSTITUTIONAL-FRAMEWORK"
-purpose: "Document 00.02_constitutional-framework"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00.02_constitutional-framework
+session: '25050'
+status: current
+title: 00.02_CONSTITUTIONAL-FRAMEWORK
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 EDL 00_PROJECT-OVERVIEW/

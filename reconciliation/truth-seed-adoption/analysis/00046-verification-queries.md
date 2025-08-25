@@ -1,13 +1,15 @@
 ---
-session: "00046"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Verification Queries for Session 44"
-purpose: "Document verification queries for session 44"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document verification queries for session 44
+session: '00046'
+status: current
+title: Verification Queries for Session 44
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Verification Queries for Session 44

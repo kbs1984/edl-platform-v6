@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "Masterplan Foundation Principles"
-purpose: "Document masterplan foundation principles"
-topics: ['auth', 'architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document masterplan foundation principles
+session: legacy
+status: current
+title: Masterplan Foundation Principles
+topics:
+- auth
+- architecture
+type: specification
 ---
 
 # Masterplan Foundation Principles

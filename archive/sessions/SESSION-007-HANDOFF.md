@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "handoff"
-status: "current"
-created: "2025-08-23"
-title: "Session 7 Handoff - Runtime Crisis Resolution"
-purpose: "Document session 7 handoff - runtime crisis resolution"
-topics: ['session-log', 'handoff']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 7 handoff - runtime crisis resolution
+session: legacy
+status: current
+title: Session 7 Handoff - Runtime Crisis Resolution
+topics:
+- session-log
+- handoff
+type: handoff
 ---
 
 # Session 7 Handoff - Runtime Crisis Resolution

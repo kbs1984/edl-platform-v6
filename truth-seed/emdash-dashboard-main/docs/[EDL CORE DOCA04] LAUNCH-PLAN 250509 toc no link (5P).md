@@ -1,13 +1,16 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "A05_LAUNCH-PLAN"
-purpose: "Document a05_launch-plan"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document a05_launch-plan
+session: '25050'
+status: current
+title: A05_LAUNCH-PLAN
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 EDL APPENDICES/

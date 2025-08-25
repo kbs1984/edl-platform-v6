@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "System Architecture Components"
-purpose: "Document system architecture components"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document system architecture components
+session: legacy
+status: current
+title: System Architecture Components
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # System Architecture Components

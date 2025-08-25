@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "or"
-purpose: "Document or"
-topics: ['guide']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document or
+session: legacy
+status: current
+title: or
+topics:
+- guide
+type: guide
 ---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).

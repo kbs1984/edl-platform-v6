@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P1 User Stories - Badge System"
-purpose: "Document p1 user stories - badge system"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document p1 user stories - badge system
+session: legacy
+status: current
+title: P1 User Stories - Badge System
+topics:
+- requirements
+type: specification
 ---
 
 # P1 User Stories - Badge System

@@ -1,13 +1,14 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Educational Identity Success Metrics"
-purpose: "Document educational identity success metrics"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document educational identity success metrics
+session: '00020'
+status: current
+title: Educational Identity Success Metrics
+topics:
+- documentation
+type: guide
 ---
 
 # Educational Identity Success Metrics

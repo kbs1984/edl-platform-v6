@@ -1,16 +1,22 @@
 ---
-session: "00041"
-type: "architecture"
-status: "current"
-created: "2025-08-21"
-title: "Domain Organization Protocol - Truth Seed Architecture"
-purpose: "Define the organizational structure after Truth Seed adoption pivot"
-topics: ["architecture", "domains", "organization", "truth-seed"]
-priority: "P0"
-domain: "core"
-related_to: ["00042-TRUTH-SEED-ADOPTION-DECISION.md", "requirements/masterplans/AUTH-MASTERPLAN.md"]
-review_date: "2025-09-21"
-estimated_shelf_life: "indefinite"
+created: '2025-08-21'
+domain: core
+estimated_shelf_life: indefinite
+priority: P0
+purpose: Define the organizational structure after Truth Seed adoption pivot
+related_to:
+- 00042-TRUTH-SEED-ADOPTION-DECISION.md
+- requirements/masterplans/AUTH-MASTERPLAN.md
+review_date: '2025-09-21'
+session: '00041'
+status: current
+title: Domain Organization Protocol - Truth Seed Architecture
+topics:
+- architecture
+- domains
+- organization
+- truth-seed
+type: specification
 ---
 
 # Domain Organization Protocol - Truth Seed Architecture

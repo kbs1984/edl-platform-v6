@@ -1,13 +1,15 @@
 ---
-session: "00003"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session #00003B Decisions"
-purpose: "Document session #00003b decisions"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session #00003b decisions'
+session: '00003'
+status: current
+title: 'Session #00003B Decisions'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session #00003B Decisions

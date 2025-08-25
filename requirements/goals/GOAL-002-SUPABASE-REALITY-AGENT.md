@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "GOAL-002: Supabase Reality Agent"
-purpose: "Document goal-002: supabase reality agent"
-topics: ['database', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document goal-002: supabase reality agent'
+session: legacy
+status: current
+title: 'GOAL-002: Supabase Reality Agent'
+topics:
+- database
+- requirements
+type: specification
 ---
 
 # GOAL-002: Supabase Reality Agent

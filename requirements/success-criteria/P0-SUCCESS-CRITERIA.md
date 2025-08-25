@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 Success Criteria - Core Foundation Requirements"
-purpose: "Document p0 success criteria - core foundation requirements"
-topics: ['auth', 'database', 'requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 success criteria - core foundation requirements
+session: legacy
+status: current
+title: P0 Success Criteria - Core Foundation Requirements
+topics:
+- auth
+- database
+- requirements
+type: specification
 ---
 
 # P0 Success Criteria - Core Foundation Requirements

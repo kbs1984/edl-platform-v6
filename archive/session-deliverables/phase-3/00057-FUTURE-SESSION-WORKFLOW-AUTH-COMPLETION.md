@@ -1,13 +1,16 @@
 ---
-session: "00057"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Future Session Workflow: Auth/Dashboard Completion"
-purpose: "Document future session workflow: auth/dashboard completion"
-topics: ['auth', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document future session workflow: auth/dashboard completion'
+session: '00057'
+status: current
+title: 'Future Session Workflow: Auth/Dashboard Completion'
+topics:
+- auth
+- session-log
+- documentation
+type: guide
 ---
 
 # Future Session Workflow: Auth/Dashboard Completion

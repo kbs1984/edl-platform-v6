@@ -1,13 +1,16 @@
 ---
-session: "00044"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Sessions 44-45 Shared Implementation Checklist"
-purpose: "Document sessions 44-45 shared implementation checklist"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document sessions 44-45 shared implementation checklist
+session: '00044'
+status: current
+title: Sessions 44-45 Shared Implementation Checklist
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Sessions 44-45 Shared Implementation Checklist

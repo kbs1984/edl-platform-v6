@@ -1,13 +1,16 @@
 ---
-session: "00057"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session Context Enhancement Specification"
-purpose: "Document session context enhancement specification"
-topics: ['database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session context enhancement specification
+session: '00057'
+status: current
+title: Session Context Enhancement Specification
+topics:
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # Session Context Enhancement Specification

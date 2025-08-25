@@ -1,13 +1,15 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Educational Identity Prototype Milestones"
-purpose: "Document educational identity prototype milestones"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document educational identity prototype milestones
+session: '00020'
+status: current
+title: Educational Identity Prototype Milestones
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Educational Identity Prototype Milestones

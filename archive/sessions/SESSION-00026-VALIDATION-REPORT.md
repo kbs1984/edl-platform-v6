@@ -1,13 +1,15 @@
 ---
-session: "00026"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00026 Validation Report"
-purpose: "Document session 00026 validation report"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00026 validation report
+session: '00026'
+status: current
+title: Session 00026 Validation Report
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00026 Validation Report

@@ -1,13 +1,16 @@
 ---
-session: "00039"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Schema Snapshot System - Complete Summary"
-purpose: "Document schema snapshot system - complete summary"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document schema snapshot system - complete summary
+session: 00039
+status: current
+title: Schema Snapshot System - Complete Summary
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Schema Snapshot System - Complete Summary

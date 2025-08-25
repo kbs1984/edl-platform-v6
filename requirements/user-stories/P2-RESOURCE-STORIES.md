@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P2 User Stories - Resources & Learning Materials"
-purpose: "Document p2 user stories - resources & learning materials"
-topics: ['requirements']
-priority: "P2"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P2
+purpose: Document p2 user stories - resources & learning materials
+session: legacy
+status: current
+title: P2 User Stories - Resources & Learning Materials
+topics:
+- requirements
+type: specification
 ---
 
 # P2 User Stories - Resources & Learning Materials

@@ -1,13 +1,14 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Cyworld Features Implementation Order"
-purpose: "Document cyworld features implementation order"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document cyworld features implementation order
+session: '00020'
+status: current
+title: Cyworld Features Implementation Order
+topics:
+- documentation
+type: guide
 ---
 
 # Cyworld Features Implementation Order

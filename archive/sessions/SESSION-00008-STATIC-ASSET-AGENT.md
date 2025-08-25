@@ -1,13 +1,15 @@
 ---
-session: "00008"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00008: Static Asset Reality Agent (Simplified)"
-purpose: "Document session 00008: static asset reality agent (simplified)"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session 00008: static asset reality agent (simplified)'
+session: 00008
+status: current
+title: 'Session 00008: Static Asset Reality Agent (Simplified)'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00008: Static Asset Reality Agent (Simplified)

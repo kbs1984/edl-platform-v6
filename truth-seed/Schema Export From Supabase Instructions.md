@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Schema Export From Supabase Instructions"
-purpose: "Document schema export from supabase instructions"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document schema export from supabase instructions
+session: legacy
+status: current
+title: Schema Export From Supabase Instructions
+topics:
+- documentation
+type: guide
 ---
 
 Schema Export From Supabase 

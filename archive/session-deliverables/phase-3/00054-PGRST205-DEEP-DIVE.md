@@ -1,13 +1,15 @@
 ---
-session: "00054"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🔍 PGRST205 Deep Dive: What Teams A & B Encountered"
-purpose: "Document 🔍 pgrst205 deep dive: what teams a & b encountered"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document \U0001F50D pgrst205 deep dive: what teams a & b encountered"
+session: '00054'
+status: current
+title: "\U0001F50D PGRST205 Deep Dive: What Teams A & B Encountered"
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # 🔍 PGRST205 Deep Dive: What Teams A & B Encountered

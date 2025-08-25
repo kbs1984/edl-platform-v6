@@ -1,6 +1,8 @@
 ---
 allowed-tools: Bash(grep:*), Bash(ls:*), Bash(cat:*)
+created: '2025-08-25'
 description: Verify current session is following protocol
+status: active
 ---
 
 # Protocol Compliance Verification

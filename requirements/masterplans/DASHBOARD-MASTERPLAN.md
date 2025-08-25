@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "DASHBOARD-MASTERPLAN: Truth Seed Dashboard Completion"
-purpose: "Document dashboard-masterplan: truth seed dashboard completion"
-topics: ['auth', 'architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document dashboard-masterplan: truth seed dashboard completion'
+session: legacy
+status: current
+title: 'DASHBOARD-MASTERPLAN: Truth Seed Dashboard Completion'
+topics:
+- auth
+- architecture
+type: specification
 ---
 
 # DASHBOARD-MASTERPLAN: Truth Seed Dashboard Completion

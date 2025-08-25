@@ -1,13 +1,14 @@
 ---
-session: "00027"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00027: Root Cause Analysis - Why Manual Chaos Persists"
-purpose: "Document session 00027: root cause analysis - why manual chaos persists"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session 00027: root cause analysis - why manual chaos persists'
+session: '00027'
+status: current
+title: 'Session 00027: Root Cause Analysis - Why Manual Chaos Persists'
+topics:
+- documentation
+type: guide
 ---
 
 # Session 00027: Root Cause Analysis - Why Manual Chaos Persists

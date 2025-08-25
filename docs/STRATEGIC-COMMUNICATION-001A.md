@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "📜 STRATEGIC COMMUNICATION #001"
-purpose: "Document 📜 strategic communication #001"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document \U0001F4DC strategic communication #001"
+session: legacy
+status: current
+title: "\U0001F4DC STRATEGIC COMMUNICATION #001"
+topics:
+- documentation
+type: guide
 ---
 
 # 📜 STRATEGIC COMMUNICATION #001

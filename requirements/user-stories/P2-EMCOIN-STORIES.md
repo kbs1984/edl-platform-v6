@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P2 User Stories - emCoin Transactions & Economy"
-purpose: "Document p2 user stories - emcoin transactions & economy"
-topics: ['requirements']
-priority: "P2"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P2
+purpose: Document p2 user stories - emcoin transactions & economy
+session: legacy
+status: current
+title: P2 User Stories - emCoin Transactions & Economy
+topics:
+- requirements
+type: specification
 ---
 
 # P2 User Stories - emCoin Transactions & Economy

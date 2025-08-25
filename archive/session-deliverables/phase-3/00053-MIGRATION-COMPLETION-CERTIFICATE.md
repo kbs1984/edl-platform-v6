@@ -1,13 +1,17 @@
 ---
-session: "00053"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🏆 Truth Seed Database Migration Certificate"
-purpose: "Document 🏆 truth seed database migration certificate"
-topics: ['auth', 'database', 'migration', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document \U0001F3C6 truth seed database migration certificate"
+session: '00053'
+status: current
+title: "\U0001F3C6 Truth Seed Database Migration Certificate"
+topics:
+- auth
+- database
+- migration
+- documentation
+type: guide
 ---
 
 # 🏆 Truth Seed Database Migration Certificate

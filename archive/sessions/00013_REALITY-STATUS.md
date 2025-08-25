@@ -1,13 +1,16 @@
 ---
-session: "00013"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "📊 REALITY STATUS DASHBOARD"
-purpose: "Document 📊 reality status dashboard"
-topics: ['database', 'yaml', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: "Document \U0001F4CA reality status dashboard"
+session: '00013'
+status: current
+title: "\U0001F4CA REALITY STATUS DASHBOARD"
+topics:
+- database
+- yaml
+- documentation
+type: guide
 ---
 
 # 📊 REALITY STATUS DASHBOARD

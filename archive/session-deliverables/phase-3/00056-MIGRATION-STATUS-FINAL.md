@@ -1,13 +1,15 @@
 ---
-session: "00056"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00056 Migration Status - Final Report"
-purpose: "Document 00056 migration status - final report"
-topics: ['migration', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00056 migration status - final report
+session: '00056'
+status: current
+title: 00056 Migration Status - Final Report
+topics:
+- migration
+- documentation
+type: guide
 ---
 
 # 00056 Migration Status - Final Report

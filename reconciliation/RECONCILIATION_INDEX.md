@@ -1,16 +1,20 @@
 ---
-session: "00042"
-type: "index"
-status: "current"
-created: "2025-01-17"
-modified: "2025-08-21"
-title: "Reconciliation Domain Index"
-purpose: "Central index for reconciliation between requirements, reality, and implementation"
-topics: ["reconciliation", "index", "implementation", "integration"]
-priority: "P0"
-domain: "reconciliation"
-review_date: "2025-09-21"
-estimated_shelf_life: "indefinite"
+created: '2025-01-17'
+domain: reconciliation
+estimated_shelf_life: indefinite
+modified: '2025-08-21'
+priority: P0
+purpose: Central index for reconciliation between requirements, reality, and implementation
+review_date: '2025-09-21'
+session: '00042'
+status: current
+title: Reconciliation Domain Index
+topics:
+- reconciliation
+- index
+- implementation
+- integration
+type: guide
 ---
 
 # Reconciliation Domain Index

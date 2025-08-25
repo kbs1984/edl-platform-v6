@@ -1,13 +1,15 @@
 ---
-session: "00004"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00004 Truth Reconciliation"
-purpose: "Document session 00004 truth reconciliation"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document session 00004 truth reconciliation
+session: '00004'
+status: current
+title: Session 00004 Truth Reconciliation
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00004 Truth Reconciliation

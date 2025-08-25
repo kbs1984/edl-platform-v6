@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Integration Reality Agent"
-purpose: "Document integration reality agent"
-topics: ['guide']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document integration reality agent
+session: legacy
+status: current
+title: Integration Reality Agent
+topics:
+- guide
+type: guide
 ---
 
 # Integration Reality Agent

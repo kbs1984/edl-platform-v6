@@ -1,13 +1,16 @@
 ---
-session: "00046"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00046 Report to Session 53"
-purpose: "Document session 00046 report to session 53"
-topics: ['database', 'session-log', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document session 00046 report to session 53
+session: '00046'
+status: current
+title: Session 00046 Report to Session 53
+topics:
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00046 Report to Session 53

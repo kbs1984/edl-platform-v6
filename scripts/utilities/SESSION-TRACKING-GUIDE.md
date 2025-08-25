@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "script"
-status: "current"
-created: "2025-08-23"
-title: "Session Tracking Guide"
-purpose: "Document session tracking guide"
-topics: ['session-log', 'script']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session tracking guide
+session: legacy
+status: current
+title: Session Tracking Guide
+topics:
+- session-log
+- script
+type: script
 ---
 
 # Session Tracking Guide

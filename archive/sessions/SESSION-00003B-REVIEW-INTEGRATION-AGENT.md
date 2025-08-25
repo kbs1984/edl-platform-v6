@@ -1,13 +1,15 @@
 ---
-session: "00003"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session #00003B Review of Integration Reality Agent Implementation"
-purpose: "Document session #00003b review of integration reality agent implementation"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session #00003b review of integration reality agent implementation'
+session: '00003'
+status: current
+title: 'Session #00003B Review of Integration Reality Agent Implementation'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session #00003B Review of Integration Reality Agent Implementation

@@ -1,6 +1,8 @@
 ---
 allowed-tools: Bash(git status:*), Bash(git add:*), Bash(git commit:*), Bash(git diff:*)
+created: '2025-08-25'
 description: Intelligently commit current work with proper attribution
+status: active
 ---
 
 # Commit Current Work

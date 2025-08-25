@@ -1,13 +1,16 @@
 ---
-session: "00056"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 56 Start Guidance - Truth-Aligned Database State"
-purpose: "Document session 56 start guidance - truth-aligned database state"
-topics: ['database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 56 start guidance - truth-aligned database state
+session: '00056'
+status: current
+title: Session 56 Start Guidance - Truth-Aligned Database State
+topics:
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 56 Start Guidance - Truth-Aligned Database State

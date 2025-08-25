@@ -1,13 +1,15 @@
 ---
-session: "00050"
-type: "documentation"
-status: "draft"
-created: "2025-08-23"
-title: "Desktop Draft vs Session 43 Schema.sql Validation Report"
-purpose: "Document desktop draft vs session 43 schema.sql validation report"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document desktop draft vs session 43 schema.sql validation report
+session: '00050'
+status: draft
+title: Desktop Draft vs Session 43 Schema.sql Validation Report
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Desktop Draft vs Session 43 Schema.sql Validation Report

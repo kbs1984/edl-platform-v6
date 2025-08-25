@@ -1,13 +1,16 @@
 ---
-session: "00047"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "🚨 COMBINED TEST REPORT: Sessions 46 & 47"
-purpose: "Document 🚨 combined test report: sessions 46 & 47"
-topics: ['auth', 'testing', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: "Document \U0001F6A8 combined test report: sessions 46 & 47"
+session: '00047'
+status: current
+title: "\U0001F6A8 COMBINED TEST REPORT: Sessions 46 & 47"
+topics:
+- auth
+- testing
+- documentation
+type: guide
 ---
 
 # 🚨 COMBINED TEST REPORT: Sessions 46 & 47

@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Reality Agent Validation Test Specifications"
-purpose: "Document reality agent validation test specifications"
-topics: ['database', 'testing', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document reality agent validation test specifications
+session: legacy
+status: current
+title: Reality Agent Validation Test Specifications
+topics:
+- database
+- testing
+- requirements
+type: specification
 ---
 
 # Reality Agent Validation Test Specifications

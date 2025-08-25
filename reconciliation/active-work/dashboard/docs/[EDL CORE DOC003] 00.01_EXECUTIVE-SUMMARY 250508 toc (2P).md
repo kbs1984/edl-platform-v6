@@ -1,13 +1,15 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00.01_EXECUTIVE-SUMMARY"
-purpose: "Document 00.01_executive-summary"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document 00.01_executive-summary
+session: '25050'
+status: current
+title: 00.01_EXECUTIVE-SUMMARY
+topics:
+- database
+- documentation
+type: guide
 ---
 
 EDL 00_PROJECT-OVERVIEW/

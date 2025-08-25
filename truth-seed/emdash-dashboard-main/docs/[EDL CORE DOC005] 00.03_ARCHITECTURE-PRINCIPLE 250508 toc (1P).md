@@ -1,13 +1,15 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00.03_ARCHITECTURE-PRINCIPLES"
-purpose: "Document 00.03_architecture-principles"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00.03_architecture-principles
+session: '25050'
+status: current
+title: 00.03_ARCHITECTURE-PRINCIPLES
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 EDL 00_PROJECT-OVERVIEW/

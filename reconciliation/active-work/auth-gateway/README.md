@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Readme"
-purpose: "Document readme"
-topics: ['guide']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document readme
+session: legacy
+status: current
+title: Readme
+topics:
+- guide
+type: guide
 ---
 
 <a href="https://demo-nextjs-with-supabase.vercel.app/">

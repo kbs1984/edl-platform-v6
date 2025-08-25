@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Secure Supabase Connectivity Foundation"
-purpose: "Document secure supabase connectivity foundation"
-topics: ['guide']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document secure supabase connectivity foundation
+session: legacy
+status: current
+title: Secure Supabase Connectivity Foundation
+topics:
+- guide
+type: guide
 ---
 
 # Secure Supabase Connectivity Foundation

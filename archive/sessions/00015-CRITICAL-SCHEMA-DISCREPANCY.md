@@ -1,13 +1,16 @@
 ---
-session: "00015"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "CRITICAL SCHEMA DISCREPANCY - Session 00015 Discovery"
-purpose: "Document critical schema discrepancy - session 00015 discovery"
-topics: ['auth', 'database', 'documentation']
-priority: "P0"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P0
+purpose: Document critical schema discrepancy - session 00015 discovery
+session: '00015'
+status: current
+title: CRITICAL SCHEMA DISCREPANCY - Session 00015 Discovery
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # CRITICAL SCHEMA DISCREPANCY - Session 00015 Discovery

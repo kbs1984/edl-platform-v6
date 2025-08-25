@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 11 Findings"
-purpose: "Document session 11 findings"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 11 findings
+session: '00022'
+status: current
+title: Session 11 Findings
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 === Session 11 Canvas Analysis ===

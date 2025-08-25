@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P1 User Stories - Activity Registration & Management"
-purpose: "Document p1 user stories - activity registration & management"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document p1 user stories - activity registration & management
+session: legacy
+status: current
+title: P1 User Stories - Activity Registration & Management
+topics:
+- requirements
+type: specification
 ---
 
 # P1 User Stories - Activity Registration & Management

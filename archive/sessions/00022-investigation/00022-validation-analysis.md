@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Validation Analysis"
-purpose: "Document validation analysis"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document validation analysis
+session: '00022'
+status: current
+title: Validation Analysis
+topics:
+- database
+- documentation
+type: guide
 ---
 
 === Hidden Validation Infrastructure Found ===

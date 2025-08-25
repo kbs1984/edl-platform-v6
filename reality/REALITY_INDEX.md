@@ -1,16 +1,21 @@
 ---
-session: "00042"
-type: "index"
-status: "current"
-created: "2025-01-17"
-modified: "2025-08-21"
-title: "Reality Domain Index"
-purpose: "Central index for Reality Domain agents and truth verification systems"
-topics: ["reality", "index", "agents", "truth", "verification"]
-priority: "P0"
-domain: "reality"
-review_date: "2025-09-21"
-estimated_shelf_life: "indefinite"
+created: '2025-01-17'
+domain: reality
+estimated_shelf_life: indefinite
+modified: '2025-08-21'
+priority: P0
+purpose: Central index for Reality Domain agents and truth verification systems
+review_date: '2025-09-21'
+session: '00042'
+status: current
+title: Reality Domain Index
+topics:
+- reality
+- index
+- agents
+- truth
+- verification
+type: guide
 ---
 
 # Reality Domain Index

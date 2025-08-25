@@ -1,13 +1,14 @@
 ---
-session: "00055"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Function Completeness Audit - Session 00055"
-purpose: "Document function completeness audit - session 00055"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document function completeness audit - session 00055
+session: '00055'
+status: current
+title: Function Completeness Audit - Session 00055
+topics:
+- documentation
+type: guide
 ---
 
 # Function Completeness Audit - Session 00055

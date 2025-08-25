@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "V5 Lessons and Patterns Extraction"
-purpose: "Document v5 lessons and patterns extraction"
-topics: ['database', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document v5 lessons and patterns extraction
+session: legacy
+status: current
+title: V5 Lessons and Patterns Extraction
+topics:
+- database
+- requirements
+type: specification
 ---
 
 # V5 Lessons and Patterns Extraction

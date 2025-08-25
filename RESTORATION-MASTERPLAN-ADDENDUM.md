@@ -1,17 +1,23 @@
 ---
-session: "00017"
-type: "architecture"
-status: "superseded"
-created: "2025-08-17"
-title: "Restoration Masterplan - Session 17 Addendum"
-purpose: "Address Session 17's excellent questions and incorporate suggestions"
-topics: ["architecture", "masterplan", "addendum", "clarifications"]
-priority: "P2"
-domain: "core"
-related_to: ["RESTORATION-MASTERPLAN.md"]
-superseded_by: ["RESTORATION-MASTERPLAN-V3.md"]
-review_date: "2025-09-17"
-estimated_shelf_life: "historical-reference"
+created: '2025-08-17'
+domain: core
+estimated_shelf_life: historical-reference
+priority: P2
+purpose: Address Session 17's excellent questions and incorporate suggestions
+related_to:
+- RESTORATION-MASTERPLAN.md
+review_date: '2025-09-17'
+session: '00017'
+status: superseded
+superseded_by:
+- RESTORATION-MASTERPLAN-V3.md
+title: Restoration Masterplan - Session 17 Addendum
+topics:
+- architecture
+- masterplan
+- addendum
+- clarifications
+type: specification
 ---
 
 # Restoration Masterplan - Session 17 Addendum

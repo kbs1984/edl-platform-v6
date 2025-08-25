@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Reality Agent Capabilities Summary"
-purpose: "Document reality agent capabilities summary"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document reality agent capabilities summary
+session: '00022'
+status: current
+title: Reality Agent Capabilities Summary
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Reality Agent Capabilities Summary

@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 11 Verification"
-purpose: "Document session 11 verification"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 11 verification
+session: '00022'
+status: current
+title: Session 11 Verification
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 === Verifying Session 11 Claims ===

@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00_PROJECT-OVERVIEW/"
-purpose: "Document 00_project-overview/"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00_project-overview/
+session: legacy
+status: current
+title: 00_PROJECT-OVERVIEW/
+topics:
+- database
+- documentation
+type: guide
 ---
 
 EDL 00_PROJECT-OVERVIEW/

@@ -1,6 +1,10 @@
 ---
-allowed-tools: Bash(git status:*), Bash(cat 00013_REALITY-STATUS.md:*), Bash(python3 reality/agent-reality-auditor/supabase-connector/connector.py:*)
+allowed-tools: Bash(git status:*), Bash(cat 00013_REALITY-STATUS.md:*), Bash(python3
+  reality/agent-reality-auditor/supabase-connector/connector.py:*)
+created: '2025-08-25'
 description: Show current reality status and detect discrepancies
+session: legacy
+status: active
 ---
 
 # Reality Status Check

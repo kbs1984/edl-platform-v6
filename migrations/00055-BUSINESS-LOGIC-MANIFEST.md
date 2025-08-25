@@ -1,13 +1,15 @@
 ---
-session: "00055"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Business Logic Manifest - Session 00055"
-purpose: "Document business logic manifest - session 00055"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document business logic manifest - session 00055
+session: '00055'
+status: current
+title: Business Logic Manifest - Session 00055
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Business Logic Manifest - Session 00055

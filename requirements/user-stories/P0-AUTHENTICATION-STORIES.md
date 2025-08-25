@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 User Stories - Authentication & Onboarding"
-purpose: "Document p0 user stories - authentication & onboarding"
-topics: ['auth', 'requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 user stories - authentication & onboarding
+session: legacy
+status: current
+title: P0 User Stories - Authentication & Onboarding
+topics:
+- auth
+- requirements
+type: specification
 ---
 
 # P0 User Stories - Authentication & Onboarding

@@ -1,13 +1,17 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "REPORT TO SESSION 53: Database Access Issue"
-purpose: "Document report to session 53: database access issue"
-topics: ['auth', 'database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document report to session 53: database access issue'
+session: legacy
+status: current
+title: 'REPORT TO SESSION 53: Database Access Issue'
+topics:
+- auth
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # REPORT TO SESSION 53: Database Access Issue

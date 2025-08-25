@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "TOS Evolution Masterplans"
-purpose: "Document tos evolution masterplans"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document tos evolution masterplans
+session: legacy
+status: current
+title: TOS Evolution Masterplans
+topics:
+- requirements
+type: specification
 ---
 
 # TOS Evolution Masterplans

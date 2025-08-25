@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "MASTERPLAN-001: Temporal Intelligence System"
-purpose: "Document masterplan-001: temporal intelligence system"
-topics: ['architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document masterplan-001: temporal intelligence system'
+session: legacy
+status: current
+title: 'MASTERPLAN-001: Temporal Intelligence System'
+topics:
+- architecture
+type: specification
 ---
 
 # MASTERPLAN-001: Temporal Intelligence System

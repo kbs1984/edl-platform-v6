@@ -1,13 +1,15 @@
 ---
-session: "00046"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Pre-Deployment Database State - Session 00046"
-purpose: "Document pre-deployment database state - session 00046"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document pre-deployment database state - session 00046
+session: '00046'
+status: current
+title: Pre-Deployment Database State - Session 00046
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Pre-Deployment Database State - Session 00046

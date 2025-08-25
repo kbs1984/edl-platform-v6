@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "GOAL-001: Project Integration"
-purpose: "Document goal-001: project integration"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document goal-001: project integration'
+session: legacy
+status: current
+title: 'GOAL-001: Project Integration'
+topics:
+- requirements
+type: specification
 ---
 
 # GOAL-001: Project Integration

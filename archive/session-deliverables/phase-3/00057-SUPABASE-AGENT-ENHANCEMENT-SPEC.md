@@ -1,13 +1,14 @@
 ---
-session: "00057"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Supabase Agent Enhancement Specification"
-purpose: "Document supabase agent enhancement specification"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document supabase agent enhancement specification
+session: '00057'
+status: current
+title: Supabase Agent Enhancement Specification
+topics:
+- documentation
+type: guide
 ---
 
 # Supabase Agent Enhancement Specification

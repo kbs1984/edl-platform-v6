@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "index"
-status: "current"
-created: "2025-08-23"
-title: "Automation Index"
-purpose: "Document automation index"
-topics: ['index']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document automation index
+session: legacy
+status: current
+title: Automation Index
+topics:
+- index
+type: guide
 ---
 
 # Automation Index

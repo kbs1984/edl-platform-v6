@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "EDL Platform Foundation Documentation"
-purpose: "Document edl platform foundation documentation"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document edl platform foundation documentation
+session: legacy
+status: current
+title: EDL Platform Foundation Documentation
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # EDL Platform Foundation Documentation

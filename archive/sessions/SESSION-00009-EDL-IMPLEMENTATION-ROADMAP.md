@@ -1,13 +1,16 @@
 ---
-session: "00009"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "EDL Platform Implementation Roadmap"
-purpose: "Document edl platform implementation roadmap"
-topics: ['database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document edl platform implementation roadmap
+session: 00009
+status: current
+title: EDL Platform Implementation Roadmap
+topics:
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # EDL Platform Implementation Roadmap

@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Requirements Domain Completion Report"
-purpose: "Document requirements domain completion report"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document requirements domain completion report
+session: legacy
+status: current
+title: Requirements Domain Completion Report
+topics:
+- requirements
+type: specification
 ---
 
 # Requirements Domain Completion Report

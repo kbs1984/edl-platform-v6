@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Automation & API Gaps Documentation"
-purpose: "Document automation & api gaps documentation"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document automation & api gaps documentation
+session: legacy
+status: current
+title: Automation & API Gaps Documentation
+topics:
+- documentation
+type: guide
 ---
 
 # Automation & API Gaps Documentation

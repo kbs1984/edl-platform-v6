@@ -1,11 +1,13 @@
 ---
 attribution:
+  created_at: 2025-08-15 12:01:03.994094
   created_by: Session 00009
-  created_at: 2025-08-15T12:01:03.994094
-  intent: "Complete mission brief and handoff documentation for Session 00010"
-  task_id: unknown
-  task_description: "No task context set"
+  intent: Complete mission brief and handoff documentation for Session 00010
   session: 00009
+  task_description: No task context set
+  task_id: unknown
+created: '2025-08-25'
+status: active
 ---
 # Session 00010 - Seed Planting Handoff
 **From**: Session 00009  

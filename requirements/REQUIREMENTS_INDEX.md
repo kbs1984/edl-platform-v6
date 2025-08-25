@@ -1,18 +1,26 @@
 ---
-session: "00041"
-type: "index"
-status: "current"
-created: "2025-01-17"
-modified: "2025-08-21"
-title: "Requirements Domain Index"
-purpose: "Central index for all requirements documentation and user stories"
-topics: ["requirements", "index", "user-stories", "documentation"]
-priority: "P0"
-domain: "requirements"
-review_date: "2025-09-21"
-estimated_shelf_life: "indefinite"
-related_to: ["SYSTEM-INDEX.md", "requirements/masterplans/AUTH-MASTERPLAN.md", "requirements/masterplans/DASHBOARD-MASTERPLAN.md"]
-implements: ["00042-TRUTH-SEED-ADOPTION-DECISION.md"]
+created: '2025-01-17'
+domain: requirements
+estimated_shelf_life: indefinite
+implements:
+- 00042-TRUTH-SEED-ADOPTION-DECISION.md
+modified: '2025-08-21'
+priority: P0
+purpose: Central index for all requirements documentation and user stories
+related_to:
+- SYSTEM-INDEX.md
+- requirements/masterplans/AUTH-MASTERPLAN.md
+- requirements/masterplans/DASHBOARD-MASTERPLAN.md
+review_date: '2025-09-21'
+session: '00041'
+status: current
+title: Requirements Domain Index
+topics:
+- requirements
+- index
+- user-stories
+- documentation
+type: guide
 ---
 
 # Requirements Domain Index

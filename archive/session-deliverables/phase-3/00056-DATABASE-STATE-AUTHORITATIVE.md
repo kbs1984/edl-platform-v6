@@ -1,13 +1,16 @@
 ---
-session: "00056"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00056 Database State - Authoritative Assessment"
-purpose: "Document 00056 database state - authoritative assessment"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00056 database state - authoritative assessment
+session: '00056'
+status: current
+title: 00056 Database State - Authoritative Assessment
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # 00056 Database State - Authoritative Assessment

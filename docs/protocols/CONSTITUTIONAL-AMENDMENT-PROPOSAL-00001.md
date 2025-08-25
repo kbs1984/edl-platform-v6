@@ -1,13 +1,14 @@
 ---
-session: "00001"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Constitutional Amendment Proposal #00001"
-purpose: "Document constitutional amendment proposal #00001"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document constitutional amendment proposal #00001'
+session: '00001'
+status: current
+title: 'Constitutional Amendment Proposal #00001'
+topics:
+- documentation
+type: guide
 ---
 
 # Constitutional Amendment Proposal #00001

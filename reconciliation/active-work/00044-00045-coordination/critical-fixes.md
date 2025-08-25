@@ -1,13 +1,15 @@
 ---
-session: "00044"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Critical Code Fixes for Truth Seed Adoption"
-purpose: "Document critical code fixes for truth seed adoption"
-topics: ['auth', 'documentation']
-priority: "P0"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P0
+purpose: Document critical code fixes for truth seed adoption
+session: '00044'
+status: current
+title: Critical Code Fixes for Truth Seed Adoption
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Critical Code Fixes for Truth Seed Adoption

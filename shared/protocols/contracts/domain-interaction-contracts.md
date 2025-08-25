@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Domain Interaction Contracts"
-purpose: "Document domain interaction contracts"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document domain interaction contracts
+session: legacy
+status: current
+title: Domain Interaction Contracts
+topics:
+- documentation
+type: guide
 ---
 
 # Domain Interaction Contracts

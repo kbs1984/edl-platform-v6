@@ -1,6 +1,9 @@
 ---
 allowed-tools: Write, Bash(python3:*), Bash(git status:*), Bash(date:*)
+created: '2025-08-25'
 description: Update reality status file with current truth
+session: legacy
+status: active
 ---
 
 # Update Reality Status

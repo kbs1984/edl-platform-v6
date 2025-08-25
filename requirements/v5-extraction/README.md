@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "v5 Extraction - Learning from 16,000 Lines"
-purpose: "Document v5 extraction - learning from 16,000 lines"
-topics: ['auth', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document v5 extraction - learning from 16,000 lines
+session: legacy
+status: current
+title: v5 Extraction - Learning from 16,000 Lines
+topics:
+- auth
+- requirements
+type: specification
 ---
 
 # v5 Extraction - Learning from 16,000 Lines

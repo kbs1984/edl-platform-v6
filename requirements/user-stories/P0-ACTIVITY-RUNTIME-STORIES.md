@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 User Stories - Activity Runtime Execution"
-purpose: "Document p0 user stories - activity runtime execution"
-topics: ['requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 user stories - activity runtime execution
+session: legacy
+status: current
+title: P0 User Stories - Activity Runtime Execution
+topics:
+- requirements
+type: specification
 ---
 
 # P0 User Stories - Activity Runtime Execution

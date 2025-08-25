@@ -1,13 +1,17 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 Acceptance Tests - Core Foundation"
-purpose: "Document p0 acceptance tests - core foundation"
-topics: ['auth', 'database', 'testing', 'requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 acceptance tests - core foundation
+session: legacy
+status: current
+title: P0 Acceptance Tests - Core Foundation
+topics:
+- auth
+- database
+- testing
+- requirements
+type: specification
 ---
 
 # P0 Acceptance Tests - Core Foundation

@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P1 User Stories - Complete Coverage Extraction"
-purpose: "Document p1 user stories - complete coverage extraction"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document p1 user stories - complete coverage extraction
+session: legacy
+status: current
+title: P1 User Stories - Complete Coverage Extraction
+topics:
+- requirements
+type: specification
 ---
 
 # P1 User Stories - Complete Coverage Extraction

@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Reconciliation Domain Purpose"
-purpose: "Document reconciliation domain purpose"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document reconciliation domain purpose
+session: legacy
+status: current
+title: Reconciliation Domain Purpose
+topics:
+- documentation
+type: guide
 ---
 
 # Reconciliation Domain Purpose

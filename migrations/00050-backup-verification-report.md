@@ -1,13 +1,15 @@
 ---
-session: "00050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Backup Extraction Verification Report - Session 00050"
-purpose: "Document backup extraction verification report - session 00050"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document backup extraction verification report - session 00050
+session: '00050'
+status: current
+title: Backup Extraction Verification Report - Session 00050
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Backup Extraction Verification Report - Session 00050

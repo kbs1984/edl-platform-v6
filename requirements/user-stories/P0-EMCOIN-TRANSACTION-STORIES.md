@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P0 User Stories - emCoin Transaction System"
-purpose: "Document p0 user stories - emcoin transaction system"
-topics: ['requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: Document p0 user stories - emcoin transaction system
+session: legacy
+status: current
+title: P0 User Stories - emCoin Transaction System
+topics:
+- requirements
+type: specification
 ---
 
 # P0 User Stories - emCoin Transaction System

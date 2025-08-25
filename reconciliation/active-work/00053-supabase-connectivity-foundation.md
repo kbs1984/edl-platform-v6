@@ -1,13 +1,15 @@
 ---
-session: "00053"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Secure Supabase Connectivity Foundation"
-purpose: "Document secure supabase connectivity foundation"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document secure supabase connectivity foundation
+session: '00053'
+status: current
+title: Secure Supabase Connectivity Foundation
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Secure Supabase Connectivity Foundation

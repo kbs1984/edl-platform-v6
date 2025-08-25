@@ -1,13 +1,14 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Cyworld Experience Gaps Analysis"
-purpose: "Document cyworld experience gaps analysis"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document cyworld experience gaps analysis
+session: '00020'
+status: current
+title: Cyworld Experience Gaps Analysis
+topics:
+- documentation
+type: guide
 ---
 
 # Cyworld Experience Gaps Analysis

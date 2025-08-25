@@ -1,16 +1,21 @@
 ---
-session: "00016"
-type: "architecture"
-status: "superseded"
-created: "2025-08-17"
-title: "Three-Domain Restoration Masterplan"
-purpose: "Restore constitutional order while preserving all valuable work"
-topics: ["architecture", "masterplan", "restoration", "three-domains"]
-priority: "P2"
-domain: "core"
-superseded_by: ["RESTORATION-MASTERPLAN-V3.md"]
-review_date: "2025-09-17"
-estimated_shelf_life: "historical-reference"
+created: '2025-08-17'
+domain: core
+estimated_shelf_life: historical-reference
+priority: P2
+purpose: Restore constitutional order while preserving all valuable work
+review_date: '2025-09-17'
+session: '00016'
+status: superseded
+superseded_by:
+- RESTORATION-MASTERPLAN-V3.md
+title: Three-Domain Restoration Masterplan
+topics:
+- architecture
+- masterplan
+- restoration
+- three-domains
+type: specification
 ---
 
 # Three-Domain Restoration Masterplan

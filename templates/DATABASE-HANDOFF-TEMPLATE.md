@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "handoff"
-status: "current"
-created: "2025-08-23"
-title: "Database Team Handoff Template"
-purpose: "Document database team handoff template"
-topics: ['database', 'handoff']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document database team handoff template
+session: legacy
+status: current
+title: Database Team Handoff Template
+topics:
+- database
+- handoff
+type: handoff
 ---
 
 # Database Team Handoff Template

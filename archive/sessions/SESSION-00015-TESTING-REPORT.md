@@ -1,13 +1,18 @@
 ---
-session: "00015"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00015 Testing Report"
-purpose: "Document session 00015 testing report"
-topics: ['auth', 'database', 'testing', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00015 testing report
+session: '00015'
+status: current
+title: Session 00015 Testing Report
+topics:
+- auth
+- database
+- testing
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00015 Testing Report

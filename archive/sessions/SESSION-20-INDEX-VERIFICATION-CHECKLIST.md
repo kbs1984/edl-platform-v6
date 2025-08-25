@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "index"
-status: "current"
-created: "2025-08-23"
-title: "Session 20 INDEX Files Verification Checklist"
-purpose: "Document session 20 index files verification checklist"
-topics: ['session-log', 'index']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 20 index files verification checklist
+session: legacy
+status: current
+title: Session 20 INDEX Files Verification Checklist
+topics:
+- session-log
+- index
+type: guide
 ---
 
 # Session 20 INDEX Files Verification Checklist

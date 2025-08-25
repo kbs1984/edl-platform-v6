@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Truth Seed Adoption - Deployment Status"
-purpose: "Document truth seed adoption - deployment status"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document truth seed adoption - deployment status
+session: legacy
+status: current
+title: Truth Seed Adoption - Deployment Status
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Truth Seed Adoption - Deployment Status

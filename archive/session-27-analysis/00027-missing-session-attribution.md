@@ -1,13 +1,15 @@
 ---
-session: "00027"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00027: Missing Session Attribution Audit"
-purpose: "Document session 00027: missing session attribution audit"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session 00027: missing session attribution audit'
+session: '00027'
+status: current
+title: 'Session 00027: Missing Session Attribution Audit'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00027: Missing Session Attribution Audit

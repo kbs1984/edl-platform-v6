@@ -1,13 +1,14 @@
 ---
-session: "00039"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00039 Implementation Vetting Report"
-purpose: "Document session 00039 implementation vetting report"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00039 implementation vetting report
+session: 00039
+status: current
+title: Session 00039 Implementation Vetting Report
+topics:
+- documentation
+type: guide
 ---
 
 # Session 00039 Implementation Vetting Report

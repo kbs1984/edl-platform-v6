@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P2 Acceptance Tests - Enhancement Features"
-purpose: "Document p2 acceptance tests - enhancement features"
-topics: ['testing', 'requirements']
-priority: "P2"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P2
+purpose: Document p2 acceptance tests - enhancement features
+session: legacy
+status: current
+title: P2 Acceptance Tests - Enhancement Features
+topics:
+- testing
+- requirements
+type: specification
 ---
 
 # P2 Acceptance Tests - Enhancement Features

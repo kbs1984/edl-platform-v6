@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "script"
-status: "current"
-created: "2025-08-23"
-title: "Implementation Patterns for the Clean Current System: A Comprehensive Guide"
-purpose: "Document implementation patterns for the clean current system: a comprehensive guide"
-topics: ['script']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document implementation patterns for the clean current system: a comprehensive
+  guide'
+session: legacy
+status: current
+title: 'Implementation Patterns for the Clean Current System: A Comprehensive Guide'
+topics:
+- script
+type: script
 ---
 
 # Implementation Patterns for the Clean Current System: A Comprehensive Guide

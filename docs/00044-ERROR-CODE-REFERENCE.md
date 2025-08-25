@@ -1,13 +1,16 @@
 ---
-session: "00044"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Database Error Code Reference"
-purpose: "Document database error code reference"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document database error code reference
+session: '00044'
+status: current
+title: Database Error Code Reference
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Database Error Code Reference

@@ -1,6 +1,9 @@
 ---
 allowed-tools: Bash(./scripts/00013_reality-check.sh:*)
+created: '2025-08-25'
 description: Run comprehensive reality check with all agents
+session: legacy
+status: active
 ---
 
 # Comprehensive Reality Check

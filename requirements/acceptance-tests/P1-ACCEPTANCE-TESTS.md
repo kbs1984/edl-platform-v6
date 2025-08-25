@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "P1 Acceptance Tests - Essential Features"
-purpose: "Document p1 acceptance tests - essential features"
-topics: ['testing', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document p1 acceptance tests - essential features
+session: legacy
+status: current
+title: P1 Acceptance Tests - Essential Features
+topics:
+- testing
+- requirements
+type: specification
 ---
 
 # P1 Acceptance Tests - Essential Features

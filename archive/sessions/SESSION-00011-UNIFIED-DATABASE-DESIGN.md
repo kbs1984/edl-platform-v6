@@ -1,13 +1,16 @@
 ---
-session: "00011"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Unified Database Design from All Canvas Analysis"
-purpose: "Document unified database design from all canvas analysis"
-topics: ['database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document unified database design from all canvas analysis
+session: '00011'
+status: current
+title: Unified Database Design from All Canvas Analysis
+topics:
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # Unified Database Design from All Canvas Analysis

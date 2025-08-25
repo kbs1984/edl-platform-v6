@@ -1,13 +1,16 @@
 ---
-session: "00046"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Schema Transformation Analysis - Session 00046"
-purpose: "Document schema transformation analysis - session 00046"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document schema transformation analysis - session 00046
+session: '00046'
+status: current
+title: Schema Transformation Analysis - Session 00046
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Schema Transformation Analysis - Session 00046

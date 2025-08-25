@@ -1,13 +1,15 @@
 ---
-session: "00053"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "PostgREST v13.0.0 Update - Critical Changes"
-purpose: "Document postgrest v13.0.0 update - critical changes"
-topics: ['auth', 'documentation']
-priority: "P0"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P0
+purpose: Document postgrest v13.0.0 update - critical changes
+session: '00053'
+status: current
+title: PostgREST v13.0.0 Update - Critical Changes
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # PostgREST v13.0.0 Update - Critical Changes

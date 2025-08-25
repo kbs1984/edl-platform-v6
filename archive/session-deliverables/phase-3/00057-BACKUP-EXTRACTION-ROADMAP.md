@@ -1,13 +1,15 @@
 ---
-session: "00057"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Backup Extraction Roadmap: 24% → 95% Completeness"
-purpose: "Document backup extraction roadmap: 24% → 95% completeness"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document backup extraction roadmap: 24% \u2192 95% completeness"
+session: '00057'
+status: current
+title: "Backup Extraction Roadmap: 24% \u2192 95% Completeness"
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 # Backup Extraction Roadmap: 24% → 95% Completeness

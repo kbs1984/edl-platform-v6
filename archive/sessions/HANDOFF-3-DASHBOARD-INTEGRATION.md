@@ -1,13 +1,17 @@
 ---
-session: "unknown"
-type: "handoff"
-status: "current"
-created: "2025-08-23"
-title: "HANDOFF 3: Dashboard Integration & Testing - Making It All Work Together"
-purpose: "Document handoff 3: dashboard integration & testing - making it all work together"
-topics: ['auth', 'database', 'handoff']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document handoff 3: dashboard integration & testing - making it all work
+  together'
+session: legacy
+status: current
+title: 'HANDOFF 3: Dashboard Integration & Testing - Making It All Work Together'
+topics:
+- auth
+- database
+- handoff
+type: handoff
 ---
 
 # HANDOFF 3: Dashboard Integration & Testing - Making It All Work Together

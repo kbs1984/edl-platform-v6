@@ -1,13 +1,16 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "01.01_SCHEMA-DOCUMENTATION"
-purpose: "Document 01.01_schema-documentation"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 01.01_schema-documentation
+session: '25050'
+status: current
+title: 01.01_SCHEMA-DOCUMENTATION
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 EDL 01_DATABASE-ARCHITECTURE/

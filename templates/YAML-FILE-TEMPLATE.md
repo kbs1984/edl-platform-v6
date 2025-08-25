@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "draft"
-created: "2025-08-23"
-title: "YAML File Template"
-purpose: "Document yaml file template"
-topics: ['yaml', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document yaml file template
+session: legacy
+status: draft
+title: YAML File Template
+topics:
+- yaml
+- documentation
+type: guide
 ---
 
 # YAML File Template

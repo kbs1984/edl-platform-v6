@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "guide"
-status: "current"
-created: "2025-08-23"
-title: "Migration Batch System - Session 00050"
-purpose: "Document migration batch system - session 00050"
-topics: ['database', 'guide']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document migration batch system - session 00050
+session: legacy
+status: current
+title: Migration Batch System - Session 00050
+topics:
+- database
+- guide
+type: guide
 ---
 
 # Migration Batch System - Session 00050

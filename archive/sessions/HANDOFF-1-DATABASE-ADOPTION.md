@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "handoff"
-status: "current"
-created: "2025-08-23"
-title: "HANDOFF 1: Database Adoption - The Clean Slate Protocol"
-purpose: "Document handoff 1: database adoption - the clean slate protocol"
-topics: ['database', 'handoff']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document handoff 1: database adoption - the clean slate protocol'
+session: legacy
+status: current
+title: 'HANDOFF 1: Database Adoption - The Clean Slate Protocol'
+topics:
+- database
+- handoff
+type: handoff
 ---
 
 # HANDOFF 1: Database Adoption - The Clean Slate Protocol

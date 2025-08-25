@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "📜 STRATEGIC COMMUNICATION #001-B"
-purpose: "Document 📜 strategic communication #001-b"
-topics: ['database', 'yaml', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: "Document \U0001F4DC strategic communication #001-b"
+session: legacy
+status: current
+title: "\U0001F4DC STRATEGIC COMMUNICATION #001-B"
+topics:
+- database
+- yaml
+- documentation
+type: guide
 ---
 
 # 📜 STRATEGIC COMMUNICATION #001-B

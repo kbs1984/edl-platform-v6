@@ -1,13 +1,15 @@
 ---
-session: "00003"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session Time Reality Discovery"
-purpose: "Document session time reality discovery"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document session time reality discovery
+session: '00003'
+status: current
+title: Session Time Reality Discovery
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session Time Reality Discovery

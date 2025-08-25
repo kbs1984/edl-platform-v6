@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Session 11 To Requirements"
-purpose: "Document session 11 to requirements"
-topics: ['session-log', 'requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document session 11 to requirements
+session: '00022'
+status: current
+title: Session 11 To Requirements
+topics:
+- session-log
+- requirements
+type: specification
 ---
 
 === Tracing Session 11 to Requirements ===

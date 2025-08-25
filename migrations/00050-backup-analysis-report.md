@@ -1,13 +1,15 @@
 ---
-session: "00050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Supabase Backup Analysis Report - Session 00050"
-purpose: "Document supabase backup analysis report - session 00050"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document supabase backup analysis report - session 00050
+session: '00050'
+status: current
+title: Supabase Backup Analysis Report - Session 00050
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Supabase Backup Analysis Report - Session 00050

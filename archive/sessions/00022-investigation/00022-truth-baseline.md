@@ -1,13 +1,14 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00022 Truth Baseline"
-purpose: "Document session 00022 truth baseline"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00022 truth baseline
+session: '00022'
+status: current
+title: Session 00022 Truth Baseline
+topics:
+- documentation
+type: guide
 ---
 
 # Session 00022 Truth Baseline

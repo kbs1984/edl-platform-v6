@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "protocol"
-status: "current"
-created: "2025-08-23"
-title: "Session Initialization Protocol"
-purpose: "Document session initialization protocol"
-topics: ['session-log', 'protocol']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session initialization protocol
+session: legacy
+status: current
+title: Session Initialization Protocol
+topics:
+- session-log
+- protocol
+type: specification
 ---
 
 # Session Initialization Protocol

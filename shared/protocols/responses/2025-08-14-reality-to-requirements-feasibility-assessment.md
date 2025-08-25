@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Feasibility Assessment Response"
-purpose: "Document feasibility assessment response"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document feasibility assessment response
+session: legacy
+status: current
+title: Feasibility Assessment Response
+topics:
+- requirements
+type: specification
 ---
 
 # Feasibility Assessment Response

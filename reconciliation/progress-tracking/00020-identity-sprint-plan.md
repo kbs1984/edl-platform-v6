@@ -1,13 +1,14 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Educational Identity Sprint Plan"
-purpose: "Document educational identity sprint plan"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document educational identity sprint plan
+session: '00020'
+status: current
+title: Educational Identity Sprint Plan
+topics:
+- documentation
+type: guide
 ---
 
 # Educational Identity Sprint Plan

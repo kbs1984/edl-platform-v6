@@ -1,13 +1,15 @@
 ---
-session: "00036"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Architectural Decision: Missing Reality Agents"
-purpose: "Document architectural decision: missing reality agents"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document architectural decision: missing reality agents'
+session: '00036'
+status: current
+title: 'Architectural Decision: Missing Reality Agents'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Architectural Decision: Missing Reality Agents

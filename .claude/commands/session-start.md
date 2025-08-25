@@ -1,6 +1,9 @@
 ---
-allowed-tools: Bash(./scripts/00013_reality-check.sh:*), Bash(cat 00013_REALITY-STATUS.md:*), Bash(ls archive/sessions/SESSION-*:*), Bash(./scripts/create-session-log.sh:*)
+allowed-tools: Bash(./scripts/00013_reality-check.sh:*), Bash(cat 00013_REALITY-STATUS.md:*),
+  Bash(ls archive/sessions/SESSION-*:*), Bash(./scripts/create-session-log.sh:*)
+created: '2025-08-25'
 description: Complete session initialization following Protocol v2.2
+status: active
 ---
 
 # Session Start Protocol v2.2

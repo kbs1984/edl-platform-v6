@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Constitutional Amendment 002: Session Reality Protocol"
-purpose: "Document constitutional amendment 002: session reality protocol"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: 'Document constitutional amendment 002: session reality protocol'
+session: legacy
+status: current
+title: 'Constitutional Amendment 002: Session Reality Protocol'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Constitutional Amendment 002: Session Reality Protocol

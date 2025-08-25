@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Reality Domain Purpose"
-purpose: "Document reality domain purpose"
-topics: ['documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document reality domain purpose
+session: legacy
+status: current
+title: Reality Domain Purpose
+topics:
+- documentation
+type: guide
 ---
 
 # Reality Domain Purpose

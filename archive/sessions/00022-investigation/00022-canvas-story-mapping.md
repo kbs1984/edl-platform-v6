@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Canvas Story Mapping"
-purpose: "Document canvas story mapping"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document canvas story mapping
+session: '00022'
+status: current
+title: Canvas Story Mapping
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 === Canvas to Story Mapping Investigation ===

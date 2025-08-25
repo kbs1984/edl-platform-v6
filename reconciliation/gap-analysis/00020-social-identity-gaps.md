@@ -1,13 +1,14 @@
 ---
-session: "00020"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Social Identity Gaps Analysis"
-purpose: "Document social identity gaps analysis"
-topics: ['documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document social identity gaps analysis
+session: '00020'
+status: current
+title: Social Identity Gaps Analysis
+topics:
+- documentation
+type: guide
 ---
 
 # Social Identity Gaps Analysis

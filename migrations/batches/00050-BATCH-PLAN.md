@@ -1,13 +1,14 @@
 ---
-session: "00050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Migration Batch Plan - Session 00050"
-purpose: "Document migration batch plan - session 00050"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document migration batch plan - session 00050
+session: '00050'
+status: current
+title: Migration Batch Plan - Session 00050
+topics:
+- documentation
+type: guide
 ---
 
 # Migration Batch Plan - Session 00050

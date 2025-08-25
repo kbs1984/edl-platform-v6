@@ -1,13 +1,16 @@
 ---
-session: "00030"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00030: TOS Testing Results & Fixes"
-purpose: "Document session 00030: tos testing results & fixes"
-topics: ['auth', 'testing', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session 00030: tos testing results & fixes'
+session: '00030'
+status: current
+title: 'Session 00030: TOS Testing Results & Fixes'
+topics:
+- auth
+- testing
+- documentation
+type: guide
 ---
 
 # Session 00030: TOS Testing Results & Fixes

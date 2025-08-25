@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "Feasibility Check Request"
-purpose: "Document feasibility check request"
-topics: ['requirements']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: Document feasibility check request
+session: legacy
+status: current
+title: Feasibility Check Request
+topics:
+- requirements
+type: specification
 ---
 
 # Feasibility Check Request

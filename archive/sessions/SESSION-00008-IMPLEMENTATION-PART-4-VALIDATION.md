@@ -1,13 +1,15 @@
 ---
-session: "00008"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00008 Implementation Part 4: Validation & Testing"
-purpose: "Document session 00008 implementation part 4: validation & testing"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document session 00008 implementation part 4: validation & testing'
+session: 00008
+status: current
+title: 'Session 00008 Implementation Part 4: Validation & Testing'
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00008 Implementation Part 4: Validation & Testing

@@ -1,13 +1,15 @@
 ---
-session: "00053"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Reality Agent Migration Lock Integration Pattern"
-purpose: "Document reality agent migration lock integration pattern"
-topics: ['migration', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document reality agent migration lock integration pattern
+session: '00053'
+status: current
+title: Reality Agent Migration Lock Integration Pattern
+topics:
+- migration
+- documentation
+type: guide
 ---
 
 # Reality Agent Migration Lock Integration Pattern

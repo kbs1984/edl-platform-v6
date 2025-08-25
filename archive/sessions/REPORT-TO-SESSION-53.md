@@ -1,13 +1,17 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "SESSION 44 REPORT TO SESSION 53"
-purpose: "Document session 44 report to session 53"
-topics: ['auth', 'database', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 44 report to session 53
+session: legacy
+status: current
+title: SESSION 44 REPORT TO SESSION 53
+topics:
+- auth
+- database
+- session-log
+- documentation
+type: guide
 ---
 
 # SESSION 44 REPORT TO SESSION 53

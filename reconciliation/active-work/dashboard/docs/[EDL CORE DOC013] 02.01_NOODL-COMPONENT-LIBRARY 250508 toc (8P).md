@@ -1,13 +1,15 @@
 ---
-session: "25050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "02.01_NOODL-COMPONENT-LIBRARY"
-purpose: "Document 02.01_noodl-component-library"
-topics: ['auth', 'documentation']
-priority: "P1"
-domain: "reconciliation"
+created: '2025-08-23'
+domain: reconciliation
+priority: P1
+purpose: Document 02.01_noodl-component-library
+session: '25050'
+status: current
+title: 02.01_NOODL-COMPONENT-LIBRARY
+topics:
+- auth
+- documentation
+type: guide
 ---
 
 EDL 02_IMPLEMENTATION-PATTERNS/

@@ -1,13 +1,15 @@
 ---
-session: "00004"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00004 Fix Plan"
-purpose: "Document session 00004 fix plan"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session 00004 fix plan
+session: '00004'
+status: current
+title: Session 00004 Fix Plan
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session 00004 Fix Plan

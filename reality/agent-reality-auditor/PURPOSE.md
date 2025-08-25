@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Reality Auditor Agent Brigade Purpose"
-purpose: "Document reality auditor agent brigade purpose"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document reality auditor agent brigade purpose
+session: legacy
+status: current
+title: Reality Auditor Agent Brigade Purpose
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Reality Auditor Agent Brigade Purpose

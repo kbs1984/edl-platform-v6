@@ -1,13 +1,14 @@
 ---
-session: "00056"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "00056 FileSystem Agent Enhancement Specification"
-purpose: "Document 00056 filesystem agent enhancement specification"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document 00056 filesystem agent enhancement specification
+session: '00056'
+status: current
+title: 00056 FileSystem Agent Enhancement Specification
+topics:
+- documentation
+type: guide
 ---
 
 # 00056 FileSystem Agent Enhancement Specification

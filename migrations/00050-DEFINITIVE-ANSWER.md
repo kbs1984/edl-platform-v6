@@ -1,13 +1,14 @@
 ---
-session: "00050"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "DEFINITIVE ANSWER: Backup Extraction Completeness"
-purpose: "Document definitive answer: backup extraction completeness"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document definitive answer: backup extraction completeness'
+session: '00050'
+status: current
+title: 'DEFINITIVE ANSWER: Backup Extraction Completeness'
+topics:
+- documentation
+type: guide
 ---
 
 # DEFINITIVE ANSWER: Backup Extraction Completeness

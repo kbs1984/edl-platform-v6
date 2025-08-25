@@ -1,13 +1,15 @@
 ---
-session: "00041"
-type: "requirements"
-status: "current"
-created: "2025-08-23"
-title: "🚨 CRITICAL ARCHITECTURAL PIVOT - SESSION 41 🚨"
-purpose: "Document 🚨 critical architectural pivot - session 41 🚨"
-topics: ['auth', 'requirements']
-priority: "P0"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P0
+purpose: "Document \U0001F6A8 critical architectural pivot - session 41 \U0001F6A8"
+session: '00041'
+status: current
+title: "\U0001F6A8 CRITICAL ARCHITECTURAL PIVOT - SESSION 41 \U0001F6A8"
+topics:
+- auth
+- requirements
+type: specification
 ---
 
 # 🚨 CRITICAL ARCHITECTURAL PIVOT - SESSION 41 🚨

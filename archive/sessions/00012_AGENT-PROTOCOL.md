@@ -1,13 +1,15 @@
 ---
-session: "00012"
-type: "protocol"
-status: "current"
-created: "2025-08-23"
-title: "Reality Agent Protocol"
-purpose: "Document reality agent protocol"
-topics: ['database', 'protocol']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document reality agent protocol
+session: '00012'
+status: current
+title: Reality Agent Protocol
+topics:
+- database
+- protocol
+type: specification
 ---
 
 # Reality Agent Protocol

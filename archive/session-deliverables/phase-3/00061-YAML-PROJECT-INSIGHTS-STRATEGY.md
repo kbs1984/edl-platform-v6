@@ -1,19 +1,28 @@
 ---
-session: "00061"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "YAML-Driven Project Insights Strategy"
-purpose: "Define how YAML metadata enables project management insights"
-topics: ["yaml", "insights", "analytics", "project-management", "visibility"]
-priority: "P0"
-domain: "core"
-implements: ["organizational-health", "project-visibility"]
-related_to: ["00061-YAML-INDEXING-REQUIREMENTS.md", "SESSION-00061-HANDOFF.md"]
-validation_method: "metrics"
-review_date: "2025-09-23"
-estimated_shelf_life: "indefinite"
-breakthrough: "YAML metadata transforms dark documentation into actionable insights"
+breakthrough: YAML metadata transforms dark documentation into actionable insights
+created: '2025-08-23'
+domain: core
+estimated_shelf_life: indefinite
+implements:
+- organizational-health
+- project-visibility
+priority: P0
+purpose: Define how YAML metadata enables project management insights
+related_to:
+- 00061-YAML-INDEXING-REQUIREMENTS.md
+- SESSION-00061-HANDOFF.md
+review_date: '2025-09-23'
+session: '00061'
+status: current
+title: YAML-Driven Project Insights Strategy
+topics:
+- yaml
+- insights
+- analytics
+- project-management
+- visibility
+type: specification
+validation_method: metrics
 ---
 
 # YAML-Driven Project Insights Strategy

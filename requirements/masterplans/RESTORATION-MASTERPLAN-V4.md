@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "RESTORATION-MASTERPLAN-V4: Truth Seed Architecture"
-purpose: "Document restoration-masterplan-v4: truth seed architecture"
-topics: ['auth', 'architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document restoration-masterplan-v4: truth seed architecture'
+session: legacy
+status: current
+title: 'RESTORATION-MASTERPLAN-V4: Truth Seed Architecture'
+topics:
+- auth
+- architecture
+type: specification
 ---
 
 # RESTORATION-MASTERPLAN-V4: Truth Seed Architecture

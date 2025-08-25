@@ -1,13 +1,16 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Quick Start for Building Sessions"
-purpose: "Document quick start for building sessions"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document quick start for building sessions
+session: legacy
+status: current
+title: Quick Start for Building Sessions
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Quick Start for Building Sessions

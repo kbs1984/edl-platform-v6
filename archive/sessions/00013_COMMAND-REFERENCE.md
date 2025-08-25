@@ -1,13 +1,14 @@
 ---
-session: "00013"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Claude Custom Commands Reference"
-purpose: "Document claude custom commands reference"
-topics: ['documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document claude custom commands reference
+session: '00013'
+status: current
+title: Claude Custom Commands Reference
+topics:
+- documentation
+type: guide
 ---
 
 # Claude Custom Commands Reference

@@ -1,13 +1,14 @@
 ---
-session: "unknown"
-type: "architecture"
-status: "current"
-created: "2025-08-23"
-title: "MASTERPLAN-000: Unified Monitoring Dashboard"
-purpose: "Document masterplan-000: unified monitoring dashboard"
-topics: ['architecture']
-priority: "P1"
-domain: "requirements"
+created: '2025-08-23'
+domain: requirements
+priority: P1
+purpose: 'Document masterplan-000: unified monitoring dashboard'
+session: legacy
+status: current
+title: 'MASTERPLAN-000: Unified Monitoring Dashboard'
+topics:
+- architecture
+type: specification
 ---
 
 # MASTERPLAN-000: Unified Monitoring Dashboard

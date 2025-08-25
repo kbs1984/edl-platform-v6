@@ -1,13 +1,16 @@
 ---
-session: "00003"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Coaching for Session #00004: GitHub CLI Integration"
-purpose: "Document coaching for session #00004: github cli integration"
-topics: ['auth', 'session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: 'Document coaching for session #00004: github cli integration'
+session: '00003'
+status: current
+title: 'Coaching for Session #00004: GitHub CLI Integration'
+topics:
+- auth
+- session-log
+- documentation
+type: guide
 ---
 
 # Coaching for Session #00004: GitHub CLI Integration

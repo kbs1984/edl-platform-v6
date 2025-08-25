@@ -1,13 +1,15 @@
 ---
-session: "00022"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session Claims Verification"
-purpose: "Document session claims verification"
-topics: ['session-log', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document session claims verification
+session: '00022'
+status: current
+title: Session Claims Verification
+topics:
+- session-log
+- documentation
+type: guide
 ---
 
 # Session Claims Verification

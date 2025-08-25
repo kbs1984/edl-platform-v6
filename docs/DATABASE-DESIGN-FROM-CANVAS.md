@@ -1,13 +1,15 @@
 ---
-session: "unknown"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Database Design from Canvas Analysis"
-purpose: "Document database design from canvas analysis"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document database design from canvas analysis
+session: legacy
+status: current
+title: Database Design from Canvas Analysis
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Database Design from Canvas Analysis

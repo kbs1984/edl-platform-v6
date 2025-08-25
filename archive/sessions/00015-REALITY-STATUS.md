@@ -1,13 +1,16 @@
 ---
-session: "00015"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Session 00015 Reality Status Update"
-purpose: "Document session 00015 reality status update"
-topics: ['auth', 'database', 'documentation']
-priority: "P1"
-domain: "reality"
+created: '2025-08-23'
+domain: reality
+priority: P1
+purpose: Document session 00015 reality status update
+session: '00015'
+status: current
+title: Session 00015 Reality Status Update
+topics:
+- auth
+- database
+- documentation
+type: guide
 ---
 
 # Session 00015 Reality Status Update

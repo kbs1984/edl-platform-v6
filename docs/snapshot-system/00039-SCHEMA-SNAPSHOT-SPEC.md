@@ -1,13 +1,15 @@
 ---
-session: "00039"
-type: "documentation"
-status: "current"
-created: "2025-08-23"
-title: "Supabase Schema Snapshot Specification"
-purpose: "Document supabase schema snapshot specification"
-topics: ['database', 'documentation']
-priority: "P1"
-domain: "core"
+created: '2025-08-23'
+domain: core
+priority: P1
+purpose: Document supabase schema snapshot specification
+session: 00039
+status: current
+title: Supabase Schema Snapshot Specification
+topics:
+- database
+- documentation
+type: guide
 ---
 
 # Supabase Schema Snapshot Specification
