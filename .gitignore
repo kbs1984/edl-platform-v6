@@ -30,3 +30,6 @@ Thumbs.db
 *.tmp
 *.temp
 /tmp/
+*.pkl
+*.pyc
+__pycache__/
