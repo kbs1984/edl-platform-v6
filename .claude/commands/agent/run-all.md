@@ -2,7 +2,11 @@
 allowed-tools: Bash(python3 reality/agent-reality-auditor/*/connector.py:*)
 created: '2025-08-25'
 description: Run all Reality Agents and generate comprehensive report
-status: active
+purpose: "Execute all reality agents and generate comprehensive system report"
+session: legacy
+status: current
+title: Run All Command
+type: config
 ---
 
 # Run All Reality Agents

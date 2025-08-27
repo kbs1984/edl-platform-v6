@@ -2,7 +2,11 @@
 allowed-tools: Bash(git status:*), Bash(git add:*), Bash(git commit:*), Bash(git diff:*)
 created: '2025-08-25'
 description: Intelligently commit current work with proper attribution
-status: active
+purpose: "Commit current work with proper attribution and message formatting"
+session: legacy
+status: current
+title: Commit Work Command
+type: config
 ---
 
 # Commit Current Work

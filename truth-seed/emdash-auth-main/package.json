@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev -H auth.localhost.localdomain -p 3000",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start"
   },
@@ -37,6 +37,6 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^4.1.3",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "5.7.2"
+    "typescript": "5.9.2"
   }
 }

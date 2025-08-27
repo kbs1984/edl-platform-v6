@@ -1,14 +1,19 @@
 ---
-session: "00065"
-type: "log"
-status: "completed"
-created: "2025-08-25"
-title: "Session #00065 Log - File Organization Protocol"
-purpose: "Document work completed in Session 00065"
-topics: ["session-log", "file-organization", "protocol-design"]
-priority: "P0"
-domain: "core"
-related_to: ["SESSION-00065-HANDOFF.md", "00065-FILE-ORGANIZATION-PROTOCOL.md"]
+created: '2025-08-25'
+domain: core
+priority: P0
+purpose: Document work completed in Session 00065
+related_to:
+- SESSION-00065-HANDOFF.md
+- 00065-FILE-ORGANIZATION-PROTOCOL.md
+session: '00065'
+status: current
+title: 'Session #00065 Log - File Organization Protocol'
+topics:
+- session-log
+- file-organization
+- protocol-design
+type: log
 ---
 
 # Session #00065 Log

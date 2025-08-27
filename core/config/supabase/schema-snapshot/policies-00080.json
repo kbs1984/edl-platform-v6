@@ -1,0 +1,119 @@
+{
+  "snapshot_date": "2025-08-26T17:15:00Z",
+  "session": "00080",
+  "source": "Dashboard verification post-migration",
+  "migration_applied": "FINAL-dashboard-based-migration.sql",
+  "total_policies": 40,
+  "critical_policies": {
+    "public.profile": [
+      {
+        "name": "Allow users to select their own profile",
+        "type": "SELECT",
+        "roles": ["authenticated"],
+        "using": "auth.uid() = id",
+        "with_check": null
+      },
+      {
+        "name": "Enable read access for all users",
+        "type": "SELECT",
+        "roles": ["authenticated"],
+        "using": "true",
+        "with_check": null
+      },
+      {
+        "name": "Allow users to update their own profile",
+        "type": "UPDATE",
+        "roles": ["authenticated"],
+        "using": "auth.uid() = id",
+        "with_check": "auth.uid() = id"
+      }
+    ],
+    "public.student": [
+      {
+        "name": "Enable read access for all users",
+        "type": "SELECT",
+        "roles": ["authenticated"],
+        "using": "true",
+        "with_check": null
+      },
+      {
+        "name": "Enable insert for authenticated users only",
+        "type": "INSERT",
+        "roles": ["authenticated"],
+        "using": null,
+        "with_check": "true"
+      },
+      {
+        "name": "update_student_policy",
+        "type": "UPDATE",
+        "roles": ["authenticated"],
+        "using": "auth.uid() = user_id",
+        "with_check": "auth.uid() = user_id",
+        "note": "This policy was in dashboard but not in backup"
+      }
+    ],
+    "public.team": [
+      {
+        "name": "Enable delete for users based on user_id",
+        "type": "DELETE",
+        "roles": ["authenticated"],
+        "using": "true",
+        "note": "Simplified - no column check"
+      },
+      {
+        "name": "Enable insert for authenticated users only",
+        "type": "INSERT",
+        "roles": ["authenticated"],
+        "with_check": "true"
+      },
+      {
+        "name": "Enable read access for all users",
+        "type": "SELECT",
+        "roles": ["authenticated"],
+        "using": "true"
+      },
+      {
+        "name": "Policy with table joins",
+        "type": "UPDATE",
+        "roles": ["public"],
+        "using": "true",
+        "with_check": "true",
+        "note": "Simplified from complex join logic"
+      }
+    ],
+    "public.guardian": [
+      {
+        "name": "Enable insert for authenticated users only",
+        "type": "INSERT",
+        "roles": ["authenticated"],
+        "with_check": "true"
+      },
+      {
+        "name": "Enable read access for all users",
+        "type": "SELECT",
+        "roles": ["public"],
+        "using": "true"
+      }
+    ]
+  },
+  "tables_without_rls": [
+    "public.admin",
+    "public.bank_account",
+    "public.guild",
+    "public.guild_member",
+    "public.invitation",
+    "public.log",
+    "public.payment_history",
+    "public.rating"
+  ],
+  "tables_with_rls_no_policies": [
+    "public.guardian_request"
+  ],
+  "key_findings": {
+    "profile_insert_policy": "REMOVED - No INSERT policy should exist on profile table",
+    "profile_creation_method": "Handled by trigger after auth.users insert",
+    "student_update_policy": "Exists in dashboard but not in backup",
+    "team_policies": "Simpler than expected - use USING(true) not column checks",
+    "auth_schema": "Cannot be modified - Supabase managed"
+  }
+}

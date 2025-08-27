@@ -2,7 +2,7 @@
 created: '2025-01-17'
 domain: reconciliation
 estimated_shelf_life: indefinite
-modified: '2025-08-21'
+modified: '2025-08-27'
 priority: P0
 purpose: Central index for reconciliation between requirements, reality, and implementation
 review_date: '2025-09-21'
@@ -15,6 +15,8 @@ topics:
 - implementation
 - integration
 type: guide
+implements:
+- requirement-to-be-specified
 ---
 
 # Reconciliation Domain Index

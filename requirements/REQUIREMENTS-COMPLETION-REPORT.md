@@ -9,6 +9,9 @@ title: Requirements Domain Completion Report
 topics:
 - requirements
 type: specification
+based_on:
+- reality/snapshot-legacy.md
+modified: '2025-08-27'
 ---
 
 # Requirements Domain Completion Report

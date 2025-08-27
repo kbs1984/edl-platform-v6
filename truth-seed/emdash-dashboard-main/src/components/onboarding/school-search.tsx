@@ -34,19 +34,32 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
     setIsSchoolSelected(true);
   }
 
-  const registerNewSchool = () => {
-    registerSchoolAction(newSchoolName)
-      .then((res) => {
-        if (res) setFormData((prev) => ({
+  const registerNewSchool = async () => {
+    // SESSION 00087 FIX: Properly wait for school registration
+    try {
+      const res = await registerSchoolAction(newSchoolName);
+      if (res && res.id) {
+        setFormData((prev) => ({
           ...prev,
           schoolId: res.id,
           schoolName: newSchoolName,
-        }))
-      });
+        }));
+        setIsSchoolSelected(true);
+      } else {
+        // If no ID returned, create a temporary one
+        console.error("School registration returned no ID");
+        alert("Failed to register school. Please try again.");
+        return;
+      }
+    } catch (error) {
+      console.error("School registration error:", error);
+      alert("Failed to register school. Please try again.");
+      return;
+    }
+    
     setNewSchoolName("");
     setSchoolSearchResults([]);
     setIsSchoolSearchOpen(false);
-    setIsSchoolSelected(true);
   }
 
   useEffect(() => {
@@ -55,8 +68,15 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
       return;
     }
     setIsSearching(true)
-    searchSchoolAction(schoolSearchQuery).then((res) => {setSchoolSearchResults(res as {id: string, name: string}[])})
-    setIsSearching(false)
+    searchSchoolAction(schoolSearchQuery).then((res) => {
+      // SESSION 00087 FIX: Handle null results properly
+      setSchoolSearchResults(res || [])
+      setIsSearching(false)
+    }).catch((error) => {
+      console.error("School search error:", error)
+      setSchoolSearchResults([])
+      setIsSearching(false)
+    })
   }, [schoolSearchQuery]);
   
   return (
@@ -84,7 +104,7 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
       <div className="absolute top-full w-full z-50 bg-popover rounded-md" >
         {isSearching ? (
           <p className="text-center p-2 py-10 text-sm">Searching...</p>
-        ) : isSchoolSearchOpen && schoolSearchResults.length > 0 ? (
+        ) : isSchoolSearchOpen && schoolSearchResults && schoolSearchResults.length > 0 ? (
           <div className="rounded-md overflow-scroll max-h-80">
             <ul className="flex flex-col gap-1 p-1 py-2">
               {schoolSearchResults.map((school) => (

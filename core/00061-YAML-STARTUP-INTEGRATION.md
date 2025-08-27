@@ -12,7 +12,7 @@ related_to:
 - 00028-session-start.sh
 review_date: '2025-09-23'
 session: '00061'
-status: completed
+status: current
 title: YAML Health Check Integration into Session Startup
 topics:
 - yaml
@@ -20,7 +20,7 @@ topics:
 - session-startup
 - enhancement
 type: guide
-validation_method: tested
+validation_method: manual
 ---
 
 # YAML Health Check Integration into Session Startup

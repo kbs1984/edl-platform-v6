@@ -2,52 +2,109 @@
 created: '2025-08-23'
 domain: reality
 priority: P1
-purpose: Document reality domain purpose
+purpose: Document reality auditor agent brigade purpose
 session: legacy
 status: current
-title: Reality Domain Purpose
+title: Reality Auditor Agent Brigade Purpose
 topics:
+- database
 - documentation
 type: guide
 ---
 
-# Reality Domain Purpose
+# Reality Auditor Agent Brigade Purpose
 
 ## Mission
-To maintain an honest, comprehensive inventory of what exists, what works, and what constraints we face.
+To discover, verify, and report the actual state of all external systems that Reality Domain must track.
 
-## Core Responsibilities
-1. **Asset Inventory**: Catalog all existing projects, tools, and resources
-2. **Capability Assessment**: Document what we can actually do
-3. **Limitation Recognition**: Honestly acknowledge what we cannot do
-4. **State Monitoring**: Track current system state and health
+## Core Principle
+**"We report what IS, never what SHOULD BE or COULD BE."**
+
+## Agent Brigade Structure
+
+### Current Agents
+1. **Supabase Connector** - Database reality auditing
+   - Status: In Development
+   - Purpose: Truth about database state
+
+### Planned Agents
+2. **File System Auditor** - Local reality verification
+3. **Git Repository Auditor** - Version control reality
+4. **API Endpoint Auditor** - External service reality
+5. **Infrastructure Auditor** - Cloud/server reality
 
 ## Operating Principles
-- **Truth Over Comfort**: Document reality as it is, not as we wish it were
-- **Evidence-Based**: Every assertion must be verifiable
-- **Currency**: Information must be current and regularly validated
-- **Completeness**: Better to know an uncomfortable truth than miss it
 
-## Domain Boundary
-This domain owns all current-state documentation. It focuses exclusively on what IS, not what SHOULD BE or what COULD BE.
+### 1. Read-Only Operations
+No agent in this brigade may modify external state. We observe, we don't interfere.
 
-## Key Questions This Domain Answers
-- What do we actually have?
-- What is currently working?
-- What is broken or degraded?
-- What are our real capabilities?
-- What are our actual constraints?
+### 2. Progressive Discovery
+Start with minimal checks, expand based on permissions and need.
 
-## Interface Points
-- **TO Requirements Domain**: Provides feasibility reality checks
-- **TO Reconciliation Domain**: Supplies current state for gap analysis
-- **FROM Requirements Domain**: Receives target state for comparison
-- **FROM Reconciliation Domain**: Receives implementation results for state updates
+### 3. Before/After Verification
+Every significant operation must be bracketed by reality checks.
 
-## Sacred Duties
-1. **The Daily Reality Check**: Verify critical system state
-2. **The Weekly Inventory**: Update project and resource status
-3. **The Monthly Audit**: Comprehensive capability assessment
+### 4. Truth Over Speed
+Better to be accurate than fast. Cache when safe, but verify when critical.
+
+### 5. Transparent Limitations
+Always report what we cannot see or verify. Unknown is better than assumed.
+
+## Integration Protocol
+
+### Input from Reality Domain
+```python
+{
+    "request": "audit",
+    "target": "system-name",
+    "depth": 1-4,  # Discovery level
+    "cache_ok": true|false
+}
+```
+
+### Output to Reality Domain
+```python
+{
+    "agent": "agent-name",
+    "timestamp": "ISO-8601",
+    "discoveries": {...},
+    "limitations": [...],
+    "confidence": 0.0-1.0
+}
+```
+
+## Change Management
+
+### Adding New Agents
+1. Must serve Reality Domain's truth-seeking mission
+2. Must be read-only in operation
+3. Must follow progressive discovery pattern
+4. Must integrate with existing error codes
+5. Must provide before/after check capability
+
+### Modifying Existing Agents
+1. Changes must not break Reality Domain integration
+2. Output format changes require version increment
+3. New discovery levels should be additive, not breaking
+4. Error handling must remain consistent
+
+## Success Metrics
+
+- **Coverage**: Percentage of external systems with agents
+- **Accuracy**: Truth verification success rate
+- **Reliability**: Uptime and error recovery rate
+- **Performance**: Time to complete reality checks
+- **Change Detection**: Drift identification accuracy
+
+## Coordination
+
+All agents in this brigade:
+- Share error code namespace (REALITY_XXX)
+- Use common output format
+- Respect rate limits and performance boundaries
+- Log to unified audit trail
+- Cache with same TTL strategy
 
 ---
-*"Reality is that which, when you stop believing in it, doesn't go away."* - Philip K. Dick
+
+*"The brigade that sees all, changes nothing, and reports only truth."*

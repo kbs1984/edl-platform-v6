@@ -22,7 +22,7 @@ topics:
 - project-management
 - visibility
 type: specification
-validation_method: metrics
+validation_method: reality-agent
 ---
 
 # YAML-Driven Project Insights Strategy

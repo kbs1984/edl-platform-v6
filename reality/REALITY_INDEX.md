@@ -48,6 +48,57 @@ The Reality Domain documents what EXISTS, what WORKS, and what CONSTRAINTS we fa
 
 ### 📊 System Metrics
 
+---
+
+## 📁 Reality Files Documentation (Session 85 Addition)
+
+### 🎯 Critical Discovery - Reality Files Solve Mysteries
+Session 85 proved that reality snapshot files can solve multi-session blockers in minutes. The `reality/00081-request-*` files revealed that `add_new_user` function existed but wasn't triggered - solving a 37-session auth mystery.
+
+### Reality Snapshot Files (Ground Truth)
+These files capture actual database state from Supabase Dashboard:
+
+#### Current Database State (Our Project)
+- `reality/00081-request-triggers.md` - Active triggers (with YAML)
+- `reality/00081-request-functions.md` - Active functions (with YAML)
+- `reality/00081-request-profile-table-columns.png` - Profile table structure
+- `reality/00081-request-logs-api-gateway.png` - API gateway logs
+
+#### Source Project Reference
+- `reality/00081-request-source-project-triggers.md` - Source triggers (with YAML)
+- `reality/00081-request-source-project-functions.md` - Source functions (with YAML)
+- `reality/00081-request-source-project-enums.md` - Source enums (with YAML)
+- `reality/00081-request-source-project-profile-table-columns.png` - Source profile
+
+### Deployed Migrations (What's Actually Applied)
+All files with `done-` prefix represent successfully deployed migrations:
+- `reconciliation/migrations/batches/done-batch-*.sql` (12 files with YAML)
+- These are the ground truth of what's been applied to production
+
+### 🔍 Quick Reality Queries (Session 85 Enhancement)
+```bash
+# Find all reality snapshots
+python3 scripts/00059-yaml-query.py --type reality-snapshot
+
+# Find reality about specific objects
+python3 scripts/00059-yaml-query.py --topic triggers
+python3 scripts/00059-yaml-query.py --topic source-project
+```
+
+### Reality vs Theoretical Distinction
+- **Reality**: What's actually in Supabase Dashboard right now
+- **Theoretical**: What migration files say should be there
+- **Ground Truth**: Reality wins over theory every time
+
+### Key Lesson: Always Check Reality First
+Before debugging any database issue:
+1. Check reality request files for current state
+2. Compare with source project files  
+3. Verify done- migrations match expectations
+4. Test with actual API calls, not assumptions
+
+### 📊 System Metrics
+
 ```
 Overall Health:     97% ████████████████████░
 ├─ Discovery:       100% ████████████████████ (Can find truth)

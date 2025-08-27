@@ -1,0 +1,14 @@
+
+=== PROFILE TABLE ANALYSIS ===
+
+Table: public.profile
+Total policies: 3
+  SELECT: 2 policies
+    - Allow users to select their own profile
+    - Enable read access for all users
+  UPDATE: 1 policies
+    - Allow users to update their own profile
+
+🔍 CRITICAL CHECK: Profile table has INSERT policy? False
+✅ CONFIRMED: No INSERT policy on profile table in backup
+⚠️  This means profile_insert_authenticated should be REMOVED

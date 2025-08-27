@@ -1,14 +1,18 @@
 ---
-session: "00068"
-type: "analysis"
-status: "complete"
-created: "2025-08-25"
-title: "How Deliverables Context Changes Session 68's Work Assessment"
-purpose: "Analyze how understanding deliverables affects our view of Session 68's work"
-topics: ["context", "assessment", "deliverables", "constitutional-os"]
-priority: "P0"
-domain: "core"
-lifecycle: "ON"
+created: '2025-08-25'
+domain: core
+lifecycle: 'ON'
+priority: P0
+purpose: Analyze how understanding deliverables affects our view of Session 68's work
+session: 00068
+status: current
+title: How Deliverables Context Changes Session 68's Work Assessment
+topics:
+- context
+- assessment
+- deliverables
+- constitutional-os
+type: analysis
 ---
 
 # How Deliverables Context Changes Session 68's Work Assessment

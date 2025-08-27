@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Session 00068 - Fix YAML Validation Errors
+Session 00068/69 - Fix YAML Validation Errors (Enhanced)
 Systematically fix common YAML frontmatter validation issues
+Enhanced in Session 69 to handle more error types
 """
 
 import os
@@ -13,17 +14,40 @@ from typing import Dict, List, Tuple
 # Valid type values per schema
 VALID_TYPES = [
     'specification', 'guide', 'report', 'analysis', 'log', 
-    'script', 'config', 'template', 'handoff', 'unknown'
+    'script', 'config', 'template', 'handoff', 'unknown',
+    'protocol', 'command'  # Added in Session 69
 ]
+
+# Valid status values per schema (Session 69 addition)
+VALID_STATUS = ['current', 'draft', 'archived', 'superseded']
+
+# Status mappings for invalid values (Session 69 addition)
+STATUS_MAPPINGS = {
+    'complete': 'current',
+    'completed': 'current', 
+    'active': 'current',
+    'in-progress': 'draft',
+    'pending': 'draft'
+}
 
 # Type mappings for invalid values
 TYPE_MAPPINGS = {
     'documentation': 'guide',
     'architecture': 'specification',
     'index': 'guide',
-    'protocol': 'specification',
-    'command': 'script',
+    # 'protocol': 'specification',  # Now valid on its own
+    # 'command': 'script',  # Now valid on its own
     'requirements': 'specification'
+}
+
+# Valid validation_method values (Session 69 addition)
+VALID_VALIDATION_METHODS = ['automated', 'manual', 'reality-agent', 'none']
+
+# Validation method mappings (Session 69 addition)
+VALIDATION_METHOD_MAPPINGS = {
+    'implemented': 'manual',
+    'metrics': 'reality-agent',
+    'tested': 'manual'  # Session 69 - common variant
 }
 
 # Files to skip (binary, generated, etc)
@@ -63,25 +87,60 @@ def fix_yaml_issues(data: Dict, file_path: Path) -> Tuple[Dict, List[str]]:
     """Fix common YAML validation issues"""
     fixes = []
     
-    # Fix invalid type values
-    if 'type' in data and data['type'] in TYPE_MAPPINGS:
-        old_type = data['type']
-        data['type'] = TYPE_MAPPINGS[old_type]
-        fixes.append(f"type: {old_type} → {data['type']}")
+    # Fix invalid status values (Session 69 enhancement)
+    if 'status' in data and data['status'] not in VALID_STATUS:
+        if data['status'] in STATUS_MAPPINGS:
+            old_status = data['status']
+            data['status'] = STATUS_MAPPINGS[old_status]
+            fixes.append(f"status: {old_status} → {data['status']}")
     
-    # Fix missing session for files that need it
+    # Fix invalid type values
+    if 'type' in data and data['type'] not in VALID_TYPES:
+        if data['type'] in TYPE_MAPPINGS:
+            old_type = data['type']
+            data['type'] = TYPE_MAPPINGS[old_type]
+            fixes.append(f"type: {old_type} → {data['type']}")
+    
+    # Fix invalid validation_method values (Session 69 enhancement)
+    if 'validation_method' in data and data['validation_method'] not in VALID_VALIDATION_METHODS:
+        if data['validation_method'] in VALIDATION_METHOD_MAPPINGS:
+            old_method = data['validation_method']
+            data['validation_method'] = VALIDATION_METHOD_MAPPINGS[old_method]
+            fixes.append(f"validation_method: {old_method} → {data['validation_method']}")
+    
+    # Add missing type field for protocol files (Session 69 enhancement)
+    if 'type' not in data:
+        file_str = str(file_path)
+        if 'protocols/' in file_str or 'PROTOCOL' in file_path.name:
+            data['type'] = 'protocol'
+            fixes.append("Added type: protocol")
+        elif '.claude/commands' in file_str:
+            data['type'] = 'command'
+            fixes.append("Added type: command")
+        elif 'SESSION-' in file_path.name and '-LOG' in file_path.name:
+            data['type'] = 'log'
+            fixes.append("Added type: log")
+        elif 'SESSION-' in file_path.name and '-HANDOFF' in file_path.name:
+            data['type'] = 'handoff'
+            fixes.append("Added type: handoff")
+    
+    # Fix missing session for files that need it (Enhanced Session 69)
     if 'session' not in data:
         # Extract session number from filename if present
         match = re.match(r'^(\d{5})-', file_path.name)
         if match:
             data['session'] = match.group(1)
             fixes.append(f"Added session: {data['session']}")
-        elif 'unknown' not in str(data.get('session', '')):
-            # Check common directories that don't need session numbers
-            skip_dirs = ['truth-seed', 'shared', 'docs', 'templates', 'requirements', 'reality']
-            if any(skip_dir in str(file_path) for skip_dir in skip_dirs):
-                data['session'] = 'legacy'
-                fixes.append("Added session: legacy")
+        elif 'SESSION-' in file_path.name:
+            match = re.search(r'SESSION-(\d{5})', file_path.name)
+            if match:
+                data['session'] = match.group(1)
+                fixes.append(f"Added session: {data['session']}")
+        else:
+            # For all other files, add 'legacy' session
+            # This includes .claude/commands, docs, truth-seed, etc.
+            data['session'] = 'legacy'
+            fixes.append("Added session: legacy")
     
     # Fix invalid session values
     if data.get('session') == 'unknown':
@@ -95,8 +154,23 @@ def fix_yaml_issues(data: Dict, file_path: Path) -> Tuple[Dict, List[str]]:
     
     # Ensure required fields exist
     if 'status' not in data:
-        data['status'] = 'active'
-        fixes.append("Added status: active")
+        data['status'] = 'current'  # Changed from 'active' to valid value
+        fixes.append("Added status: current")
+    
+    # Add missing title field (Session 69 enhancement)
+    if 'title' not in data:
+        # Try to generate title from filename or first heading
+        title = None
+        if 'PROTOCOL' in file_path.name:
+            title = file_path.stem.replace('-', ' ').replace('_', ' ').title()
+        elif 'commands' in str(file_path):
+            title = file_path.stem.replace('-', ' ').title() + ' Command'
+        elif file_path.stem:
+            title = file_path.stem.replace('-', ' ').replace('_', ' ').title()
+        
+        if title:
+            data['title'] = title
+            fixes.append(f"Added title: {title}")
     
     if 'created' not in data:
         data['created'] = '2025-08-25'

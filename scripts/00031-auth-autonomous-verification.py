@@ -38,8 +38,8 @@ def check_file_structure():
     
     required_files = [
         ("Main App", "index.html"),
-        ("Password Reset", "auth/reset-password.html"),
-        ("Auth Test Tool", "auth/test.html"),
+        ("Password Reset", "reconciliation/active-work/auth/reset-password.html"),
+        ("Auth Test Tool", "reconciliation/active-work/auth/test.html"),
     ]
     
     all_good = True
@@ -98,8 +98,8 @@ def check_configuration():
     config_checks = []
     
     # Check auth/test.html for proper configuration
-    if os.path.exists('auth/test.html'):
-        with open('auth/test.html', 'r') as f:
+    if os.path.exists('reconciliation/active-work/auth/test.html'):
+        with open('reconciliation/active-work/auth/test.html', 'r') as f:
             content = f.read()
             
         has_url = 'bbrheacetxlnqbibjwsz.supabase.co' in content
@@ -118,8 +118,8 @@ def check_auth_features():
     features = []
     
     # Check password reset implementation
-    if os.path.exists('auth/reset-password.html'):
-        with open('auth/reset-password.html', 'r') as f:
+    if os.path.exists('reconciliation/active-work/auth/reset-password.html'):
+        with open('reconciliation/active-work/auth/reset-password.html', 'r') as f:
             reset_content = f.read()
         
         has_reset_function = 'resetPasswordForEmail' in reset_content

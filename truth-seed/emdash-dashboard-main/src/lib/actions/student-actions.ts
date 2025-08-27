@@ -9,7 +9,10 @@ export const studentAction = async (formData: StudentData) => {
 
   if (!formData.termsAgreed) return { status: "error", message: "Terms not agreed"};
   if (!formData.addGuardianLater && !formData.guardianEmail) return { status: "error", message: "Guardian email not provided"};
-  if (formData.graduationYear !== "Graduated" && !formData.schoolId) return { status: "error", message: "School name not provided"};
+  // SESSION 00087 FIX: Better error message and handle school selection
+  if (formData.graduationYear !== "Graduated" && !formData.schoolId) {
+    return { status: "error", message: "Please select a school from the dropdown or click 'Register New School' to add your school"};
+  }
 
   if (formData.graduationYear === "Graduated") formData.schoolId = null;
 

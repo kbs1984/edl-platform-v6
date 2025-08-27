@@ -62,8 +62,8 @@ print("SUCCESS")
         # 3. Check frontend files exist
         auth_files = [
             "auth.html",  # New auth page
-            "auth/js/auth-forms.js",  # Auth form logic
-            "auth/js/supabase-client.js",  # Supabase client
+            "reconciliation/active-work/auth/js/auth-forms.js",  # Auth form logic
+            "reconciliation/active-work/auth/js/supabase-client.js",  # Supabase client
             "index.html",  # Dashboard (protected)
         ]
         checks['frontend_form'] = all(Path(f).exists() for f in auth_files)

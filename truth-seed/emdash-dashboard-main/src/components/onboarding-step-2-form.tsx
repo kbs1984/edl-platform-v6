@@ -45,21 +45,13 @@ export function Onboarding2InputForm({ profile }: { profile: Profile }) {
   useEffect(() => {
     if (!profile.image_path) return
 
-    fetch(profile.image_path)
-      .then(async (res) => {
-        const blob = await res.blob()
-        const fileName = profile.image_path!.split('/').pop() || "profile-image.jpg"
-        const file = new File([blob], fileName, { type: blob.type })
-        setFormData((prev) => ({ ...prev, imageFile: file }))
-        setImagePreview(profile.image_path)
-      })
-      .catch((e) => {
-        toast({
-          variant: "destructive",
-          title: "Image upload error",
-          description: e.message,
-        });
-      })
+    // SESSION 00087 FIX: Don't try to create File from existing image
+    // Just set the preview URL directly
+    setImagePreview(profile.image_path)
+    
+    // We don't need to create a File object for existing images
+    // The File is only needed for NEW uploads
+    // If user doesn't change image, we'll handle that in submit
   }, [profile.image_path])
 
   // 처음에 input 들어왔을때 체크
@@ -138,10 +130,9 @@ export function Onboarding2InputForm({ profile }: { profile: Profile }) {
       formData.name === "" ||
       formData.username === "" ||
       formData.gender === "" ||
-      !formData.dateOfBirth ||
-      !formData.imageFile
+      !formData.dateOfBirth
     ) {
-      return alert("missing form");
+      return alert("Please fill in all required fields");
     }
 
     setIsSubmitting(true);
@@ -150,7 +141,10 @@ export function Onboarding2InputForm({ profile }: { profile: Profile }) {
     data.append("username", formData.username);
     data.append("gender", formData.gender);
     data.append("dateOfBirth", formData.dateOfBirth.toISOString());
-    data.append("imageFile", formData.imageFile);
+    // SESSION 00087 FIX: Only append imageFile if user uploaded a new one
+    if (formData.imageFile) {
+      data.append("imageFile", formData.imageFile);
+    }
 
     const result = await UploadUserInfoAction(data);
 

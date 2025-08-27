@@ -1,0 +1,446 @@
+{
+  "extraction_date": "2025-08-26T16:26:21.479985",
+  "total_policies": 40,
+  "tables_with_policies": 17,
+  "rls_enabled_tables": [
+    "auth.sessions",
+    "chat.participant",
+    "debate.format_rounds",
+    "chat.room",
+    "auth.instances",
+    "debate.sides",
+    "public.friendship",
+    "public.student",
+    "storage.objects",
+    "public.judge",
+    "debate.genres",
+    "auth.schema_migrations",
+    "storage.buckets_analytics",
+    "storage.s3_multipart_uploads_parts",
+    "public.guardian",
+    "auth.users",
+    "auth.audit_log_entries",
+    "auth.mfa_factors",
+    "storage.s3_multipart_uploads",
+    "auth.sso_domains",
+    "debate.debate_formats",
+    "storage.migrations",
+    "auth.mfa_amr_claims",
+    "auth.sso_providers",
+    "public.guardian_request",
+    "public.team",
+    "realtime.messages",
+    "auth.flow_state",
+    "auth.refresh_tokens",
+    "auth.mfa_challenges",
+    "debate.criteria",
+    "auth.one_time_tokens",
+    "auth.identities",
+    "public.team_member",
+    "storage.buckets",
+    "public.profile",
+    "auth.saml_relay_states",
+    "auth.saml_providers",
+    "debate.round_templates",
+    "debate.ballots",
+    "storage.prefixes",
+    "chat.message",
+    "public.school"
+  ],
+  "policies_by_table": {
+    "chat.participant": [
+      {
+        "name": "Enable insert for users based on user_id",
+        "schema": "chat",
+        "table": "participant",
+        "full_table": "chat.participant",
+        "definition": "FOR INSERT WITH CHECK ((( SELECT auth.uid() AS uid) = student_id))",
+        "full_statement": "CREATE POLICY \"Enable insert for users based on user_id\" ON chat.participant FOR INSERT WITH CHECK ((( SELECT auth.uid() AS uid) = student_id));",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable users to view their own data only",
+        "schema": "chat",
+        "table": "participant",
+        "full_table": "chat.participant",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable users to view their own data only\" ON chat.participant FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.genres": [
+      {
+        "name": "Enable insert for authenticated users only",
+        "schema": "debate",
+        "table": "genres",
+        "full_table": "debate.genres",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Enable insert for authenticated users only\" ON debate.genres FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "genres",
+        "full_table": "debate.genres",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.genres FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.criteria": [
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "criteria",
+        "full_table": "debate.criteria",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.criteria FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.debate_formats": [
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "debate_formats",
+        "full_table": "debate.debate_formats",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.debate_formats FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.format_rounds": [
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "format_rounds",
+        "full_table": "debate.format_rounds",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.format_rounds FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.round_templates": [
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "round_templates",
+        "full_table": "debate.round_templates",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.round_templates FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.sides": [
+      {
+        "name": "Enable read access for all users",
+        "schema": "debate",
+        "table": "sides",
+        "full_table": "debate.sides",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON debate.sides FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "debate.ballots": [
+      {
+        "name": "Judges can manage their own ballots",
+        "schema": "debate",
+        "table": "ballots",
+        "full_table": "debate.ballots",
+        "definition": "USING ((judge_id IN ( SELECT judge.id\n   FROM public.judge\n  WHERE (judge.user_id = auth.uid()))))",
+        "full_statement": "CREATE POLICY \"Judges can manage their own ballots\" ON debate.ballots USING ((judge_id IN ( SELECT judge.id\n   FROM public.judge\n  WHERE (judge.user_id = auth.uid()))));",
+        "type": "ALL"
+      },
+      {
+        "name": "Participants can view ballots for their debates",
+        "schema": "debate",
+        "table": "ballots",
+        "full_table": "debate.ballots",
+        "definition": "FOR SELECT USING ((debate_id IN ( SELECT dt.debate_id\n   FROM ((debate.debate_teams dt\n     JOIN debate.debate_participants dp ON ((dp.debate_team_id = dt.id)))\n     JOIN public.student s ON ((dp.user_id = s.user_id)))\n  WHERE (s.user_id = auth.uid()))))",
+        "full_statement": "CREATE POLICY \"Participants can view ballots for their debates\" ON debate.ballots FOR SELECT USING ((debate_id IN ( SELECT dt.debate_id\n   FROM ((debate.debate_teams dt\n     JOIN debate.debate_participants dp ON ((dp.debate_team_id = dt.id)))\n     JOIN public.student s ON ((dp.user_id = s.user_id)))\n  WHERE (s.user_id = auth.uid()))));",
+        "type": "SELECT"
+      }
+    ],
+    "public.school": [
+      {
+        "name": "Allow authenticated users to insert school",
+        "schema": "public",
+        "table": "school",
+        "full_table": "public.school",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Allow authenticated users to insert school\" ON public.school FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "school",
+        "full_table": "public.school",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.school FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "public.friendship": [
+      {
+        "name": "Allow insert on friendship",
+        "schema": "public",
+        "table": "friendship",
+        "full_table": "public.friendship",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Allow insert on friendship\" ON public.friendship FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Allow select on friendship",
+        "schema": "public",
+        "table": "friendship",
+        "full_table": "public.friendship",
+        "definition": "FOR SELECT TO authenticated USING (((user_id = auth.uid()) OR (friend_id = auth.uid())))",
+        "full_statement": "CREATE POLICY \"Allow select on friendship\" ON public.friendship FOR SELECT TO authenticated USING (((user_id = auth.uid()) OR (friend_id = auth.uid())));",
+        "type": "SELECT"
+      },
+      {
+        "name": "Allow update on friendship",
+        "schema": "public",
+        "table": "friendship",
+        "full_table": "public.friendship",
+        "definition": "FOR UPDATE TO authenticated USING (((user_id = auth.uid()) OR (friend_id = auth.uid()))) WITH CHECK (((user_id = auth.uid()) OR ((friend_id = auth.uid()) AND (status = ANY (ARRAY['ACCEPTED'::public.status, 'REJECTED'::public.status])))))",
+        "full_statement": "CREATE POLICY \"Allow update on friendship\" ON public.friendship FOR UPDATE TO authenticated USING (((user_id = auth.uid()) OR (friend_id = auth.uid()))) WITH CHECK (((user_id = auth.uid()) OR ((friend_id = auth.uid()) AND (status = ANY (ARRAY['ACCEPTED'::public.status, 'REJECTED'::public.status])))));",
+        "type": "UPDATE"
+      }
+    ],
+    "public.profile": [
+      {
+        "name": "Allow users to select their own profile",
+        "schema": "public",
+        "table": "profile",
+        "full_table": "public.profile",
+        "definition": "FOR SELECT TO authenticated USING ((( SELECT auth.uid() AS uid) = id))",
+        "full_statement": "CREATE POLICY \"Allow users to select their own profile\" ON public.profile FOR SELECT TO authenticated USING ((( SELECT auth.uid() AS uid) = id));",
+        "type": "SELECT"
+      },
+      {
+        "name": "Allow users to update their own profile",
+        "schema": "public",
+        "table": "profile",
+        "full_table": "public.profile",
+        "definition": "FOR UPDATE TO authenticated USING ((( SELECT auth.uid() AS uid) = id)) WITH CHECK ((( SELECT auth.uid() AS uid) = id))",
+        "full_statement": "CREATE POLICY \"Allow users to update their own profile\" ON public.profile FOR UPDATE TO authenticated USING ((( SELECT auth.uid() AS uid) = id)) WITH CHECK ((( SELECT auth.uid() AS uid) = id));",
+        "type": "UPDATE"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "profile",
+        "full_table": "public.profile",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.profile FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "public.team": [
+      {
+        "name": "Enable delete for users based on user_id",
+        "schema": "public",
+        "table": "team",
+        "full_table": "public.team",
+        "definition": "FOR DELETE TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable delete for users based on user_id\" ON public.team FOR DELETE TO authenticated USING (true);",
+        "type": "DELETE"
+      },
+      {
+        "name": "Enable insert for authenticated users only",
+        "schema": "public",
+        "table": "team",
+        "full_table": "public.team",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Enable insert for authenticated users only\" ON public.team FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "team",
+        "full_table": "public.team",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.team FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      },
+      {
+        "name": "Policy with table joins",
+        "schema": "public",
+        "table": "team",
+        "full_table": "public.team",
+        "definition": "FOR UPDATE USING (true)",
+        "full_statement": "CREATE POLICY \"Policy with table joins\" ON public.team FOR UPDATE USING (true);",
+        "type": "UPDATE"
+      }
+    ],
+    "public.team_member": [
+      {
+        "name": "Enable delete for users based on user_id",
+        "schema": "public",
+        "table": "team_member",
+        "full_table": "public.team_member",
+        "definition": "FOR DELETE USING (true)",
+        "full_statement": "CREATE POLICY \"Enable delete for users based on user_id\" ON public.team_member FOR DELETE USING (true);",
+        "type": "DELETE"
+      },
+      {
+        "name": "Enable insert for users based on user_id",
+        "schema": "public",
+        "table": "team_member",
+        "full_table": "public.team_member",
+        "definition": "FOR INSERT WITH CHECK (((status = 'PENDING'::public.status) OR (( SELECT auth.uid() AS uid) = student_id)))",
+        "full_statement": "CREATE POLICY \"Enable insert for users based on user_id\" ON public.team_member FOR INSERT WITH CHECK (((status = 'PENDING'::public.status) OR (( SELECT auth.uid() AS uid) = student_id)));",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "team_member",
+        "full_table": "public.team_member",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.team_member FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      },
+      {
+        "name": "Enable update for users based on email",
+        "schema": "public",
+        "table": "team_member",
+        "full_table": "public.team_member",
+        "definition": "FOR UPDATE USING (true)",
+        "full_statement": "CREATE POLICY \"Enable update for users based on email\" ON public.team_member FOR UPDATE USING (true);",
+        "type": "UPDATE"
+      }
+    ],
+    "public.guardian": [
+      {
+        "name": "Enable insert for authenticated users only",
+        "schema": "public",
+        "table": "guardian",
+        "full_table": "public.guardian",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Enable insert for authenticated users only\" ON public.guardian FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "guardian",
+        "full_table": "public.guardian",
+        "definition": "FOR SELECT USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.guardian FOR SELECT USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "public.judge": [
+      {
+        "name": "Enable insert for authenticated users only",
+        "schema": "public",
+        "table": "judge",
+        "full_table": "public.judge",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Enable insert for authenticated users only\" ON public.judge FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      }
+    ],
+    "public.student": [
+      {
+        "name": "Enable insert for authenticated users only",
+        "schema": "public",
+        "table": "student",
+        "full_table": "public.student",
+        "definition": "FOR INSERT TO authenticated WITH CHECK (true)",
+        "full_statement": "CREATE POLICY \"Enable insert for authenticated users only\" ON public.student FOR INSERT TO authenticated WITH CHECK (true);",
+        "type": "INSERT"
+      },
+      {
+        "name": "Enable read access for all users",
+        "schema": "public",
+        "table": "student",
+        "full_table": "public.student",
+        "definition": "FOR SELECT TO authenticated USING (true)",
+        "full_statement": "CREATE POLICY \"Enable read access for all users\" ON public.student FOR SELECT TO authenticated USING (true);",
+        "type": "SELECT"
+      }
+    ],
+    "storage.objects": [
+      {
+        "name": "Give anon users access to JPG images in folder g2sb1v_0",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR SELECT USING (((bucket_id = 'team-assets'::text) AND (lower((storage.foldername(name))[1]) = 'public'::text) AND (auth.role() = 'anon'::text)))",
+        "full_statement": "CREATE POLICY \"Give anon users access to JPG images in folder g2sb1v_0\" ON storage.objects FOR SELECT USING (((bucket_id = 'team-assets'::text) AND (lower((storage.foldername(name))[1]) = 'public'::text) AND (auth.role() = 'anon'::text)));",
+        "type": "SELECT"
+      },
+      {
+        "name": "Give users access to delete their own file vejz8c_0",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR DELETE USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to delete their own file vejz8c_0\" ON storage.objects FOR DELETE USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "DELETE"
+      },
+      {
+        "name": "Give users access to own folder g2sb1v_0",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR UPDATE USING (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to own folder g2sb1v_0\" ON storage.objects FOR UPDATE USING (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "UPDATE"
+      },
+      {
+        "name": "Give users access to own folder g2sb1v_1",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR INSERT WITH CHECK (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to own folder g2sb1v_1\" ON storage.objects FOR INSERT WITH CHECK (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "INSERT"
+      },
+      {
+        "name": "Give users access to own folder g2sb1v_2",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR DELETE USING (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to own folder g2sb1v_2\" ON storage.objects FOR DELETE USING (((bucket_id = 'team-assets'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "DELETE"
+      },
+      {
+        "name": "Give users access to own folder vejz8c_0",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR INSERT WITH CHECK (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to own folder vejz8c_0\" ON storage.objects FOR INSERT WITH CHECK (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "INSERT"
+      },
+      {
+        "name": "Give users access to own folder vejz8c_1",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR UPDATE USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to own folder vejz8c_1\" ON storage.objects FOR UPDATE USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "UPDATE"
+      },
+      {
+        "name": "Give users access to their own folder vejz8c_0",
+        "schema": "storage",
+        "table": "objects",
+        "full_table": "storage.objects",
+        "definition": "FOR SELECT USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])))",
+        "full_statement": "CREATE POLICY \"Give users access to their own folder vejz8c_0\" ON storage.objects FOR SELECT USING (((bucket_id = 'profile-images'::text) AND (( SELECT (auth.uid())::text AS uid) = (storage.foldername(name))[1])));",
+        "type": "SELECT"
+      }
+    ]
+  }
+}

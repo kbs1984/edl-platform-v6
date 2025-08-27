@@ -1,14 +1,18 @@
 ---
-session: "00068"
-type: "report"
-status: "complete"
-created: "2025-08-25"
-title: "Session 68 Work Assessment Against Mandatory Reading"
-purpose: "Evaluate if Session 68 work aligned with Session 67's mandatory requirements"
-topics: ["assessment", "compliance", "safety", "validation"]
-priority: "P0"
-domain: "core"
-lifecycle: "ON"
+created: '2025-08-25'
+domain: core
+lifecycle: 'ON'
+priority: P0
+purpose: Evaluate if Session 68 work aligned with Session 67's mandatory requirements
+session: 00068
+status: current
+title: Session 68 Work Assessment Against Mandatory Reading
+topics:
+- assessment
+- compliance
+- safety
+- validation
+type: report
 ---
 
 # Session 68 Work Assessment Against Mandatory Reading

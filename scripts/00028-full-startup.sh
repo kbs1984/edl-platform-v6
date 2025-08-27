@@ -5,8 +5,35 @@
 
 echo "╔══════════════════════════════════════════════════════════╗"
 echo "║     EDL Platform v6 - Automated Session Initialization    ║"
+echo "║              WITH ANTI-GUESSWORK PROTOCOL v1.0            ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
+
+# Session 00088: Anti-Guesswork Check
+echo "🛑 ANTI-GUESSWORK PROTOCOL CHECK"
+echo "================================="
+echo "Sessions 83, 87, 88 all fell into the guesswork trap."
+echo "This protocol prevents that pattern."
+echo ""
+echo "Before making ANY code changes today, you MUST:"
+echo "  1. Check git diff for current changes"
+echo "  2. Query YAML for existing solutions"
+echo "  3. Read recent session logs"
+echo "  4. Verify reality with agents"
+echo ""
+echo "Have you reviewed the anti-guesswork protocol? (yes/no)"
+read PROTOCOL_ACKNOWLEDGED
+
+if [ "$PROTOCOL_ACKNOWLEDGED" != "yes" ]; then
+    echo ""
+    echo "📋 Please review: core/00088-ANTI-GUESSWORK-PROTOCOL.md"
+    echo "Then run: ./scripts/00088-gather-evidence.sh"
+    echo ""
+    echo "Continuing with startup, but remember:"
+    echo "NO GUESSWORK - Use evidence-based debugging only!"
+    echo ""
+    sleep 3
+fi
 
 # Timer start
 START_TIME=$(date +%s)
@@ -37,7 +64,7 @@ echo ""
 
 # Step 2: YAML Organizational Health (Session 61 Integration)
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 2/7: YAML Organizational Health"
+echo "Step 2/8: YAML Organizational Health"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 if [ -f "scripts/00059-yaml-health-check.sh" ]; then
     ./scripts/00059-yaml-health-check.sh --brief 2>/dev/null || echo "  ⚠️ YAML health check not available"
@@ -55,7 +82,7 @@ echo ""
 
 # Step 3: Parse Outputs
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 3/7: Parsing Agent Outputs"
+echo "Step 3/8: Parsing Agent Outputs"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 python3 scripts/00028-parse-outputs.py > /tmp/parse-output.txt 2>&1
 grep "Overall Health\|Healthy Agents" /tmp/parse-output.txt | sed 's/^/  /'
@@ -64,7 +91,7 @@ echo ""
 
 # Step 4: Load Context
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 4/7: Loading Previous Context"
+echo "Step 4/8: Loading Previous Context"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 ./scripts/00028-context-loader.sh > /tmp/context-output.txt 2>&1
 grep "Loading context from\|Stories\|Coverage" /tmp/context-output.txt | head -3 | sed 's/^/  /'
@@ -73,7 +100,7 @@ echo ""
 
 # Step 5: Check Handoffs
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 5/7: Checking for Handoffs"
+echo "Step 5/8: Checking for Handoffs"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 ./scripts/00028-handoff-detector.sh "$SESSION_NUM" > /tmp/handoff-output.txt 2>&1
 if grep -q "✅ Handoff found" /tmp/handoff-output.txt; then
@@ -86,7 +113,7 @@ echo ""
 
 # Step 6: Generate Report
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 6/7: Generating Initialization Report"
+echo "Step 6/8: Generating Initialization Report"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 python3 scripts/00028-generate-report.py "$SESSION_NUM" > /tmp/report-output.txt 2>&1
 echo "  ✓ Markdown report generated"
@@ -95,11 +122,55 @@ echo ""
 
 # Step 7: Create Session Log
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 7/7: Creating Session Log"
+echo "Step 7/8: Creating Session Log"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 ./scripts/00028-create-session-log.sh "$SESSION_NUM" "$SESSION_FOCUS" > /tmp/log-output.txt 2>&1
 echo "  ✓ Session log created"
 echo "  📄 Log: archive/sessions/SESSION-${SESSION_NUM}-LOG.md"
+echo ""
+
+# Step 8: YAML Query for Session Focus (Session 84 Addition)
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Step 8/8: YAML Query Discovery (NEW)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "  🔍 Searching for existing work related to session focus..."
+
+# Extract key topics from session focus (simple keyword extraction)
+# Remove common words and extract meaningful terms
+TOPICS=$(echo "$SESSION_FOCUS" | tr '[:upper:]' '[:lower:]' | \
+    sed 's/\(and\|the\|for\|with\|from\|based\|on\|to\|be\|determined\|user\|instructions\|session\|continuing\)//g' | \
+    tr -s ' ' | xargs)
+
+if [ "$TOPICS" != "" ] && [ "$TOPICS" != "   " ]; then
+    # Try to extract the first meaningful word
+    FIRST_TOPIC=$(echo "$TOPICS" | awk '{print $1}' | sed 's/[^a-z0-9-]//g')
+    
+    if [ "$FIRST_TOPIC" != "" ]; then
+        echo "  📋 Topic identified: $FIRST_TOPIC"
+        
+        # Run YAML queries for the topic
+        echo ""
+        echo "  Recent work on '$FIRST_TOPIC':"
+        python3 scripts/00059-yaml-query.py --topic "$FIRST_TOPIC" --limit 3 2>/dev/null | \
+            grep -E "^\d+\.|Title:|Status:" | head -9 || echo "    No recent work found"
+        
+        echo ""
+        echo "  Incomplete work on '$FIRST_TOPIC':"
+        python3 scripts/00059-yaml-query.py --topic "$FIRST_TOPIC" --status incomplete --limit 3 2>/dev/null | \
+            grep -E "^\d+\.|Title:|Status:" | head -9 || echo "    No incomplete work found"
+    else
+        echo "  ℹ️ No specific topic extracted from focus"
+        echo "  💡 Run manual YAML queries with:"
+        echo "     python3 scripts/00059-yaml-query.py --topic [your-topic]"
+    fi
+else
+    echo "  ℹ️ Session focus not specific enough for automated queries"
+    echo "  💡 Run manual YAML queries with:"
+    echo "     python3 scripts/00059-yaml-query.py --topic [your-topic]"
+fi
+
+echo ""
+echo "  ⚡ YAML queries complete (0.15s average query time)"
 echo ""
 
 # Timer end

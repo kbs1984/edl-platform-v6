@@ -110,10 +110,10 @@ def create_batches():
     """Create all batch files from Desktop's migration."""
     
     # Read Desktop's migration
-    desktop_file = Path('/home/b4sho/edl-projects-with-claude/edl-platform-v6/migrations/desktop-edl-complete-migration-draft.sql')
+    desktop_file = Path('/home/b4sho/edl-projects-with-claude/edl-platform-v6/reconciliation/migrations/desktop-edl-complete-migration-draft.sql')
     content = desktop_file.read_text()
     
-    batch_dir = Path('/home/b4sho/edl-projects-with-claude/edl-platform-v6/migrations/batches')
+    batch_dir = Path('/home/b4sho/edl-projects-with-claude/edl-platform-v6/reconciliation/migrations/batches')
     batch_dir.mkdir(exist_ok=True)
     
     # Batch 03: Tables without foreign keys

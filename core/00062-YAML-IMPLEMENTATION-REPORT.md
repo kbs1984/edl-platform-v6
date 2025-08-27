@@ -1,17 +1,27 @@
 ---
-session: "00062"
-type: "report"
-status: "completed"
-created: "2025-08-23"
-title: "YAML Metadata Implementation Report"
-purpose: "Document successful implementation of YAML metadata system to unlock project insights"
-topics: ["yaml", "metadata", "implementation", "organization", "insights"]
-priority: "P0"
-domain: "core"
-implements: ["00061-YAML-INDEXING-REQUIREMENTS.md"]
-related_to: ["00059-yaml-indexer.py", "00062-yaml-compliance-check.sh", "00062-project-insights.py"]
-review_date: "2025-09-23"
-estimated_shelf_life: "90d"
+created: '2025-08-23'
+domain: core
+estimated_shelf_life: 90d
+implements:
+- 00061-YAML-INDEXING-REQUIREMENTS.md
+priority: P0
+purpose: Document successful implementation of YAML metadata system to unlock project
+  insights
+related_to:
+- 00059-yaml-indexer.py
+- 00062-yaml-compliance-check.sh
+- 00062-project-insights.py
+review_date: '2025-09-23'
+session: '00062'
+status: current
+title: YAML Metadata Implementation Report
+topics:
+- yaml
+- metadata
+- implementation
+- organization
+- insights
+type: report
 ---
 
 # Session 00062 - YAML Metadata Implementation Report

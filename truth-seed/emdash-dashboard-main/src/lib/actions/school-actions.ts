@@ -17,12 +17,22 @@ export const registerSchoolAction = async (schoolName: string) => {
   const { data, error } = await supabase
     .from("school")
     .insert({
-      name: schoolName,
-      created_by: user.id
+      name: schoolName
+      // Note: school table doesn't have created_by column
     })
-    .select("id");
+    .select("id, name")
+    .single();
   
-  if (error) console.error(error);
-  if (!data) return null;
-  return data[0];
+  if (error) {
+    console.error("Error registering school:", error);
+    return null;
+  }
+  
+  if (!data) {
+    console.error("No data returned from school registration");
+    return null;
+  }
+  
+  // Return the school object with both id and name
+  return data;
 }

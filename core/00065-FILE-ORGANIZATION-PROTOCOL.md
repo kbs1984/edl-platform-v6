@@ -1,23 +1,27 @@
 ---
 session: "00065"
 type: "specification"
-status: "current"
+status: "superseded"
 created: "2025-08-25"
 title: "File System Auto-Organization Protocol"
 purpose: "Define automatic file placement and organization based on YAML metadata"
 topics: ["file-organization", "yaml", "automation", "protocol"]
 priority: "P0"
 domain: "core"
+lifecycle: "OFF"
 audience: "developer"
 complexity: "intermediate"
 validation_method: "automated"
 review_date: "2025-09-25"
-estimated_shelf_life: "indefinite"
+estimated_shelf_life: "historical"
 related_to: ["PROJECT-STRUCTURE.md", "SYSTEM-INDEX.md", "00061-YAML-INDEXING-REQUIREMENTS.md"]
 implements: ["file-organization-automation"]
+superseded_by: "00069-UNIFIED-FILE-SYSTEM-PROTOCOL.md"
 ---
 
 # File System Auto-Organization Protocol v1.0
+
+> ⚠️ **SUPERSEDED**: This protocol has been unified with the YAML metadata system into the [Unified File System & Metadata Protocol v2.0](00069-UNIFIED-FILE-SYSTEM-PROTOCOL.md). Session 69 discovered that file organization and metadata are inseparable - the `domain` field in YAML determines file placement. This document is preserved for historical reference.
 
 **Session**: 00065  
 **Created**: 2025-08-25  

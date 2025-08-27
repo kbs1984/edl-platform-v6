@@ -12,6 +12,9 @@ topics:
 - session-log
 - documentation
 type: guide
+implements:
+- requirement-to-be-specified
+modified: '2025-08-27'
 ---
 
 # 🔒 MANDATORY Pre-Session Security Checklist

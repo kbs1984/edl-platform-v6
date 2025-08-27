@@ -1,12 +1,6 @@
 {
-  "buildCommand": "cd reconciliation/active-work/auth-gateway && npm install --legacy-peer-deps && npm run build",
-  "outputDirectory": "reconciliation/active-work/auth-gateway/.next",
-  "installCommand": "cd reconciliation/active-work/auth-gateway && npm install --legacy-peer-deps",
-  "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ]
+  "buildCommand": "cd truth-seed/emdash-auth-main && npm install && npm run build",
+  "outputDirectory": "truth-seed/emdash-auth-main/.next",
+  "installCommand": "cd truth-seed/emdash-auth-main && npm install",
+  "framework": "nextjs"
 }

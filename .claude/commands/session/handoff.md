@@ -2,7 +2,11 @@
 allowed-tools: Write, Bash(date:*), Bash(git status:*), Bash(./scripts/00013_reality-check.sh:*)
 created: '2025-08-25'
 description: Generate comprehensive handoff for next session
-status: active
+purpose: "Create comprehensive handoff document for next session"
+session: legacy
+status: current
+title: Handoff Command
+type: config
 ---
 
 # Generate Session Handoff

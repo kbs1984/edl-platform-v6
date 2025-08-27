@@ -2,8 +2,11 @@
 allowed-tools: Write, Bash(python3:*), Bash(git status:*), Bash(date:*)
 created: '2025-08-25'
 description: Update reality status file with current truth
+purpose: "Update reality agents and refresh system state"
 session: legacy
-status: active
+status: current
+title: Update Reality Command
+type: config
 ---
 
 # Update Reality Status

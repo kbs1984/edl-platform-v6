@@ -1,22 +1,30 @@
 ---
-session: "00068"
-type: "report"
-status: "complete"
-created: "2025-08-25"
-modified: "2025-08-25"
-title: "Session 68 - YAML Validation Cleanup"
-purpose: "Fix validation errors and consolidate organization work"
-topics: ["yaml", "validation", "organization", "cleanup"]
-priority: "P1"
-domain: "core"
-audience: "developer"
-complexity: "intermediate"
-validation_method: "automated"
-review_date: "2025-09-25"
-estimated_shelf_life: "permanent"
-related_to: ["SESSION-00067-LOG.md", "00067-SESSION-SUMMARY.md"]
-implements: ["yaml-validation", "file-organization"]
-lifecycle: "ON"
+audience: developer
+complexity: intermediate
+created: '2025-08-25'
+domain: core
+estimated_shelf_life: permanent
+implements:
+- yaml-validation
+- file-organization
+lifecycle: 'ON'
+modified: '2025-08-25'
+priority: P1
+purpose: Fix validation errors and consolidate organization work
+related_to:
+- SESSION-00067-LOG.md
+- 00067-SESSION-SUMMARY.md
+review_date: '2025-09-25'
+session: 00068
+status: current
+title: Session 68 - YAML Validation Cleanup
+topics:
+- yaml
+- validation
+- organization
+- cleanup
+type: report
+validation_method: automated
 ---
 
 # Session 68 Summary - YAML Validation Cleanup

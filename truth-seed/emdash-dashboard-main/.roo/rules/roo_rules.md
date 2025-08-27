@@ -5,7 +5,8 @@ description: Guidelines for creating and maintaining Roo Code rules to ensure co
   and effectiveness.
 globs: .roo/rules/*.md
 session: legacy
-status: active
+status: current
+title: Roo Rules
 ---
 
 - **Required Rule Structure:**

@@ -1,14 +1,21 @@
 ---
-session: "00062"
-type: "report"
-status: "completed"
-created: "2025-08-23"
-title: "YAML Adoption Success Report - 20% Coverage Achieved"
-purpose: "Document successful YAML metadata expansion and insights gained"
-topics: ["yaml", "metadata", "adoption", "insights", "success"]
-priority: "P0"
-domain: "core"
-related_to: ["00062-YAML-IMPLEMENTATION-REPORT.md", "00062-ROOT-ORGANIZATION-STRATEGY.md"]
+created: '2025-08-23'
+domain: core
+priority: P0
+purpose: Document successful YAML metadata expansion and insights gained
+related_to:
+- 00062-YAML-IMPLEMENTATION-REPORT.md
+- 00062-ROOT-ORGANIZATION-STRATEGY.md
+session: '00062'
+status: current
+title: YAML Adoption Success Report - 20% Coverage Achieved
+topics:
+- yaml
+- metadata
+- adoption
+- insights
+- success
+type: report
 ---
 
 # YAML Adoption Success Report
