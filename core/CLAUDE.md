@@ -44,16 +44,20 @@ The key insight: Domains are CURRENTS (continuous) not STEPS (sequential).
 
 🚨 **MANDATORY READING BEFORE ANY WORK** 🚨
 1. **TRUTH-SEED-ADOPTION-DECISION.md** - 🔴 AUTHORITATIVE - NO DEBATE
-2. **requirements/masterplans/AUTH-MASTERPLAN.md** - Auth gateway implementation
-3. **requirements/masterplans/DASHBOARD-MASTERPLAN.md** - Dashboard completion
-4. **QUICK-START-00042.md** - Quick navigation reference
-5. **truth-seed/** directory - Contains working emdash platform we're adopting
+2. **00096-TRUTH-SEED-DIRECTORY-PROTOCOL.md** - 🔒 LOCKED directory usage rules
+3. **requirements/masterplans/AUTH-MASTERPLAN.md** - Auth gateway implementation
+4. **requirements/masterplans/DASHBOARD-MASTERPLAN.md** - Dashboard completion
+5. **QUICK-START-00042.md** - Quick navigation reference
 
 **DECISION IS FINAL**: Full adoption of ALL 36 tables. No hybrids. No partial adoption.
 
+**Directory Protocol (Session 96 LOCKED)**:
+- **truth-seed/**: READ-ONLY reference (NEVER edit or deploy from)
+- **reconciliation/active-work/**: ALL development and deployment
+- See `core/00096-TRUTH-SEED-DIRECTORY-PROTOCOL.md` for enforcement
+
 **Strategic Framework**: requirements/masterplans/AUTH-MASTERPLAN.md + DASHBOARD-MASTERPLAN.md
-**Truth Seed Code**: truth-seed/ (contains working platform)
-**Active Work**: reconciliation/active-work/
+**Active Work**: reconciliation/active-work/ (ONLY place to edit/deploy)
 **Old Framework**: RESTORATION-MASTERPLAN-V3.md (DEPRECATED - historical reference only)
 
 ## Session Logging Requirements (Constitutional)
@@ -547,6 +551,38 @@ When database changes are made in Supabase Dashboard:
 5. Commit updated snapshot files
 
 **Key Discovery**: Session 38 found RLS was enabled but ZERO policies existed, causing total lockdown.
+
+## ✅ MCP Supabase execute_sql FIXED (Session 110-111)
+**Success!** The crypto error is resolved by upgrading to Node v20.19.4.
+
+### The Fix That Worked:
+```bash
+# Install nvm and Node v20
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm install 20
+nvm use --delete-prefix v20.19.4
+nvm alias default 20
+# Restart Claude Code
+```
+
+### Now Available - Full Database Verification:
+```python
+# ✅ THIS NOW WORKS:
+result = mcp__supabase-dev__execute_sql(
+    query="SELECT * FROM pg_trigger WHERE tgname LIKE '%auth%'"
+)
+# Returns actual query results, not crypto error!
+```
+
+**Key Capabilities Restored**:
+- Verify triggers exist
+- Check RLS policies
+- Read function source code
+- Confirm DDL changes applied
+- Debug silent failures
+
+See `reality/00110-MCP-EXECUTE-SQL-FIX.md` for full details.
 
 ## important-instruction-reminders
 Do what has been asked; nothing more, nothing less.
