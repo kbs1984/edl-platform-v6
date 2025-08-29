@@ -39,15 +39,6 @@ export const updateSession = async (request: NextRequest) => {
     // https://supabase.com/docs/guides/auth/server-side/nextjs
     const user = await supabase.auth.getUser();
 
-    // SESSION 00087 FIX: Set the authentication header that middleware.ts checks
-    // This fixes the infinite redirect loop
-    if (!user.error && user.data?.user) {
-      response.headers.set('x-user-authenticated', 'true');
-      // Optional: Add user info for debugging
-      response.headers.set('x-user-id', user.data.user.id);
-      response.headers.set('x-user-email', user.data.user.email || '');
-    }
-
     // protected routes
     if (request.nextUrl.pathname.startsWith("/protected") && user.error) {
       return NextResponse.redirect(new URL("/sign-in", request.url));

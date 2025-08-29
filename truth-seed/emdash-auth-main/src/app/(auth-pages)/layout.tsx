@@ -15,22 +15,20 @@ export default async function Layout({
   const user = await getUser();
 
   if (user !== null) {
-    const { data: profile } = await supabase
-      .from("profile")
-      .select("*")
-      .eq("id", user.id)
-      .single();
+    const profile = (
+      await supabase
+        .from("profile")
+        .select("*")
+        .eq("id", user.id)
+        .single()
+      ).data as Profile;
       
-    // Only redirect if profile exists and check its properties
-    if (profile) {
-      const dashboardUrl = `${process.env.PROTOCOL}${process.env.DASHBOARD_URL}`
-      if (!profile.active) {
-        if (!profile.user_role) redirect(`${dashboardUrl}/onboarding`);
-        if (!profile.date_of_birth || !profile.gender || !profile.image_path || !profile.name || !profile.username) redirect(`${dashboardUrl}/onboarding/step-2`);
-        else redirect(`${dashboardUrl}/onboarding/step-3`);
-      }
+    const dashboardUrl = `${process.env.PROTOCOL}${process.env.DASHBOARD_URL}`
+    if (!profile.active) {
+      if (!profile.user_role) redirect(`${dashboardUrl}/onboarding`);
+      if (!profile.date_of_birth || !profile.gender || !profile.image_path || !profile.name || !profile.username) redirect(`${dashboardUrl}/onboarding/step-2`);
+      else redirect(`${dashboardUrl}/onboarding/step-3`);
     }
-    // If no profile exists, allow access to auth pages (user needs to complete signup)
   }
 
   return (
