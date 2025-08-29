@@ -1,0 +1,5 @@
+dashboard.edl.emdash.one {
+  tls ./cert/dashboard.edl.emdash.one.pem ./cert/dashboard.edl.emdash.one-key.pem
+
+  reverse_proxy localhost:3000
+}
