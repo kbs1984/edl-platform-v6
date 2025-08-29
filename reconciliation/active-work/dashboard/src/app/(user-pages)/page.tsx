@@ -14,17 +14,18 @@ export default async function Home() {
   }
 
   // EDL Platform: Check if student needs call sign
-  if (profile.user_role === 'STUDENT') {
-    const { data: student } = await supabase
-      .from('student')
-      .select('call_sign')
-      .eq('user_id', profile.id)
-      .single();
+  // Session 107: Commenting out call-sign check as the page doesn't exist
+  // if (profile.user_role === 'STUDENT') {
+  //   const { data: student } = await supabase
+  //     .from('student')
+  //     .select('call_sign')
+  //     .eq('user_id', profile.id)
+  //     .single();
       
-    if (!student?.call_sign) {
-      redirect('/onboarding/call-sign');
-    }
-  }
+  //   if (!student?.call_sign) {
+  //     redirect('/onboarding/call-sign');
+  //   }
+  // }
 
   if (profile.user_role === "STUDENT") {
     const { data, error } = await supabase.from("student").select("*").eq("user_id", profile.id).single();

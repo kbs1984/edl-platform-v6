@@ -42,7 +42,7 @@ export const StudentForm = () => {
       title: "Student Form Handle Submit Error",
       description: res.message,
     });
-    else router.push(`/completed?type=${stringToBase64URL("student")}${formData.addGuardianLater && `&query=${stringToBase64URL("true")}`}`);
+    else router.push(`/completed?type=${stringToBase64URL("student")}${formData.addGuardianLater ? `&query=${stringToBase64URL("true")}` : ""}`);
   }
 
   const now = new Date();
@@ -135,6 +135,7 @@ export const StudentForm = () => {
             </TooltipProvider>
           </div>
         </div>
+        {console.log("🔧🔧🔧 About to render SchoolSearch, disabled:", formData.graduationYear === "Graduated")}
         <SchoolSearch formData={formData} setFormData={setFormData} disabled={formData.graduationYear === "Graduated"} />
       </div>
 

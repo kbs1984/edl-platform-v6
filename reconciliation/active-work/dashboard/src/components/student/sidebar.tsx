@@ -112,9 +112,9 @@ export function StudentSidebar({ ...props }: React.ComponentProps<typeof Sidebar
       const profile = await getProfile();
       
       setUser({
-        name: profile.name!,
-        email: profile.email!,
-        avatar: profile.image_path!,
+        name: profile.name || "",
+        email: profile.email || "",
+        avatar: profile.image_path || "",
       });
     };
     getUser();

@@ -18,19 +18,36 @@ export const studentAction = async (formData: StudentData) => {
     .select("id")
     .eq("email", formData.guardianEmail);
 
-  const { error: studentAddError } = await supabase
-    .from("student")
-    .insert({
-      graduation_year: formData.graduationYear === "Graduated" ? 2000: formData.graduationYear,
-      location: formData.location,
-      school_id: formData.schoolId,
-      guardian_id: guardian.data ? guardian.data[0].id: null
-    });
-
-  if (studentAddError) return { status: "error", message: `student add error: ${studentAddError.message}`};
-  
-  const { data: { user: user } } = await supabase.auth.getUser();
+  // Get user first to ensure we have the user_id
+  const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { status: "error", message: "User not found"};
+
+  // Direct insert matching truth-seed pattern (NO user_id - uses auth.uid() default)
+  const { data: studentData, error: studentAddError } = await supabase
+    .from('student')
+    .insert({
+      graduation_year: formData.graduationYear === "Graduated" ? 2000 : formData.graduationYear,
+      location: formData.location,
+      school_id: formData.schoolId || null,
+      guardian_id: guardian.data?.[0]?.id || null
+      // NOTE: NOT including user_id - table uses auth.uid() as default
+    })
+    .select('id')
+    .single();
+  
+  const studentId = studentData?.id;
+
+  if (studentAddError) {
+    console.error("Student insert error details:", {
+      error: studentAddError,
+      code: studentAddError.code,
+      message: studentAddError.message,
+      details: studentAddError.details,
+      hint: studentAddError.hint
+    });
+    return { status: "error", message: `student add error: ${studentAddError.message}`};
+  }
+  
   const { error: profileError } = await supabase
     .from("profile")
     .update({

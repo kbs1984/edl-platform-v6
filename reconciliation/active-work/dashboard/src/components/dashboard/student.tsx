@@ -15,13 +15,15 @@ export const StudentDashboard = ({ profile, student }: { profile: Profile, stude
       <Card className="col-span-6 flex p-4 gap-4 flex-col justify-between h-64">
         <div className="flex flex-col items-start justify-between md:flex-row">
           <div className="flex gap-4 items-center">
-            <div>
-              <Image src={profile.image_path!} className="rounded-full border border-secondary" alt={""} width={100} height={100} />
-            </div>
+            {profile.image_path && (
+              <div>
+                <Image src={profile.image_path} className="rounded-full border border-secondary" alt={profile.name || "Profile"} width={100} height={100} />
+              </div>
+            )}
             <div>
               <div className="text-2xl font-bold"> {profile.name} </div>
               <div className="flex items-center mt-2">
-                <Username username={profile.username!} />
+                <Username username={profile.username || ""} />
               </div>
               <div> {profile.email} </div>
             </div>
