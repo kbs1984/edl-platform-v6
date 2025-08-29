@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "verify-yaml-work.sh"
+# purpose: "Script for verify yaml work"
+# language: "bash"
+# category: "yaml"
+# topics: ["yaml"]
+# priority: "P2"
+# domain: "core"
+# ---
 echo "=== YAML ADOPTION VERIFICATION ==="
 echo "Generated: $(date)"
 echo ""

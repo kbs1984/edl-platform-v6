@@ -1,6 +1,26 @@
 #!/bin/bash
+---
+session: "legacy"
+type: "script"
+status: "deprecated"
+created: "2025-08-28"
+title: "create-session-log.sh"
+purpose: "Session Log Creator - Generates proper constitutional session log"
+language: "bash"
+category: "creation"
+replaced_by: "./scripts/00028-create-session-log.sh (newer version with Reality Agent integration)"
+topics: ['session']
+priority: "P2"
+domain: "core"
+---
+
 # Session Log Creator - Generates proper constitutional session log
 # Usage: ./create-session-log.sh [SESSION_NUMBER] [FOCUS]
+#
+# ⚠️ DEPRECATED - Session 95
+# This is an older version of the session log creator
+# USE INSTEAD: ./scripts/00028-create-session-log.sh (newer version with Reality Agent integration)
+# Or better: ./scripts/00028-session-start.sh (full automation including log creation)
 
 SESSION_NUM=${1:-00007}
 SESSION_FOCUS=${2:-"Session Work"}
