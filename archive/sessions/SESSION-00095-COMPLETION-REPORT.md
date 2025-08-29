@@ -1,15 +1,21 @@
 ---
-session: "00095"
-type: "report"
-status: "completed"
-created: "2025-08-27"
-title: "Session 00095 - Script Consolidation Completion"
-purpose: "Final report on session startup script consolidation"
-topics: ["automation", "session-startup", "consolidation-complete"]
-priority: "P1"
-domain: "core"
-related_to: ["SESSION-00094-HANDOFF.md", "SESSION-00095-SCRIPT-CONSOLIDATION-ANALYSIS.md"]
-implements: ["script-consolidation"]
+created: '2025-08-27'
+domain: core
+implements:
+- script-consolidation
+priority: P1
+purpose: Final report on session startup script consolidation
+related_to:
+- SESSION-00094-HANDOFF.md
+- SESSION-00095-SCRIPT-CONSOLIDATION-ANALYSIS.md
+session: 00095
+status: current
+title: Session 00095 - Script Consolidation Completion
+topics:
+- automation
+- session-startup
+- consolidation-complete
+type: report
 ---
 
 # Session 00095 - Script Consolidation Completion Report

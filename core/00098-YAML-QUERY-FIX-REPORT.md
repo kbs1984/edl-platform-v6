@@ -1,15 +1,23 @@
 ---
-session: "00098" 
-type: "fix"
-status: "completed"
-created: "2025-08-28"
-title: "YAML Query Tool Fix - Script Discovery Now Working"
-purpose: "Document the successful fix that makes all scripts discoverable via YAML queries"
-topics: ["yaml", "discovery", "scripts", "fix", "breakthrough"]
-priority: "P0"
-domain: "core"
-fixes: ["script-discovery-gap", "session-97-incomplete"]
-breakthrough: "Fixed indexer to scan and parse bash/Python scripts with YAML metadata"
+breakthrough: Fixed indexer to scan and parse bash/Python scripts with YAML metadata
+created: '2025-08-28'
+domain: core
+fixes:
+- script-discovery-gap
+- session-97-incomplete
+priority: P0
+purpose: Document the successful fix that makes all scripts discoverable via YAML
+  queries
+session: 00098
+status: current
+title: YAML Query Tool Fix - Script Discovery Now Working
+topics:
+- yaml
+- discovery
+- scripts
+- fix
+- breakthrough
+type: report
 ---
 
 # YAML Query Tool Fix Report

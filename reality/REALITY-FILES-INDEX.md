@@ -1,21 +1,30 @@
 ---
-session: "00100"
-type: "index"
-status: "current"  
-created: "2025-08-27"
-title: "Reality Files Index - Ground Truth Documentation"
-purpose: "Make reality files discoverable for future sessions"
-topics: ["reality", "ground-truth", "database-state", "deployed-migrations", "progress-tracking"]
-priority: "P0"
-domain: "reality"
-audience: "developer"
-complexity: "intermediate"
-validation_method: "manual"
-review_date: "2025-09-27"
-estimated_shelf_life: "indefinite"
-implements: ["progress-tracking", "anti-guesswork-protocol"]
-related_to: ["00100-DUAL-SESSION-COLLABORATION-PROTOCOL.md", "REALITY_INDEX.md"]
-breakthrough: "Makes reality files discoverable via YAML queries"
+audience: developer
+breakthrough: Makes reality files discoverable via YAML queries
+complexity: intermediate
+created: '2025-08-27'
+domain: reality
+estimated_shelf_life: indefinite
+implements:
+- progress-tracking
+- anti-guesswork-protocol
+priority: P0
+purpose: Make reality files discoverable for future sessions
+related_to:
+- 00100-DUAL-SESSION-COLLABORATION-PROTOCOL.md
+- REALITY_INDEX.md
+review_date: '2025-09-27'
+session: '00100'
+status: current
+title: Reality Files Index - Ground Truth Documentation
+topics:
+- reality
+- ground-truth
+- database-state
+- deployed-migrations
+- progress-tracking
+type: guide
+validation_method: manual
 ---
 
 # Reality Files Index - Ground Truth Documentation

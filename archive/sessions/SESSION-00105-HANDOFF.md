@@ -1,11 +1,13 @@
 ---
-session: 105
-type: session_handoff
-status: completed
-created: 2025-08-29
-title: Session 105 Handoff - MCP Server Integration Complete
-next_session: 106
-priority: high
+created: "2025-08-29"
+session: "00105"
+type: "handoff"
+status: "current"
+title: "Session 105 Handoff - MCP Server Integration Complete"
+purpose: "Transfer context about MCP server integration to next session"
+topics: ["mcp-server", "integration", "handoff"]
+priority: "P1"
+domain: "reality"
 ---
 
 # SESSION 00105 HANDOFF

@@ -1,18 +1,22 @@
 ---
-session: "00097"
-type: "report"
-status: "completed"
-created: "2025-08-28"
-title: "Script Archival Report - 25 Scripts Moved"
-purpose: "Document the successful archival of obsolete scripts"
-topics: ["scripts", "archival", "cleanup", "organization"]
-priority: "P0"
-domain: "core"
+created: '2025-08-28'
+domain: core
 metrics:
-  scripts_before: 121
+  reduction_percentage: 21
   scripts_after: 96
   scripts_archived: 25
-  reduction_percentage: 21
+  scripts_before: 121
+priority: P0
+purpose: Document the successful archival of obsolete scripts
+session: 00097
+status: current
+title: Script Archival Report - 25 Scripts Moved
+topics:
+- scripts
+- archival
+- cleanup
+- organization
+type: report
 ---
 
 # Script Archival Report - Session 00097

@@ -1,14 +1,19 @@
 ---
-session: "00095"
-type: "analysis"
-status: "completed"
-created: "2025-08-27"
-title: "Session Startup Script Consolidation Analysis"
-purpose: "Analyze and consolidate multiple confusing session startup scripts"
-topics: ["automation", "session-startup", "script-consolidation"]
-priority: "P1"
-domain: "core"
-related_to: ["SESSION-00094-HANDOFF.md", "00028-AUTOMATION-README.md"]
+created: '2025-08-27'
+domain: core
+priority: P1
+purpose: Analyze and consolidate multiple confusing session startup scripts
+related_to:
+- SESSION-00094-HANDOFF.md
+- 00028-AUTOMATION-README.md
+session: 00095
+status: current
+title: Session Startup Script Consolidation Analysis
+topics:
+- automation
+- session-startup
+- script-consolidation
+type: analysis
 ---
 
 # Session 00095 - Script Consolidation Analysis

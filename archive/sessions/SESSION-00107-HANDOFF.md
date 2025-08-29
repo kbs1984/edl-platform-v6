@@ -1,13 +1,17 @@
 ---
-session: "00107"
-type: "handoff"
-status: "completed"
-created: "2025-08-29"
-title: "Session 107 → 108 Handoff - Dashboard Access Achieved!"
-purpose: "Handoff after successfully fixing student insert blocker and reaching dashboard"
-topics: ["auth-flow", "student-insert", "rls-policies", "next-steps"]
-priority: "P0"
-domain: "archive"
+created: '2025-08-29'
+domain: archive
+priority: P0
+purpose: Handoff after successfully fixing student insert blocker and reaching dashboard
+session: '00107'
+status: current
+title: "Session 107 \u2192 108 Handoff - Dashboard Access Achieved!"
+topics:
+- auth-flow
+- student-insert
+- rls-policies
+- next-steps
+type: handoff
 ---
 
 # Session 107 → 108 Handoff

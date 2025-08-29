@@ -1,14 +1,19 @@
 ---
-session: "00098"
-type: "fix"
-status: "completed"
-created: "2025-08-28"
-title: "Session 97 Progress Files Reorganized"
-purpose: "Document the fix of Session 97's improperly organized progress files"
-topics: ["organization", "fixes", "progress", "file-structure"]
-priority: "P0"
-domain: "core"
-fixes: ["session-97-progress-files"]
+created: '2025-08-28'
+domain: core
+fixes:
+- session-97-progress-files
+priority: P0
+purpose: Document the fix of Session 97's improperly organized progress files
+session: 00098
+status: current
+title: Session 97 Progress Files Reorganized
+topics:
+- organization
+- fixes
+- progress
+- file-structure
+type: report
 ---
 
 # Session 97 Progress Files Fixed

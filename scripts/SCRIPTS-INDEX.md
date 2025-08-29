@@ -1,15 +1,19 @@
 ---
-session: "00097"
-type: "index"
-status: "current"
-created: "2025-08-28"
-title: "Scripts Registry - Authoritative Index"
-purpose: "Central registry of all scripts showing status, purpose, and relationships"
-topics: ["scripts", "registry", "automation", "index"]
-priority: "P0"
-domain: "core"
 auto_generated: true
-generation_command: "python3 scripts/00097-generate-scripts-index.py"
+created: '2025-08-28'
+domain: core
+generation_command: python3 scripts/00097-generate-scripts-index.py
+priority: P0
+purpose: Central registry of all scripts showing status, purpose, and relationships
+session: 00097
+status: current
+title: Scripts Registry - Authoritative Index
+topics:
+- scripts
+- registry
+- automation
+- index
+type: guide
 ---
 
 # Scripts Registry - Authoritative Index

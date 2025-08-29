@@ -1,13 +1,19 @@
 ---
-session: "00107"
-type: "log"
-status: "completed"
-created: "2025-08-29"
-title: "Session #00107 Log - Student Insert Blocker RESOLVED"
-purpose: "Fix the student insert permission issue that blocked auth→dashboard flow completion"
-topics: ["student-insert", "rls-fix", "truth-seed-analysis", "auth-flow", "mcp-debugging"]
-priority: "P0"
-domain: "archive"
+created: '2025-08-29'
+domain: archive
+priority: P0
+purpose: "Fix the student insert permission issue that blocked auth\u2192dashboard\
+  \ flow completion"
+session: '00107'
+status: current
+title: 'Session #00107 Log - Student Insert Blocker RESOLVED'
+topics:
+- student-insert
+- rls-fix
+- truth-seed-analysis
+- auth-flow
+- mcp-debugging
+type: log
 ---
 
 # Session #00107 Log - Student Insert Blocker RESOLVED

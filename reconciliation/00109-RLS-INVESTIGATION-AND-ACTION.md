@@ -1,13 +1,18 @@
 ---
-session: "00109"
-type: "investigation"
-status: "in-progress"
-created: "2025-08-29"
-title: "Session 109 RLS Investigation and Actions Taken"
-purpose: "Document evidence-based findings and track changes made to student table RLS"
-topics: ["rls", "student-table", "truth-seed-analysis", "database-security"]
-priority: "P0"
-domain: "reconciliation"
+created: '2025-08-29'
+domain: reconciliation
+priority: P0
+purpose: Document evidence-based findings and track changes made to student table
+  RLS
+session: 00109
+status: draft
+title: Session 109 RLS Investigation and Actions Taken
+topics:
+- rls
+- student-table
+- truth-seed-analysis
+- database-security
+type: analysis
 ---
 
 # Session 109: RLS Investigation and Actions Taken

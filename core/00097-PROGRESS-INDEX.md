@@ -10,7 +10,7 @@ topics:
 - progress
 - index
 - tracking
-type: index
+type: guide
 ---
 
 # Progress Tracking Index

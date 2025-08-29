@@ -1,7 +1,13 @@
 ---
-description: Guidelines for creating and maintaining Roo Code rules to ensure consistency and effectiveness.
-globs: .roo/rules/*.md
 alwaysApply: true
+created: '2025-08-25'
+description: Guidelines for creating and maintaining Roo Code rules to ensure consistency
+  and effectiveness.
+globs: .roo/rules/*.md
+session: legacy
+status: current
+title: Roo Rules
+type: guide
 ---
 
 - **Required Rule Structure:**

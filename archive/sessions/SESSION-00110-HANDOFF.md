@@ -1,13 +1,18 @@
 ---
-session: "00110"
-type: "handoff"
-status: "complete"
-created: "2025-08-29"
-title: "Session 110 Handoff - MCP execute_sql Crypto Fix"
-purpose: "Transfer context about MCP server crypto error investigation and fix attempt"
-topics: ["mcp-server", "execute-sql", "crypto-error", "node-version", "verification-gap"]
-priority: "P1"
-domain: "core"
+created: '2025-08-29'
+domain: core
+priority: P1
+purpose: Transfer context about MCP server crypto error investigation and fix attempt
+session: '00110'
+status: current
+title: Session 110 Handoff - MCP execute_sql Crypto Fix
+topics:
+- mcp-server
+- execute-sql
+- crypto-error
+- node-version
+- verification-gap
+type: handoff
 ---
 
 # Session 110 Handoff - MCP execute_sql Crypto Fix
@@ -128,7 +133,36 @@ WHERE proname IN ('search_schools', 'add_new_user');
 
 ---
 
-## Sign-off
-Session 110 discovered that `execute_sql` is not just convenient but **critical** for database verification. Applied Node v20 upgrade as potential fix. Session 111 must test immediately.
+## 🏗️ Architectural Decision: Monorepo for Deployment
 
-**Next Session Priority**: Verify fix and run comprehensive database state audit if successful.
+### The Decision
+After analyzing Desktop's question about deployment structure, Session 110 recommends:
+- **MONOREPO** approach using Turborepo
+- Single Vercel project with multiple apps
+- Shared packages for database, UI, and config
+
+### Why Monorepo
+- Auth and dashboard are tightly coupled (same DB, users, auth flow)
+- Need atomic deployments for related changes
+- Share TypeScript types from Supabase
+- Single source of truth for environment variables
+- Simpler domain management (subdomains)
+
+### Implementation Plan
+Created detailed migration plan: `reconciliation/00110-MONOREPO-MIGRATION-PLAN.md`
+- Phase 1-4: Restructure and configure (Session 111)
+- Phase 5: Test and deploy (Session 112)
+
+---
+
+## Sign-off
+Session 110 accomplished:
+1. ✅ **FIXED** `execute_sql` crypto error with Node v20 (confirmed by Session 111)
+2. ✅ **ASSESSED** Vercel deployment readiness
+3. ✅ **DECIDED** Monorepo architecture for auth/dashboard
+4. ✅ **CREATED** Detailed migration plan for implementation
+
+**Next Session Priority**: 
+1. Execute monorepo migration (Phase 1-4)
+2. Prepare for Vercel deployment with custom domain
+3. Use restored `execute_sql` for database verification

@@ -1,13 +1,19 @@
 ---
-session: "00094"
-type: "log"
-status: "in-progress"
-created: "2025-08-27"
-title: "Session #00094 - Startup Script Consolidation & Transcript Error Investigation"
-purpose: "Consolidate session startup scripts and investigate transcript 500 error"
-topics: ["automation", "script-consolidation", "error-investigation", "api-issues"]
-domain: "core"
-related_to: ["SESSION-00089-LOG.md", "SESSION-00094-HANDOFF.md"]
+created: '2025-08-27'
+domain: core
+purpose: Consolidate session startup scripts and investigate transcript 500 error
+related_to:
+- SESSION-00089-LOG.md
+- SESSION-00094-HANDOFF.md
+session: 00094
+status: draft
+title: 'Session #00094 - Startup Script Consolidation & Transcript Error Investigation'
+topics:
+- automation
+- script-consolidation
+- error-investigation
+- api-issues
+type: log
 ---
 
 # Session #00094 Log

@@ -1,14 +1,18 @@
 ---
-session: "00101"
-type: "log"
-status: "completed"
-created: "2025-08-28"
-title: "Session #00101 Log - Integration Testing & Truth-Seed Bug Fixes"
-purpose: "Document complete integration testing journey and critical discoveries"
-topics: ["integration-testing", "truth-seed-bugs", "database-reality", "school-search-blocker"]
-priority: "P0"
-domain: "archive"
-breakthrough: "Discovered truth-seed has bugs; found persistent RLS blocker"
+breakthrough: Discovered truth-seed has bugs; found persistent RLS blocker
+created: '2025-08-28'
+domain: archive
+priority: P0
+purpose: Document complete integration testing journey and critical discoveries
+session: '00101'
+status: current
+title: 'Session #00101 Log - Integration Testing & Truth-Seed Bug Fixes'
+topics:
+- integration-testing
+- truth-seed-bugs
+- database-reality
+- school-search-blocker
+type: log
 ---
 
 # Session #00101 Log - Integration Testing & Truth-Seed Bug Fixes

@@ -22,13 +22,13 @@ sessions_touched:
 - 82
 - 87
 - 96
-status: complete
+status: current
 title: Auth Feature Evolution Timeline
 topics:
 - auth
 - profile
 - onboarding
-type: evolution
+type: analysis
 ---
 
 # Auth Feature Evolution Timeline

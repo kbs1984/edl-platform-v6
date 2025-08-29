@@ -1,14 +1,22 @@
 ---
-session: "00094"
-type: "handoff"
-status: "pending"
-created: "2025-08-27"
-title: "Session #00094 Handoff - Resolve Session Startup Script Confusion"
-purpose: "Investigate and consolidate multiple session startup scripts to eliminate confusion"
-topics: ["automation", "session-startup", "script-consolidation", "technical-debt"]
-priority: "P1"
-domain: "core"
-related_to: ["SESSION-00089-LOG.md", "00028-AUTOMATION-README.md", "00059-yaml-query.py"]
+created: '2025-08-27'
+domain: core
+priority: P1
+purpose: Investigate and consolidate multiple session startup scripts to eliminate
+  confusion
+related_to:
+- SESSION-00089-LOG.md
+- 00028-AUTOMATION-README.md
+- 00059-yaml-query.py
+session: 00094
+status: draft
+title: 'Session #00094 Handoff - Resolve Session Startup Script Confusion'
+topics:
+- automation
+- session-startup
+- script-consolidation
+- technical-debt
+type: handoff
 ---
 
 # Session #00094 Handoff - Resolve Session Startup Script Confusion
