@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00068"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00068-path-resolver.py"
+purpose: "Script for path resolver"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00068 - Path Resolver Service
 Maps old file locations to new ones after Session 67's reorganization
 """

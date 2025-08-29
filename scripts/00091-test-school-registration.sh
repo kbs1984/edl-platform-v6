@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00091"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00091-test-school-registration.sh"
+# purpose: "Script for test school registration"
+# language: "bash"
+# category: "testing"
+# topics: ["testing"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Session 00091: Test school registration is working
 echo "🧪 Testing School Registration Function"

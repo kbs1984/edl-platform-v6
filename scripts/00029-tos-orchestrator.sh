@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00029"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00029-tos-orchestrator.sh"
+# purpose: "Script for tos orchestrator"
+# language: "bash"
+# category: "dashboard"
+# topics: ["dashboard"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Session 00029: Truth Operating System (TOS) Orchestrator
 # Complete integration of all domains for constitutional truth maintenance

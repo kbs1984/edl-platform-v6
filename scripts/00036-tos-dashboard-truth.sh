@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00036"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00036-tos-dashboard-truth.sh"
+# purpose: "Script for tos dashboard truth"
+# language: "bash"
+# category: "dashboard"
+# topics: ["dashboard"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Constitutional OS Dashboard v2.0 - Truth Integrated
 # Session 36 Implementation - 2025-08-19
 #

@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00029"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00029-action-planner.py"
+purpose: "Script for action planner"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00029: Action Planner for Truth Operating System
 Generates prioritized implementation plans based on gap analysis
 """

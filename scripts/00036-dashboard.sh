@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00036"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00036-dashboard.sh"
+# purpose: "Script for dashboard"
+# language: "bash"
+# category: "dashboard"
+# topics: ["dashboard"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Constitutional OS Dashboard v2.1 - Enhanced Truth Details
 # Session 36 Enhancement - 2025-08-19
 #

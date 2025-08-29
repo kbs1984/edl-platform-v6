@@ -1,3 +1,16 @@
+-- ---
+-- session: "00091"
+-- type: "script"
+-- status: "active"
+-- created: "2025-08-28"
+-- title: "00091-fix-school-search-function.sql"
+-- purpose: "Script for fix school search function"
+-- language: "sql"
+-- category: "fixes"
+-- topics: ["fixes"]
+-- priority: "P2"
+-- domain: "core"
+-- ---
 -- Session 00091: Fix school search function to work without pg_trgm extension
 -- The original function uses similarity() which requires pg_trgm
 -- This simplified version uses basic ILIKE pattern matching

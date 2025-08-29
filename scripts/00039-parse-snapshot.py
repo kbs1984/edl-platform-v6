@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00039"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00039-parse-snapshot.py"
+purpose: "Script for parse snapshot"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00039-parse-snapshot.py - Parse Supabase schema query results
 Session 38: Creating schema snapshot from Dashboard results
 

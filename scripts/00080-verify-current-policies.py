@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00080"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00080-verify-current-policies.py"
+purpose: "Check what policies currently exist in the live database"
+language: "python"
+category: "verification"
+topics: ["verification"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00080 - Verify current database policies
 Purpose: Check what policies currently exist in the live database
 Created: 2025-08-26

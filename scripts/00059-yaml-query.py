@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
 """
+---
+session: "00059"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00059-yaml-query.py"
+purpose: "Command-line query tool for YAML-indexed files with sub-second performance"
+language: "python"
+category: "yaml"
+topics: ['yaml']
+priority: "P0"
+domain: "core"
+---
 YAML Query Interface with Performance Monitoring
 Session: 00059
 Purpose: Command-line query tool for YAML-indexed files with sub-second performance

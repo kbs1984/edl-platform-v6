@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00029"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00029-gap-analyzer.py"
+purpose: "Script for gap analyzer"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00029: Gap Analyzer for Truth Operating System
 Compares Requirements Domain vs Reality Domain to find implementation gaps
 """

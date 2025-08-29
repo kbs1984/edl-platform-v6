@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00034"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00034-tos-dashboard-enhanced.sh"
+# purpose: "Script for tos dashboard enhanced"
+# language: "bash"
+# category: "dashboard"
+# topics: ["dashboard"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Enhanced Constitutional OS Dashboard with Reality Agent View
 # Session 34 - 2025-08-19
 

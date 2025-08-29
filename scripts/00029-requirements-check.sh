@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00029"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00029-requirements-check.sh"
+# purpose: "Extract current Requirements Domain state for reconciliation"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Session 00029: Requirements State Checker
 # Part of Truth Operating System (TOS) v1.0

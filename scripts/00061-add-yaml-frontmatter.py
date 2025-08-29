@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
 """
+---
+session: "00061"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00061-add-yaml-frontmatter.py"
+purpose: "Add YAML frontmatter to markdown files that lack it"
+language: "python"
+category: "yaml"
+topics: ['yaml', 'metadata']
+priority: "P0"
+domain: "core"
+---
 Add YAML frontmatter to markdown files that lack it
 Session 00061 - Making dark documentation visible
 """

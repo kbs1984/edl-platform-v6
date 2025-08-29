@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00012_reality-check.sh"
+# purpose: "Establish reality baseline for every session"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00012: Reality Check Protocol
 # Purpose: Establish reality baseline for every session
 # Usage: ./reality-check.sh [--quick|--full]

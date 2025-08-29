@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00028"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00028-handoff-detector.sh"
+# purpose: "Detect and display any handoffs for current session"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # 00028-handoff-detector.sh - Check for session handoffs
 # Session 28: Build session automation framework
 # Purpose: Detect and display any handoffs for current session

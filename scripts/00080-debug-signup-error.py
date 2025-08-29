@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00080"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00080-debug-signup-error.py"
+purpose: "Diagnose why "Database error saving new user" persists after migration"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00080 - Debug persistent signup error
 Purpose: Diagnose why "Database error saving new user" persists after migration
 Created: 2025-08-26

@@ -1,3 +1,16 @@
+-- ---
+-- session: "00081"
+-- type: "script"
+-- status: "unknown"
+-- created: "2025-08-28"
+-- title: "00081-MINIMAL-fix-add-new-user.sql"
+-- purpose: "Script for MINIMAL fix add new user"
+-- language: "sql"
+-- category: "creation"
+-- topics: ["creation"]
+-- priority: "P2"
+-- domain: "core"
+-- ---
 -- Session 00081: MINIMAL Fix - Focus on what's actually broken
 -- Since most columns are nullable, the issue might be simpler
 

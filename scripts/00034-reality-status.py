@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00034"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00034-reality-status.py"
+purpose: "Script for reality status"
+language: "python"
+category: "reality"
+topics: ["reality"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00034-reality-status.py - Dedicated Reality Agent Status Viewer
 Session 34: Deep visibility into Reality Agent health and connections
 Makes the invisible visible - shows how truth verification actually works

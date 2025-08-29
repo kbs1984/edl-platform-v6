@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00035"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00035-truth-api.py"
+purpose: "Script for truth api"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00035-truth-api.py - Enhanced Truth API with Push Architecture
 Session 35: Implementing the programmatic interface to the Truth Layer
 Incorporates insights from Sessions 31, 34, and Desktop review

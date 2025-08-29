@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00036"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00036-verify-requirements.sh"
+# purpose: "Script for verify requirements"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Requirements-Reality Bridge
 # Quick verification that implementation matches specification
 # Session 36 Final Infrastructure Addition

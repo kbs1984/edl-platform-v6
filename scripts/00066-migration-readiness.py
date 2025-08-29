@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00066"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00066-migration-readiness.py"
+purpose: "Ensure we're ACTUALLY ready before attempting any bulk operations"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00066 - Migration Readiness Scorer
 Purpose: Ensure we're ACTUALLY ready before attempting any bulk operations
 Created: 2025-08-25

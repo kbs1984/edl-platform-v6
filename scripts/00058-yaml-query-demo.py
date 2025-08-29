@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00058"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00058-yaml-query-demo.py"
+purpose: "Script for yaml query demo"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 YAML File Organization Query Demo
 
 Demonstrates how the YAML indexing system would work for file discovery

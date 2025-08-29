@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00036"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00036-tos-dashboard-truth.py"
+purpose: "Script for tos dashboard truth"
+language: "python"
+category: "dashboard"
+topics: ["dashboard"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Constitutional Operating System (COS) Dashboard v2.0 - Truth Integrated
 Session 36 Implementation - 2025-08-19
 

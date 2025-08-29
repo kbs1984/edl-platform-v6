@@ -1,4 +1,17 @@
 #!/bin/bash
+---
+session: "00032"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00032-tos-dashboard.sh"
+purpose: "Constitutional OS Dashboard - Shell Wrapper"
+language: "bash"
+category: "uncategorized"
+priority: "P2"
+domain: "core"
+---
+
 # Constitutional OS Dashboard - Shell Wrapper
 # Session 32 - 2025-08-18
 

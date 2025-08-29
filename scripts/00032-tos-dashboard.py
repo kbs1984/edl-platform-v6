@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00032"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00032-tos-dashboard.py"
+purpose: "Script for tos dashboard"
+language: "python"
+category: "dashboard"
+topics: ["dashboard"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Constitutional Operating System (COS) Dashboard v1.0
 Session 32 Implementation - 2025-08-18
 

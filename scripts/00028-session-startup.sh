@@ -1,7 +1,26 @@
 #!/bin/bash
+---
+session: "00028"
+type: "script"
+status: "deprecated"
+created: "2025-08-28"
+title: "00028-session-startup.sh"
+purpose: "Automate the entire session startup process"
+language: "bash"
+category: "automation"
+replaced_by: "./scripts/00028-session-start.sh (canonical version)"
+topics: ['session', 'automation']
+priority: "P2"
+domain: "core"
+---
+
 # 00028-session-startup.sh - Main orchestrator for session initialization
 # Session 28: Build session automation framework
 # Purpose: Automate the entire session startup process
+#
+# ⚠️ DEPRECATED - Session 94
+# USE INSTEAD: ./scripts/00028-session-start.sh (canonical version)
+# This older variant lacks anti-guesswork protocol and YAML health
 
 echo "============================================"
 echo "   EDL Platform v6 - Session Automation"

@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00079"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00079-DESKTOP-QUICK-FIX.sh"
+# purpose: "Script for DESKTOP QUICK FIX"
+# language: "bash"
+# category: "fixes"
+# topics: ["fixes"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00079: Desktop's WSL2 Quick Fix for Auth Dependencies
 # Based on Desktop Claude's WSL2-specific guidance
 

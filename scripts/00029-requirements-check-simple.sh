@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00029"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00029-requirements-check-simple.sh"
+# purpose: "Script for requirements check simple"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Simplified Requirements State Checker - just count files and generate summary
 

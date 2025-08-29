@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00029"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00029-reconciliation-bridge.sh"
+# purpose: "Bridge Requirements and Reality domains to find gaps and generate plans"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Session 00029: Reconciliation Bridge Orchestrator
 # Part of Truth Operating System (TOS) v1.0

@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00069"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00069-install-yaml-hooks.sh"
+# purpose: "Script for install yaml hooks"
+# language: "bash"
+# category: "yaml"
+# topics: ["yaml"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00069: Install YAML validation hooks
 
 echo "🔧 Installing YAML Validation Hooks"

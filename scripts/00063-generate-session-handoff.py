@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+"""
+---
+session: "00063"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00063-generate-session-handoff.py"
+purpose: "Script for generate session handoff"
+language: "python"
+category: "session-management"
+topics: ["session-management"]
+priority: "P2"
+domain: "core"
+---
+"""
 
 """
 00063-generate-session-handoff.py

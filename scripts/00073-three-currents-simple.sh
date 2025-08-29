@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00073"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00073-three-currents-simple.sh"
+# purpose: "Demonstrate the THREE CURRENTS concept without over-engineering"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00073 - Three Currents Concept (SIMPLIFIED)
 # Purpose: Demonstrate the THREE CURRENTS concept without over-engineering
 

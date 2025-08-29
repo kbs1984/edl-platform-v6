@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00039"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00039-generate-snapshot-sql.py"
+purpose: "Script for generate snapshot sql"
+language: "python"
+category: "creation"
+topics: ["creation"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00039-generate-snapshot-sql.py - Generate SQL to capture Supabase schema
 Session 38: Creating visibility into actual database state
 Per 00039-SCHEMA-SNAPSHOT-SPEC.md and 00031-WORKFLOW-BOUNDARIES.md

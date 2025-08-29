@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00013_deploy-with-verification.sh"
+# purpose: "Script for 00013 deploy with verification"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Deploy with Reality Verification - Session 00013
 # Ensures Lightning Stack promises are met
 

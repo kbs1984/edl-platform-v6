@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00076"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00076-verify-auth-deployment.py"
+purpose: "Check if 00060-AUTH-FLOW-FIX.sql is actually deployed to Supabase"
+language: "python"
+category: "verification"
+topics: ["verification"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00076: Verify Auth Flow Deployment Status
 Purpose: Check if 00060-AUTH-FLOW-FIX.sql is actually deployed to Supabase
 """

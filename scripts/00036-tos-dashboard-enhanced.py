@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00036"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00036-tos-dashboard-enhanced.py"
+purpose: "Script for tos dashboard enhanced"
+language: "python"
+category: "dashboard"
+topics: ["dashboard"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Constitutional Operating System (COS) Dashboard v2.1 - Enhanced Truth Details
 Session 36 Enhancement - 2025-08-19
 

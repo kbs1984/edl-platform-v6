@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00036"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00036-requirement-verifier.py"
+purpose: "Script for requirement verifier"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Requirements-Reality Verifier
 Session 36: Bridges the gap between what we specified and what we built
 Answers: "Does our implementation match our requirements?"

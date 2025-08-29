@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00077"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00077-capability-manifest.py"
+purpose: "Document TESTED capabilities to prevent Capability Amnesia"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00077 - Claude Code Capability Manifest
 ==============================================
 Created: 2025-08-26 12:40 PM

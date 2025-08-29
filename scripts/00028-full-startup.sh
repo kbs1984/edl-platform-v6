@@ -1,7 +1,27 @@
 #!/bin/bash
+---
+session: "00028"
+type: "script"
+status: "deprecated"
+created: "2025-08-28"
+title: "00028-full-startup.sh"
+purpose: "Full integration of all automation components"
+language: "bash"
+category: "automation"
+replaced_by: "./scripts/00028-session-start.sh"
+topics: ['automation']
+priority: "P2"
+domain: "core"
+---
+
 # 00028-full-startup.sh - Complete automated session initialization
 # Session 28: Build session automation framework
 # Purpose: Full integration of all automation components
+#
+# ⚠️ DEPRECATED - Session 94
+# This script's features have been merged into the canonical script:
+# USE INSTEAD: ./scripts/00028-session-start.sh
+# Kept for historical reference only
 
 echo "╔══════════════════════════════════════════════════════════╗"
 echo "║     EDL Platform v6 - Automated Session Initialization    ║"

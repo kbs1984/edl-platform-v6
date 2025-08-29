@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00059"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00059-yaml-health-check.sh"
+# purpose: "Quick YAML organizational health check for session startup"
+# language: "bash"
+# category: "yaml"
+# topics: ["yaml"]
+# priority: "P2"
+# domain: "core"
+# ---
 # YAML Health Check for Session Startup Integration
 # Session: 00059
 # Purpose: Quick YAML organizational health check for session startup

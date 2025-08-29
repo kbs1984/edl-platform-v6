@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00013_setup-reality-aliases.sh"
+# purpose: "Script for 00013 setup reality aliases"
+# language: "bash"
+# category: "reality"
+# topics: ["reality"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Reality Command Aliases - Session 00013
 # Source this file to enable quick reality commands
 # Usage: source scripts/00013_setup-reality-aliases.sh

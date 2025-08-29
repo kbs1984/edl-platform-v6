@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00039"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00039-debug-profile-creation.py"
+purpose: "Script for debug profile creation"
+language: "python"
+category: "authentication"
+topics: ["authentication"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00039: Debug profile creation RLS issue
 Tests what's causing the "violates row-level security policy" error
 """

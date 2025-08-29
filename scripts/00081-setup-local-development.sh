@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00081"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00081-setup-local-development.sh"
+# purpose: "Set up both auth and dashboard apps for local development"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00081: Configure for Local Development
 # Purpose: Set up both auth and dashboard apps for local development
 # Saves Vercel deployment for when we're ready

@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00059"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00059-add-yaml-batch.py"
+purpose: "Quickly add YAML to files that need it"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Batch add YAML frontmatter to priority files
 Session: 00059
 Purpose: Quickly add YAML to files that need it

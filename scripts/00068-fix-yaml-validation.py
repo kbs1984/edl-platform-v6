@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00068"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00068-fix-yaml-validation.py"
+purpose: "Script for fix yaml validation"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00068/69 - Fix YAML Validation Errors (Enhanced)
 Systematically fix common YAML frontmatter validation issues
 Enhanced in Session 69 to handle more error types

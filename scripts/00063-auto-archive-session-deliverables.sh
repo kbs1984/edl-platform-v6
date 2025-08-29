@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00063"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00063-auto-archive-session-deliverables.sh"
+# purpose: "Script for auto archive session deliverables"
+# language: "bash"
+# category: "session-management"
+# topics: ["session-management"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # 00063-auto-archive-session-deliverables.sh
 # Automatically archive new session deliverables to appropriate phase directories
