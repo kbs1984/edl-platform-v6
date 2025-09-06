@@ -3,7 +3,7 @@ import { TeamHeader } from "@/components/team/team-header";
 import { TeamMembersList } from "@/components/team/team-members-list";
 import { TeamPageSkeleton } from "@/components/team/team-skeletons";
 import { getTeamDetailsPageData, isTeamDetailsErrorData } from "@/lib/actions/team-actions";
-import { ChatContainer } from "@/components/chat/chat-container";
+import { TeamChatWrapper } from "@/components/team/team-chat-wrapper";
 import { TeamDetailsErrorData, TeamDetailsPageData, TeamMemberProfile } from "@/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -74,9 +74,8 @@ async function TeamDetailContent({ teamId }: { teamId: string }) {
         {(currentUserStatus === "member" || currentUserStatus === "leader") 
           ? (
             <div className="md:col-span-1">
-              <ChatContainer
+              <TeamChatWrapper
                 teamId={team.id}
-                type="TEAM"
                 currentUserId={currentUserId || ""}
               />
           </div>

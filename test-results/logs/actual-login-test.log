@@ -1,0 +1,36 @@
+🚀 Starting automated login test...
+
+1️⃣ Navigating to Auth Gateway (http://localhost:3000)...
+   Current URL: http://localhost:3000/login
+2️⃣ On login page, attempting to login...
+   Trying test credentials...
+Error during test: page.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('button:has-text("Login")')[22m
+[2m    - locator resolved to 2 elements. Proceeding with the first one: <button type="submit" aria-disabled="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background border border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 px-4 py-2 mt-4 h-12">Login</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <button type="submit" aria-disabled="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background border border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 px-4 py-2 mt-4 h-12">Login</button> from <div class="pt-28">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <button type="submit" aria-disabled="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background border border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 px-4 py-2 mt-4 h-12">Login</button> from <div class="pt-28">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    57 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <button type="submit" aria-disabled="false" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background border border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 px-4 py-2 mt-4 h-12">Login</button> from <div class="pt-28">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+
+=== TEST COMPLETE ===
+Browser will stay open for 30 seconds for inspection...

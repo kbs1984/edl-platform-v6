@@ -7,6 +7,8 @@ import {
   Frame,
   LifeBuoy,
   LucideIcon,
+  MessageCircle,
+  MessageSquare,
   PieChart,
   Send,
   Settings2,
@@ -23,6 +25,7 @@ import {
 } from "@/components/ui/sidebar"
 import { NavSecondary } from "@/components/navbar/nav-secondary"
 import { StudentFriendSidebar } from "@/components/student/friend-sidebar"
+import { AddictionMetricsSidebar } from "@/components/addiction/sidebar-metrics"
 import { useEffect } from "react"
 import { getProfile } from "@/utils/get-user-info"
 
@@ -68,6 +71,16 @@ const navMain: NavType = {
       icon: SquareTerminal,
     },
     {
+      title: "Messages",
+      url: "/messages",
+      icon: MessageSquare,
+    },
+    {
+      title: "Team Chats",
+      url: "/chat",
+      icon: MessageCircle,
+    },
+    {
       title: "My Debates",
       url: "#",
       icon: Bot,
@@ -111,11 +124,13 @@ export function StudentSidebar({ ...props }: React.ComponentProps<typeof Sidebar
     const getUser = async () => {
       const profile = await getProfile();
       
-      setUser({
-        name: profile.name || "",
-        email: profile.email || "",
-        avatar: profile.image_path || "",
-      });
+      if (profile) {
+        setUser({
+          name: profile.name || "",
+          email: profile.email || "",
+          avatar: profile.image_path || "",
+        });
+      }
     };
     getUser();
   }, []);
@@ -125,6 +140,7 @@ export function StudentSidebar({ ...props }: React.ComponentProps<typeof Sidebar
       <Sidebar variant="floating" collapsible="icon" {...props}>
         <SidebarContent>
           <NavMain list={navMain} />
+          <AddictionMetricsSidebar />
           <NavSecondary items={data.navSecondary} className="mt-auto" />
         </SidebarContent>
         <SidebarFooter>

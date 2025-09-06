@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="13" failures="0" errors="0" time="5.283">
+  <testsuite name="friends.baseline.test.js" errors="0" failures="0" skipped="0" timestamp="2025-09-01T22:15:58" time="5.255" tests="13">
+    <testcase classname="Friends System Baseline Tests › Friends Page Access" name="Friends page loads when authenticated" time="2.023">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Friends Page Access" name="Friends UI components present" time="0.026">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Send Friend Request" name="Open add friend dialog" time="0.003">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Send Friend Request" name="Send friend request to user" time="0.002">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Receive Friend Request" name="Friend request notification appears" time="0.427">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Receive Friend Request" name="Real-time updates for friend requests" time="0.003">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Accept/Reject Friend Request" name="Accept friend request" time="0.161">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Accept/Reject Friend Request" name="Reject friend request" time="0.003">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Friends List Management" name="View friends list" time="0.007">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Friends List Management" name="Online status indicator" time="0.002">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › Friends List Management" name="Remove friend functionality" time="0.003">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › 95% Syndrome Specific Tests" name="Friend updates without page refresh" time="0.006">
+    </testcase>
+    <testcase classname="Friends System Baseline Tests › 95% Syndrome Specific Tests" name="Friend request count updates" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

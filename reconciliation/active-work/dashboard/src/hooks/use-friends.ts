@@ -63,6 +63,9 @@ export function useFriends() {
 
   useEffect(() => {
     const fetchFriendRequests = async () => {
+      // Wait for authentication to be established
+      if (!userId) return;
+      
       const res = await getFriendRequestListAction();
       if (res.status === "error") {
         toast({
@@ -76,13 +79,13 @@ export function useFriends() {
       }
     };
     fetchFriendRequests();
-  }, []);
+  }, [userId]); // Only run when userId is available
 
   useEffect(() => {
     if (!userId) return;
     
     const channel = supabase
-      .channel("friend-requests")
+      .channel("friend-updates")
       .on(
         "postgres_changes",
         {
@@ -97,14 +100,38 @@ export function useFriends() {
             setFriendRequests((prev) => [ ...prev, newFriendship ]);
           }
 
-          if (payload.eventType === "UPDATE" && (payload.new.status === "ACCEPTED" || payload.new.status === "REJECTED" || payload.new.status === "CANCELED")) {
-            setFriendRequests((prev) => prev.filter((req) => req.id !== payload.new.id));
+          if (payload.eventType === "UPDATE") {
+            if (payload.new.status === "ACCEPTED") {
+              // Remove from requests and update friends list immediately
+              setFriendRequests((prev) => prev.filter((req) => req.id !== payload.new.id));
+              updateFriends(); // Refresh friends list when accepted
+            } else if (payload.new.status === "REJECTED" || payload.new.status === "CANCELED") {
+              setFriendRequests((prev) => prev.filter((req) => req.id !== payload.new.id));
+            }
           }
 
           if (payload.eventType === "DELETE") {
             setFriendRequests((prev) => prev.filter((req) => req.id !== payload.old.id));
+            updateFriends(); // Refresh when friendship deleted
           }
-          updateFriends();
+        }
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "friendship",
+          filter: `user_id=eq.${userId}`,
+        },
+        (payload) => {
+          // Listen for changes where current user is the requester
+          if (payload.eventType === "UPDATE" && payload.new.status === "ACCEPTED") {
+            updateFriends(); // Refresh friends list when your request is accepted
+          }
+          if (payload.eventType === "DELETE") {
+            updateFriends(); // Refresh when friendship deleted
+          }
         }
       )
       .subscribe();
@@ -115,8 +142,10 @@ export function useFriends() {
   }, [userId]);
 
   useEffect(() => {
+    // Only update friends after userId is available
+    if (!userId) return;
     updateFriends();
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (presence && presence.user_presence) {

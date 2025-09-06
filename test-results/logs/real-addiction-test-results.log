@@ -1,0 +1,202 @@
+
+Running 7 tests using 1 worker
+
+  ✘  1 [chromium] › tests/addiction-bar-real-tests.spec.js:27:3 › Session 151: Real Addiction Bar Tests › Addiction bar is visible and has all elements (11.8s)
+  ✘  2 [chromium] › tests/addiction-bar-real-tests.spec.js:49:3 › Session 151: Real Addiction Bar Tests › EmCoin balance displays correctly (11.9s)
+  ✘  3 [chromium] › tests/addiction-bar-real-tests.spec.js:65:3 › Session 151: Real Addiction Bar Tests › Streak counter displays correctly (12.0s)
+  ✘  4 [chromium] › tests/addiction-bar-real-tests.spec.js:81:3 › Session 151: Real Addiction Bar Tests › Today visitors counter displays correctly (12.0s)
+  ✘  5 [chromium] › tests/addiction-bar-real-tests.spec.js:97:3 › Session 151: Real Addiction Bar Tests › Division rank displays correctly (11.9s)
+  ✘  6 [chromium] › tests/addiction-bar-real-tests.spec.js:113:3 › Session 151: Real Addiction Bar Tests › Addiction bar persists on page navigation (12.0s)
+  ✘  7 [chromium] › tests/addiction-bar-real-tests.spec.js:135:3 › Session 151: Real Addiction Bar Tests › Addiction bar has correct styling (12.1s)
+
+
+  1) [chromium] › tests/addiction-bar-real-tests.spec.js:27:3 › Session 151: Real Addiction Bar Tests › Addiction bar is visible and has all elements 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-3cc43-isible-and-has-all-elements-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-3cc43-isible-and-has-all-elements-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-3cc43-isible-and-has-all-elements-chromium/error-context.md
+
+  2) [chromium] › tests/addiction-bar-real-tests.spec.js:49:3 › Session 151: Real Addiction Bar Tests › EmCoin balance displays correctly 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-f1271--balance-displays-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-f1271--balance-displays-correctly-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-f1271--balance-displays-correctly-chromium/error-context.md
+
+  3) [chromium] › tests/addiction-bar-real-tests.spec.js:65:3 › Session 151: Real Addiction Bar Tests › Streak counter displays correctly 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-8a792--counter-displays-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-8a792--counter-displays-correctly-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-8a792--counter-displays-correctly-chromium/error-context.md
+
+  4) [chromium] › tests/addiction-bar-real-tests.spec.js:81:3 › Session 151: Real Addiction Bar Tests › Today visitors counter displays correctly 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-8b897--counter-displays-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-8b897--counter-displays-correctly-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-8b897--counter-displays-correctly-chromium/error-context.md
+
+  5) [chromium] › tests/addiction-bar-real-tests.spec.js:97:3 › Session 151: Real Addiction Bar Tests › Division rank displays correctly 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-a1512-ion-rank-displays-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-a1512-ion-rank-displays-correctly-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-a1512-ion-rank-displays-correctly-chromium/error-context.md
+
+  6) [chromium] › tests/addiction-bar-real-tests.spec.js:113:3 › Session 151: Real Addiction Bar Tests › Addiction bar persists on page navigation 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-4beb8-persists-on-page-navigation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-4beb8-persists-on-page-navigation-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-4beb8-persists-on-page-navigation-chromium/error-context.md
+
+  7) [chromium] › tests/addiction-bar-real-tests.spec.js:135:3 › Session 151: Real Addiction Bar Tests › Addiction bar has correct styling 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[type="email"]')[22m
+
+
+      16 |     // Login before each test
+      17 |     await page.goto('http://localhost:3000/login');
+    > 18 |     await page.fill('input[type="email"]', TEST_CREDENTIALS.email);
+         |                ^
+      19 |     await page.fill('input[type="password"]', TEST_CREDENTIALS.password);
+      20 |     await page.keyboard.press('Enter');
+      21 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/addiction-bar-real-tests.spec.js:18:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-3cb47-ion-bar-has-correct-styling-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/addiction-bar-real-tests-S-3cb47-ion-bar-has-correct-styling-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/addiction-bar-real-tests-S-3cb47-ion-bar-has-correct-styling-chromium/error-context.md
+
+  7 failed
+    [chromium] › tests/addiction-bar-real-tests.spec.js:27:3 › Session 151: Real Addiction Bar Tests › Addiction bar is visible and has all elements 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:49:3 › Session 151: Real Addiction Bar Tests › EmCoin balance displays correctly 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:65:3 › Session 151: Real Addiction Bar Tests › Streak counter displays correctly 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:81:3 › Session 151: Real Addiction Bar Tests › Today visitors counter displays correctly 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:97:3 › Session 151: Real Addiction Bar Tests › Division rank displays correctly 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:113:3 › Session 151: Real Addiction Bar Tests › Addiction bar persists on page navigation 
+    [chromium] › tests/addiction-bar-real-tests.spec.js:135:3 › Session 151: Real Addiction Bar Tests › Addiction bar has correct styling 

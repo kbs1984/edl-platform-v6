@@ -86,5 +86,13 @@ export function getLevelFromExp(userExp: number) {
   }
 
   // level 변수는 0부터 시작하므로, 실제 레벨은 level + 1
-  return { level: level + 1, exp: userExp - accumulated }
+  const actualLevel = level + 1
+  const currentLevelExp = userExp - accumulated
+  const nextLevelExp = requiredExpForLevel(actualLevel + 1)
+  
+  return { 
+    level: actualLevel, 
+    exp: currentLevelExp,
+    nextLevelExp: nextLevelExp
+  }
 }

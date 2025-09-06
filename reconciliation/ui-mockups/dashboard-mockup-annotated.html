@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Dashboard - Component Layout Mockup with Annotations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Montserrat:wght@200;300;400;500;600;700;800&family=Lexend+Deca:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Dark Gray Base Palette */
+            --dark-primary: #1a1a1a;
+            --dark-secondary: #2d2d2d;
+            --dark-tertiary: #3a3a3a;
+            --dark-quaternary: #4a4a4a;
+            --dark-border: #5a5a5a;
+            
+            /* RGB Accents */
+            --accent-red-light: #ff6b6b;
+            --accent-blue-light: #74c0fc;
+            --accent-green-light: #8ce99a;
+            
+            /* Text */
+            --text-primary: #f1f3f5;
+            --text-secondary: #adb5bd;
+            --text-tertiary: #868e96;
+        }
+        
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background: #0d0d0d;
+            color: var(--text-primary);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent-red-light), var(--accent-blue-light), var(--accent-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-family: 'Lexend Deca', sans-serif;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .mockup-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        /* Dashboard Mockup */
+        .dashboard-mockup {
+            background: var(--dark-primary);
+            border: 2px solid var(--dark-border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            height: 800px;
+        }
+        
+        /* Component Styles */
+        .component {
+            position: absolute;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            font-family: 'Lexend Deca', sans-serif;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .component:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .component.issue {
+            border-color: var(--accent-red-light);
+            background: rgba(255, 107, 107, 0.05);
+        }
+        
+        .component.working {
+            border-color: var(--accent-green-light);
+            background: rgba(140, 233, 154, 0.05);
+        }
+        
+        .component.partial {
+            border-color: var(--accent-blue-light);
+            background: rgba(116, 192, 252, 0.05);
+        }
+        
+        /* Z-Index Indicator */
+        .z-index-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        /* Actual Component Positions */
+        .addiction-bar {
+            width: 100%;
+            height: 48px;
+            top: 0;
+            left: 0;
+            z-index: 50;
+        }
+        
+        .main-header {
+            width: calc(100% - 240px);
+            height: 64px;
+            top: 0;
+            left: 240px;
+            z-index: 10;
+        }
+        
+        .student-sidebar {
+            width: 240px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 40;
+        }
+        
+        .friend-sidebar {
+            width: 280px;
+            height: calc(100% - 64px);
+            top: 64px;
+            right: 0;
+            z-index: 30;
+            opacity: 0.5;
+        }
+        
+        .breadcrumb-nav {
+            width: 400px;
+            height: 40px;
+            top: 12px;
+            left: 280px;
+            z-index: 11;
+        }
+        
+        .emcoin-balance {
+            width: 120px;
+            height: 32px;
+            top: 16px;
+            right: 20px;
+            z-index: 11;
+        }
+        
+        .main-content {
+            width: calc(100% - 240px);
+            height: calc(100% - 64px);
+            top: 64px;
+            left: 240px;
+            z-index: 1;
+        }
+        
+        .background-layers {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -10;
+            opacity: 0.3;
+        }
+        
+        .chat-provider {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            border-style: dotted;
+        }
+        
+        .toaster {
+            width: 380px;
+            height: 100px;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        /* Issues Panel */
+        .issues-panel {
+            background: var(--dark-secondary);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .issues-panel h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .issue-item {
+            background: var(--dark-primary);
+            border-left: 3px solid var(--accent-red-light);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+        
+        .issue-item.warning {
+            border-left-color: var(--accent-blue-light);
+        }
+        
+        .issue-item.success {
+            border-left-color: var(--accent-green-light);
+        }
+        
+        .issue-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+        
+        .issue-description {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+        }
+        
+        .issue-fix {
+            font-size: 10px;
+            color: var(--accent-green-light);
+            font-family: 'Lexend Deca', sans-serif;
+        }
+        
+        /* Legend */
+        .legend {
+            margin-top: 30px;
+            padding: 15px;
+            background: var(--dark-secondary);
+            border-radius: 8px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+        
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        .legend-box.issue {
+            border-color: var(--accent-red-light);
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .legend-box.working {
+            border-color: var(--accent-green-light);
+            background: rgba(140, 233, 154, 0.1);
+        }
+        
+        .legend-box.partial {
+            border-color: var(--accent-blue-light);
+            background: rgba(116, 192, 252, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>EDL Dashboard Component Layout</h1>
+            <p>Visual mockup showing actual component positions and z-index layering issues</p>
+        </div>
+        
+        <div class="mockup-wrapper">
+            <!-- Dashboard Mockup -->
+            <div class="dashboard-mockup">
+                <!-- Background Layers -->
+                <div class="component background-layers">
+                    <span>Background SVG + Gradients</span>
+                    <span class="z-index-badge">z: -10</span>
+                </div>
+                
+                <!-- Chat Provider Context -->
+                <div class="component chat-provider">
+                    <span>Providers (Chat, Team, Presence)</span>
+                    <span class="z-index-badge">z: 0</span>
+                </div>
+                
+                <!-- Addiction Bar - ISSUE: Blocking header -->
+                <div class="component addiction-bar issue">
+                    <span>V5 Addiction Bar (👁️🔥🪙🏆)</span>
+                    <span class="z-index-badge">z: 50 ⚠️</span>
+                </div>
+                
+                <!-- Student Sidebar -->
+                <div class="component student-sidebar working">
+                    <span>Student Sidebar</span>
+                    <span class="z-index-badge">z: 40</span>
+                </div>
+                
+                <!-- Main Header -->
+                <div class="component main-header partial">
+                    <span>Header (blocked by addiction bar)</span>
+                    <span class="z-index-badge">z: 10</span>
+                </div>
+                
+                <!-- Breadcrumb Navigation -->
+                <div class="component breadcrumb-nav partial">
+                    <span>Breadcrumb</span>
+                    <span class="z-index-badge">z: 11</span>
+                </div>
+                
+                <!-- EmCoin Balance -->
+                <div class="component emcoin-balance working">
+                    <span>EmCoin Balance</span>
+                    <span class="z-index-badge">z: 11</span>
+                </div>
+                
+                <!-- Friend Sidebar (Hidden by default) -->
+                <div class="component friend-sidebar partial">
+                    <span>Friend Sidebar (hidden)</span>
+                    <span class="z-index-badge">z: 30</span>
+                </div>
+                
+                <!-- Main Content Area -->
+                <div class="component main-content working">
+                    <span>Main Content Area</span>
+                    <span class="z-index-badge">z: 1</span>
+                </div>
+                
+                <!-- Toaster Notifications -->
+                <div class="component toaster working">
+                    <span>Toast Notifications</span>
+                    <span class="z-index-badge">z: 100 ✓</span>
+                </div>
+            </div>
+            
+            <!-- Issues Panel -->
+            <div class="issues-panel">
+                <h2>Component Status & Issues</h2>
+                
+                <div class="issue-item">
+                    <div class="issue-title">🔴 Addiction Bar Z-Index Conflict</div>
+                    <div class="issue-description">
+                        The V5 addiction bar (z-50) overlaps the main header (z-10), blocking navigation elements
+                    </div>
+                    <div class="issue-fix">Fix: Change z-index from 50 to 20 in layout.tsx:38</div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-title">🔵 Friend Sidebar Hidden State</div>
+                    <div class="issue-description">
+                        Friend sidebar defaultOpen={false} but no trigger button visible to open it
+                    </div>
+                    <div class="issue-fix">Add: Friend sidebar trigger button in header</div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-title">🔵 Header Height Transition</div>
+                    <div class="issue-description">
+                        Header has dynamic height (h-16 → h-12) on sidebar collapse but addiction bar doesn't adjust
+                    </div>
+                    <div class="issue-fix">Sync: Addiction bar should respond to header height changes</div>
+                </div>
+                
+                <div class="issue-item success">
+                    <div class="issue-title">✅ Working: Student Sidebar</div>
+                    <div class="issue-description">
+                        Sidebar toggle working, state persists in cookies
+                    </div>
+                    <div class="issue-fix">No action needed</div>
+                </div>
+                
+                <div class="issue-item success">
+                    <div class="issue-title">✅ Working: EmCoin Display</div>
+                    <div class="issue-description">
+                        EmCoin balance compact display properly positioned
+                    </div>
+                    <div class="issue-fix">No action needed</div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-title">🔵 Breadcrumb Static Text</div>
+                    <div class="issue-description">
+                        Breadcrumb shows "Data Fetching" hardcoded instead of dynamic page name
+                    </div>
+                    <div class="issue-fix">Update: Make breadcrumb context-aware</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-box issue"></div>
+                <span>Has Issues - Needs Fix</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box partial"></div>
+                <span>Partially Working</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box working"></div>
+                <span>Working Correctly</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add interactive hover effects
+        document.querySelectorAll('.component').forEach(comp => {
+            comp.addEventListener('click', function() {
+                const badge = this.querySelector('.z-index-badge');
+                if (badge) {
+                    const zIndex = badge.textContent;
+                    console.log(`Component: ${this.querySelector('span').textContent}`);
+                    console.log(`Z-Index: ${zIndex}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

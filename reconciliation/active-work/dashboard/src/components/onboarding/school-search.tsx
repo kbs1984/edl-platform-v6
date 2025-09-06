@@ -54,9 +54,8 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
           schoolId: res.id,
           schoolName: res.name || newSchoolName,
         }));
-        setSearchQuery(res.name || newSchoolName); // Show registered name in search field
+        setSchoolSearchQuery(res.name || newSchoolName); // Show registered name in search field
         setIsSchoolSelected(true);
-        setShowRegisterDialog(false); // Close dialog programmatically
         setNewSchoolName("");
         setSchoolSearchResults([]);
         setIsSchoolSearchOpen(false);

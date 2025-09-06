@@ -1,4 +1,5 @@
 #!/bin/bash
+: '
 ---
 session: "00028"
 type: "script"
@@ -15,6 +16,7 @@ domain: "core"
 canonical: true
 replaces: ["00028-full-startup.sh", "00028-session-startup.sh", "00059-session-start-enhanced.sh"]
 ---
+'
 
 # 00028-session-start.sh - UNIFIED session automation (canonical version)
 # Created: Session 28
@@ -81,12 +83,12 @@ if [ -n "$1" ] && [ "$1" != "--git" ]; then
     SESSION_NUM="$1"
     echo "Using specified session: $SESSION_NUM"
 else
-    # Better auto-detection: find actual last session (excluding outliers)
+    # Better auto-detection: find actual last session (excluding test sessions < 10)
     LAST_GOOD_SESSION=$(ls archive/sessions/SESSION-*-LOG.md 2>/dev/null | \
         grep -o 'SESSION-[0-9]\{5\}-LOG' | \
         grep -o '[0-9]\{5\}' | \
         sort -n | \
-        awk '$1 < 90 {last=$1} END {print last}')
+        awk '$1 >= 10 {last=$1} END {print last}')
     
     if [ -n "$LAST_GOOD_SESSION" ]; then
         SESSION_NUM=$(printf "%05d" $((10#$LAST_GOOD_SESSION + 1)))
@@ -176,11 +178,18 @@ echo ""
 
 # Step 6: YAML Query Discovery (Session 84 mandate)
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 6/6: YAML Query Discovery"
+echo "Step 6/7: YAML Query Discovery"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  🔍 Querying for existing work..."
 # Quick queries for common concerns
 python3 scripts/00059-yaml-query.py --status incomplete --limit 3 2>/dev/null | grep -E "^[0-9]|No results" | head -5
+echo ""
+
+# Step 7: Dynamic Context Loading (Session 138 enhancement)
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Step 7/7: Dynamic Context Loading"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+./scripts/00138-dynamic-context-loader.sh 2>/dev/null || echo "  ⚠️ Dynamic context loader unavailable"
 echo ""
 
 # Timer end
@@ -195,4 +204,11 @@ echo "📚 Quick Reference:"
 echo "  • Session Log: archive/sessions/SESSION-${SESSION_NUM}-LOG.md"
 echo "  • Previous Handoff: archive/sessions/SESSION-${SESSION_NUM}-HANDOFF.md"
 echo "  • Automation README: scripts/00028-AUTOMATION-README.md"
+echo ""
+echo "🆕 Session 138 Dynamic Context & MCP Enhanced Workflow:"
+echo "  • Dynamic Context: ./scripts/00138-dynamic-context-loader.sh"
+echo "  • Enhanced Start: ./scripts/00136-enhanced-session-start.sh $SESSION_NUM"
+echo "  • Mission & Priorities: reconciliation/00136-MISSION-AND-PRIORITIES.md"
+echo "  • Research Tests: python3 scripts/00136-create-informed-test.py [feature]"
+echo "  • Auto PR: python3 scripts/00136-auto-pr.py '[Feature]' $SESSION_NUM"
 echo "═══════════════════════════════════════════════════════════"

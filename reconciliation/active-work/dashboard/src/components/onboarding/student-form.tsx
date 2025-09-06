@@ -135,7 +135,6 @@ export const StudentForm = () => {
             </TooltipProvider>
           </div>
         </div>
-        {console.log("🔧🔧🔧 About to render SchoolSearch, disabled:", formData.graduationYear === "Graduated")}
         <SchoolSearch formData={formData} setFormData={setFormData} disabled={formData.graduationYear === "Graduated"} />
       </div>
 

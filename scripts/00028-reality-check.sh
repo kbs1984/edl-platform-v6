@@ -1,4 +1,5 @@
 #!/bin/bash
+: '
 ---
 session: "00028"
 type: "script"
@@ -14,6 +15,7 @@ priority: "P0"
 domain: "core"
 used_by: ["00028-session-start.sh"]
 ---
+'
 
 # 00028-reality-check.sh - SIMPLEST VERSION FIRST
 # Session 28: Build session automation framework

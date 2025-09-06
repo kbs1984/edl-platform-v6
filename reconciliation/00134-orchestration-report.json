@@ -1,0 +1,62 @@
+{
+  "session": "134",
+  "priority": "Priority 2 - Reality Agent MCP Orchestration",
+  "timestamp": "2025-09-05T10:03:12.550655",
+  "duration": "0:00:00.218064",
+  "results": {
+    "health_check": {
+      "timestamp": "2025-09-05T10:03:12.552466",
+      "overall_health": 66.66666666666666,
+      "agents": {
+        "filesystem-connector": {
+          "healthy": true,
+          "status": "Initialized"
+        },
+        "supabase-connector": {
+          "healthy": true,
+          "status": "Initialized"
+        }
+      },
+      "healthy_count": 2,
+      "total_count": 3
+    },
+    "ninety_five_syndrome": {
+      "ui_components": true,
+      "database_saves": true,
+      "realtime_sync": false,
+      "syndrome_detected": true,
+      "severity": "HIGH",
+      "recommendation": "Fix WebSocket connections for real-time updates"
+    },
+    "performance": {
+      "timestamp": "2025-09-05T10:03:12.552682",
+      "regressions": [
+        {
+          "metric": "signup_page",
+          "baseline": 2300,
+          "current": 2800,
+          "regression": "21.7%"
+        }
+      ],
+      "has_regressions": true,
+      "metrics": {
+        "login_page": 1650,
+        "signup_page": 2800,
+        "dashboard_redirect": 450
+      }
+    },
+    "ui_tests": {
+      "success": true,
+      "metrics": {
+        "overall_health": 50.0
+      },
+      "output": "\ud83d\udd0d Testing Services...\n\n  \u2705 Auth Gateway: Running on port 3000\n  \u2705 Dashboard: Running on port 3001\n\n\ud83d\ude80 Launching browser...\n\n\ud83d\udccb Test 1: Login page loads\n  \u2705 Login page loads with form\n\n\ud83d\udccb Test 2: Signup page loads\n  \u2705 Signup page loads with form\n\n\ud83d\udccb Test 3: Dashboard redirect when not authenticated\n  \u274c Unexpected URL: http://localhost:3001/\n\n\ud83d\udccb Test 4: Friends System Components (95% Syndrome Check)\n\n\ud83d\udccb Test 5: Teams System Components\n  \u26a0\ufe0f Teams page requires authentication\n\n============================"
+    }
+  },
+  "summary": {
+    "agents_loaded": 2,
+    "mcp_enhanced": 1,
+    "syndrome_detected": true,
+    "regressions_found": true
+  }
+}

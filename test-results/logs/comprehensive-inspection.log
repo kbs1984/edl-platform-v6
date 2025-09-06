@@ -1,0 +1,98 @@
+🚀 Starting Comprehensive Dashboard Inspection...
+
+📍 Navigating to Auth Gateway...
+
+============================================================
+📝 MANUAL LOGIN REQUIRED
+============================================================
+Please log in with your credentials
+============================================================
+
+Waiting for login...
+
+✅ Login detected! Starting comprehensive inspection...
+
+============================================================
+📊 COMPREHENSIVE FEATURE INSPECTION
+============================================================
+
+1️⃣ ADDICTION/GAMIFICATION FEATURES:
+----------------------------------------
+  ✅ EmCoin Balance: Found (value: "0")
+  ✅ Streak Counter: Found (value: "0")
+  ✅ Today Visitors: Found (value: "0")
+  ✅ Division Rank: Found (value: "#--")
+  ✅ Addiction Bar: Found (value: "👁️
+              
+                0
+                Today Visitors
+              
+            
+            
+            
+            
+              🔥
+              
+                0
+                Day Streak
+              
+            
+            
+            
+            
+              🪙
+              
+                0
+                EmCoins
+              
+            
+            
+            
+            
+              🏆
+              
+                #--
+                Division Rank")
+  ❌ Badge Display: NOT FOUND
+  ❌ Achievement Panel: NOT FOUND
+  ❌ Level Indicator: NOT FOUND
+  ❌ XP Display: NOT FOUND
+  ❌ Reward System: NOT FOUND
+
+2️⃣ CHAT & MESSAGING FEATURES:
+----------------------------------------
+  Clicking "Chats" button...
+node:internal/process/promises:391
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+elementHandle.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="v5-bar" class="v5-addiction-bar v5-visible">…</div> from <div id="v5-addiction-bar" class="fixed top-0 left-0 right-0 z-50">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="v5-bar" class="v5-addiction-bar v5-visible">…</div> from <div id="v5-addiction-bar" class="fixed top-0 left-0 right-0 z-50">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    54 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <div id="v5-bar" class="v5-addiction-bar v5-visible">…</div> from <div id="v5-addiction-bar" class="fixed top-0 left-0 right-0 z-50">…</div> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at /home/b4sho/edl-projects-with-claude/edl-platform-v6/comprehensive-dashboard-inspection.js:86:22 {
+  name: 'TimeoutError'
+}
+
+Node.js v20.19.4

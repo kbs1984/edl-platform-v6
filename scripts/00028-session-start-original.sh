@@ -1,4 +1,5 @@
 #!/bin/bash
+: '
 ---
 session: "00028"
 type: "script"
@@ -13,6 +14,7 @@ topics: ['session', 'automation']
 priority: "P2"
 domain: "core"
 ---
+'
 
 # 00028-session-start-original.sh - ORIGINAL session automation (preserved for reference)
 # Created: Session 28, Updated: Session 28 (based on Session 29 feedback)

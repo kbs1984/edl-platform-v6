@@ -53,19 +53,12 @@ export const loginAction = async (formData: FormData) => {
     return encodedRedirect("error", "/login", error.message);
   }
   
-  const cookieStore = await cookies();
-  const tokens = cookieStore.getAll();
-
-  // 토큰 루트페이지 전파
-  tokens.forEach((token) => {
-    cookieStore.set(token.name, token.value, {
-      httpOnly: true,
-      path: "/",
-      domain: `.${process.env.ROOT_URL}`,
-    });
-  });
-
-  return redirect(`${process.env.PROTOCOL}${process.env.DASHBOARD_URL}`);
+  // Use environment variable or default to localhost for development
+  const redirectUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3001';
+  
+  console.log('Login successful, redirecting to:', redirectUrl);
+  
+  return redirect(redirectUrl);
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {

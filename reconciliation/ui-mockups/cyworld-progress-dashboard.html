@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform v6 - Cyworld Progress Matrix 🌰</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Signature Cyworld Orange Gradient */
+            --cyworld-primary-orange: #FF6D42;
+            --cyworld-gradient-light: #FF6E42;
+            --cyworld-gradient-deep: #FF6C2D;
+            --cyworld-accent-orange: #FE8116;
+            --cyworld-warm-accent: #FDA766;
+            
+            /* Supporting Colors */
+            --cyworld-pink-accent: #FF69B4;
+            --cyworld-bg-light: #FFEEE6;
+            --cyworld-border: #FFB6A3;
+            --cyworld-text-primary: #333333;
+            --cyworld-text-secondary: #666666;
+            
+            /* Miniroom Pastel Palette */
+            --cyworld-mint: #B5EAD7;
+            --cyworld-peach: #FFDAC1;
+            --cyworld-lavender: #E6E6FA;
+            --cyworld-baby-blue: #E0F6FF;
+            --cyworld-soft-yellow: #FFFACD;
+            --cyworld-rose-pink: #FFE4E1;
+        }
+        
+        body {
+            font-family: "Dotum", "Gulim", "맑은 고딕", "Malgun Gothic", 
+                         "Apple SD Gothic Neo", sans-serif;
+            background: linear-gradient(135deg, #FFEEE6 0%, #FFD4CC 100%);
+            min-height: 100vh;
+            letter-spacing: -0.3px;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 222, 173, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 228, 225, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .cyworld-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cyworld Header */
+        .cy-header {
+            background: linear-gradient(135deg, #FF6D42 0%, #FDA766 100%);
+            border: 3px solid #FF6C2D;
+            border-radius: 20px 20px 8px 8px;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            box-shadow: 
+                0 5px 15px rgba(255, 109, 66, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cy-header::before {
+            content: "✨";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .cy-header::after {
+            content: "🌰";
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 20px;
+            animation: dotoriBounce 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+        }
+        
+        @keyframes dotoriBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-10deg); }
+            75% { transform: translateY(-5px) rotate(10deg); }
+        }
+        
+        .cy-header h1 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+        
+        .cy-header .subtitle {
+            color: #FFE4E1;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cyworld Style Stats Cards */
+        .cy-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .cy-stat-card {
+            background: linear-gradient(135deg, white 0%, #FFF8F5 100%);
+            border: 2px solid #FFB6A3;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            box-shadow: 
+                0 3px 10px rgba(255, 182, 163, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .cy-stat-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 6px 20px rgba(255, 182, 163, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        
+        .cy-stat-card .value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #FF6D42, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cy-stat-card .label {
+            color: #666;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cy-stat-card.health .value {
+            background: linear-gradient(135deg, #48BB78, #38A169);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Cyworld Tabs */
+        .cy-tabs {
+            background: linear-gradient(to bottom, #FFE4DC 0%, #FFD4C4 100%);
+            border: 2px solid #FFB6A3;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 4px;
+        }
+        
+        .cy-tab {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #FF6D42;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .cy-tab:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
+        }
+        
+        .cy-tab.active {
+            background: linear-gradient(135deg, #FF6D42 0%, #FF8556 100%);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                0 2px 8px rgba(255, 109, 66, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .cy-tab.active::after {
+            content: "✓";
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+        }
+        
+        /* Main Content Panel */
+        .cy-matrix-container {
+            background: linear-gradient(135deg, white 0%, #FFF8F5 100%);
+            border: 3px solid #FFB6A3;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 
+                0 8px 25px rgba(255, 182, 163, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+        
+        .cy-matrix-container::before {
+            content: "";
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                #FFB6A3, #FFDAC1, #FFB6A3, #FFE4E1, 
+                #FFB6A3, #FFDAC1, #FFB6A3);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: borderGlow 4s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Feature Cards - Miniroom Style */
+        .cy-feature-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .cy-category-header {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF6D42;
+            margin: 20px 0 12px 0;
+            padding: 8px 12px;
+            background: linear-gradient(90deg, rgba(255, 182, 163, 0.2) 0%, transparent 100%);
+            border-left: 4px solid #FF6D42;
+            border-radius: 0 8px 8px 0;
+            text-transform: capitalize;
+            position: relative;
+        }
+        
+        .cy-feature-card {
+            background: linear-gradient(135deg, #FFF8F5 0%, white 100%);
+            border: 2px solid #FFDAC1;
+            border-radius: 12px;
+            padding: 14px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 12px;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cy-feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cy-feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .cy-feature-card:hover {
+            transform: translateX(3px);
+            border-color: #FFB6A3;
+            box-shadow: 0 4px 15px rgba(255, 182, 163, 0.2);
+        }
+        
+        .cy-feature-card.validated {
+            background: linear-gradient(135deg, #E8FFE8 0%, #F0FFF0 100%);
+            border-color: #98D98E;
+        }
+        
+        .cy-feature-card.implemented {
+            background: linear-gradient(135deg, #E8F4FF 0%, #F0F8FF 100%);
+            border-color: #87CEEB;
+        }
+        
+        .cy-feature-card.in_progress {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFFAF0 100%);
+            border-color: #FFD700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Priority Badges - Dotori Style */
+        .cy-priority-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cy-priority-badge.P0 {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+        }
+        
+        .cy-priority-badge.P0::before {
+            content: "🔥";
+            font-size: 12px;
+        }
+        
+        .cy-priority-badge.P1 {
+            background: linear-gradient(135deg, #FFD93D 0%, #FFB347 100%);
+            color: #8B4513;
+        }
+        
+        .cy-priority-badge.P1::before {
+            content: "⭐";
+            font-size: 12px;
+        }
+        
+        .cy-priority-badge.P2 {
+            background: linear-gradient(135deg, #A8E6CF 0%, #81C784 100%);
+            color: #2E7D32;
+        }
+        
+        .cy-priority-badge.P2::before {
+            content: "🌱";
+            font-size: 12px;
+        }
+        
+        .cy-feature-info {
+            flex: 1;
+        }
+        
+        .cy-feature-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        
+        .cy-feature-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        
+        .cy-meta-tag {
+            font-size: 10px;
+            color: #666;
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFDAC1 100%);
+            padding: 3px 8px;
+            border-radius: 10px;
+            border: 1px solid #FFB6A3;
+        }
+        
+        /* Status Indicators - Miniroom Style */
+        .cy-status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border: 1px solid #FFD4CC;
+        }
+        
+        .cy-status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 6px currentColor;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .cy-status-dot.validated { background: #48BB78; color: #48BB78; }
+        .cy-status-dot.implemented { background: #4299E1; color: #4299E1; }
+        .cy-status-dot.in_progress { background: #FFD700; color: #FFD700; }
+        .cy-status-dot.not_started { background: #CBD5E0; color: #CBD5E0; }
+        
+        .cy-status-text {
+            font-size: 11px;
+            color: #666;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+        
+        /* Health Badge */
+        .cy-health-badge {
+            background: linear-gradient(135deg, #48BB78, #38A169);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .cy-health-badge::before {
+            content: "💚";
+            font-size: 10px;
+        }
+        
+        /* 95% Syndrome Warning */
+        .cy-syndrome-warning {
+            background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+            color: #8B008B;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 10px;
+            margin-left: 6px;
+            font-weight: bold;
+        }
+        
+        /* Legend - Cyworld Style */
+        .cy-legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 245, 0.95) 100%);
+            border: 2px solid #FFB6A3;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(255, 182, 163, 0.2);
+        }
+        
+        .cy-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .cy-legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Dotori Counter */
+        .dotori-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .dotori-counter::before {
+            content: "🌰";
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cyworld-container">
+        <div class="cy-header">
+            <h1>🎮 EDL Platform v6 - 진행 상황 매트릭스</h1>
+            <div class="subtitle">세션 155 - 실시간 플랫폼 개발 현황</div>
+        </div>
+        
+        <div class="dotori-counter">
+            완성도: <span id="completionRate">36</span>%
+        </div>
+        
+        <div class="cy-stats-grid" id="statsGrid"></div>
+        
+        <div class="cy-tabs">
+            <button class="cy-tab active" onclick="filterFeatures('all')">전체 보기</button>
+            <button class="cy-tab" onclick="filterFeatures('P0')">P0 긴급</button>
+            <button class="cy-tab" onclick="filterFeatures('P1')">P1 중요</button>
+            <button class="cy-tab" onclick="filterFeatures('P2')">P2 미래</button>
+            <button class="cy-tab" onclick="filterFeatures('validated')">✅ 검증됨</button>
+            <button class="cy-tab" onclick="filterFeatures('implemented')">🔧 구현됨</button>
+            <button class="cy-tab" onclick="filterFeatures('not_started')">⏳ 대기중</button>
+        </div>
+        
+        <div class="cy-matrix-container">
+            <div class="cy-feature-grid" id="featureGrid"></div>
+        </div>
+        
+        <div class="cy-legend">
+            <div class="cy-legend-item">
+                <div class="cy-legend-dot" style="background: #48BB78;"></div>
+                <span>검증 완료 (프로덕션 준비)</span>
+            </div>
+            <div class="cy-legend-item">
+                <div class="cy-legend-dot" style="background: #4299E1;"></div>
+                <span>구현됨 (테스트 필요)</span>
+            </div>
+            <div class="cy-legend-item">
+                <div class="cy-legend-dot" style="background: #FFD700;"></div>
+                <span>진행중</span>
+            </div>
+            <div class="cy-legend-item">
+                <div class="cy-legend-dot" style="background: #CBD5E0;"></div>
+                <span>시작 안함</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const features = [
+            {"feature_name":"Activity Auto-Save","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-159","database_tables":["session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Activity Runtime Engine","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-4","user_story":"US-155","database_tables":["activity","activity_session","activity_instance","session_progress"],"ui_components":["activities/page.tsx","[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Activity Session Tracking","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-156","database_tables":["activity_session","session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Assignment Submission","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-158","database_tables":["activity_assignment","assignment_submission"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Progress Persistence","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-157","database_tables":["session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Friend Request System","feature_category":"communication","priority":"P0","status":"implemented","canvas_id":"001-2","user_story":"US-050","database_tables":["friendship"],"ui_components":["FriendSidebar.tsx","friend-request-dialog.tsx","use-friends.ts"],"reality_health":"92.00","ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Balance Display","feature_category":"emcoin","priority":"P0","status":"implemented","canvas_id":"003-2","user_story":"US-182","database_tables":[],"ui_components":["emcoin-balance-display.tsx","emcoin-actions.ts"],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Addiction Bar Global","feature_category":"Engagement","priority":"P0","status":"validated","canvas_id":null,"user_story":null,"database_tables":[],"ui_components":["v5-engine/addiction-bar.js","v5-engine/config.js","v5-bridge.tsx"],"reality_health":"95.00","ninety_five_syndrome":false},
+            {"feature_name":"Visitor Tracking System","feature_category":"Engagement","priority":"P0","status":"implemented","canvas_id":"003-1","user_story":"As a student, I want to see who visited my profile today to feel socially validated","database_tables":["visitor_stats","profile_themes","profile_visitors","visitor_leaderboard","profile_customization"],"ui_components":["visitor-tracker.tsx","visitor-actions.ts"],"reality_health":"100.00","ninety_five_syndrome":false},
+            {"feature_name":"Guardian Onboarding Flow","feature_category":"onboarding","priority":"P0","status":"implemented","canvas_id":"001-1","user_story":"US-002","database_tables":["guardian","guardian_request"],"ui_components":["guardian-form.tsx","guardian-actions.ts"],"reality_health":"85.00","ninety_five_syndrome":false},
+            {"feature_name":"Profile Creation Wizard","feature_category":"onboarding","priority":"P0","status":"not_started","canvas_id":"001-1","user_story":"US-004","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Student Onboarding Flow","feature_category":"onboarding","priority":"P0","status":"not_started","canvas_id":"001-1","user_story":"US-001","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Player Profile Display","feature_category":"profile","priority":"P0","status":"implemented","canvas_id":"002-1","user_story":"US-080","database_tables":[],"ui_components":["profile-display.tsx","profile/[username]/page.tsx","friend-actions.ts"],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Profile Customization","feature_category":"profile","priority":"P0","status":"not_started","canvas_id":"002-1","user_story":"US-081","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Grey State System","feature_category":"Safety","priority":"P0","status":"validated","canvas_id":null,"user_story":null,"database_tables":["user_states","linked_players"],"ui_components":[],"reality_health":"95.00","ninety_five_syndrome":false},
+            {"feature_name":"Team Creation","feature_category":"teams","priority":"P0","status":"not_started","canvas_id":"002-2","user_story":"US-100","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Activity Discovery","feature_category":"activities","priority":"P1","status":"not_started","canvas_id":"001-4","user_story":"US-171","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Activity Registration","feature_category":"activities","priority":"P1","status":"not_started","canvas_id":"001-4","user_story":"US-170","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Direct Messaging","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-052","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Guild Invitations","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-053","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Chat Interface","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-051","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"School Directory Search","feature_category":"directory","priority":"P1","status":"not_started","canvas_id":"001-1","user_story":"US-003","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Backend Foundation","feature_category":"emcoin","priority":"P1","status":"implemented","canvas_id":"003-2","user_story":"US-180","database_tables":["achievements","emcoin_wallets","user_achievements","daily_bonus_config","emcoin_transactions","achievement_milestones"],"ui_components":[],"reality_health":"100.00","ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Reward System","feature_category":"emcoin","priority":"P1","status":"not_started","canvas_id":"003-2","user_story":"US-183","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Transaction Engine","feature_category":"emcoin","priority":"P1","status":"not_started","canvas_id":"003-2","user_story":"US-181","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge Achievement Engine","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-121","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge Display Gallery","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-122","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge System Core","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-120","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Achievement Display","feature_category":"profile","priority":"P1","status":"not_started","canvas_id":"002-1","user_story":"US-082","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Activity Tracking","feature_category":"teams","priority":"P1","status":"not_started","canvas_id":"002-2","user_story":"US-103","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Member Roles","feature_category":"teams","priority":"P1","status":"not_started","canvas_id":"002-2","user_story":"US-102","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Hall of Greats Leaderboard","feature_category":"gamification","priority":"P2","status":"not_started","canvas_id":"002-4","user_story":"US-130","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Historical Achievements","feature_category":"gamification","priority":"P2","status":"not_started","canvas_id":"002-4","user_story":"US-131","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Categorization","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-142","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Library","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-140","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Upload System","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-141","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Contact Form","feature_category":"support","priority":"P2","status":"not_started","canvas_id":"001-3","user_story":"US-200","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Support Ticket System","feature_category":"support","priority":"P2","status":"not_started","canvas_id":"001-3","user_story":"US-201","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Management","feature_category":"teams","priority":"P2","status":"not_started","canvas_id":"002-2","user_story":"US-101","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false}
+        ];
+        
+        // Parse database_tables if they're strings
+        features.forEach(f => {
+            if (typeof f.database_tables === 'string') {
+                try {
+                    f.database_tables = JSON.parse(f.database_tables);
+                } catch(e) {
+                    if (f.database_tables.startsWith('{')) {
+                        f.database_tables = Object.keys(JSON.parse(f.database_tables.replace(/'/g, '"')));
+                    } else {
+                        f.database_tables = [];
+                    }
+                }
+            }
+            if (typeof f.ui_components === 'string') {
+                try {
+                    f.ui_components = JSON.parse(f.ui_components);
+                } catch(e) {
+                    f.ui_components = [];
+                }
+            }
+        });
+        
+        function calculateStats() {
+            const stats = {
+                total: features.length,
+                validated: features.filter(f => f.status === 'validated').length,
+                implemented: features.filter(f => f.status === 'implemented').length,
+                in_progress: features.filter(f => f.status === 'in_progress').length,
+                not_started: features.filter(f => f.status === 'not_started').length,
+                p0: features.filter(f => f.priority === 'P0').length,
+                p1: features.filter(f => f.priority === 'P1').length,
+                p2: features.filter(f => f.priority === 'P2').length,
+                health: Math.round(features.filter(f => f.reality_health).reduce((sum, f) => sum + parseFloat(f.reality_health || 0), 0) / features.filter(f => f.reality_health).length || 0)
+            };
+            
+            const completion = Math.round(((stats.validated + stats.implemented) / stats.total) * 100);
+            document.getElementById('completionRate').textContent = completion;
+            
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="cy-stat-card">
+                    <div class="value">${stats.total}</div>
+                    <div class="label">전체 기능</div>
+                </div>
+                <div class="cy-stat-card">
+                    <div class="value">${stats.validated}</div>
+                    <div class="label">✅ 검증됨</div>
+                </div>
+                <div class="cy-stat-card">
+                    <div class="value">${stats.implemented}</div>
+                    <div class="label">🔧 구현됨</div>
+                </div>
+                <div class="cy-stat-card">
+                    <div class="value">${stats.not_started}</div>
+                    <div class="label">⏳ 대기중</div>
+                </div>
+                <div class="cy-stat-card">
+                    <div class="value">${stats.p0}</div>
+                    <div class="label">🔥 P0 긴급</div>
+                </div>
+                <div class="cy-stat-card health">
+                    <div class="value">${stats.health}%</div>
+                    <div class="label">💚 시스템 상태</div>
+                </div>
+            `;
+        }
+        
+        function renderFeatures(filterType = 'all') {
+            let filtered = features;
+            
+            if (filterType !== 'all') {
+                if (['P0', 'P1', 'P2'].includes(filterType)) {
+                    filtered = features.filter(f => f.priority === filterType);
+                } else {
+                    filtered = features.filter(f => f.status === filterType);
+                }
+            }
+            
+            // Group by category
+            const grouped = {};
+            filtered.forEach(f => {
+                if (!grouped[f.feature_category]) {
+                    grouped[f.feature_category] = [];
+                }
+                grouped[f.feature_category].push(f);
+            });
+            
+            let html = '';
+            Object.keys(grouped).sort().forEach(category => {
+                html += `<div class="cy-category-header">${category}</div>`;
+                grouped[category].forEach(feature => {
+                    const tablesCount = feature.database_tables?.length || 0;
+                    const uiCount = feature.ui_components?.length || 0;
+                    
+                    html += `
+                        <div class="cy-feature-card ${feature.status}">
+                            <div class="cy-priority-badge ${feature.priority}">${feature.priority}</div>
+                            <div class="cy-feature-info">
+                                <div class="cy-feature-name">
+                                    ${feature.feature_name}
+                                    ${feature.ninety_five_syndrome ? '<span class="cy-syndrome-warning">95% 🚧</span>' : ''}
+                                </div>
+                                <div class="cy-feature-meta">
+                                    ${feature.canvas_id ? `<span class="cy-meta-tag">📋 ${feature.canvas_id}</span>` : ''}
+                                    ${feature.user_story ? `<span class="cy-meta-tag">📝 ${feature.user_story}</span>` : ''}
+                                    ${tablesCount > 0 ? `<span class="cy-meta-tag">🗄️ ${tablesCount}개</span>` : ''}
+                                    ${uiCount > 0 ? `<span class="cy-meta-tag">🎨 ${uiCount}개</span>` : ''}
+                                    ${feature.reality_health ? `<span class="cy-health-badge">${feature.reality_health}%</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="cy-status-indicator">
+                                <div class="cy-status-dot ${feature.status}"></div>
+                                <span class="cy-status-text">${feature.status.replace('_', ' ')}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+            
+            document.getElementById('featureGrid').innerHTML = html;
+        }
+        
+        function filterFeatures(type) {
+            // Update active button
+            document.querySelectorAll('.cy-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderFeatures(type);
+        }
+        
+        // Initialize
+        calculateStats();
+        renderFeatures();
+    </script>
+</body>
+</html>

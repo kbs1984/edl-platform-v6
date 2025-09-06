@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Friends Authentication</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Friends Authentication Debug</h1>
+    <div id="results"></div>
+    
+    <script>
+        const supabase = supabase.createClient(
+            'https://bbrheacetxlnqbibjwsz.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJicmhlYWNldHhsbnFiaWJqd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ3MjI4MTIsImV4cCI6MjA3MDI5ODgxMn0.fccLx-9NymP8oqHT_-t-ZPZx0hgi8SGfHUJv1WKmwFE'
+        );
+        
+        async function debugAuth() {
+            const results = document.getElementById('results');
+            
+            // Test 1: Check authentication state
+            const { data: { user }, error: authError } = await supabase.auth.getUser();
+            results.innerHTML += `<h2>Test 1: Authentication State</h2>`;
+            results.innerHTML += `<p>User: ${user ? user.id : 'null'}</p>`;
+            results.innerHTML += `<p>Auth Error: ${authError ? authError.message : 'none'}</p>`;
+            
+            // Test 2: Direct friendship query
+            results.innerHTML += `<h2>Test 2: Direct Friendship Query</h2>`;
+            const { data, error } = await supabase
+                .from('friendship')
+                .select('*')
+                .limit(1);
+            
+            results.innerHTML += `<p>Data: ${data ? JSON.stringify(data) : 'null'}</p>`;
+            results.innerHTML += `<p>Error: ${error ? error.message : 'none'}</p>`;
+            
+            // Test 3: Test the exact failing query (if user exists)
+            if (user) {
+                results.innerHTML += `<h2>Test 3: Friend Request Query</h2>`;
+                const { data: friendData, error: friendError } = await supabase
+                    .from('friendship')
+                    .select('*')
+                    .eq('friend_id', user.id)
+                    .eq('status', 'PENDING');
+                
+                results.innerHTML += `<p>Friend Data: ${friendData ? JSON.stringify(friendData) : 'null'}</p>`;
+                results.innerHTML += `<p>Friend Error: ${friendError ? friendError.message : 'none'}</p>`;
+            }
+        }
+        
+        debugAuth();
+    </script>
+</body>
+</html>

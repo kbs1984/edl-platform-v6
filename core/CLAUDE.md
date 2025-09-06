@@ -3,8 +3,8 @@ session: "multiple"
 type: "guide"
 status: "current"
 created: "2025-01-01"
-modified: "2025-08-27"
-title: "Claude Code Session Protocol v2.1"
+modified: "2025-09-02"
+title: "Claude Code Session Protocol v3.0"
 purpose: "Define mandatory protocols and guidelines for all Claude Code sessions"
 topics: ["protocol", "session", "guidelines", "constitution", "workflow"]
 priority: "P0"
@@ -18,7 +18,7 @@ related_to: ["SYSTEM-INDEX.md", "00031-CONSTITUTIONAL-OS-GUIDE.md", "00031-WORKF
 implements: ["SESSION-PROTOCOL.md"]
 ---
 
-# Claude Code Session Protocol v2.1
+# Claude Code Session Protocol v3.0 (MCP-Enhanced)
 ## THREE CURRENTS MODEL - SESSION 73 INSIGHT (SIMPLIFIED)
 
 🌊 **IMPORTANT CONCEPT**: The three domains (Requirements/Reality/Reconciliation) should be treated as continuous currents, not sequential phases.
@@ -65,16 +65,18 @@ The key insight: Domains are CURRENTS (continuous) not STEPS (sequential).
 ### First Action Protocol v4.0 (Session 84 YAML Query Mandate)
 **EVERY SESSION MUST START WITH:**
 
-#### Step 1: Automated Startup
+#### Step 1: Automated Startup (v3.0 - MCP Enhanced)
 ```bash
-# Automated session startup (6 seconds, was 35 minutes manual)
-./scripts/00028-session-start.sh [session-number] "[focus]"
+# MCP-Integrated session startup (Session 140 upgrade)
+./scripts/00140-mcp-integrated-session-start.sh [session-number] "[focus]"
 
 # Examples:
-./scripts/00028-session-start.sh              # Auto-detect next session
-./scripts/00028-session-start.sh 00031        # Specific session number
-./scripts/00028-session-start.sh 00031 "Building features"  # With focus
-./scripts/00028-session-start.sh --help       # Show usage
+./scripts/00140-mcp-integrated-session-start.sh              # Auto-detect next session
+./scripts/00140-mcp-integrated-session-start.sh 141          # Specific session number
+./scripts/00140-mcp-integrated-session-start.sh 141 "EmCoin UI"  # With focus
+
+# Legacy (if MCP not available):
+./scripts/00028-session-start.sh [session-number] "[focus]"
 ```
 
 This automation will:
@@ -84,7 +86,16 @@ This automation will:
 4. Check for handoffs
 5. Create constitutional session log
 6. Display system health summary
-7. **NEW**: Run YAML queries for session focus topic
+7. Run YAML queries for session focus topic
+8. **NEW (Session 140)**: Initialize MCP session tracking with edl-v6-session server
+
+**After startup, use MCP functions throughout session:**
+```javascript
+mcp__edl-v6-session__start_session({sessionId: "141", focus: "Your focus"})
+mcp__edl-v6-session__add_task({title: "Task name", priority: "high"})
+mcp__edl-v6-session__track_deliverable({path: "file.ext", type: "component"})
+mcp__edl-v6-session__end_session({summary: "Done", accomplishments: [...]})
+```
 
 #### Step 2: MANDATORY YAML Query Discovery (NEW - Session 84)
 🚨 **BEFORE ANY WORK - ALWAYS QUERY EXISTING SOLUTIONS** 🚨
@@ -146,16 +157,36 @@ python3 scripts/00059-yaml-query.py --type fix --topic "[your-topic]"
 - Verify constitutional compliance (retroactive disclosure if needed)
 - Run final validation: `./scripts/session-guard.sh`
 
-## CRITICAL: Check Existing Work First (Session 40 Lesson)
-**BEFORE BUILDING ANYTHING:**
-1. Run relevant Reality Agents: `python3 reality/agent-reality-auditor/[agent]/quickstart.py`
-2. Search for existing tools: `ls scripts/000* | grep [keyword]`
-3. Read previous 3 session logs COMPLETELY
-4. Check what's in `/tmp/*-agent-output.json` from session startup
-5. Only build new if nothing exists
+## 🛑 EVIDENCE IMPERATIVE PROTOCOL (Session 145 - MANDATORY)
+**CRITICAL**: Evidence-based decision making is NOT OPTIONAL but IMPERATIVE.
 
-**The best code is code you don't write because it already exists.**
-See: `docs/00040-CRITICAL-LESSON-USE-EXISTING-WORK.md`
+### The Protocol That Prevents Disasters
+**Read this first**: `core/00145-EVIDENCE-IMPERATIVE-PROTOCOL.md`
+
+### Before ANY Action:
+1. **STOP** - Don't move/delete/modify based on patterns
+2. **VERIFY** - Check actual purpose and usage with evidence
+3. **TEST** - Validate claims before declaring success
+
+### Quick Evidence Gathering:
+```bash
+# Before touching any file
+grep -r "filename" . --exclude-dir=node_modules  # Who uses it?
+head -30 [file] | grep -i "purpose"              # What's it for?
+
+# Before building anything  
+python3 scripts/00059-yaml-query.py --topic "[feature]"  # Already exists?
+mcp__supabase-dev__list_tables()                        # Tables exist?
+
+# Before claiming completion
+npm run build  # Does it compile?
+npm test      # Does it work?
+```
+
+**Recent Violations**: Sessions 144 & 145 both violated this, causing infrastructure damage.
+**The best code is code you don't write because you verified it already exists.**
+
+See: `core/00145-EVIDENCE-IMPERATIVE-PROTOCOL.md` for full enforcement.
 
 ## Constitutional Compliance
 Per Constitution v1.3.0 Article VII:
@@ -393,8 +424,9 @@ if "PGRST205" in error:
 2. **Access Check**: Test API access (may be blocked by RLS)
 3. **Interpret Results**: RLS block + schema exists = SUCCESS
 
-### Tools Available
-- `python3 scripts/00044-dual-verification-protocol.py` - Dual existence/access check
+### Tools Available (Via MCP)
+- `mcp__supabase-dev__execute_sql` - Direct SQL queries for verification
+- `mcp__supabase-dev__list_tables` - Full schema and RLS status
 - `docs/00044-ERROR-CODE-REFERENCE.md` - Error code meanings
 - `templates/DATABASE-HANDOFF-TEMPLATE.md` - Handoff guidance
 
@@ -521,36 +553,36 @@ Then auto-organize: `python3 scripts/00067-auto-organize-files.py --execute [fil
 
 **ALWAYS query existing work before creating new files!**
 
-## Schema Snapshot System (Sessions 38-39)
+## Database Verification (Via Supabase MCP)
 **Purpose**: View actual database state when debugging RLS or schema issues
 
-### Check Database Reality
-```bash
-# View actual RLS policies (not assumptions from migrations)
-python3 scripts/00039-check-schema.py --table profiles --policies
+### Check Database Reality (Using MCP)
+```python
+# View all tables with RLS status
+mcp__supabase-dev__list_tables(schemas=["public"])
+
+# Check RLS policies directly
+mcp__supabase-dev__execute_sql(
+    query="SELECT * FROM pg_policies WHERE tablename = 'profiles'"
+)
 
 # Check table structure
-python3 scripts/00039-check-schema.py --table profiles --columns
+mcp__supabase-dev__execute_sql(
+    query="SELECT * FROM information_schema.columns WHERE table_name = 'profiles'"
+)
 
 # View constraints
-python3 scripts/00039-check-schema.py --table profiles --constraints
+mcp__supabase-dev__execute_sql(
+    query="SELECT * FROM information_schema.table_constraints WHERE table_name = 'profiles'"
+)
 
-# See everything about a table
-python3 scripts/00039-check-schema.py --table profiles --all
-
-# Check which tables have RLS enabled
-python3 scripts/00039-check-schema.py --rls-status
+# Check triggers
+mcp__supabase-dev__execute_sql(
+    query="SELECT * FROM pg_trigger WHERE tgname LIKE '%profiles%'"
+)
 ```
 
-### Update Snapshot (Manual Process)
-When database changes are made in Supabase Dashboard:
-1. Run capture queries from Session 38's scripts
-2. Copy results from Supabase SQL Editor
-3. Run `python3 scripts/00038-save-complete-snapshot.py`
-4. Paste results when prompted
-5. Commit updated snapshot files
-
-**Key Discovery**: Session 38 found RLS was enabled but ZERO policies existed, causing total lockdown.
+**Note**: Legacy snapshot scripts (00038-00039) are obsolete. MCP provides live database access.
 
 ## ✅ MCP Supabase execute_sql FIXED (Session 110-111)
 **Success!** The crypto error is resolved by upgrading to Node v20.19.4.

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDL Platform v6 - Dark Mode Progress Matrix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Montserrat:wght@200;300;400;500;600;700;800&family=Lexend+Deca:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Dark Gray Base Palette */
+            --dark-primary: #1a1a1a;
+            --dark-secondary: #2d2d2d;
+            --dark-tertiary: #3a3a3a;
+            --dark-quaternary: #4a4a4a;
+            --dark-border: #5a5a5a;
+            --dark-hover: #6a6a6a;
+            
+            /* Light RGB Accent Variations */
+            --accent-red-light: #ff6b6b;
+            --accent-red-medium: #fa5252;
+            --accent-red-dark: #e03131;
+            --accent-red-glow: rgba(255, 107, 107, 0.3);
+            
+            --accent-blue-light: #74c0fc;
+            --accent-blue-medium: #339af0;
+            --accent-blue-dark: #1c7ed6;
+            --accent-blue-glow: rgba(116, 192, 252, 0.3);
+            
+            --accent-green-light: #8ce99a;
+            --accent-green-medium: #51cf66;
+            --accent-green-dark: #2f9e44;
+            --accent-green-glow: rgba(140, 233, 154, 0.3);
+            
+            /* Neutral Tones */
+            --text-primary: #f1f3f5;
+            --text-secondary: #adb5bd;
+            --text-tertiary: #868e96;
+            --bg-card: #212529;
+            --bg-card-hover: #2c3136;
+            
+            /* Golden Ratio Spacing (1:1.618) */
+            --space-xs: 5px;
+            --space-sm: 8px;
+            --space-md: 13px;
+            --space-lg: 21px;
+            --space-xl: 34px;
+            --space-xxl: 55px;
+        }
+        
+        body {
+            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 107, 107, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(116, 192, 252, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header with RGB Accent Line */
+        .header {
+            background: var(--dark-secondary);
+            border-radius: 16px;
+            padding: var(--space-xl) var(--space-xl);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--dark-border);
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                var(--accent-red-medium) 0%, 
+                var(--accent-blue-medium) 50%, 
+                var(--accent-green-medium) 100%);
+            animation: rgbShift 6s ease-in-out infinite;
+        }
+        
+        @keyframes rgbShift {
+            0%, 100% { 
+                background: linear-gradient(90deg, 
+                    var(--accent-red-medium) 0%, 
+                    var(--accent-blue-medium) 50%, 
+                    var(--accent-green-medium) 100%);
+            }
+            33% { 
+                background: linear-gradient(90deg, 
+                    var(--accent-blue-medium) 0%, 
+                    var(--accent-green-medium) 50%, 
+                    var(--accent-red-medium) 100%);
+            }
+            66% { 
+                background: linear-gradient(90deg, 
+                    var(--accent-green-medium) 0%, 
+                    var(--accent-red-medium) 50%, 
+                    var(--accent-blue-medium) 100%);
+            }
+        }
+        
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: calc(var(--space-lg) * 1.618);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header .subtitle {
+            font-family: 'Lexend Deca', sans-serif;
+            color: var(--text-tertiary);
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Stats Grid - Golden Ratio Proportions */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            background: var(--bg-card-hover);
+            border-color: var(--dark-hover);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-card:nth-child(3n+1)::before {
+            background: linear-gradient(90deg, transparent, var(--accent-red-light), transparent);
+        }
+        
+        .stat-card:nth-child(3n+2)::before {
+            background: linear-gradient(90deg, transparent, var(--accent-blue-light), transparent);
+        }
+        
+        .stat-card:nth-child(3n)::before {
+            background: linear-gradient(90deg, transparent, var(--accent-green-light), transparent);
+        }
+        
+        .stat-card .value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: calc(var(--space-xl) * 1.2);
+            font-weight: 200;
+            margin-bottom: var(--space-xs);
+            line-height: 1;
+        }
+        
+        .stat-card:nth-child(3n+1) .value {
+            color: var(--accent-red-light);
+            text-shadow: 0 0 20px var(--accent-red-glow);
+        }
+        
+        .stat-card:nth-child(3n+2) .value {
+            color: var(--accent-blue-light);
+            text-shadow: 0 0 20px var(--accent-blue-glow);
+        }
+        
+        .stat-card:nth-child(3n) .value {
+            color: var(--accent-green-light);
+            text-shadow: 0 0 20px var(--accent-green-glow);
+        }
+        
+        .stat-card .label {
+            font-family: 'Lexend Deca', sans-serif;
+            color: var(--text-tertiary);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+        }
+        
+        /* Filter Tabs - Minimalist Design */
+        .filter-tabs {
+            background: var(--dark-secondary);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: var(--space-xl);
+            display: flex;
+            gap: 2px;
+        }
+        
+        .filter-btn {
+            font-family: 'Ubuntu', sans-serif;
+            flex: 1;
+            padding: var(--space-md) var(--space-lg);
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn:hover {
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .filter-btn.active {
+            color: var(--text-primary);
+            background: var(--dark-tertiary);
+        }
+        
+        .filter-btn.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--accent-red-medium), 
+                var(--accent-blue-medium), 
+                var(--accent-green-medium));
+            animation: rgbPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes rgbPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        /* Main Content Area */
+        .matrix-container {
+            background: var(--dark-secondary);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            position: relative;
+        }
+        
+        /* Category Headers */
+        .category-header {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: var(--space-xl) 0 var(--space-lg) 0;
+            padding-left: var(--space-lg);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .category-header::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            border-radius: 2px;
+        }
+        
+        .category-header:nth-of-type(3n+1)::before {
+            background: var(--accent-red-medium);
+        }
+        
+        .category-header:nth-of-type(3n+2)::before {
+            background: var(--accent-blue-medium);
+        }
+        
+        .category-header:nth-of-type(3n)::before {
+            background: var(--accent-green-medium);
+        }
+        
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+        
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 10px;
+            padding: var(--space-lg);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-lg);
+            align-items: center;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+        
+        .feature-card:hover::before {
+            left: 0;
+        }
+        
+        .feature-card.validated {
+            border-left: 3px solid var(--accent-green-medium);
+        }
+        
+        .feature-card.validated::before {
+            background: linear-gradient(90deg, var(--accent-green-medium), transparent);
+        }
+        
+        .feature-card.implemented {
+            border-left: 3px solid var(--accent-blue-medium);
+        }
+        
+        .feature-card.implemented::before {
+            background: linear-gradient(90deg, var(--accent-blue-medium), transparent);
+        }
+        
+        .feature-card.in_progress {
+            border-left: 3px solid var(--accent-red-medium);
+        }
+        
+        .feature-card.in_progress::before {
+            background: linear-gradient(90deg, var(--accent-red-medium), transparent);
+        }
+        
+        .feature-card.not_started {
+            border-left: 3px solid var(--dark-border);
+            opacity: 0.7;
+        }
+        
+        /* Priority Badges */
+        .priority-badge {
+            font-family: 'Lexend Deca', sans-serif;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        
+        .priority-badge.P0 {
+            background: rgba(255, 107, 107, 0.15);
+            color: var(--accent-red-light);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .priority-badge.P1 {
+            background: rgba(116, 192, 252, 0.15);
+            color: var(--accent-blue-light);
+            border: 1px solid rgba(116, 192, 252, 0.3);
+        }
+        
+        .priority-badge.P2 {
+            background: rgba(140, 233, 154, 0.15);
+            color: var(--accent-green-light);
+            border: 1px solid rgba(140, 233, 154, 0.3);
+        }
+        
+        .feature-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .feature-name {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .feature-meta {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-top: var(--space-xs);
+        }
+        
+        .meta-tag {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 9px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            background: var(--dark-tertiary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--dark-border);
+        }
+        
+        /* Status Indicators */
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .status-dot::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: inherit;
+            opacity: 0.3;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        .status-dot.validated { 
+            background: var(--accent-green-medium);
+            box-shadow: 0 0 10px var(--accent-green-glow);
+        }
+        
+        .status-dot.implemented { 
+            background: var(--accent-blue-medium);
+            box-shadow: 0 0 10px var(--accent-blue-glow);
+        }
+        
+        .status-dot.in_progress { 
+            background: var(--accent-red-medium);
+            box-shadow: 0 0 10px var(--accent-red-glow);
+        }
+        
+        .status-dot.not_started { 
+            background: var(--dark-hover);
+        }
+        
+        .status-text {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            text-transform: capitalize;
+        }
+        
+        /* Health Badge */
+        .health-badge {
+            background: rgba(140, 233, 154, 0.15);
+            color: var(--accent-green-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(140, 233, 154, 0.3);
+        }
+        
+        /* 95% Syndrome Warning */
+        .syndrome-warning {
+            background: rgba(255, 107, 107, 0.15);
+            color: var(--accent-red-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-left: var(--space-xs);
+            font-weight: 600;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: var(--space-xl);
+            justify-content: center;
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--dark-secondary);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+        
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        /* Floating Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            top: var(--space-xl);
+            right: var(--space-xl);
+            background: var(--dark-secondary);
+            border: 1px solid var(--dark-border);
+            padding: var(--space-lg) var(--space-xl);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .progress-indicator .label {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .progress-indicator .value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 300;
+            background: linear-gradient(90deg, 
+                var(--accent-red-light), 
+                var(--accent-blue-light), 
+                var(--accent-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                flex: 1 1 calc(33% - 4px);
+            }
+            
+            .progress-indicator {
+                position: static;
+                margin-bottom: var(--space-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-indicator">
+            <div class="label">Completion</div>
+            <div class="value" id="completionRate">36%</div>
+        </div>
+        
+        <div class="header">
+            <h1>EDL Platform v6 Progress Matrix</h1>
+            <div class="subtitle">Session 155 • Real-time Development Status</div>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid"></div>
+        
+        <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterFeatures('all')">All Features</button>
+            <button class="filter-btn" onclick="filterFeatures('P0')">P0 Critical</button>
+            <button class="filter-btn" onclick="filterFeatures('P1')">P1 Priority</button>
+            <button class="filter-btn" onclick="filterFeatures('P2')">P2 Future</button>
+            <button class="filter-btn" onclick="filterFeatures('validated')">Validated</button>
+            <button class="filter-btn" onclick="filterFeatures('implemented')">Implemented</button>
+            <button class="filter-btn" onclick="filterFeatures('not_started')">Not Started</button>
+        </div>
+        
+        <div class="matrix-container">
+            <div class="feature-grid" id="featureGrid"></div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: var(--accent-green-medium);"></div>
+                <span>Validated</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: var(--accent-blue-medium);"></div>
+                <span>Implemented</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: var(--accent-red-medium);"></div>
+                <span>In Progress</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: var(--dark-hover);"></div>
+                <span>Not Started</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const features = [
+            {"feature_name":"Activity Auto-Save","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-159","database_tables":["session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Activity Runtime Engine","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-4","user_story":"US-155","database_tables":["activity","activity_session","activity_instance","session_progress"],"ui_components":["activities/page.tsx","[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Activity Session Tracking","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-156","database_tables":["activity_session","session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Assignment Submission","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-158","database_tables":["activity_assignment","assignment_submission"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Progress Persistence","feature_category":"activities","priority":"P0","status":"validated","canvas_id":"001-5","user_story":"US-157","database_tables":["session_progress"],"ui_components":["[instance_id]/page.tsx"],"reality_health":"97.00","ninety_five_syndrome":true},
+            {"feature_name":"Friend Request System","feature_category":"communication","priority":"P0","status":"implemented","canvas_id":"001-2","user_story":"US-050","database_tables":["friendship"],"ui_components":["FriendSidebar.tsx","friend-request-dialog.tsx","use-friends.ts"],"reality_health":"92.00","ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Balance Display","feature_category":"emcoin","priority":"P0","status":"implemented","canvas_id":"003-2","user_story":"US-182","database_tables":[],"ui_components":["emcoin-balance-display.tsx","emcoin-actions.ts"],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Addiction Bar Global","feature_category":"Engagement","priority":"P0","status":"validated","canvas_id":null,"user_story":null,"database_tables":[],"ui_components":["v5-engine/addiction-bar.js","v5-engine/config.js","v5-bridge.tsx"],"reality_health":"95.00","ninety_five_syndrome":false},
+            {"feature_name":"Visitor Tracking System","feature_category":"Engagement","priority":"P0","status":"implemented","canvas_id":"003-1","user_story":"As a student, I want to see who visited my profile today to feel socially validated","database_tables":["visitor_stats","profile_themes","profile_visitors","visitor_leaderboard","profile_customization"],"ui_components":["visitor-tracker.tsx","visitor-actions.ts"],"reality_health":"100.00","ninety_five_syndrome":false},
+            {"feature_name":"Guardian Onboarding Flow","feature_category":"onboarding","priority":"P0","status":"implemented","canvas_id":"001-1","user_story":"US-002","database_tables":["guardian","guardian_request"],"ui_components":["guardian-form.tsx","guardian-actions.ts"],"reality_health":"85.00","ninety_five_syndrome":false},
+            {"feature_name":"Profile Creation Wizard","feature_category":"onboarding","priority":"P0","status":"not_started","canvas_id":"001-1","user_story":"US-004","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Student Onboarding Flow","feature_category":"onboarding","priority":"P0","status":"not_started","canvas_id":"001-1","user_story":"US-001","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Player Profile Display","feature_category":"profile","priority":"P0","status":"implemented","canvas_id":"002-1","user_story":"US-080","database_tables":[],"ui_components":["profile-display.tsx","profile/[username]/page.tsx","friend-actions.ts"],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Profile Customization","feature_category":"profile","priority":"P0","status":"not_started","canvas_id":"002-1","user_story":"US-081","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Grey State System","feature_category":"Safety","priority":"P0","status":"validated","canvas_id":null,"user_story":null,"database_tables":["user_states","linked_players"],"ui_components":[],"reality_health":"95.00","ninety_five_syndrome":false},
+            {"feature_name":"Team Creation","feature_category":"teams","priority":"P0","status":"not_started","canvas_id":"002-2","user_story":"US-100","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Activity Discovery","feature_category":"activities","priority":"P1","status":"not_started","canvas_id":"001-4","user_story":"US-171","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Activity Registration","feature_category":"activities","priority":"P1","status":"not_started","canvas_id":"001-4","user_story":"US-170","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Direct Messaging","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-052","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Guild Invitations","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-053","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Chat Interface","feature_category":"communication","priority":"P1","status":"not_started","canvas_id":"001-2","user_story":"US-051","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"School Directory Search","feature_category":"directory","priority":"P1","status":"not_started","canvas_id":"001-1","user_story":"US-003","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Backend Foundation","feature_category":"emcoin","priority":"P1","status":"implemented","canvas_id":"003-2","user_story":"US-180","database_tables":["achievements","emcoin_wallets","user_achievements","daily_bonus_config","emcoin_transactions","achievement_milestones"],"ui_components":[],"reality_health":"100.00","ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Reward System","feature_category":"emcoin","priority":"P1","status":"not_started","canvas_id":"003-2","user_story":"US-183","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"EmCoin Transaction Engine","feature_category":"emcoin","priority":"P1","status":"not_started","canvas_id":"003-2","user_story":"US-181","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge Achievement Engine","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-121","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge Display Gallery","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-122","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Badge System Core","feature_category":"gamification","priority":"P1","status":"not_started","canvas_id":"002-3","user_story":"US-120","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Achievement Display","feature_category":"profile","priority":"P1","status":"not_started","canvas_id":"002-1","user_story":"US-082","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Activity Tracking","feature_category":"teams","priority":"P1","status":"not_started","canvas_id":"002-2","user_story":"US-103","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Member Roles","feature_category":"teams","priority":"P1","status":"not_started","canvas_id":"002-2","user_story":"US-102","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Hall of Greats Leaderboard","feature_category":"gamification","priority":"P2","status":"not_started","canvas_id":"002-4","user_story":"US-130","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Historical Achievements","feature_category":"gamification","priority":"P2","status":"not_started","canvas_id":"002-4","user_story":"US-131","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Categorization","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-142","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Library","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-140","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Resource Upload System","feature_category":"resources","priority":"P2","status":"not_started","canvas_id":"002-5","user_story":"US-141","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Contact Form","feature_category":"support","priority":"P2","status":"not_started","canvas_id":"001-3","user_story":"US-200","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Support Ticket System","feature_category":"support","priority":"P2","status":"not_started","canvas_id":"001-3","user_story":"US-201","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false},
+            {"feature_name":"Team Management","feature_category":"teams","priority":"P2","status":"not_started","canvas_id":"002-2","user_story":"US-101","database_tables":[],"ui_components":[],"reality_health":null,"ninety_five_syndrome":false}
+        ];
+        
+        // Parse database_tables if they're strings
+        features.forEach(f => {
+            if (typeof f.database_tables === 'string') {
+                try {
+                    f.database_tables = JSON.parse(f.database_tables);
+                } catch(e) {
+                    if (f.database_tables.startsWith('{')) {
+                        f.database_tables = Object.keys(JSON.parse(f.database_tables.replace(/'/g, '"')));
+                    } else {
+                        f.database_tables = [];
+                    }
+                }
+            }
+            if (typeof f.ui_components === 'string') {
+                try {
+                    f.ui_components = JSON.parse(f.ui_components);
+                } catch(e) {
+                    f.ui_components = [];
+                }
+            }
+        });
+        
+        function calculateStats() {
+            const stats = {
+                total: features.length,
+                validated: features.filter(f => f.status === 'validated').length,
+                implemented: features.filter(f => f.status === 'implemented').length,
+                in_progress: features.filter(f => f.status === 'in_progress').length,
+                not_started: features.filter(f => f.status === 'not_started').length,
+                p0: features.filter(f => f.priority === 'P0').length,
+                p1: features.filter(f => f.priority === 'P1').length,
+                p2: features.filter(f => f.priority === 'P2').length,
+                health: Math.round(features.filter(f => f.reality_health).reduce((sum, f) => sum + parseFloat(f.reality_health || 0), 0) / features.filter(f => f.reality_health).length || 0)
+            };
+            
+            const completion = Math.round(((stats.validated + stats.implemented) / stats.total) * 100);
+            document.getElementById('completionRate').textContent = completion + '%';
+            
+            document.getElementById('statsGrid').innerHTML = `
+                <div class="stat-card">
+                    <div class="value">${stats.total}</div>
+                    <div class="label">Total Features</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">${stats.validated}</div>
+                    <div class="label">Validated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">${stats.implemented}</div>
+                    <div class="label">Implemented</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">${stats.not_started}</div>
+                    <div class="label">Not Started</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">${stats.p0}</div>
+                    <div class="label">P0 Critical</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">${stats.health}%</div>
+                    <div class="label">System Health</div>
+                </div>
+            `;
+        }
+        
+        function renderFeatures(filterType = 'all') {
+            let filtered = features;
+            
+            if (filterType !== 'all') {
+                if (['P0', 'P1', 'P2'].includes(filterType)) {
+                    filtered = features.filter(f => f.priority === filterType);
+                } else {
+                    filtered = features.filter(f => f.status === filterType);
+                }
+            }
+            
+            // Group by category
+            const grouped = {};
+            filtered.forEach(f => {
+                if (!grouped[f.feature_category]) {
+                    grouped[f.feature_category] = [];
+                }
+                grouped[f.feature_category].push(f);
+            });
+            
+            let html = '';
+            Object.keys(grouped).sort().forEach(category => {
+                html += `<div class="category-header">${category}</div>`;
+                grouped[category].forEach(feature => {
+                    const tablesCount = feature.database_tables?.length || 0;
+                    const uiCount = feature.ui_components?.length || 0;
+                    
+                    html += `
+                        <div class="feature-card ${feature.status}">
+                            <div class="priority-badge ${feature.priority}">${feature.priority}</div>
+                            <div class="feature-info">
+                                <div class="feature-name">
+                                    ${feature.feature_name}
+                                    ${feature.ninety_five_syndrome ? '<span class="syndrome-warning">95%</span>' : ''}
+                                </div>
+                                <div class="feature-meta">
+                                    ${feature.canvas_id ? `<span class="meta-tag">📋 ${feature.canvas_id}</span>` : ''}
+                                    ${feature.user_story ? `<span class="meta-tag">📝 ${feature.user_story}</span>` : ''}
+                                    ${tablesCount > 0 ? `<span class="meta-tag">DB: ${tablesCount}</span>` : ''}
+                                    ${uiCount > 0 ? `<span class="meta-tag">UI: ${uiCount}</span>` : ''}
+                                    ${feature.reality_health ? `<span class="health-badge">${feature.reality_health}%</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="status-indicator">
+                                <div class="status-dot ${feature.status}"></div>
+                                <span class="status-text">${feature.status.replace('_', ' ')}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+            
+            document.getElementById('featureGrid').innerHTML = html;
+        }
+        
+        function filterFeatures(type) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderFeatures(type);
+        }
+        
+        // Initialize
+        calculateStats();
+        renderFeatures();
+    </script>
+</body>
+</html>

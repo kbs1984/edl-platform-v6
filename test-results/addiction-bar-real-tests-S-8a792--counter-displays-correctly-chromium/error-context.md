@@ -1,0 +1,68 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - img "bg" [ref=e3]
+  - img "bg"
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - heading "logo Welcome Back!" [level=1] [ref=e9]:
+        - img "logo" [ref=e10]
+        - text: Welcome Back!
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - textbox [ref=e13]
+          - generic: Your email
+        - generic [ref=e14]:
+          - textbox [ref=e15]
+          - generic: Your password
+        - link "Forgot Password?" [ref=e17] [cursor=pointer]:
+          - /url: /forgot-password
+        - button "Login" [ref=e18]
+        - paragraph [ref=e20]:
+          - text: Don't have an account?
+          - link "Sign up" [ref=e21] [cursor=pointer]:
+            - /url: /sign-up
+    - generic [ref=e23]: or
+    - generic [ref=e24]:
+      - button "Continue with Google" [ref=e25] [cursor=pointer]:
+        - generic [ref=e27] [cursor=pointer]: Continue with Google
+      - button "Continue with Kakao" [ref=e28] [cursor=pointer]:
+        - generic [ref=e30] [cursor=pointer]: Continue with Kakao
+  - navigation [ref=e31]:
+    - generic [ref=e33]:
+      - link "Login" [ref=e34] [cursor=pointer]:
+        - /url: /login
+      - link "Sign up" [ref=e35] [cursor=pointer]:
+        - /url: /sign-up
+  - generic [ref=e36]:
+    - img "bg"
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - heading "logo Welcome Back!" [level=1] [ref=e41]:
+          - img "logo" [ref=e42]
+          - text: Welcome Back!
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - textbox [ref=e45]
+            - generic: Your email
+          - generic [ref=e46]:
+            - textbox [ref=e47]
+            - generic: Your password
+          - link "Forgot Password?" [ref=e49] [cursor=pointer]:
+            - /url: /forgot-password
+          - button "Login" [ref=e50]
+          - paragraph [ref=e52]:
+            - text: Don't have an account?
+            - link "Sign up" [ref=e53] [cursor=pointer]:
+              - /url: /sign-up
+      - generic [ref=e55]: or
+      - generic [ref=e56]:
+        - button "Continue with Google" [ref=e57] [cursor=pointer]:
+          - generic [ref=e59] [cursor=pointer]: Continue with Google
+        - button "Continue with Kakao" [ref=e60] [cursor=pointer]:
+          - generic [ref=e62] [cursor=pointer]: Continue with Kakao
+  - button "Open Next.js Dev Tools" [ref=e68] [cursor=pointer]:
+    - img [ref=e69] [cursor=pointer]
+  - alert [ref=e72]
+```

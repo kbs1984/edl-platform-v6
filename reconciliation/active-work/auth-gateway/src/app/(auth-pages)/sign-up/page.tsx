@@ -21,7 +21,7 @@ export default async function Signup(props: {
 
   return (
     <div>
-      <form className="flex flex-col p-4">
+      <form action={signUpAction} className="flex flex-col p-4">
         <h1 className="text-3xl font-medium mt-4 ml-4 flex items-center justify-start gap-3"> 
           <Image src={"/logos/white_emdash.svg"} alt={"logo"} width={40} height={40} /> 
           Create an account
@@ -39,7 +39,7 @@ export default async function Signup(props: {
             placeholder="Confirm your password *"
             required
           />
-          <SubmitButton formAction={signUpAction} pendingText="Signing up..." className="mt-8 h-12">
+          <SubmitButton pendingText="Signing up..." className="mt-8 h-12">
             Sign up
           </SubmitButton>
           <FormMessage message={searchParams} />

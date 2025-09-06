@@ -13,7 +13,11 @@ export const getProfile = cache(async (userId?: string): Promise<Profile> => {
     error: authError
   } = await supabase.auth.getUser()
   if (authError || !user) {
-    redirect(`${process.env.PROTOCOL}${process.env.AUTH_URL}`)
+    // Use the auth gateway URL directly - environment variables might not be set
+    const authUrl = process.env.AUTH_URL 
+      ? `${process.env.PROTOCOL || 'https://'}${process.env.AUTH_URL}`
+      : 'https://auth-gateway-jc769uf9c-briankims-projects.vercel.app/login';
+    redirect(authUrl)
   }
   const id = userId ?? user.id
 
@@ -24,7 +28,9 @@ export const getProfile = cache(async (userId?: string): Promise<Profile> => {
     .single()
 
   if (profileError || !profile) {
-    throw new Error(profileError?.message || '프로필을 가져올 수 없습니다.')
+    // If profile doesn't exist, redirect to onboarding instead of throwing error
+    console.log('Profile not found for user:', id, 'Redirecting to onboarding')
+    redirect('/onboarding')
   }
 
   return profile

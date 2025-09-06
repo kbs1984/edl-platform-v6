@@ -84,7 +84,14 @@ export const GuardianForm = () => {
 
   const handleVerifyCode = async () => {
     const res = await verifyOtp(countryCode + phoneNumber, verificationCode)
-    if (res.data.user) setIsVerified(true)
+    if (res.data.user) {
+      setIsVerified(true)
+      // Set the full phone number in formData after verification
+      setFormData(prev => ({
+        ...prev,
+        phone: countryCode + phoneNumber
+      }))
+    }
     if (res.error)
       toast({
         variant: "destructive",
@@ -117,7 +124,6 @@ export const GuardianForm = () => {
                 value={countryCode}
                 name={"countryCode"}
                 placeholder={"Country Code"}
-                defaultValue={"+82"}
                 onValueChange={setCountryCode}
                 classname="max-w-32 min-w-32"
                 items={countryCodes.all().map((v) => ({

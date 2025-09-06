@@ -1,0 +1,88 @@
+🔍 Diagnosing navigation blocking issue...
+
+📍 Going to login page...
+Please log in manually...
+
+✅ Login detected!
+
+============================================================
+NAVIGATION DIAGNOSTICS
+============================================================
+
+1️⃣ Finding all buttons...
+Found 15 buttons:
+  • "Dashboard": visible=true, disabled=false, z-index=auto, clickable=true
+  • "Chats": visible=true, disabled=false, z-index=auto, clickable=true
+  • "My Debates": visible=true, disabled=false, z-index=auto, clickable=true
+  • "Calendar": visible=true, disabled=false, z-index=auto, clickable=true
+  • "Teams & Guilds": visible=true, disabled=false, z-index=auto, clickable=true
+  • "My Score": visible=true, disabled=false, z-index=auto, clickable=true
+  • "Friends": visible=true, disabled=false, z-index=auto, clickable=true
+  • "CN": visible=true, disabled=false, z-index=auto, clickable=true
+  • "": visible=true, disabled=false, z-index=20, clickable=true
+  • "": visible=false, disabled=false, z-index=auto, clickable=false
+  • "": visible=false, disabled=false, z-index=auto, clickable=false
+  • "Add New Friends": visible=false, disabled=false, z-index=auto, clickable=false
+  • "Toggle Sidebar": visible=true, disabled=false, z-index=auto, clickable=true
+  • "": visible=true, disabled=false, z-index=auto, clickable=true
+  • "": visible=true, disabled=false, z-index=auto, clickable=true
+
+2️⃣ Checking addiction bar layering...
+Addiction bar info: {
+  exists: true,
+  zIndex: '50',
+  position: 'fixed',
+  pointerEvents: 'auto',
+  dimensions: {
+    x: 0,
+    y: 0,
+    width: 1265,
+    height: 81,
+    top: 0,
+    right: 1265,
+    bottom: 81,
+    left: 0
+  }
+}
+
+3️⃣ Analyzing Friends button specifically...
+Friends button analysis: {
+  found: true,
+  text: ' Friends ',
+  position: {
+    x: 17,
+    y: 233,
+    width: 32,
+    height: 32,
+    top: 233,
+    right: 49,
+    bottom: 265,
+    left: 17
+  },
+  visible: true,
+  display: 'flex',
+  visibility: 'visible',
+  opacity: '1',
+  zIndex: 'auto',
+  pointerEvents: 'auto',
+  elementAtPosition: 'svg',
+  isBlockedBy: 'YES - blocked by svg'
+}
+
+4️⃣ Checking for overlaying elements...
+High z-index elements:
+  • OL: z-index=100, position=fixed
+  • DIV#v5-addiction-bar: z-index=50, position=fixed
+  • BUTTON: z-index=20, position=absolute
+
+5️⃣ Testing alternative click methods...
+  Trying force click...
+  ✅ Force click worked!
+  Trying JavaScript click...
+  ✅ JavaScript click worked!
+
+============================================================
+DIAGNOSIS COMPLETE
+============================================================
+
+Browser staying open for 30 seconds...

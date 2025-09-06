@@ -1,4 +1,5 @@
 #!/bin/bash
+: '
 ---
 session: "00028"
 type: "script"
@@ -13,6 +14,7 @@ topics: ['session', 'automation']
 priority: "P2"
 domain: "core"
 ---
+'
 
 # 00028-session-startup.sh - Main orchestrator for session initialization
 # Session 28: Build session automation framework

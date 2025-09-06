@@ -34,7 +34,9 @@ type: guide
 ### 🚀 Session Startup
 | Script | Purpose | Priority |
 |--------|---------|----------|
-| **00028-session-start.sh** | CANONICAL session startup v2.0 with all features | P0 |
+| **00140-mcp-integrated-session-start.sh** | MCP-integrated session startup v3.0 (Session 140) | P0 |
+| **00028-session-start.sh** | Legacy session startup v2.0 (use if MCP unavailable) | P1 |
+| **00028-session-start-mcp-addon.sh** | Add MCP tracking to existing session | P2 |
 
 ### 🔍 YAML & Metadata
 | Script | Purpose | Priority |
