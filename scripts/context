@@ -1,0 +1,14 @@
+#!/bin/bash
+# Quick Session Context Query
+# Usage: ./scripts/context  OR  just "context" if in PATH
+
+# Simple wrapper around dynamic context loader for quick reference
+echo "🔍 Loading current session context..."
+echo ""
+
+# Call the full dynamic context loader
+./scripts/00138-dynamic-context-loader.sh
+
+echo ""
+echo "💬 Context loaded! Ask me 'what's our current context?' to confirm we're aligned."
+echo "Or reference specific priorities/wireframes shown above."

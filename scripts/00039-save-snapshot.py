@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00039"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00039-save-snapshot.py"
+purpose: "Script for save snapshot"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00039-save-snapshot.py - Save snapshot data directly
 Session 38: Quick save for known snapshot data
 """

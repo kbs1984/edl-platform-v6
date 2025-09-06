@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00062"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00062-project-insights.py"
+purpose: "Script for project insights"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Project Insights from YAML Metadata
 Session 00062 - Unlock project understanding through metadata analysis
 """

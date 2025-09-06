@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00028"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00028-parse-outputs.py"
+purpose: "Extract key information from agent JSON/text outputs"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00028-parse-outputs.py - Parse Reality Agent outputs into readable format
 Session 28: Build session automation framework
 Purpose: Extract key information from agent JSON/text outputs

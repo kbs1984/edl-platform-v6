@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00066"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00066-reference-mapper.py"
+purpose: "Map all cross-references BEFORE any file moves to prevent breaking 73% of links"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00066 - Reference Integrity Mapper
 Purpose: Map all cross-references BEFORE any file moves to prevent breaking 73% of links
 Created: 2025-08-25

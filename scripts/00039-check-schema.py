@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00039"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00039-check-schema.py"
+purpose: "Script for check schema"
+language: "python"
+category: "verification"
+topics: ["verification"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Schema Snapshot Reader - Session 00039
 Reads the schema snapshot created by Session 38 and provides useful queries.
 This replaces direct Supabase access for schema information.

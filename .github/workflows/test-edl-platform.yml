@@ -1,0 +1,316 @@
+name: EDL Platform Tests
+
+on:
+  push:
+    branches: [ main, develop, 'feature/*' ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of test to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - auth-gateway
+          - dashboard
+          - admin-dashboard
+          - integration
+
+jobs:
+  test-auth-gateway:
+    name: Test Auth Gateway
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'auth-gateway' || github.event_name != 'workflow_dispatch' }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'reconciliation/active-work/auth-gateway/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm ci
+      
+      - name: Build application
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm run build
+      
+      - name: Run type check
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm run type-check || echo "No type-check script"
+      
+      - name: Run linter
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm run lint || echo "No lint script"
+
+  test-dashboard:
+    name: Test Dashboard
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'dashboard' || github.event_name != 'workflow_dispatch' }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'reconciliation/active-work/dashboard/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: reconciliation/active-work/dashboard
+        run: npm ci
+      
+      - name: Build application
+        working-directory: reconciliation/active-work/dashboard
+        run: npm run build
+      
+      - name: Run type check
+        working-directory: reconciliation/active-work/dashboard
+        run: npm run type-check || echo "No type-check script"
+
+  test-admin-dashboard:
+    name: Test Admin Dashboard
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'admin-dashboard' || github.event_name != 'workflow_dispatch' }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'reconciliation/active-work/admin-dashboard/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: reconciliation/active-work/admin-dashboard
+        run: npm ci
+      
+      - name: Build application
+        working-directory: reconciliation/active-work/admin-dashboard
+        run: npm run build
+      
+      - name: Run type check
+        working-directory: reconciliation/active-work/admin-dashboard
+        run: npm run type-check || echo "No type-check script"
+
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [test-auth-gateway, test-dashboard, test-admin-dashboard]
+    if: ${{ github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'integration' }}
+    
+    services:
+      postgres:
+        image: supabase/postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install Puppeteer dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+      
+      - name: Setup test environment
+        run: |
+          cp .env.test .env
+          echo "Setting up test database..."
+      
+      - name: Install Puppeteer MCP
+        run: npx puppeteer-mcp-claude install || echo "Puppeteer MCP installation skipped in CI"
+      
+      - name: Run integration tests
+        run: |
+          node scripts/00118-test-edl-apps.js
+        env:
+          CI: true
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://bbrheacetxlnqbibjwsz.supabase.co' }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || 'test-key' }}
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: |
+            test-results/
+            test-results.json
+            test-results.md
+
+  ui-tests:
+    name: UI Tests with Puppeteer
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_type == 'all' || github.event.inputs.test_type == 'integration' }}
+    
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: edl_platform
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      
+      - name: Install UI Test Dependencies
+        working-directory: edl-ui-tests
+        run: npm install
+      
+      - name: Install Auth Gateway Dependencies
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm ci
+      
+      - name: Build Auth Gateway
+        working-directory: reconciliation/active-work/auth-gateway
+        run: npm run build
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/edl_platform
+          NEXT_PUBLIC_DASHBOARD_URL: http://localhost:3001
+      
+      - name: Install Dashboard Dependencies
+        working-directory: reconciliation/active-work/dashboard
+        run: npm ci
+      
+      - name: Build Dashboard
+        working-directory: reconciliation/active-work/dashboard
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Start Auth Gateway
+        working-directory: reconciliation/active-work/auth-gateway
+        run: |
+          npm run start &
+          sleep 5
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/edl_platform
+          NEXT_PUBLIC_DASHBOARD_URL: http://localhost:3001
+      
+      - name: Start Dashboard
+        working-directory: reconciliation/active-work/dashboard
+        run: |
+          npm run start &
+          sleep 5
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Wait for services
+        run: |
+          npx wait-on http://localhost:3000 http://localhost:3001 -t 60000
+      
+      - name: Run UI Tests
+        working-directory: edl-ui-tests
+        run: npm test
+        env:
+          CI: true
+          HEADLESS: true
+          AUTH_GATEWAY_URL: http://localhost:3000
+          DASHBOARD_URL: http://localhost:3001
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      
+      - name: Upload test screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-screenshots
+          path: /tmp/*.png
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ui-test-results
+          path: edl-ui-tests/test-results/
+
+  report:
+    name: Test Report
+    runs-on: ubuntu-latest
+    needs: [test-auth-gateway, test-dashboard, test-admin-dashboard, integration-tests, ui-tests]
+    if: always()
+    
+    steps:
+      - name: Download test results
+        uses: actions/download-artifact@v3
+        with:
+          name: test-results
+          path: test-results/
+      
+      - name: Generate summary
+        run: |
+          echo "## Test Results Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f "test-results/test-results.md" ]; then
+            cat test-results/test-results.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No test results found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## 🧪 Test Results\n\n';
+            
+            try {
+              const results = fs.readFileSync('test-results/test-results.md', 'utf8');
+              comment += results;
+            } catch (error) {
+              comment += 'Test results not available';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

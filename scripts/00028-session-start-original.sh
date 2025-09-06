@@ -1,7 +1,29 @@
 #!/bin/bash
-# 00028-session-start.sh - IMPROVED session automation with fixes from Session 29 feedback
+: '
+---
+session: "00028"
+type: "script"
+status: "deprecated"
+created: "2025-08-28"
+title: "00028-session-start-original.sh"
+purpose: "Original implementation before v2.0 unification"
+language: "bash"
+category: "automation"
+replaced_by: "./scripts/00028-session-start.sh (v2.0 unified version)"
+topics: ['session', 'automation']
+priority: "P2"
+domain: "core"
+---
+'
+
+# 00028-session-start-original.sh - ORIGINAL session automation (preserved for reference)
 # Created: Session 28, Updated: Session 28 (based on Session 29 feedback)
-# Purpose: Single entry point for session initialization with proper session numbering
+# Purpose: Original implementation before v2.0 unification
+#
+# ⚠️ DEPRECATED - Session 95
+# This is the original version preserved for historical reference
+# USE INSTEAD: ./scripts/00028-session-start.sh (v2.0 unified version)
+# This version lacks anti-guesswork protocol and YAML health features
 
 echo "╔══════════════════════════════════════════════════════════╗"
 echo "║     EDL Platform v6 - Session Automation v1.1             ║"

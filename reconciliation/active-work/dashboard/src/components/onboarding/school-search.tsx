@@ -34,19 +34,41 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
     setIsSchoolSelected(true);
   }
 
-  const registerNewSchool = () => {
-    registerSchoolAction(newSchoolName)
-      .then((res) => {
-        if (res) setFormData((prev) => ({
+  const registerNewSchool = async () => {
+    // SESSION 00101 FIX: Handle registration with proper state updates
+    console.log("Registering new school:", newSchoolName);
+    
+    if (!newSchoolName.trim()) {
+      alert("Please enter a school name");
+      return;
+    }
+    
+    try {
+      const res = await registerSchoolAction(newSchoolName.trim());
+      console.log("Registration response:", res);
+      
+      if (res && res.id) {
+        // Success - update all relevant state
+        setFormData((prev) => ({
           ...prev,
           schoolId: res.id,
-          schoolName: newSchoolName,
-        }))
-      });
-    setNewSchoolName("");
-    setSchoolSearchResults([]);
-    setIsSchoolSearchOpen(false);
-    setIsSchoolSelected(true);
+          schoolName: res.name || newSchoolName,
+        }));
+        setSchoolSearchQuery(res.name || newSchoolName); // Show registered name in search field
+        setIsSchoolSelected(true);
+        setNewSchoolName("");
+        setSchoolSearchResults([]);
+        setIsSchoolSearchOpen(false);
+      } else {
+        console.error("School registration returned no ID");
+        alert("Failed to register school. Please try again.");
+        return;
+      }
+    } catch (error) {
+      console.error("School registration error:", error);
+      alert("Failed to register school. Please try again.");
+      return;
+    }
   }
 
   useEffect(() => {
@@ -55,8 +77,15 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
       return;
     }
     setIsSearching(true)
-    searchSchoolAction(schoolSearchQuery).then((res) => {setSchoolSearchResults(res as {id: string, name: string}[])})
-    setIsSearching(false)
+    searchSchoolAction(schoolSearchQuery).then((res) => {
+      // SESSION 00087 FIX: Handle null results properly
+      setSchoolSearchResults(res || [])
+      setIsSearching(false)
+    }).catch((error) => {
+      console.error("School search error:", error)
+      setSchoolSearchResults([])
+      setIsSearching(false)
+    })
   }, [schoolSearchQuery]);
   
   return (
@@ -84,7 +113,7 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
       <div className="absolute top-full w-full z-50 bg-popover rounded-md" >
         {isSearching ? (
           <p className="text-center p-2 py-10 text-sm">Searching...</p>
-        ) : isSchoolSearchOpen && schoolSearchResults.length > 0 ? (
+        ) : isSchoolSearchOpen && schoolSearchResults && schoolSearchResults.length > 0 ? (
           <div className="rounded-md overflow-scroll max-h-80">
             <ul className="flex flex-col gap-1 p-1 py-2">
               {schoolSearchResults.map((school) => (
@@ -126,16 +155,14 @@ export const SchoolSearch = ({ formData, setFormData, disabled }: { formData: St
                   />
                 </div>
                 <DialogFooter>
-                  <DialogClose asChild>
-                    <Button
-                      type="button"
-                      variant={"primary"}
-                      onClick={registerNewSchool}
-                      disabled={!newSchoolName.trim()}
-                    >
-                      Register
-                    </Button>
-                  </DialogClose>
+                  <Button
+                    type="button"
+                    variant={"primary"}
+                    onClick={registerNewSchool}
+                    disabled={!newSchoolName.trim()}
+                  >
+                    Register
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>

@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00013_reality-check.sh"
+# purpose: "Make truth verification inevitable and systematic"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Enhanced Reality Check Protocol v1.1 - Session 00013
 # Built on Session 00012's foundation with Desktop's improvements
 # Purpose: Make truth verification inevitable and systematic

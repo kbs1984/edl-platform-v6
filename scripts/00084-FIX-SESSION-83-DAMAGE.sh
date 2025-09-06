@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00084"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00084-FIX-SESSION-83-DAMAGE.sh"
+# purpose: "Script for FIX SESSION 83 DAMAGE"
+# language: "bash"
+# category: "session-management"
+# topics: ["session-management"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Fix Session 83's damage to auth flow
 # Created by Session 84 using YAML query discoveries
 

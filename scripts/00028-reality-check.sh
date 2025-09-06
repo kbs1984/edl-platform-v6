@@ -1,4 +1,22 @@
 #!/bin/bash
+: '
+---
+session: "00028"
+type: "script"
+status: "active"
+created: "2025-08-28"
+modified: "2025-08-28"
+title: "Reality Check Script"
+purpose: "Run Reality Agents and save outputs for parsing"
+language: "bash"
+category: "verification"
+topics: ["reality-agents", "verification", "setup", "initialization", "ground-truth"]
+priority: "P0"
+domain: "core"
+used_by: ["00028-session-start.sh"]
+---
+'
+
 # 00028-reality-check.sh - SIMPLEST VERSION FIRST
 # Session 28: Build session automation framework
 # Purpose: Run Reality Agents and save outputs for parsing

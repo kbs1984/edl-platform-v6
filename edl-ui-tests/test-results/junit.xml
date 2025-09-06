@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="10" failures="0" errors="0" time="6.263">
+  <testsuite name="integration.test.js" errors="0" failures="0" skipped="0" timestamp="2025-09-01T10:12:56" time="6.215" tests="10">
+    <testcase classname="Helper Module Integration Tests › AuthHelpers" name="should generate unique test users" time="0.002">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › AuthHelpers" name="should have correct configuration" time="0">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › SessionManager" name="should track sessions correctly" time="0.332">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › SessionManager" name="should handle multiple sessions" time="0.883">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › SupabaseValidator" name="should connect to Supabase" time="0.333">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › SupabaseValidator" name="should handle validation functions" time="0.562">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › SupabaseValidator" name="should support wait for data pattern" time="0.023">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › TestCleanup" name="should gather statistics without deleting" time="1.167">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › TestCleanup" name="should respect dry run mode" time="0.26">
+    </testcase>
+    <testcase classname="Helper Module Integration Tests › Integration Flow" name="should work together for a complete flow" time="1.428">
+    </testcase>
+  </testsuite>
+</testsuites>

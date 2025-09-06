@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00067"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00067-auto-organize-files.py"
+purpose: "Automatically organize files based on YAML metadata using Session 66's safety net"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00067 - Auto-Organization Tool with Safety Infrastructure
 Purpose: Automatically organize files based on YAML metadata using Session 66's safety net
 Created: 2025-08-25

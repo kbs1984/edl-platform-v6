@@ -1,0 +1,25 @@
+{
+  "name": "edl-ui-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:auth": "jest login.test.js",
+    "test:dashboard": "jest dashboard.test.js",
+    "test:friends": "jest friends.test.js",
+    "test:teams": "jest teams.test.js",
+    "test:all": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "puppeteer": "^23.1.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.56.1"
+  }
+}

@@ -6,6 +6,8 @@ import { getLevelFromExp, requiredExpForLevel } from "@/lib/utils"
 import { Progress } from "@/components/ui/progress"
 import { ChallengeEnableToggle } from "./challenge-enable-toggle"
 import { Username } from "./username"
+import { EmCoinBalanceDisplay } from "@/components/emcoin/emcoin-balance-display"
+import { VisitorTracker } from "@/components/profile/visitor-tracker"
 
 export const StudentDashboard = ({ profile, student }: { profile: Profile, student: Student }) => {
   const { level, exp } = getLevelFromExp(student.exp);
@@ -15,13 +17,15 @@ export const StudentDashboard = ({ profile, student }: { profile: Profile, stude
       <Card className="col-span-6 flex p-4 gap-4 flex-col justify-between h-64">
         <div className="flex flex-col items-start justify-between md:flex-row">
           <div className="flex gap-4 items-center">
-            <div>
-              <Image src={profile.image_path!} className="rounded-full border border-secondary" alt={""} width={100} height={100} />
-            </div>
+            {profile.image_path && (
+              <div>
+                <Image src={profile.image_path} className="rounded-full border border-secondary" alt={profile.name || "Profile"} width={100} height={100} />
+              </div>
+            )}
             <div>
               <div className="text-2xl font-bold"> {profile.name} </div>
               <div className="flex items-center mt-2">
-                <Username username={profile.username!} />
+                <Username username={profile.username || ""} />
               </div>
               <div> {profile.email} </div>
             </div>
@@ -59,12 +63,9 @@ export const StudentDashboard = ({ profile, student }: { profile: Profile, stude
 
         </div>
       </Card>
-      <Card className="col-span-4 flex p-4">
-        <div> Recent Activity </div>
-        <div>
-
-        </div>
-      </Card>
+      <div className="col-span-4">
+        <EmCoinBalanceDisplay />
+      </div>
       <Card className="col-span-4 p-4 h-64">
         <div className="ml-2"> Rules </div>
         <div className="mt-4 flex flex-col gap-2">
@@ -73,12 +74,9 @@ export const StudentDashboard = ({ profile, student }: { profile: Profile, stude
           <RuleButton title="Judge Ballot" Icon={Scale} />
         </div>
       </Card>
-      <Card className="col-span-4 flex p-4 h-64">
-        <div> Recent Debate Motions </div>
-        <div>
-
-        </div>
-      </Card>
+      <div className="col-span-4">
+        <VisitorTracker />
+      </div>
       <Card className="col-span-4 flex p-4 h-64">
         <div> {student.division} division Rankings </div>
         <div>

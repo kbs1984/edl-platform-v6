@@ -1,7 +1,27 @@
 #!/bin/bash
+---
+session: "00059"
+type: "script"
+status: "deprecated"
+created: "2025-08-28"
+title: "00059-session-start-enhanced.sh"
+purpose: "Upgraded session startup with organizational health reporting"
+language: "bash"
+category: "automation"
+replaced_by: "./scripts/00028-session-start.sh (v2.0 with all features)"
+topics: ['session', 'automation']
+priority: "P2"
+domain: "core"
+---
+
 # Enhanced Session Startup with YAML Health Integration
 # Session: 00059
 # Purpose: Upgraded session startup with organizational health reporting
+#
+# ⚠️ DEPRECATED - Session 94
+# YAML health features merged into canonical script
+# USE INSTEAD: ./scripts/00028-session-start.sh (v2.0 with all features)
+# Kept for reference of Session 59's YAML integration work
 
 # Get session number (auto-detect or use argument)
 if [ -z "$1" ]; then

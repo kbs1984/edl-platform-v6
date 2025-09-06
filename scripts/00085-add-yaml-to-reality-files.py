@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00085"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00085-add-yaml-to-reality-files.py"
+purpose: "Script for add yaml to reality files"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00085: Add YAML frontmatter to reality files for discoverability
 Makes ground truth easily queryable via YAML system
 """

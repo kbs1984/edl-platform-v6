@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00066"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00066-quick-reference-scan.py"
+purpose: "Script for quick reference scan"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Quick reference scanner - faster version for initial mapping
 """
 

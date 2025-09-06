@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00087"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00087-test-auth-fixes.py"
+purpose: "Script for test auth fixes"
+language: "python"
+category: "testing"
+topics: ["testing"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00087: Test Script for Auth Fixes
 Tests both the profile trigger and middleware header fixes
 """

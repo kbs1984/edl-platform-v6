@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00080"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00080-extract-backup-policies.py"
+purpose: "Comprehensive policy extraction and migration script generation"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00080 - Extract and analyze RLS policies from Supabase backup
 Purpose: Comprehensive policy extraction and migration script generation
 Created: 2025-08-26

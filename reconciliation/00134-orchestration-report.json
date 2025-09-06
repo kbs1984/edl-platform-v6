@@ -1,0 +1,59 @@
+{
+  "session": "134",
+  "priority": "Priority 2 - Reality Agent MCP Orchestration",
+  "timestamp": "2025-09-06T11:02:20.807345",
+  "duration": "0:00:00.131742",
+  "results": {
+    "health_check": {
+      "timestamp": "2025-09-06T11:02:20.810105",
+      "overall_health": 66.66666666666666,
+      "agents": {
+        "filesystem-connector": {
+          "healthy": true,
+          "status": "Initialized"
+        },
+        "supabase-connector": {
+          "healthy": true,
+          "status": "Initialized"
+        }
+      },
+      "healthy_count": 2,
+      "total_count": 3
+    },
+    "ninety_five_syndrome": {
+      "ui_components": true,
+      "database_saves": true,
+      "realtime_sync": false,
+      "syndrome_detected": true,
+      "severity": "HIGH",
+      "recommendation": "Fix WebSocket connections for real-time updates"
+    },
+    "performance": {
+      "timestamp": "2025-09-06T11:02:20.810278",
+      "regressions": [
+        {
+          "metric": "signup_page",
+          "baseline": 2300,
+          "current": 2800,
+          "regression": "21.7%"
+        }
+      ],
+      "has_regressions": true,
+      "metrics": {
+        "login_page": 1650,
+        "signup_page": 2800,
+        "dashboard_redirect": 450
+      }
+    },
+    "ui_tests": {
+      "success": false,
+      "error": "Tests timed out after 30 seconds"
+    }
+  },
+  "summary": {
+    "agents_loaded": 2,
+    "mcp_enhanced": 1,
+    "syndrome_detected": true,
+    "regressions_found": true
+  }
+}

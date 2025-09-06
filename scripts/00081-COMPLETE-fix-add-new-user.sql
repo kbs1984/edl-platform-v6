@@ -1,3 +1,16 @@
+-- ---
+-- session: "00081"
+-- type: "script"
+-- status: "unknown"
+-- created: "2025-08-28"
+-- title: "00081-COMPLETE-fix-add-new-user.sql"
+-- purpose: "Script for COMPLETE fix add new user"
+-- language: "sql"
+-- category: "creation"
+-- topics: ["creation"]
+-- priority: "P2"
+-- domain: "core"
+-- ---
 -- Session 00081: COMPLETE Fix for add_new_user function
 -- Based on actual column requirements from our database
 -- ALL columns except id, active, invited are NOT NULL

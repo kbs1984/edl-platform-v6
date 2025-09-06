@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00038"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00038-save-real-snapshot.py"
+purpose: "Script for save real snapshot"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00038-save-real-snapshot.py - Save the REAL snapshot data from Supabase
 Session 38: Capturing authoritative truth about database state
 """

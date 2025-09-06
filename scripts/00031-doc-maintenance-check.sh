@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00031"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00031-doc-maintenance-check.sh"
+# purpose: "Script for doc maintenance check"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Documentation Maintenance Check Tool
 # Session 00031 - Ensures INDEX files and living docs are properly maintained
 

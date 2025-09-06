@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00013_resolve-conflicts.sh"
+# purpose: "Script for 00013 resolve conflicts"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Reality Conflict Resolution - Session 00013
 # Uses trust hierarchy: GitHub > FileSystem > Supabase > Vercel
 

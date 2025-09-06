@@ -5,7 +5,7 @@ status: "applied"
 created: "2025-08-27"
 title: "Deployed Migration: batch-05-functions-complete"
 purpose: "Applied database migration - 27 functions"
-topics: ["database", "migration", "reality", "deployed"]
+topics: ["database", "migration", "reality", "deployed", "functions"]
 priority: "P0"
 domain: "reality"
 reality_type: "deployed-migration"

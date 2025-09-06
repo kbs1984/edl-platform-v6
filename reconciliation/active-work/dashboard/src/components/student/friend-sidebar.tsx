@@ -7,11 +7,37 @@ import { useFriends } from "@/hooks/use-friends";
 import { AddFriendDialog } from "./add-friend-dialog";
 import Image from "next/image";
 import { FriendRequestDialog } from "./friend-request-dialog";
+import { useRouter } from "next/navigation";
+import { getFriendChatRoomAction } from "@/lib/actions/student-actions";
+import { toast } from "@/hooks/use-toast";
 
 export const StudentFriendSidebar = () => {
   const { setOpen } = useFriendSidebar();
   const { friends, friendRequests } = useFriends();
   const [ addFriendDialogOpen, setAddFriendDialogOpen ] = useState(false);
+  const router = useRouter();
+
+  const handleChatClick = async (friendId: string) => {
+    try {
+      const result = await getFriendChatRoomAction(friendId);
+      if (result.status === "success" && result.data) {
+        router.push(`/chat/${result.data.roomId}`);
+      } else {
+        toast({
+          title: "Error",
+          description: "Could not find chat room. Try accepting the friend request first.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error navigating to chat:", error);
+      toast({
+        title: "Error",
+        description: "Failed to open chat",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <>
@@ -56,7 +82,11 @@ export const StudentFriendSidebar = () => {
                           <div className="text-xs text-muted-foreground">{friend.status === "online" ? "Online" : "On Debate"}</div>
                         </div>
                       </div>
-                      <MessageCircleMore strokeWidth={1.3} className="size-6 text-muted-foreground cursor-pointer" />
+                      <MessageCircleMore 
+                        strokeWidth={1.3} 
+                        className="size-6 text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
+                        onClick={() => handleChatClick(friend.id)}
+                      />
                       <div className="rounded-full bg-green-500 absolute left-[33px] bottom-[11px] size-2.5" />
                     </div>
                   ))}
@@ -71,7 +101,11 @@ export const StudentFriendSidebar = () => {
                       <Image src={friend.image_path} alt={friend.username} width={32} height={32} className="min-w-8 min-h-8 max-w-8 max-h-8 rounded-full" />
                         <div className="text-sm mt-1">{friend.username}</div>
                       </div>
-                      <MessageCircleMore strokeWidth={1.3} className="size-6 text-muted-foreground cursor-pointer" />
+                      <MessageCircleMore 
+                        strokeWidth={1.3} 
+                        className="size-6 text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
+                        onClick={() => handleChatClick(friend.id)}
+                      />
                     </div>
                   ))}
                 </div>

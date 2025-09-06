@@ -1,4 +1,17 @@
 #!/bin/bash
+---
+session: "00088"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00088-gather-evidence.sh"
+purpose: "Session 00088: Evidence Gathering Script"
+language: "bash"
+category: "uncategorized"
+priority: "P2"
+domain: "core"
+---
+
 
 # Session 00088: Evidence Gathering Script
 # Enforces evidence-based debugging to prevent guesswork

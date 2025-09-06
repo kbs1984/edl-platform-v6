@@ -1,4 +1,17 @@
 #!/bin/bash
+---
+session: "legacy"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "structure-check.sh"
+purpose: "System Structure Check - Quick overview of system state for session awareness"
+language: "bash"
+category: "verification"
+priority: "P2"
+domain: "core"
+---
+
 # System Structure Check - Quick overview of system state for session awareness
 # Usage: ./structure-check.sh
 

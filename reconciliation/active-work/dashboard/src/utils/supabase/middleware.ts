@@ -48,6 +48,11 @@ export const updateSession = async (request: NextRequest) => {
       return NextResponse.redirect(new URL("/protected", request.url));
     }
 
+    // Session 87 fix: Set authenticated header when user exists
+    if (!user.error && user.data?.user) {
+      response.headers.set('x-user-authenticated', 'true');
+    }
+
     return response;
   } catch (e) {
     // If you are here, a Supabase client could not be created!

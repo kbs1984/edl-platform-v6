@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00079"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00079-start-local-dev.sh"
+# purpose: "Start auth and dashboard apps locally for testing"
+# language: "bash"
+# category: "session-management"
+# topics: ["session-management"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00079: Start local development servers
 # Purpose: Start auth and dashboard apps locally for testing
 

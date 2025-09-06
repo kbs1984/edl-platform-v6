@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00091"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00091-start-local-dev.sh"
+# purpose: "Script for start local dev"
+# language: "bash"
+# category: "session-management"
+# topics: ["session-management"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # Session 00091: Start local development servers
 # Evidence-based approach - starting services with proper ports

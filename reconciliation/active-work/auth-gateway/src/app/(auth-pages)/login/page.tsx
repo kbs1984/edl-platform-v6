@@ -11,7 +11,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
   const searchParams = await props.searchParams;
   return (
     <div>
-      <form className="flex-1 flex flex-col p-4">
+      <form action={loginAction} className="flex-1 flex flex-col p-4">
         <h1 className="text-3xl font-medium mt-4 ml-4 flex items-center justify-start gap-3"> 
           <Image src={"/logos/white_emdash.svg"} alt={"logo"} width={40} height={40} /> 
           Welcome Back!
@@ -30,7 +30,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
               Forgot Password?
             </Link>
           </div>
-          <SubmitButton pendingText="Logging In..." formAction={loginAction} className="mt-4 h-12">
+          <SubmitButton pendingText="Logging In..." className="mt-4 h-12">
             Login
           </SubmitButton>
           <div className="flex justify-center items-center w-full pl-2 mt-4">

@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00063"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00063-batch-yaml-add.sh"
+# purpose: "Script for batch yaml add"
+# language: "bash"
+# category: "yaml"
+# topics: ["yaml"]
+# priority: "P2"
+# domain: "core"
+# ---
 
 # 00063-batch-yaml-add.sh  
 # Add YAML frontmatter to multiple directories at once

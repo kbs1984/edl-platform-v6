@@ -557,3 +557,16 @@ export async function changeTeamLeader(newLeaderTeamMemberId: string, teamId: st
 
   return { success: true };
 }
+
+// Session 180: Adding missing exports for build
+export async function getTeams() {
+  return getMyTeams();
+}
+
+export async function getTeamMembers(teamId: string) {
+  const data = await getTeamDetailsPageData(teamId);
+  if ('error' in data) {
+    return { data: null, error: data.error };
+  }
+  return { data: data.members, error: null };
+}

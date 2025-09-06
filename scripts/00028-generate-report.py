@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00028"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00028-generate-report.py"
+purpose: "Create a markdown report for session initialization"
+language: "python"
+category: "creation"
+topics: ["creation"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00028-generate-report.py - Generate markdown session state report
 Session 28: Build session automation framework
 Purpose: Create a markdown report for session initialization

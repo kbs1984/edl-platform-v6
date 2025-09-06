@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
+    "dev": "rm -rf .next && next dev -p 3000",
+    "dev:safe": "rm -rf .next node_modules/.cache && next dev -p 3000",
+    "dev:normal": "next dev -p 3000",
+    "build": "rm -rf .next && next build",
     "start": "next start"
   },
   "dependencies": {

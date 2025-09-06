@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00062"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00062-yaml-compliance-check.sh"
+# purpose: "Monitor YAML frontmatter coverage across the project"
+# language: "bash"
+# category: "yaml"
+# topics: ["yaml"]
+# priority: "P2"
+# domain: "core"
+# ---
 # YAML Compliance Checker - Session 00062
 # Purpose: Monitor YAML frontmatter coverage across the project
 

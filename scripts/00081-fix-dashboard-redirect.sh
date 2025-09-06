@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00081"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00081-fix-dashboard-redirect.sh"
+# purpose: "Script for fix dashboard redirect"
+# language: "bash"
+# category: "dashboard"
+# topics: ["dashboard"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Session 00081: Fix dashboard redirect for local development
 
 echo "📝 Updating auth app environment to redirect locally..."

@@ -437,6 +437,20 @@ SUPABASE_URL="..." SUPABASE_ANON_KEY="..." python3 reality/agent-reality-auditor
 
 ---
 
+## Critical Documentation (Session 96 Added)
+
+### Development Environment
+- **00096-WORKSTATION-SETUP-GUIDE.md** - Ground truth workstation setup
+  - Correct directory structure (truth-seed vs active-work)
+  - Port configuration (3000/3001, NOT 3002)
+  - Environment variables
+  - Common issues and fixes
+
+### Agent Documentation
+- **agent-reality-auditor/** - Agent specifications and implementations
+- **/tmp/*_agent_output.json** - Runtime agent outputs during sessions
+- **truth-seed-manifest.json** - Current database state tracking
+
 ## Next Priority Actions
 
 1. **Add Continuous Monitoring** - Agents need to track changes over time

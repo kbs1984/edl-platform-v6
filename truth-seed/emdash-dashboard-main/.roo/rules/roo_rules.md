@@ -7,6 +7,7 @@ globs: .roo/rules/*.md
 session: legacy
 status: current
 title: Roo Rules
+type: guide
 ---
 
 - **Required Rule Structure:**

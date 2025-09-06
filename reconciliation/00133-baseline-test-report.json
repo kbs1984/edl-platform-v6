@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-09-01T22:15:42.819Z",
+  "summary": {
+    "totalFeatures": 2,
+    "working": 0,
+    "broken": 0,
+    "partial": 0,
+    "notImplemented": 0,
+    "ninetyFivePercent": 0
+  },
+  "features": {
+    "Auth": {
+      "working": [],
+      "broken": [],
+      "partial": [],
+      "notImplemented": [],
+      "ninetyFivePercent": [],
+      "performance": {}
+    },
+    "Friends": {
+      "working": [],
+      "broken": [],
+      "partial": [],
+      "notImplemented": [],
+      "ninetyFivePercent": [],
+      "performance": {}
+    }
+  },
+  "performance": {},
+  "failures": [
+    {
+      "feature": "Services",
+      "error": "Auth Gateway not running"
+    },
+    {
+      "feature": "Services",
+      "error": "Dashboard not running"
+    },
+    {
+      "feature": "Database",
+      "error": "SupabaseValidator is not a constructor"
+    }
+  ],
+  "workItems": []
+}

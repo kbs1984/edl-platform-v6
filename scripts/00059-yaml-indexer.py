@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00059"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00059-yaml-indexer.py"
+purpose: "Production-ready YAML indexer using python-frontmatter with caching"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 YAML Indexer with Battle-Tested Patterns
 Session: 00059
 Purpose: Production-ready YAML indexer using python-frontmatter with caching
@@ -84,9 +99,49 @@ class YAMLIndexer:
                 print(f"⚠ Cache save failed: {e}")
     
     def get_file_hash(self, filepath: Path) -> str:
-        """Get hash of file's frontmatter for change detection"""
+        """Get hash of file's frontmatter for change detection
+        Enhanced in Session 98 to handle bash comment YAML
+        """
         try:
-            # Only read the frontmatter section for performance
+            # Special handling for bash scripts and SQL files with raw or comment YAML
+            if filepath.suffix in ['.sh', '.sql']:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    lines = f.readlines()[:50]  # Read first 50 lines max
+                    
+                    # Handle SQL files with comment YAML
+                    if filepath.suffix == '.sql' and lines and lines[0].strip() == '-- ---':
+                        yaml_content = []
+                        for line in lines[1:]:
+                            if line.strip() == '-- ---':
+                                break
+                            elif line.startswith('--'):
+                                # Remove comment prefix and add to YAML
+                                yaml_content.append(line[2:].lstrip())
+                        if yaml_content:
+                            return hashlib.md5(''.join(yaml_content).encode()).hexdigest()
+                    # Handle bash scripts
+                    elif lines and lines[0].startswith('#!/bin/bash'):
+                        # Check for raw YAML (Session 97 format)
+                        if len(lines) > 1 and lines[1].strip() == '---':
+                            yaml_content = []
+                            for line in lines[2:]:
+                                if line.strip() == '---':
+                                    break
+                                yaml_content.append(line)
+                            if yaml_content:
+                                return hashlib.md5(''.join(yaml_content).encode()).hexdigest()
+                        # Check for comment YAML (older format)
+                        elif len(lines) > 1 and lines[1].strip() == '# ---':
+                            yaml_content = []
+                            for line in lines[2:]:
+                                if line.strip() == '# ---':
+                                    break
+                                elif line.startswith('#'):
+                                    yaml_content.append(line)
+                            if yaml_content:
+                                return hashlib.md5(''.join(yaml_content).encode()).hexdigest()
+            
+            # Standard frontmatter handling
             with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read(2000)  # Read first 2KB (frontmatter is usually small)
                 if '---' in content:
@@ -100,7 +155,9 @@ class YAMLIndexer:
         return hashlib.md5(str(filepath.stat().st_mtime).encode()).hexdigest()
     
     def parse_file(self, filepath: Path) -> Optional[Dict]:
-        """Parse a single file using python-frontmatter (battle-tested)"""
+        """Parse a single file using python-frontmatter (battle-tested)
+        Enhanced in Session 98 to handle bash scripts with comment YAML
+        """
         start_time = time.time()
         
         try:
@@ -116,16 +173,151 @@ class YAMLIndexer:
             
             self.stats['cache_misses'] += 1
             
-            # Parse with frontmatter library
-            post = frontmatter.load(filepath)
+            # Session 98 Enhancement: Handle bash scripts with comment YAML
+            metadata = {}
+            content = ""
+            has_frontmatter = False
+            
+            # Check if this is a bash script or SQL file with raw or comment YAML
+            if filepath.suffix in ['.sh', '.sql']:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    lines = f.readlines()
+                    
+                    # Handle SQL files with comment YAML (Session 99 addition)
+                    if filepath.suffix == '.sql' and lines and lines[0].strip() == '-- ---':
+                        # Extract YAML from SQL comments
+                        yaml_lines = []
+                        content_start = 0
+                        
+                        for i, line in enumerate(lines[1:], 1):
+                            if line.strip() == '-- ---':
+                                content_start = i + 1
+                                break
+                            elif line.startswith('--'):
+                                # Remove comment prefix and add to YAML
+                                yaml_lines.append(line[2:].lstrip())
+                        
+                        # Parse the YAML from comments
+                        if yaml_lines:
+                            try:
+                                import yaml
+                                yaml_content = ''.join(yaml_lines)
+                                metadata = yaml.safe_load(yaml_content)
+                                has_frontmatter = True
+                                content = ''.join(lines[content_start:])
+                            except Exception as e:
+                                print(f"⚠ Error parsing SQL YAML in {filepath}: {e}")
+                    
+                    # Look for bash shebang
+                    elif lines and lines[0].startswith('#!/bin/bash'):
+                        # Check for raw YAML (Session 97 format)
+                        if len(lines) > 1 and lines[1].strip() == '---':
+                            # Raw YAML after shebang - extract it
+                            yaml_lines = []
+                            content_start = 0
+                            
+                            for i, line in enumerate(lines[2:], 2):
+                                if line.strip() == '---':
+                                    content_start = i + 1
+                                    break
+                                yaml_lines.append(line)
+                            
+                            # Parse the raw YAML
+                            if yaml_lines:
+                                try:
+                                    import yaml
+                                    yaml_content = ''.join(yaml_lines)
+                                    metadata = yaml.safe_load(yaml_content)
+                                    has_frontmatter = True
+                                    content = ''.join(lines[content_start:])
+                                except Exception as e:
+                                    print(f"⚠ Error parsing bash YAML in {filepath}: {e}")
+                        
+                        # Check for comment YAML (older format)
+                        elif len(lines) > 1 and lines[1].strip() == '# ---':
+                            # Extract YAML from comments
+                            yaml_lines = []
+                            in_yaml = False
+                            content_start = 0
+                            
+                            for i, line in enumerate(lines[1:], 1):
+                                if line.strip() == '# ---':
+                                    if not in_yaml:
+                                        in_yaml = True
+                                    else:
+                                        # End of YAML section
+                                        content_start = i + 1
+                                        break
+                                elif in_yaml and line.startswith('#'):
+                                    # Remove comment marker and add to YAML
+                                    yaml_line = line[1:].lstrip()
+                                    if yaml_line:  # Skip empty comment lines
+                                        yaml_lines.append(yaml_line)
+                            
+                            # Parse the extracted YAML
+                            if yaml_lines:
+                                try:
+                                    import yaml
+                                    yaml_content = ''.join(yaml_lines)
+                                    metadata = yaml.safe_load(yaml_content)
+                                    has_frontmatter = True
+                                    content = ''.join(lines[content_start:])
+                                except Exception as e:
+                                    print(f"⚠ Error parsing bash comment YAML in {filepath}: {e}")
+            
+            # Check if this is a Python script with docstring YAML
+            elif filepath.suffix == '.py':
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    content_all = f.read()
+                    
+                    # Look for docstring with YAML
+                    if content_all.startswith('#!/usr/bin/env python3') or content_all.startswith('#!/usr/bin/python'):
+                        # Find the docstring
+                        docstring_start = content_all.find('"""')
+                        if docstring_start != -1:
+                            docstring_end = content_all.find('"""', docstring_start + 3)
+                            if docstring_end != -1:
+                                docstring = content_all[docstring_start + 3:docstring_end]
+                                
+                                # Check if docstring contains YAML
+                                if '---' in docstring:
+                                    lines = docstring.split('\n')
+                                    yaml_lines = []
+                                    in_yaml = False
+                                    
+                                    for line in lines:
+                                        if line.strip() == '---':
+                                            if not in_yaml:
+                                                in_yaml = True
+                                            else:
+                                                break
+                                        elif in_yaml:
+                                            yaml_lines.append(line)
+                                    
+                                    if yaml_lines:
+                                        try:
+                                            import yaml
+                                            yaml_content = '\n'.join(yaml_lines)
+                                            metadata = yaml.safe_load(yaml_content)
+                                            has_frontmatter = True
+                                            content = content_all[docstring_end + 3:]
+                                        except Exception as e:
+                                            print(f"⚠ Error parsing Python docstring YAML in {filepath}: {e}")
+            
+            # If not a script or no YAML found, use standard parsing
+            if not has_frontmatter:
+                post = frontmatter.load(filepath)
+                metadata = post.metadata
+                content = post.content
+                has_frontmatter = bool(post.metadata)
             
             # Build result
             result = {
-                'metadata': post.metadata,
-                'content_preview': post.content[:200] if post.content else '',
+                'metadata': metadata,
+                'content_preview': content[:200] if content else '',
                 'path': str(filepath.relative_to(self.root_path)),
                 'absolute_path': str(filepath),
-                'has_frontmatter': bool(post.metadata)
+                'has_frontmatter': has_frontmatter
             }
             
             # Cache the result
@@ -197,11 +389,17 @@ class YAMLIndexer:
             self.status_index[metadata['status']].append(path)
     
     def scan_files(self, pattern: str = "**/*.md", incremental: bool = True) -> int:
-        """Scan and index all matching files"""
+        """Scan and index all matching files
+        Enhanced in Session 98 to scan scripts too
+        """
         start_time = time.time()
         
-        # Find all matching files
-        files = list(self.root_path.glob(pattern))
+        # Session 98+99: Scan multiple file types including scripts and SQL
+        patterns = ["**/*.md", "**/*.sh", "**/*.py", "**/*.sql"]
+        files = []
+        for p in patterns:
+            files.extend(self.root_path.glob(p))
+        
         print(f"\n📊 Scanning {len(files)} files...")
         
         # Process files

@@ -23,13 +23,14 @@ type FriendshipWithProfile = {
 export const FriendRequestDialog = ({friendRequests}: {friendRequests: Friendship[]}) => {
   const [open, setOpen] = useState(false);
   const [profiles, setProfiles] = useState<Array<FriendshipWithProfile>>([]);
+  const [processing, setProcessing] = useState<string | null>(null); // Track which request is being processed
 
   useEffect(() => {
     const getProfiles = async () => {
       const res = await getProfilesAction(friendRequests.map((req: Friendship) => req.user_id));
-      if (res.status === "error") {
-        console.error(`Error fetching profiles: ${res.message}`);
-      } else {
+      if (!res || res.status === "error") {
+        console.error(`Error fetching profiles: ${res?.message || 'No response'}`);
+      } else if (res.data) {
         const profilesWithStatus = friendRequests.map((req: Friendship) => {
           const profile = res.data!.find((profile: Profile) => profile.id === req.user_id);
           return {
@@ -51,13 +52,25 @@ export const FriendRequestDialog = ({friendRequests}: {friendRequests: Friendshi
     const action = button.value as "ACCEPTED" | "REJECTED";
     const friendshipId = (event.target as HTMLFormElement).friendship_id.value;
     
+    setProcessing(friendshipId); // Show loading state
+    
     const res = await updateFriendRequestAction(friendshipId, action);
+    
     if (res.status === "error") {
       toast({
         title: "Error",
-        description: `Failed to update friend request: ${res.message}`,
+        description: res.message,
         variant: "destructive",
-      })
+      });
+      setProcessing(null);
+    } else {
+      toast({
+        title: "Success",
+        description: res.message,
+      });
+      // Remove the processed request from the list
+      setProfiles(prev => prev.filter(p => p.friendship.id !== friendshipId));
+      setProcessing(null);
     }
   };
 
@@ -97,10 +110,22 @@ export const FriendRequestDialog = ({friendRequests}: {friendRequests: Friendshi
                 </div>
                 <form className="flex gap-2" onSubmit={handleSubmit}>
                   <input type="hidden" name="friendship_id" value={req.friendship.id} />
-                  <button type="submit" name="action" value="REJECTED" className="bg-red-500 text-white px-2 py-2 rounded-md cursor-pointer">
+                  <button 
+                    type="submit" 
+                    name="action" 
+                    value="REJECTED" 
+                    disabled={processing === req.friendship.id}
+                    className="bg-red-500 text-white px-2 py-2 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
                     <XIcon />
                   </button>
-                  <button type="submit" name="action" value="ACCEPTED" className="bg-green-500 text-white px-2 py-2 rounded-md cursor-pointer">
+                  <button 
+                    type="submit" 
+                    name="action" 
+                    value="ACCEPTED" 
+                    disabled={processing === req.friendship.id}
+                    className="bg-green-500 text-white px-2 py-2 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
                     <Check />
                   </button>
                 </form>

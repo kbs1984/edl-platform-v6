@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00059"
+type: "script"
+status: "active"
+created: "2025-08-28"
+title: "00059-yaml-maintenance.py"
+purpose: "Automated tools for YAML frontmatter maintenance"
+language: "python"
+category: "yaml"
+topics: ["yaml"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 YAML Maintenance Tools - Automated Cleanup and Suggestions
 Session: 00059
 Purpose: Automated tools for YAML frontmatter maintenance

@@ -1,3 +1,16 @@
+-- ---
+-- session: "00081"
+-- type: "script"
+-- status: "unknown"
+-- created: "2025-08-28"
+-- title: "00081-fix-add-new-user-function.sql"
+-- purpose: "Script for fix add new user function"
+-- language: "sql"
+-- category: "creation"
+-- topics: ["creation"]
+-- priority: "P2"
+-- domain: "core"
+-- ---
 -- Session 00081: Fix add_new_user function to handle required columns
 -- Problem: Source function only inserts id, but our table has more required fields
 -- Solution: Provide defaults for all required columns

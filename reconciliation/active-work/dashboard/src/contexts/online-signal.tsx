@@ -38,7 +38,9 @@ export const PresenceProvider = ({ children }: React.ComponentProps<"div">) => {
   useEffect(() => {
     const getId = async () => {
       const profile = await getProfile();
-      setUserId(profile.id);
+      if (profile?.id) {
+        setUserId(profile.id);
+      }
     }
     getId();
   }, []);

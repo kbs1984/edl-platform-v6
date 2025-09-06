@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "legacy"
+# type: "script"
+# status: "unknown"
+# created: "2025-08-28"
+# title: "00013_verify-credentials.sh"
+# purpose: "Script for 00013 verify credentials"
+# language: "bash"
+# category: "verification"
+# topics: ["verification"]
+# priority: "P2"
+# domain: "core"
+# ---
 # Credential Verification Script - Session 00013
 # Ensures all Reality Agents have required credentials
 

@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00038"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00038-save-complete-snapshot.py"
+purpose: "Script for save complete snapshot"
+language: "python"
+category: "utility"
+topics: ["utility"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 00038-save-complete-snapshot.py - Save the COMPLETE snapshot with all 6 queries
 Session 38: Final authoritative database state capture
 """

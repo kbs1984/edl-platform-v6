@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-09-05T01:03:12.893Z",
+  "services": {
+    "auth": true,
+    "dashboard": false
+  },
+  "features": {
+    "working": [
+      "Login page with form",
+      "Signup page with form"
+    ],
+    "broken": [
+      "Dashboard does not redirect properly"
+    ],
+    "partial": [
+      "Teams page exists but requires auth"
+    ],
+    "notImplemented": [],
+    "ninetyFivePercent": []
+  },
+  "performance": {
+    "loginPageLoad": 2534,
+    "signupPageLoad": 1972
+  }
+}

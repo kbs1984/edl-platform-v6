@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00031"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00031-auth-autonomous-verification.py"
+purpose: "Script for auth autonomous verification"
+language: "python"
+category: "authentication"
+topics: ["authentication"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Auth Feature Autonomous Verification Tool
 Session 00031 - Claude Code Capabilities Test
 

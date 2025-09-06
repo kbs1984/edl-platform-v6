@@ -1,4 +1,18 @@
 #!/bin/bash
+---
+session: "legacy"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "session-guard.sh"
+purpose: "Session Log Guard - Ensures proper session logging protocol"
+language: "bash"
+category: "uncategorized"
+topics: ['session']
+priority: "P2"
+domain: "core"
+---
+
 # Session Log Guard - Ensures proper session logging protocol
 # Usage: ./session-guard.sh [SESSION_NUMBER]
 

@@ -1,0 +1,215 @@
+
+Running 7 tests using 1 worker
+
+🧪 Testing variable reward system...
+  ✘  1 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:48:3 › Session 149: Enhanced Addiction Mechanics Testing › Variable rewards trigger at 15% rate (16.9s)
+🧪 Testing real data accuracy...
+  ✘  2 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:106:3 › Session 149: Enhanced Addiction Mechanics Testing › Addiction bar shows real data (12.4s)
+🧪 Testing tampering prevention...
+  ✘  3 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:164:3 › Session 149: Enhanced Addiction Mechanics Testing › LocalStorage tampering blocked (12.4s)
+🧪 Testing psychology and performance...
+  ✘  4 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:216:3 › Session 149: Enhanced Addiction Mechanics Testing › Psychology and performance validation (13.1s)
+🧪 Testing complete user journey...
+  ✘  5 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:305:3 › Session 149: Enhanced Addiction Mechanics Testing › Complete addiction cycle (13.5s)
+🧪 Testing performance under animation load...
+📊 Performance Metrics: {
+  minFPS: [33m56.818181789318515[39m,
+  maxFPS: [33m1250.0000046566129[39m,
+  averageFPS: [33m60.39660436874811[39m,
+  frameDrops: [33m102[39m
+}
+  ✘  6 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:367:3 › Session 149: Enhanced Addiction Mechanics Testing › 60fps during heavy animations (5.4s)
+🧪 Testing edge case handling...
+  ✘  7 [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:439:3 › Session 149: Enhanced Addiction Mechanics Testing › Graceful failure handling (12.9s)
+
+
+  1) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:48:3 › Session 149: Enhanced Addiction Mechanics Testing › Variable rewards trigger at 15% rate 
+
+    TimeoutError: page.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button:has-text("Award Welcome Bonus")')[22m
+
+
+      58 |     for (let i = 0; i < totalTests; i++) {
+      59 |       // Click the award bonus button
+    > 60 |       await page.click('button:has-text("Award Welcome Bonus")');
+         |                  ^
+      61 |       
+      62 |       // Wait for the award to process
+      63 |       await page.waitForTimeout(1000);
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:60:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-dcf53--rewards-trigger-at-15-rate-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-dcf53--rewards-trigger-at-15-rate-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-dcf53--rewards-trigger-at-15-rate-chromium/error-context.md
+
+  2) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:106:3 › Session 149: Enhanced Addiction Mechanics Testing › Addiction bar shows real data 
+
+    TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#v5-addiction-bar') to be visible[22m
+
+
+      113 |     
+      114 |     // Get initial values from addiction bar
+    > 115 |     await page.waitForSelector('#v5-addiction-bar');
+          |                ^
+      116 |     
+      117 |     const initialEmCoins = await page.textContent('#emCoinBalance');
+      118 |     const initialStreak = await page.textContent('#streakCount');
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:115:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-a190d-diction-bar-shows-real-data-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-a190d-diction-bar-shows-real-data-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-a190d-diction-bar-shows-real-data-chromium/error-context.md
+
+  3) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:164:3 › Session 149: Enhanced Addiction Mechanics Testing › LocalStorage tampering blocked 
+
+    TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#emCoinBalance') to be visible[22m
+
+
+      166 |     
+      167 |     // Get legitimate starting balance
+    > 168 |     await page.waitForSelector('#emCoinBalance');
+          |                ^
+      169 |     const legitimateBalance = await page.textContent('#emCoinBalance');
+      170 |     
+      171 |     // Attempt to tamper with localStorage
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:168:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-1fe03-alStorage-tampering-blocked-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-1fe03-alStorage-tampering-blocked-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-1fe03-alStorage-tampering-blocked-chromium/error-context.md
+
+  4) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:216:3 › Session 149: Enhanced Addiction Mechanics Testing › Psychology and performance validation 
+
+    TimeoutError: page.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="award-emcoins-button"]')[22m
+
+
+      230 |     
+      231 |     // Trigger EmCoin award
+    > 232 |     await page.click('[data-testid="award-emcoins-button"]');
+          |                ^
+      233 |     
+      234 |     // Wait for visual feedback (dopamine)
+      235 |     await page.waitForSelector('[data-testid="emcoin-animation"]', { timeout: TEST_CONFIG.expectedValues.dopamineThreshold });
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:232:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-8f1f5--and-performance-validation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-8f1f5--and-performance-validation-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-8f1f5--and-performance-validation-chromium/error-context.md
+
+  5) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:305:3 › Session 149: Enhanced Addiction Mechanics Testing › Complete addiction cycle 
+
+    TimeoutError: page.textContent: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="user-state"]')[22m
+
+
+      309 |     await page.goto(`${TEST_CONFIG.baseURL}/test-grey-state`);
+      310 |     
+    > 311 |     const initialState = await page.textContent('[data-testid="user-state"]');
+          |                                     ^
+      312 |     expect(initialState).toBe('GREY');
+      313 |     console.log(`✅ User starts in grey state`);
+      314 |     
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:311:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-6eaf9-ng-Complete-addiction-cycle-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-6eaf9-ng-Complete-addiction-cycle-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-6eaf9-ng-Complete-addiction-cycle-chromium/error-context.md
+
+  6) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:367:3 › Session 149: Enhanced Addiction Mechanics Testing › 60fps during heavy animations 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThan[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: < [32m10[39m
+    Received:   [31m102[39m
+
+      428 |     console.log(`📊 Performance Metrics:`, performanceMetrics);
+      429 |     expect(performanceMetrics.averageFPS).toBeGreaterThan(45); // Allow some tolerance under load
+    > 430 |     expect(performanceMetrics.frameDrops).toBeLessThan(10); // Max 10 dropped frames
+          |                                           ^
+      431 |     
+      432 |     console.log(`✅ Performance maintained under load`);
+      433 |   });
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:430:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-34e4e-fps-during-heavy-animations-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-34e4e-fps-during-heavy-animations-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-34e4e-fps-during-heavy-animations-chromium/error-context.md
+
+  7) [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:439:3 › Session 149: Enhanced Addiction Mechanics Testing › Graceful failure handling 
+
+    TimeoutError: page.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="award-emcoins-button"]')[22m
+
+
+      446 |     
+      447 |     // Try to award EmCoins while offline
+    > 448 |     await page.click('[data-testid="award-emcoins-button"]');
+          |                ^
+      449 |     await page.waitForTimeout(2000);
+      450 |     
+      451 |     // Verify graceful fallback
+        at /home/b4sho/edl-projects-with-claude/edl-platform-v6/tests/puppeteer/session-149-addiction-mechanics.test.js:448:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-d6e9e-g-Graceful-failure-handling-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/puppeteer-session-149-addi-d6e9e-g-Graceful-failure-handling-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/puppeteer-session-149-addi-d6e9e-g-Graceful-failure-handling-chromium/error-context.md
+
+  7 failed
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:48:3 › Session 149: Enhanced Addiction Mechanics Testing › Variable rewards trigger at 15% rate 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:106:3 › Session 149: Enhanced Addiction Mechanics Testing › Addiction bar shows real data 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:164:3 › Session 149: Enhanced Addiction Mechanics Testing › LocalStorage tampering blocked 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:216:3 › Session 149: Enhanced Addiction Mechanics Testing › Psychology and performance validation 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:305:3 › Session 149: Enhanced Addiction Mechanics Testing › Complete addiction cycle 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:367:3 › Session 149: Enhanced Addiction Mechanics Testing › 60fps during heavy animations 
+    [chromium] › tests/puppeteer/session-149-addiction-mechanics.test.js:439:3 › Session 149: Enhanced Addiction Mechanics Testing › Graceful failure handling 

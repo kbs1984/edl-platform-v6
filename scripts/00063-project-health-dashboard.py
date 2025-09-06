@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+"""
+---
+session: "00063"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00063-project-health-dashboard.py"
+purpose: "Script for project health dashboard"
+language: "python"
+category: "dashboard"
+topics: ["dashboard"]
+priority: "P2"
+domain: "core"
+---
+"""
 
 """
 00063-project-health-dashboard.py

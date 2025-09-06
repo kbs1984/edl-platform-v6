@@ -1,4 +1,18 @@
 #!/bin/bash
+---
+session: "00069"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00069-yaml-pre-commit-hook.sh"
+purpose: "Session 00069: YAML validation pre-commit hook"
+language: "bash"
+category: "yaml"
+topics: ['yaml']
+priority: "P2"
+domain: "core"
+---
+
 # Session 00069: YAML validation pre-commit hook
 # Prevents commits with invalid YAML frontmatter
 

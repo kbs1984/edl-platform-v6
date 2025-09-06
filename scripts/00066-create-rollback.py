@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
 """
+---
+session: "00066"
+type: "script"
+status: "unknown"
+created: "2025-08-28"
+title: "00066-create-rollback.py"
+purpose: "Create rollback scripts and manifests BEFORE any file moves"
+language: "python"
+category: "creation"
+topics: ["creation"]
+priority: "P2"
+domain: "core"
+---
+"""
+"""
 Session 00066 - Rollback Mechanism Creator
 Purpose: Create rollback scripts and manifests BEFORE any file moves
 Created: 2025-08-25

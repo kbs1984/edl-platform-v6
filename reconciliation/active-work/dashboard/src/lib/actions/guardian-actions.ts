@@ -12,16 +12,32 @@ export const guardianAction = async (formData: GuardianData) => {
   if (!user) return { status: "error", message: "User not found"};
   if (!user.phone) return { status: "error", message: "Phone number not registered"};
   
-  const { error: guardianError } = await supabase
+  // First check if guardian record already exists
+  const { data: existingGuardian } = await supabase
     .from("guardian")
-    .insert({})
+    .select("id")
+    .eq("user_id", user.id)
+    .single();
 
-  if (guardianError) return { status: "error", message: guardianError.message};
+  // Only insert if no guardian record exists
+  if (!existingGuardian) {
+    const { error: guardianError } = await supabase
+      .from("guardian")
+      .insert({
+        user_id: user.id,
+        // Payment and billing can be added later in profile settings
+        payment_method: null,
+        billing_address: null
+      })
+
+    if (guardianError) return { status: "error", message: guardianError.message};
+  }
 
   const { error: profileError } = await supabase
     .from("profile")
     .update({
       active: true,
+      user_role: 'GUARDIAN',
       term_agree_time: new Date().toISOString()
     })
     .eq("id", user.id);

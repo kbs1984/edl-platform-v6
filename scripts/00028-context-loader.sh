@@ -1,4 +1,17 @@
 #!/bin/bash
+# ---
+# session: "00028"
+# type: "script"
+# status: "active"
+# created: "2025-08-28"
+# title: "00028-context-loader.sh"
+# purpose: "Extract key information from previous session for continuity"
+# language: "bash"
+# category: "utility"
+# topics: ["utility"]
+# priority: "P2"
+# domain: "core"
+# ---
 # 00028-context-loader.sh - Load previous session context
 # Session 28: Build session automation framework
 # Purpose: Extract key information from previous session for continuity
