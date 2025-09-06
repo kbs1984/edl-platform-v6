@@ -1,11 +1,11 @@
 {
   "session": "134",
   "priority": "Priority 2 - Reality Agent MCP Orchestration",
-  "timestamp": "2025-09-05T10:03:12.550655",
-  "duration": "0:00:00.218064",
+  "timestamp": "2025-09-06T11:02:20.807345",
+  "duration": "0:00:00.131742",
   "results": {
     "health_check": {
-      "timestamp": "2025-09-05T10:03:12.552466",
+      "timestamp": "2025-09-06T11:02:20.810105",
       "overall_health": 66.66666666666666,
       "agents": {
         "filesystem-connector": {
@@ -29,7 +29,7 @@
       "recommendation": "Fix WebSocket connections for real-time updates"
     },
     "performance": {
-      "timestamp": "2025-09-05T10:03:12.552682",
+      "timestamp": "2025-09-06T11:02:20.810278",
       "regressions": [
         {
           "metric": "signup_page",
@@ -46,11 +46,8 @@
       }
     },
     "ui_tests": {
-      "success": true,
-      "metrics": {
-        "overall_health": 50.0
-      },
-      "output": "\ud83d\udd0d Testing Services...\n\n  \u2705 Auth Gateway: Running on port 3000\n  \u2705 Dashboard: Running on port 3001\n\n\ud83d\ude80 Launching browser...\n\n\ud83d\udccb Test 1: Login page loads\n  \u2705 Login page loads with form\n\n\ud83d\udccb Test 2: Signup page loads\n  \u2705 Signup page loads with form\n\n\ud83d\udccb Test 3: Dashboard redirect when not authenticated\n  \u274c Unexpected URL: http://localhost:3001/\n\n\ud83d\udccb Test 4: Friends System Components (95% Syndrome Check)\n\n\ud83d\udccb Test 5: Teams System Components\n  \u26a0\ufe0f Teams page requires authentication\n\n============================"
+      "success": false,
+      "error": "Tests timed out after 30 seconds"
     }
   },
   "summary": {

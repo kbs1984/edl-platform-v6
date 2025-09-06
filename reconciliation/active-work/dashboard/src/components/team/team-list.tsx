@@ -7,7 +7,8 @@ interface TeamListProps {
   showPending?: boolean;
 }
 
-export async function TeamList({ userId, showPending = false }: TeamListProps) {
+// Session 180: Add default export
+export default async function TeamList({ userId, showPending = false }: TeamListProps) {
   const teams = await getTeams(userId, showPending);
 
   if (!teams || teams.length === 0) {

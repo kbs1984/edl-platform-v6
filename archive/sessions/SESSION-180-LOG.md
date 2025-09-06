@@ -19,3 +19,11 @@ domain: "core"
 ## Work Log
 
 [2025-09-06T01:23:18.024Z] Added task: Review Session 179 recovery work [undefined]
+
+[2025-09-06T01:51:07.220Z] Added task: Establish recovery checkpoint and safeguards [undefined]
+
+[2025-09-06T01:51:13.496Z] Deliverable: core/00180-COMMIT-WORKFLOW-WITH-SAFEGUARDS.md (documentation)
+
+[2025-09-06T01:51:19.938Z] Deliverable: reconciliation/active-work/dashboard/.eslintrc.js (configuration)
+
+[2025-09-06T01:51:27.388Z] Deliverable: scripts/00180-daily-checkpoint.sh (configuration)
